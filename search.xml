@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[基于Hexo和Github搭建的博客]]></title>
     <url>%2F2017%2F07%2F12%2Fartical%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[博客迁移原因 之前一直在印象笔记上做记录，单机版的，时间长了占用大量的本地内存。 markdown写起来还是比较少的，偶然看到一个用hexo搭建的博客，简洁明了，花了几个小时的功夫，终于把这个博客搭建起来了，虽然功能还不完善，但是看起来还是很舒服的，后面有时间了再慢慢完善。 这几天先把部分笔记迁移过来，权当再复习一遍知识。]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
