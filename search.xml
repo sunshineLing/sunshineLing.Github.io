@@ -4,6 +4,12 @@
     <title><![CDATA[移动端底部问题]]></title>
     <url>%2F2017%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%95%E9%83%A8%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>移动端</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[移动端1px的border问题]]></title>
