@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决思路： 解决方法： 设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrap">
+<meta name="description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决方法：设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &amp;l">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端底部tab或按钮显示问题-css sticky footer">
 <meta property="og:url" content="sunshineLing.github.io/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决思路： 解决方法： 设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrap">
-<meta property="og:updated_time" content="2017-07-12T12:52:17.934Z">
+<meta property="og:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决方法：设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &amp;l">
+<meta property="og:updated_time" content="2017-07-12T12:56:55.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端底部tab或按钮显示问题-css sticky footer">
-<meta name="twitter:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决思路： 解决方法： 设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrap">
+<meta name="twitter:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决方法：设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &amp;l">
 
 
 
@@ -388,9 +388,7 @@
       
         <p><strong>问题：</strong> 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。</p>
 <p>但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。</p>
-<p><strong>解决思路：</strong></p>
-<p><strong>解决方法：</strong></p>
-<p>设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
+<p><strong>解决方法：</strong><br>设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
 <pre><code>// wrapper层
 &lt;div class=&quot;detail&quot;&gt;
     // 和关闭按钮并列的层
@@ -482,6 +480,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/06/15/移动端高清、多屏幕适配方案总结-rem/" rel="prev" title="移动端高清、多屏幕适配方案总结-rem">
+                移动端高清、多屏幕适配方案总结-rem <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -544,7 +546,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
