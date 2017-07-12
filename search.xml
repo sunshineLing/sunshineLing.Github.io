@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F07%2F12%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[基于Hexo和Github搭建的博客]]></title>
     <url>%2F2017%2F07%2F01%2Fartical%2F</url>
     <content type="text"><![CDATA[博客迁移原因之前一直在印象笔记上做记录，单机版的，时间长了占用大量的本地内存。markdown写起来还是比较少的，偶然看到一个用hexo搭建的博客，简洁明了，花了几个小时的功夫，终于把这个博客搭建起来了，虽然功能还不完善，但是看起来还是很舒服的，后面有时间了再慢慢完善。这几天先把部分笔记迁移过来，权当再复习一遍知识。]]></content>
@@ -14,6 +9,28 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[css布局总结]]></title>
+    <url>%2F2015%2F05%2F20%2Fcss%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%2F</url>
+    <content type="text"><![CDATA[一、两列布局写移动端项目的时候，经常遇到左边或右边是图片，需要固定宽度，中间自适应，是图片的内容介绍，需要垂直居中，且和两边高度对齐，这个时候用flex布局比较好，总结了两种比较常用的方法： 第一种：flex左边宽度固定，右边自适应/*父元素*/ .father { display: flex; } /*左边子元素*/ .left { flex: 0 0 30px; width: 30px; } .right { flex: 1; } 第二种：positon定位和padding-left用100%宽的一个div用paading-left把左边图片的位置留出来，图片绝对定位到padding-left区域 例如一个列表项，每一个item下面左边是图片，右边是说明 二、三列布局左侧和右侧固定，中间自适应 1.设置第一个DIV左浮动，第二个DIV右浮动，第三个DIV设置左右MARGIN为两个DIV的固定宽度 #box1 { float: left; width: 300px; background-color: #0099cc; } #box2 { float: right; width: 300px; background-color: #cc6600; } #box3 { height: 500px; background-color: #c30230; margin-left: 300px; margin-right: 300px; } &lt;div id=&quot;box1&quot;&gt;这是div1&lt;/div&gt; &lt;div id=&quot;box2&quot;&gt;这是div2&lt;/div&gt; &lt;div id=&quot;box3&quot;&gt;这是div3&lt;/div&gt; 2.父元素宽度100%，相对定位，左右子元素绝对定位，中间子元素设置margin-left和margin-right #wrapper { position: relative; width: 100%; } #box1 { position: absolute; top: 0; left: 0; width: 300px; height: 300px; background-color: #0099cc; } #box2 { height: 400px; margin-left: 300px; margin-right: 300px; background-color: #cc6600; } #box3 { position: absolute; top: 0; right: 0; width: 300px; height: 300px; background-color: #c30230; } 三、多列布局要横向排列的子元素设置float:left或者是display:inline-block,并且设置父元素的font-size为0 经典圣杯布局和淘宝双飞翼布局实现的都是三栏布局，两边的盒子宽度固定，中间盒子自适应，也就是我们常说的固比固布局页面的宽度的变化，三栏布局是中间盒子优先渲染，两边的盒子框子固定不变 圣杯布局&lt;div class=&quot;container&quot;&gt; &lt;div class=&quot;middle&quot;&gt;&lt;h4&gt;中间弹性区&lt;/h4&gt;&lt;/div&gt; &lt;div class=&quot;left&quot;&gt;&lt;h4&gt;左边栏&lt;/h4&gt;&lt;/div&gt; &lt;div class=&quot;right&quot;&gt;&lt;h4&gt;右边栏&lt;/h4&gt;&lt;/div&gt; &lt;/div&gt; /*middle放在第一个，先渲染，宽度100%*/ .container{ padding: 0 200px; 左右盒子的宽度 height:200px; overflow:hidden; } .middle{ width: 100%; height: 200px; float:left; } .left{ position: relative; left: -200px width: 200px; height: 200px; float:left; margin-left: -100%; // 设置左边盒子负边距为中间盒子的宽度，即100%，可以在中间盒子的左边 } .right{ position: relative; //重点 right: -210px // 重点 width: 200px; height: 200px; float:left; margin-left: -200px; // 关键，这样才能在最右边 } 淘宝的双飞翼布局 淘宝的双飞翼布局是在middle的div里又插入一个div，通过调整内部div的margin值，实现中间栏自适应，内容写到内部div中。 &lt;div id=&quot;middle&quot;&gt; &lt;div id=&quot;inside&quot;&gt;middle&lt;/div&gt; &lt;/div&gt; &lt;div id=&quot;left&quot;&gt;left&lt;/div&gt; &lt;div id=&quot;right&quot;&gt;right&lt;/div&gt; #middle{ float:left; width:100%;/*左栏上去到第一行*/ height:100px; } #left { float:left; width:180px; height:100px; margin-left:-100%; // 本来在第二行，此时上去到第一行 } #right{ float:left; width:200px; height:100px; margin-left:-200px; // 本来在第二行，此时到第一行 } /*给内部div添加margin，把内容放到中间栏，其实整个背景还是100%*/ #inside{ margin:0 200px 0 180px; height:100px; }]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[css实现垂直居中的方法]]></title>
+    <url>%2F2015%2F05%2F12%2Fcss%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[不定宽高的子元素垂直水平居中的方法项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法 示例： &lt;div class=&quot;box&quot;&gt; &lt;div class=&quot;con&quot;&gt;&lt;/div&gt; /div&gt; 第一种：css3的translate方法// 父元素 .box { position: relative; width: 500px; height: 300px; background-color: red; } // 子元素 .con { position: absolute; width: 20%; height: 50%; /*不定宽高*/ left: 50%; /*先移动父元素的50%*/ top: 50%; transform: translate(-50%, -50%); /*移动自身的50%*/ background-color: #000; } 第二种：flex方法.box { display: flex; justify-content: center; /*块居中对齐*/ align-items: center; /*块垂直居中*/ width: 300px; height: 300px; background-color: red; } .con { width: 30%; height: 40%; background-color: #000; }]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
 </search>

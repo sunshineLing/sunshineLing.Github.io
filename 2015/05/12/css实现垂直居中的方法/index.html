@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="css," />
 
 
 
@@ -93,13 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="sunshineLing.github.io/categories/index.html">
+<meta name="description" content="不定宽高的子元素垂直水平居中的方法项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法 示例： &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;      &amp;lt;div class=&amp;quot;con&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; /div&amp;gt; 第一种：css3的tra">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css实现垂直居中的方法">
+<meta property="og:url" content="sunshineLing.github.io/2015/05/12/css实现垂直居中的方法/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:updated_time" content="2017-07-12T08:21:42.597Z">
+<meta property="og:description" content="不定宽高的子元素垂直水平居中的方法项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法 示例： &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;      &amp;lt;div class=&amp;quot;con&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; /div&amp;gt; 第一种：css3的tra">
+<meta property="og:updated_time" content="2017-07-12T10:22:16.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="css实现垂直居中的方法">
+<meta name="twitter:description" content="不定宽高的子元素垂直水平居中的方法项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法 示例： &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt;      &amp;lt;div class=&amp;quot;con&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; /div&amp;gt; 第一种：css3的tra">
 
 
 
@@ -127,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/categories/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2015/05/12/css实现垂直居中的方法/"/>
 
 
 
 
 
-  <title>categories | sunshine</title>
+  <title>css实现垂直居中的方法 | sunshine</title>
   
 
 
@@ -287,18 +291,202 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/05/12/css实现垂直居中的方法/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css实现垂直居中的方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-12T19:12:27+08:00">
+                2015-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <h2 id="不定宽高的子元素垂直水平居中的方法"><a href="#不定宽高的子元素垂直水平居中的方法" class="headerlink" title="不定宽高的子元素垂直水平居中的方法"></a>不定宽高的子元素垂直水平居中的方法</h2><p>项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法</p>
+<p>示例：</p>
+<pre><code>&lt;div class=&quot;box&quot;&gt;
+     &lt;div class=&quot;con&quot;&gt;&lt;/div&gt;
+/div&gt;
+</code></pre><h3 id="第一种：css3的translate方法"><a href="#第一种：css3的translate方法" class="headerlink" title="第一种：css3的translate方法"></a>第一种：css3的translate方法</h3><pre><code>// 父元素
+.box {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background-color: red;
+}
+// 子元素
+.con {
+    position: absolute;
+    width: 20%;
+    height: 50%; /*不定宽高*/
+    left: 50%;    /*先移动父元素的50%*/
+    top: 50%;
+    transform: translate(-50%, -50%);  /*移动自身的50%*/
+    background-color: #000;
+}
+</code></pre><h3 id="第二种：flex方法"><a href="#第二种：flex方法" class="headerlink" title="第二种：flex方法"></a>第二种：flex方法</h3><pre><code>.box {
+    display: flex;
+    justify-content: center;    /*块居中对齐*/
+    align-items: center;     /*块垂直居中*/
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+.con {
+    width: 30%;
+    height: 40%;
+    background-color: #000;
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/20/css的一些常用布局/" rel="prev" title="css布局总结">
+                css布局总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -331,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
@@ -394,6 +591,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不定宽高的子元素垂直水平居中的方法"><span class="nav-number">1.</span> <span class="nav-text">不定宽高的子元素垂直水平居中的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种：css3的translate方法"><span class="nav-number">1.1.</span> <span class="nav-text">第一种：css3的translate方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种：flex方法"><span class="nav-number">1.2.</span> <span class="nav-text">第二种：flex方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -514,10 +727,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
