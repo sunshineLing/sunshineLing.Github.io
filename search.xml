@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[移动端底部问题]]></title>
-    <url>%2F2017%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%95%E9%83%A8%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[移动端底部tab或按钮显示问题-css sticky footer]]></title>
+    <url>%2F2016%2F03%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%95%E9%83%A8tab%E6%88%96%E6%8C%89%E9%92%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98-css%20sticky%20footer%2F</url>
+    <content type="text"><![CDATA[问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决思路： 解决方法： 设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &lt;div class=&quot;detail&quot;&gt; // 和关闭按钮并列的层 &lt;div class=&quot;detail-wrapper clearfix&quot;&gt; // 里面的主题内容层 &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt; &lt;/div&gt; // 关闭按钮层 &lt;div class=&quot;detail-close&quot;&gt; &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt; &lt;/div&gt; &lt;/div&gt; // 样式 .detail /*设置全屏效果，占满视窗*/ position: fixed z-index: 100 top: 0 left: 0 width: 100% height: 100% overflow: auto background-color: rgba(7, 17, 27, 0.8) // filter: blur(10px) // 内容的wrapper层也宽高也占满100%，占满屏幕 .detail-wrapper min-width: 100% height: 100% .detail-main margin-top: 64px padding-bottom: 64px (这个是关键，设置一个下padding，给底部留出空间) .detail-close // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内 position: relative width: 32px height: 32px margin: -64px auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处 clear: both font-size: 32px]]></content>
       <categories>
         <category>移动端</category>
       </categories>
@@ -13,10 +13,10 @@
   </entry>
   <entry>
     <title><![CDATA[移动端1px的border问题]]></title>
-    <url>%2F2015%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E8%AE%BE%E7%BD%AE%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93%2F</url>
+    <url>%2F2015%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF1px%E7%9A%84border%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。 问题： 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px. 解决方法： 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对其做scale缩放 把原来的border去掉，利用：after重新做border,定位于原来的元素。 并且由于不同设备像素比，缩放比例需要不同。 因为在项目里面使用的比较多，为了增强复用性，需要单独创建一个文件，比如：css/mixin.css，使用的时候将这个文件用@import引入进来 css/mixin.css 设置： /*设置一个border-top为1px的伪类*/ .border-1px { position: relative; border: none; } .border-1px:after { display: block; position: absolute; left: 0; bottom: 0; // 因为设置的是border-bottom width: 100%; border-top: 1px solid #ccc; //height: 1px; content: &apos;&apos; } 注意：stylus或less或sass的写法： .border-1px ($color) { // 样式 &amp;:after // 样式 // 把颜色换成$color } /* 如果是需要设置border-top,用before伪类,设置伪类的border-bottom 但是此时的1px还是和原来直接设置border-bottom: 1px 一样的，并没有缩放效果 */ /*根据设备像素比，用media query来判断，做不同缩放，保证缩放完毕的值 * 设备像素比 = 1px*/ // 在设备像素比是1.5和2时候用scale做缩放 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) .border-1px &amp;::after -webkit-transform: scaleY(0.7) transform: scaleY(0.7) @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) .border-1px &amp;::after -webkit-transform: scaleY(0.5) transform: scaleY(0.5) 用法： 1.先引入定义的公用样式，用 @import &apos;地址&apos; 2.设置给需要的元素，比如item元素 .item { border-1px(&apos;#ccc&apos;) // 设置1px的border-bottom }]]></content>
       <categories>
-        <category>css</category>
+        <category>移动端</category>
       </categories>
       <tags>
         <tag>css</tag>
@@ -36,7 +36,7 @@
   </entry>
   <entry>
     <title><![CDATA[css实现垂直居中的方法]]></title>
-    <url>%2F2015%2F05%2F12%2Fcss%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <url>%2F2015%2F05%2F12%2Fcss%E4%B8%8D%E5%AE%9A%E5%AE%BD%E9%AB%98%E7%9A%84%E5%AD%90%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[不定宽高的子元素垂直水平居中的方法项目里面写静态页面的时候，多次自适应宽高的子元素需要设置垂直水平居中的方法，总结了一下，主要是利用css3的translate和flex两种方法 示例： &lt;div class=&quot;box&quot;&gt; &lt;div class=&quot;con&quot;&gt;&lt;/div&gt; /div&gt; 第一种：css3的translate方法// 父元素 .box { position: relative; width: 500px; height: 300px; background-color: red; } // 子元素 .con { position: absolute; width: 20%; height: 50%; /*不定宽高*/ left: 50%; /*先移动父元素的50%*/ top: 50%; transform: translate(-50%, -50%); /*移动自身的50%*/ background-color: #000; } 第二种：flex方法.box { display: flex; justify-content: center; /*块居中对齐*/ align-items: center; /*块垂直居中*/ width: 300px; height: 300px; background-color: red; } .con { width: 30%; height: 40%; background-color: #000; }]]></content>
       <categories>
         <category>css</category>
