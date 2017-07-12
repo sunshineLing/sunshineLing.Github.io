@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F07%2F12%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[基于Hexo和Github搭建的博客]]></title>
-    <url>%2F2017%2F07%2F12%2Fartical%2F</url>
+    <url>%2F2017%2F07%2F01%2Fartical%2F</url>
     <content type="text"><![CDATA[博客迁移原因之前一直在印象笔记上做记录，单机版的，时间长了占用大量的本地内存。markdown写起来还是比较少的，偶然看到一个用hexo搭建的博客，简洁明了，花了几个小时的功夫，终于把这个博客搭建起来了，虽然功能还不完善，但是看起来还是很舒服的，后面有时间了再慢慢完善。这几天先把部分笔记迁移过来，权当再复习一遍知识。]]></content>
       <categories>
         <category>Hexo</category>
@@ -10,10 +15,5 @@
       <tags>
         <tag>hexo</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F07%2F12%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
