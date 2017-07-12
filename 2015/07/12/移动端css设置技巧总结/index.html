@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="css 移动端," />
 
 
 
@@ -93,13 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="sunshineLing.github.io/categories/index.html">
+<meta name="description" content="最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。 问题： 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px. 解决方法： 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对">
+<meta name="keywords" content="css 移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端1px的border问题">
+<meta property="og:url" content="sunshineLing.github.io/2015/07/12/移动端css设置技巧总结/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:updated_time" content="2017-07-12T08:21:42.597Z">
+<meta property="og:description" content="最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。 问题： 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px. 解决方法： 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对">
+<meta property="og:updated_time" content="2017-07-12T11:53:56.885Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="移动端1px的border问题">
+<meta name="twitter:description" content="最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。 问题： 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px. 解决方法： 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对">
 
 
 
@@ -127,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/categories/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2015/07/12/移动端css设置技巧总结/"/>
 
 
 
 
 
-  <title>categories | sunshine</title>
+  <title>移动端1px的border问题 | sunshine</title>
   
 
 
@@ -287,18 +291,225 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/07/12/移动端css设置技巧总结/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动端1px的border问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-12T19:13:55+08:00">
+                2015-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <p>最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。</p>
+<p><strong>问题：</strong> 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px.</p>
+<p><strong>解决方法：</strong> 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对其做scale缩放</p>
+<pre><code>把原来的border去掉，利用：after重新做border,定位于原来的元素。
+
+并且由于不同设备像素比，缩放比例需要不同。
+</code></pre><p>因为在项目里面使用的比较多，为了增强复用性，需要单独创建一个文件，比如：css/mixin.css，使用的时候将这个文件用@import引入进来</p>
+<p>css/mixin.css 设置：</p>
+<pre><code>/*设置一个border-top为1px的伪类*/
+.border-1px {
+     position: relative;
+     border: none;
+}
+.border-1px:after {
+     display: block;
+     position: absolute;
+     left: 0;
+     bottom: 0;    // 因为设置的是border-bottom
+     width: 100%;
+     border-top: 1px solid #ccc;   //height: 1px;
+     content: &apos;&apos;
+}
+
+注意：stylus或less或sass的写法：
+.border-1px ($color) {
+    // 样式
+    &amp;:after
+        // 样式
+        // 把颜色换成$color
+}
+
+/*
+如果是需要设置border-top,用before伪类,设置伪类的border-bottom
+但是此时的1px还是和原来直接设置border-bottom: 1px 一样的，并没有缩放效果
+*/
+
+/*根据设备像素比，用media query来判断，做不同缩放，保证缩放完毕的值 * 设备像素比 = 1px*/
+
+// 在设备像素比是1.5和2时候用scale做缩放
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+.border-1px
+    &amp;::after
+        -webkit-transform: scaleY(0.7)
+        transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+    .border-1px
+        &amp;::after
+            -webkit-transform: scaleY(0.5)
+            transform: scaleY(0.5)
+
+用法： 
+1.先引入定义的公用样式，用 @import &apos;地址&apos;
+2.设置给需要的元素，比如item元素
+.item {
+    border-1px(&apos;#ccc&apos;)    // 设置1px的border-bottom
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css-移动端/" rel="tag"># css 移动端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/20/css的一些常用布局/" rel="next" title="css布局总结">
+                <i class="fa fa-chevron-left"></i> css布局总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -514,10 +725,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 

@@ -297,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/01/artical/">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/07/12/移动端css设置技巧总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sunshineLing">
@@ -316,7 +316,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/01/artical/" itemprop="url">基于Hexo和Github搭建的博客</a></h1>
+                <a class="post-title-link" href="/2015/07/12/移动端css设置技巧总结/" itemprop="url">移动端1px的border问题</a></h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T15:50:04+08:00">
-                2017-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-12T19:13:55+08:00">
+                2015-07-12
               </time>
             
 
@@ -351,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
                   </a>
                 </span>
 
@@ -387,8 +387,65 @@
       
         
           
-            <h3 id="博客迁移原因"><a href="#博客迁移原因" class="headerlink" title="博客迁移原因"></a>博客迁移原因</h3><p>之前一直在印象笔记上做记录，单机版的，时间长了占用大量的本地内存。<br>markdown写起来还是比较少的，偶然看到一个用hexo搭建的博客，简洁明了，花了几个小时的功夫，终于把这个博客搭建起来了，虽然功能还不完善，但是看起来还是很舒服的，后面有时间了再慢慢完善。<br>这几天先把部分笔记迁移过来，权当再复习一遍知识。</p>
+            <p>最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。</p>
+<p><strong>问题：</strong> 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px.</p>
+<p><strong>解决方法：</strong> 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对其做scale缩放</p>
+<pre><code>把原来的border去掉，利用：after重新做border,定位于原来的元素。
 
+并且由于不同设备像素比，缩放比例需要不同。
+</code></pre><p>因为在项目里面使用的比较多，为了增强复用性，需要单独创建一个文件，比如：css/mixin.css，使用的时候将这个文件用@import引入进来</p>
+<p>css/mixin.css 设置：</p>
+<pre><code>/*设置一个border-top为1px的伪类*/
+.border-1px {
+     position: relative;
+     border: none;
+}
+.border-1px:after {
+     display: block;
+     position: absolute;
+     left: 0;
+     bottom: 0;    // 因为设置的是border-bottom
+     width: 100%;
+     border-top: 1px solid #ccc;   //height: 1px;
+     content: &apos;&apos;
+}
+
+注意：stylus或less或sass的写法：
+.border-1px ($color) {
+    // 样式
+    &amp;:after
+        // 样式
+        // 把颜色换成$color
+}
+
+/*
+如果是需要设置border-top,用before伪类,设置伪类的border-bottom
+但是此时的1px还是和原来直接设置border-bottom: 1px 一样的，并没有缩放效果
+*/
+
+/*根据设备像素比，用media query来判断，做不同缩放，保证缩放完毕的值 * 设备像素比 = 1px*/
+
+// 在设备像素比是1.5和2时候用scale做缩放
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+.border-1px
+    &amp;::after
+        -webkit-transform: scaleY(0.7)
+        transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+    .border-1px
+        &amp;::after
+            -webkit-transform: scaleY(0.5)
+            transform: scaleY(0.5)
+
+用法： 
+1.先引入定义的公用样式，用 @import &apos;地址&apos;
+2.设置给需要的元素，比如item元素
+.item {
+    border-1px(&apos;#ccc&apos;)    // 设置1px的border-bottom
+}
+</code></pre>
           
         
       
@@ -855,6 +912,140 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/04/01/artical/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/01/artical/" itemprop="url">基于Hexo和Github搭建的博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-01T15:50:04+08:00">
+                2015-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="博客迁移原因"><a href="#博客迁移原因" class="headerlink" title="博客迁移原因"></a>博客迁移原因</h3><p>之前一直在印象笔记上做记录，单机版的，时间长了占用大量的本地内存。<br>markdown写起来还是比较少的，偶然看到一个用hexo搭建的博客，简洁明了，花了几个小时的功夫，终于把这个博客搭建起来了，虽然功能还不完善，但是看起来还是很舒服的，后面有时间了再慢慢完善。<br>这几天先把部分笔记迁移过来，权当再复习一遍知识。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -901,7 +1092,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -923,7 +1114,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
