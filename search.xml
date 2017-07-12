@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[移动端底部问题]]></title>
+    <url>%2F2017%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BA%95%E9%83%A8%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[移动端1px的border问题]]></title>
     <url>%2F2015%2F07%2F12%2F%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E8%AE%BE%E7%BD%AE%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[最近做一个移动端的页面，踩了很多坑，也有很多小细节，终于找个时间总结一下，记录下来。 问题： 页面中很多border-bottom被设置为1px,在桌面端的时候，没有问题，但是到手机端，看起来会是2px,因为手机的有一个设备像素比，是两倍,设置的是1px，在2倍的像素比下，就是2px. 解决方法： 因为像素不可能是0.5px,最小单位是1px，所以考虑用css3的伪类 + transform方法对其做scale缩放 把原来的border去掉，利用：after重新做border,定位于原来的元素。 并且由于不同设备像素比，缩放比例需要不同。 因为在项目里面使用的比较多，为了增强复用性，需要单独创建一个文件，比如：css/mixin.css，使用的时候将这个文件用@import引入进来 css/mixin.css 设置： /*设置一个border-top为1px的伪类*/ .border-1px { position: relative; border: none; } .border-1px:after { display: block; position: absolute; left: 0; bottom: 0; // 因为设置的是border-bottom width: 100%; border-top: 1px solid #ccc; //height: 1px; content: &apos;&apos; } 注意：stylus或less或sass的写法： .border-1px ($color) { // 样式 &amp;:after // 样式 // 把颜色换成$color } /* 如果是需要设置border-top,用before伪类,设置伪类的border-bottom 但是此时的1px还是和原来直接设置border-bottom: 1px 一样的，并没有缩放效果 */ /*根据设备像素比，用media query来判断，做不同缩放，保证缩放完毕的值 * 设备像素比 = 1px*/ // 在设备像素比是1.5和2时候用scale做缩放 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) .border-1px &amp;::after -webkit-transform: scaleY(0.7) transform: scaleY(0.7) @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) .border-1px &amp;::after -webkit-transform: scaleY(0.5) transform: scaleY(0.5) 用法： 1.先引入定义的公用样式，用 @import &apos;地址&apos; 2.设置给需要的元素，比如item元素 .item { border-1px(&apos;#ccc&apos;) // 设置1px的border-bottom }]]></content>
