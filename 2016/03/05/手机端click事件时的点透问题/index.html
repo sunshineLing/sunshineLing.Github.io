@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="移动端," />
 
 
 
@@ -93,12 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunshine">
-<meta property="og:url" content="sunshineLing.github.io/tags/移动端/index.html">
+<meta name="description" content="移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。 点透事件的原理根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。 原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mas">
+<meta name="keywords" content="移动端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机端click事件时的点透问题">
+<meta property="og:url" content="sunshineLing.github.io/2016/03/05/手机端click事件时的点透问题/index.html">
 <meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。 点透事件的原理根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。 原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mas">
+<meta property="og:updated_time" content="2017-07-13T02:24:40.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sunshine">
+<meta name="twitter:title" content="手机端click事件时的点透问题">
+<meta name="twitter:description" content="移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。 点透事件的原理根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。 原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mas">
 
 
 
@@ -126,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/tags/移动端/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2016/03/05/手机端click事件时的点透问题/"/>
 
 
 
 
 
-  <title>标签: 移动端 | sunshine</title>
+  <title>手机端click事件时的点透问题 | sunshine</title>
   
 
 
@@ -157,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -285,100 +290,236 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>移动端<small>标签</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/15/移动端高清、多屏幕适配方案总结-rem/" itemprop="url">
-              
-                <span itemprop="name">移动端高清、多屏幕适配方案总结-rem</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-15T20:58:37+08:00"
-              content="2016-06-15" >
-          06-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/03/05/手机端click事件时的点透问题/" itemprop="url">
-              
-                <span itemprop="name">手机端click事件时的点透问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-05T19:11:40+08:00"
-              content="2016-03-05" >
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015/07/12/移动端1px的border问题/" itemprop="url">
-              
-                <span itemprop="name">移动端1px的border问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-07-12T19:13:55+08:00"
-              content="2015-07-12" >
-          07-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/05/手机端click事件时的点透问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手机端click事件时的点透问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-05T19:11:40+08:00">
+                2016-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。</p>
+<h2 id="点透事件的原理"><a href="#点透事件的原理" class="headerlink" title="点透事件的原理"></a>点透事件的原理</h2><p>根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。</p>
+<p>原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mask，后面真正的点击事件到来的时候，点击的是下面一层。</p>
+<p>解决方法：</p>
+<h3 id="给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。"><a href="#给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。" class="headerlink" title="给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。"></a>给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。</h3><h3 id="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"><a href="#封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理" class="headerlink" title="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"></a>封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理</h3><p>tap.js如下：</p>
+<pre><code>// 参数1 dom元素 参数2 回调函数
+function tap(dom,callBack) {
+  /*
+    tap是轻敲
+    1. 手指 放上去 离开的速度 很快
+    2. 手指如果放上去之后 移动了 失效
+    3. 手指放上去 按了超过一定时间（长按）
+  */
+
+  // 获取起始时间
+  var startTime;
+  var isMove = false; // 标识符
+  dom.addEventListener(&apos;touchstart&apos;, function (event) {
+    startTime = Date.now();
+    // 还原isMove的值
+    isMove = false;
+  })
+  // 进入到这个事件中 说明 移动了
+  dom.addEventListener(&apos;touchmove&apos;, function (event) {
+    // console.log(&apos;move&apos;);
+    isMove = true;
+  })
+  // 计算 停留的时间
+  dom.addEventListener(&apos;touchend&apos;, function (event) {
+    var delayTime = Date.now() - startTime;
+    // 如果移动了 也失效
+    if (isMove == true) {
+      // console.log(&apos;移动了，失效&apos;);
+      return;
+    }
+    // 判断停留时间，是否太久了
+    // 这里的时间 可以根据需求调整
+    if (delayTime &gt; 300) {
+      // console.log(&apos;太久了，失效&apos;);
+      return;
+    }
+
+    // 正常执行
+    // console.log(&apos;轻敲&apos;);
+    callBack();
+  })
+}
+</code></pre><h3 id="用FastClick"><a href="#用FastClick" class="headerlink" title="用FastClick"></a>用FastClick</h3><p>原理：FastClick 在检测到 touchend 事件的时候，会通过 DOM 自定义事件立即触发一个模拟click 事件，并把浏览器在 300 毫秒之后真正触发的 click 事件阻止掉。</p>
+<p>地址：<a href="https://github.com/ftlabs/fastclick/" target="_blank" rel="external">https://github.com/ftlabs/fastclick/</a></p>
+<p>用法：<br>1.引入js</p>
+<p><script type="application/javascript" src="/path/to/fastclick.js"></script><br>2.绑定在document.body上</p>
+<pre><code>if (&apos;addEventListener&apos; in document) {
+    document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+
+$(function() {
+    FastClick.attach(document.body);
+});
+
+var attachFastClick = require(&apos;fastclick&apos;);
+attachFastClick(document.body);
+</code></pre><h3 id="fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）"><a href="#fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）" class="headerlink" title="fastclick源码分析，转：https://segmentfault.com/a/1190000005850383（转）"></a>fastclick源码分析，转：<a href="https://segmentfault.com/a/1190000005850383（转）" target="_blank" rel="external">https://segmentfault.com/a/1190000005850383（转）</a></h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动端/" rel="tag"># 移动端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/12/移动端1px的border问题/" rel="next" title="移动端1px的border问题">
+                <i class="fa fa-chevron-left"></i> 移动端1px的border问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/" rel="prev" title="移动端底部tab或按钮显示问题-css sticky footer">
+                移动端底部tab或按钮显示问题-css sticky footer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -386,6 +527,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -406,8 +551,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
@@ -469,6 +623,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点透事件的原理"><span class="nav-number">1.</span> <span class="nav-text">点透事件的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。"><span class="nav-number">1.1.</span> <span class="nav-text">给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"><span class="nav-number">1.2.</span> <span class="nav-text">封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用FastClick"><span class="nav-number">1.3.</span> <span class="nav-text">用FastClick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）"><span class="nav-number">1.4.</span> <span class="nav-text">fastclick源码分析，转：https://segmentfault.com/a/1190000005850383（转）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -589,10 +759,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
