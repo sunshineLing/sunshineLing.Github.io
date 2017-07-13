@@ -100,7 +100,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/08/18/项目里面用过的性能优化/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="谈到性能优化，好像是一个很大的命题，其实只要代码写的久一些，总会去思考怎么写才可以让网页速度加载的更快，节约更少的带宽，这并不是在项目实现效果后才会去考虑的问题，要在一开始分析需求，组织结构的时候就有意识去用，去思考。 看过雅虎36条军规，但是很多还是没有实践过的，或者说有些是一开始写js的规则，觉得不值一提的，这里总结一下，开发时候用到过的。 一、尽量减少HTTP请求次数浏览器解析的时候，从上往">
-<meta property="og:updated_time" content="2017-07-13T03:07:58.220Z">
+<meta property="og:updated_time" content="2017-07-13T03:22:25.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目里面用过的性能优化">
 <meta name="twitter:description" content="谈到性能优化，好像是一个很大的命题，其实只要代码写的久一些，总会去思考怎么写才可以让网页速度加载的更快，节约更少的带宽，这并不是在项目实现效果后才会去考虑的问题，要在一开始分析需求，组织结构的时候就有意识去用，去思考。 看过雅虎36条军规，但是很多还是没有实践过的，或者说有些是一开始写js的规则，觉得不值一提的，这里总结一下，开发时候用到过的。 一、尽量减少HTTP请求次数浏览器解析的时候，从上往">
@@ -403,7 +403,22 @@
 <h4 id="6-移动端2x、3x图按需加载"><a href="#6-移动端2x、3x图按需加载" class="headerlink" title="6.移动端2x、3x图按需加载"></a>6.移动端2x、3x图按需加载</h4><p>这个在移动端项目里面总结过用法，其实加载还有一个比较新的属性，srcset，只是兼容性不好。</p>
 <h3 id="三、懒加载、预加载技术"><a href="#三、懒加载、预加载技术" class="headerlink" title="三、懒加载、预加载技术"></a>三、懒加载、预加载技术</h3><p>针对页面大图片比较多的情况下，要保证高清效果，还要保证加载速度，不能造成假死，用lazyload插件或者是预加载技术，懒加载是先不给图片src设置真正的地址，等到页面滚动到图片的位置的时候，再给src赋值。</p>
 <h3 id="四、缓存思想"><a href="#四、缓存思想" class="headerlink" title="四、缓存思想"></a>四、缓存思想</h3><p>遇到有用递归来获取的，先把前面的结果缓存起来，下一次递归的时候，先去取值。项目里几乎没用到递归，只是总结一下这个思想。</p>
-<p>补充：2017.5在vue项目里面，有一个很好的方法，keep-alive，可以在当前组件切换到其他组件的时候不销毁页面和数据，而是保存在缓存里面，下一次再调用。<br>另外lazyload也可以使用在vue里面。</p>
+<p>几种cache：</p>
+<pre><code>1. 浏览器缓存
+    浏览器缓存会将部分资源缓存在本地，当用户向服务器发送请求的时候，这部分资源会直接从本地读取，避免了网络传输数据内容过多，导致访问效率变差的问题！
+
+2. CDN Content delivery Network
+    提升网站打开速度！
+
+3. 硬件缓存
+    也是为了提升访问效的！
+
+4. 数据库缓存
+    硬盘型数据库： MySQL MSSQL ORACLE
+    内存型数据库： MongoDB Redis
+
+    内存型数据经常被用来做缓存，提升数据存取速度！
+</code></pre><p>补充：2017.5在vue项目里面，有一个很好的方法，keep-alive，可以在当前组件切换到其他组件的时候不销毁页面和数据，而是保存在缓存里面，下一次再调用。<br>另外lazyload也可以使用在vue里面。</p>
 <h3 id="五、闭包的去保存事件处理程序的兼容性测试结果"><a href="#五、闭包的去保存事件处理程序的兼容性测试结果" class="headerlink" title="五、闭包的去保存事件处理程序的兼容性测试结果"></a>五、闭包的去保存事件处理程序的兼容性测试结果</h3><p>js文件写的时候，比如事件处理程序兼容性封装的时候，可以考虑利用闭包的方法，不用每次都去判断浏览器是否支持某种方法，用一个浏览器，检测一次，用变量保存。这个觉得可以专门写一篇分析一下。</p>
 <h3 id="六、减少页面的重绘"><a href="#六、减少页面的重绘" class="headerlink" title="六、减少页面的重绘"></a>六、减少页面的重绘</h3><p>在一个后台项目里面，用模板把请求回来的数据填入模块，渲染到页面上，再下一次，只是部分数据发生变化，有几种方案可以解决，把原来的数据替换，原数组更换，渲染，或者只是把这部分用html字符串拼接方法来改变局部。最后选了后者，虽然看起来麻烦一些，但是渲染的速度更快，减少了dom操作。</p>
 <h3 id="七、动态创建元素，添加到页面时候的优化"><a href="#七、动态创建元素，添加到页面时候的优化" class="headerlink" title="七、动态创建元素，添加到页面时候的优化"></a>七、动态创建元素，添加到页面时候的优化</h3><p>在页面某一部分重新请求了数据，需要重新渲染,在页面添加节点和内容的时候，既可以用document.createElement(‘p’)的方法；</p>
@@ -484,6 +499,10 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/08/20/闭包对事件处理程序的封装/" rel="prev" title="闭包对事件处理程序的封装">
+                闭包对事件处理程序的封装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -555,7 +574,7 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -566,7 +585,7 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -577,7 +596,7 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

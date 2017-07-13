@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="闭包," />
 
 
 
@@ -93,13 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="sunshineLing.github.io/categories/index.html">
+<meta name="description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
+<meta name="keywords" content="闭包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包学习笔记">
+<meta property="og:url" content="sunshineLing.github.io/2015/12/31/闭包学习笔记/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:updated_time" content="2017-07-12T12:15:42.765Z">
+<meta property="og:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
+<meta property="og:updated_time" content="2017-07-13T04:24:23.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="闭包学习笔记">
+<meta name="twitter:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
 
 
 
@@ -127,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/categories/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2015/12/31/闭包学习笔记/"/>
 
 
 
 
 
-  <title>categories | sunshine</title>
+  <title>闭包学习笔记 | sunshine</title>
   
 
 
@@ -287,25 +291,365 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/12/31/闭包学习笔记/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
 
     
-    
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 5 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">闭包学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-31T11:47:16+08:00">
+                2015-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/闭包/" itemprop="url" rel="index">
+                    <span itemprop="name">闭包</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/性能优化/">性能优化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动端/">移动端</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/闭包/">闭包</a><span class="category-list-count">2</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。</p>
+<p>闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。</p>
+<h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有权访问原函数的私有变量，再把这个内部函数返回出去，在外部调用这个内部函数。</p>
+<p>总结起来：</p>
+<pre><code>1.函数嵌套函数；
+2.能在函数外部访问函数内部声明的变量
+</code></pre><h2 id="闭包的基本模式"><a href="#闭包的基本模式" class="headerlink" title="闭包的基本模式"></a>闭包的基本模式</h2><pre><code>function add(outerArg) {
+     function inner(innerArg) {
+         return innerArg + outerArg 
+     }
+     return inner;
+}
+
+var addTen = add(10);
+console.log(addTen(1))   // 输出11
+console.log(addTen(2))   // 输出12
+</code></pre><p>本质是利用函数的作用域链，函数内部定义的函数，会把外部函数的作用域中的对象添加到自己到作用域链中，因为子对象可以沿着作用域链向上查找父对象的变量。</p>
+<p>在外部函数执行完的时候，执行环境（变量）本来应该被销毁，但是因为被return出去的内部函数还在引用外部函数的变量，所以外部函数的变量不会被销毁，仍然保留在内部函数的作用域链里面，直到内部函数被销毁之后，外部函数的变量才会跟着销毁。</p>
+<h2 id="闭包调用方式不同，结果不同"><a href="#闭包调用方式不同，结果不同" class="headerlink" title="闭包调用方式不同，结果不同"></a>闭包调用方式不同，结果不同</h2><p>如果只调用1次外部outer函数，那么多次使用outer()返回的值访问的变量是同一个变量，如果多次调用外部函数，那么每次调用都生成一个新的变量</p>
+<pre><code>&lt;script&gt;
+    function func() {
+        var num = Math.random();
+        return function () {
+            return num;
+        }
+    }
+    //每次的结果相同，因为外部函数func只调用了一次，只开辟了一次空间，存储了num的值，里面的函数每次调用时引用的变量都相同
+    // var num = func();
+    // console.log(num());
+    // console.log(num());
+    // console.log(num());
+
+    //每次结果不同，因为每次调用func的时候都开辟了一个新的空间，所以彼此之间是独立的，作用域是兄弟关系，没有直接联系，互相无法访问，每一次调用时num都生成新的值
+    console.log(func()()); 
+    console.log(func()());
+    console.log(func()());
+&lt;/script&gt;
+</code></pre><h2 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h2><p>1.可以使用闭包保护变量，防止放在外部的变量被别人随意修改，使用闭包，可以给别人提供一个访问变量的接口，在定义接口的时候，在为别人提供的修改变量的方法中设置一些校验逻辑，来判断用户设置的数据的合法性</p>
+<pre><code>function func(){
+    var name = &quot;小明&quot;;
+    var yanzhi = 99999999999;
+    var obj = {
+        setYanZhi: function(value){
+            if(value &lt; 999999999999){
+                throw &quot;你是不是不想混了！&quot;;
+            }
+        },
+        getYanZhi: function(){
+            return yanzhi;
+        }
+    }
+    return obj;
+}
+
+//小同
+var o = func();
+o.setYanZhi(9999999999999);
+
+console.log(o.getYanZhi());
+</code></pre><p>2.保护变量，暴露接口，获取元素的所有子元素方法</p>
+<pre><code>function outer(){
+    var list = [];
+    function getChildren(ele){
+        //1. 获取所有的子元素
+        var children = ele.children;
+        //2. 遍历所有的子元素
+        for(var i = 0; i &lt; children.length; i++){
+            var child = children[i];
+            list.push(child);
+            getChildren(child);
+        }
+    }
+    return {
+        getChildren: getChildren,
+        list : list
+    };
+}
+
+// var o = outer();
+// o.getChildren(body);
+// o.list就可以访问获取到的结果了！
+</code></pre><h2 id="闭包的缺陷"><a href="#闭包的缺陷" class="headerlink" title="闭包的缺陷"></a>闭包的缺陷</h2><p>1.会把外部函数的活动对象都添加到自己的作用域链上，会比普通的函数更耗费内存；</p>
+<p>2.垃圾回收机制发现闭包外部函数的变量有人使用的时候，就不会回收。所以会占用内存</p>
+<h2 id="闭包的应用场景"><a href="#闭包的应用场景" class="headerlink" title="闭包的应用场景"></a>闭包的应用场景</h2><h3 id="tab栏切换"><a href="#tab栏切换" class="headerlink" title="tab栏切换"></a>tab栏切换</h3><p>tab栏切换的时候，给ul下面的每一个li添加点击事件，点击的时候，需要获取当前的li的索引</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;item1&lt;/li&gt;
+    &lt;li&gt;item2&lt;/li&gt;
+    &lt;li&gt;item3&lt;/li&gt;
+    &lt;li&gt;item4&lt;/li&gt;
+    &lt;li&gt;item5&lt;/li&gt;
+&lt;/ul&gt;
+
+var list = document.getElementsByTagName(&apos;li&apos;);
+for(var i = 0, len = list.length; i &lt; len; i++) {
+    list[i].onclick = function() {
+        alert(i);   //i=5
+    }
+}
+</code></pre><p> 点击任意一个li的时候，i的值总是5</p>
+<p> 因为onclick事件是被异步触发的，先执行的是for循环的同步事件，执行完i是5，onclick被触发的时候，i是5</p>
+<p> <strong>解决方案1,遍历的时候添加自定义属性index，点击的时候获取：</strong></p>
+<pre><code>var list = document.getElementsByTagName(&apos;li&apos;);
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 循环的时候就给每一个btn设置自定义属性
+     list[i].index = i;
+    list[i].onclick = function() {
+        alert(this.index);   //解决了问题
+    }
+}
+</code></pre><p><strong>解决方案2：闭包，每次一for循环的时候，将i的值存储起来</strong></p>
+<pre><code>var list = document.getElementsByTagName(&apos;button&apos;);                       
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 创建一个闭包
+     function outer(){
+          var j = i;
+          function func(){
+               alert(j);
+          }
+          return func;
+     }
+     var f = outer();    //关键是这一步，for循环的时候就执行了
+    list[i].onclick = f  //每次循环都存储i的值
+}
+
+// 简化版：
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 创建一个闭包
+     list[i].onclick = function(j) {
+          return function(){
+              alert(j) 
+          }
+     }(i)
+}
+</code></pre><h3 id="保护私有变量"><a href="#保护私有变量" class="headerlink" title="保护私有变量"></a>保护私有变量</h3><p>写js代码的时候，为了防止全局变量污染，也为了别人不能随意更改自己的变量值，所以经常会把自己的代码写在一个自执行函数里面。</p>
+<p>但是又想向外面暴露接口，修改里面的值和获取里面的值，修改的时候设置校验条件，判断用户设置的值的合法性，就可以考虑闭包。</p>
+<pre><code>var foo = (function(){
+     var secret = &apos;secret&apos;;
+     return {
+          get_secret: function() {
+              return secret; 
+          },
+          set_secret: function(newValue) {
+               if（newValue &lt; 0）{
+                   throw(&apos;修改值不符合要求&apos;); 
+               }
+               secret = newValue;
+          }
+     }
+}())
+
+foo.get_secret()   //&apos;secret&apos;
+foo.secret  // 不能访问
+foo.set_secret(&apos;new_secret&apos;);
+foo.get_secret()  // new_secret
+</code></pre><h3 id="解决for循环里面setTimeout问题"><a href="#解决for循环里面setTimeout问题" class="headerlink" title="解决for循环里面setTimeout问题"></a>解决for循环里面setTimeout问题</h3><pre><code>for(var i = 0; i &lt; 10; i++){
+     setTimeout(function(){
+        console.log(i);
+      }, 1000);
+}
+// 异步的，总会是for循环结束的值
+
+// 解决方法：闭包
+for(var i = 0; i &lt; 10; i++){
+     function outer(){
+          var j = i;
+          function inner(){
+               console.log(j);
+          }
+          return inner;
+     }
+     var f = outer();  //每一次for循环都会执行Outer函数，开辟内存，保存当时的i变量
+     setTimeout(f, 1000);
+}
+</code></pre><h2 id="闭包的优化"><a href="#闭包的优化" class="headerlink" title="闭包的优化"></a>闭包的优化</h2><p> 比如说一个外部函数，里面定义一个内部函数，我只想用这个内部函数去引用外部函数的一个属性值，但是闭包会把外部函数的所有属性和方法都添加到内部函数的作用域链上，导致占用不必要的内存。</p>
+<p> 可以把要引用的变量用另外的值保存下来，然后把引用的对象设置为null。</p>
+<pre><code>function Outer() {
+     var obj = {};
+     obj.id = &apos;12345678&apos;;
+     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
+     return function() {
+          return obj.id;
+     };
+}
+
+function AnotherOuter() {
+     var obj = {};
+     obj.id = &apos;12345678&apos;;
+     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
+     var id = obj.id;
+     obj = null;
+     return function() {
+     return id;
+     };
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/闭包/" rel="tag"># 闭包</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/12/移动端1px的border问题/" rel="next" title="移动端1px的border问题">
+                <i class="fa fa-chevron-left"></i> 移动端1px的border问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/05/手机端click事件时的点透问题/" rel="prev" title="手机端click事件时的点透问题">
+                手机端click事件时的点透问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -338,8 +682,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
@@ -401,6 +754,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的概念"><span class="nav-number">1.</span> <span class="nav-text">闭包的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的基本模式"><span class="nav-number">2.</span> <span class="nav-text">闭包的基本模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包调用方式不同，结果不同"><span class="nav-number">3.</span> <span class="nav-text">闭包调用方式不同，结果不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的用途"><span class="nav-number">4.</span> <span class="nav-text">闭包的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的缺陷"><span class="nav-number">5.</span> <span class="nav-text">闭包的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的应用场景"><span class="nav-number">6.</span> <span class="nav-text">闭包的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tab栏切换"><span class="nav-number">6.1.</span> <span class="nav-text">tab栏切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保护私有变量"><span class="nav-number">6.2.</span> <span class="nav-text">保护私有变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决for循环里面setTimeout问题"><span class="nav-number">6.3.</span> <span class="nav-text">解决for循环里面setTimeout问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的优化"><span class="nav-number">7.</span> <span class="nav-text">闭包的优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -521,10 +890,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
