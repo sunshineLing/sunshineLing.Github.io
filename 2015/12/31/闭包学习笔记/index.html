@@ -100,7 +100,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/12/31/闭包学习笔记/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
-<meta property="og:updated_time" content="2017-07-13T04:24:23.583Z">
+<meta property="og:updated_time" content="2017-07-13T05:19:50.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包学习笔记">
 <meta name="twitter:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
@@ -540,15 +540,17 @@ foo.get_secret()   //&apos;secret&apos;
 foo.secret  // 不能访问
 foo.set_secret(&apos;new_secret&apos;);
 foo.get_secret()  // new_secret
-</code></pre><h3 id="解决for循环里面setTimeout问题"><a href="#解决for循环里面setTimeout问题" class="headerlink" title="解决for循环里面setTimeout问题"></a>解决for循环里面setTimeout问题</h3><pre><code>for(var i = 0; i &lt; 10; i++){
+</code></pre><h3 id="解决for循环里面setTimeout问题"><a href="#解决for循环里面setTimeout问题" class="headerlink" title="解决for循环里面setTimeout问题"></a>解决for循环里面setTimeout问题</h3><pre><code>for(var i = 0; i &lt; 5; i++){
      setTimeout(function(){
-        console.log(i);
+        console.log(new Date, i);
       }, 1000);
 }
-// 异步的，总会是for循环结束的值
+console.log(new Date, i);
+// 异步的，先for循环完毕，i为5,然后一下子打印5个5
+// 5-》5，5，5，5，5
 
 // 解决方法：闭包
-for(var i = 0; i &lt; 10; i++){
+for(var i = 0; i &lt; 5; i++){
      function outer(){
           var j = i;
           function inner(){
@@ -559,7 +561,100 @@ for(var i = 0; i &lt; 10; i++){
      var f = outer();  //每一次for循环都会执行Outer函数，开辟内存，保存当时的i变量
      setTimeout(f, 1000);
 }
-</code></pre><h2 id="闭包的优化"><a href="#闭包的优化" class="headerlink" title="闭包的优化"></a>闭包的优化</h2><p> 比如说一个外部函数，里面定义一个内部函数，我只想用这个内部函数去引用外部函数的一个属性值，但是闭包会把外部函数的所有属性和方法都添加到内部函数的作用域链上，导致占用不必要的内存。</p>
+
+// 简化之后
+for (var i = 0; i &lt; 5; i++) {
+    (function(j) {  // i = j
+        setTimeout(function() {
+            console.log(new Date, j)
+        })
+    })(i)
+}
+
+或者：闭包的另一种做法：
+var output = function (i) {
+    setTimeout(function() {
+        console.log(new Date, i);
+    }, 1000);
+};
+
+for (var i = 0; i &lt; 5; i++) {
+    output(i);  // 这里传过去的 i 值被复制了
+}
+
+console.log(new Date, i);
+</code></pre><p>补充： 其实如果不是需要在外部打印，其实可以用let作用域，把var换成let，就解决了问题。因为let只作用在循环内部的作用域。</p>
+<p>补充：看到简书上一个对闭包进一步深化的学习，解决这个问题的需求和答案：</p>
+<p><strong>问题：</strong></p>
+<p>如果期望代码的输出变成 0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5，并且要求原有的代码块中的循环和两处 console.log 不变，该怎么改造代码？新的需求可以精确的描述为：代码执行时，立即输出 0，之后每隔 1 秒依次输出 1,2,3,4，循环结束后在大概第 5 秒的时候输出 5</p>
+<p>1.简单粗暴的解决方法：</p>
+<pre><code>for (var i = 0; i &lt; 5; i++) {
+    (function(j) {
+        setTimeout(function() {
+            console.log(new Date, j);
+        }, 1000 * j));  // 这里修改 0~4 的定时器时间
+    })(i);
+}
+
+setTimeout(function() { // 这里增加定时器，超时设置为 5 秒
+    console.log(new Date, i);
+}, 1000 * i);
+</code></pre><p>2.虽然解决了问题，但是没有联想起异步操作的Promise方法<br>在系列异步操作完成（每次循环都产生了 1 个异步操作）之后，再做其他的事情，代码该怎么组织？</p>
+<pre><code>const tasks = [];
+for (var i = 0; i &lt; 5; i++) {   // 这里 i 的声明不能改成 let，如果要改该怎么做？
+    ((j) =&gt; {
+        tasks.push(new Promise((resolve) =&gt; {
+            setTimeout(() =&gt; {
+                console.log(new Date, j);
+                resolve();  // 这里一定要 resolve，否则代码不会按预期 work
+            }, 1000 * j);   // 定时器的超时时间逐步增加
+        }));
+    })(i);
+}
+
+Promise.all(tasks).then(() =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+    }, 1000);   // 注意这里只需要把超时设置为 1 秒
+});
+</code></pre><p>下面代码会更简洁明了一些</p>
+<pre><code>const tasks = []; // 这里存放异步操作的 Promise
+const output = (i) =&gt; new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+        resolve();
+    }, 1000 * i);
+});
+
+// 生成全部的异步操作
+for (var i = 0; i &lt; 5; i++) {
+    tasks.push(output(i));
+}
+
+// 异步操作完成之后，输出最后的 i
+Promise.all(tasks).then(() =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+    }, 1000);
+});
+</code></pre><p>之前看过几次阮一峰的ES6的Primise讲解，但是实践中用的还是不多，找时间可以再去研究一下。</p>
+<p>再补充：佩服原作者的好学精神，还给出了es7的解决方案：</p>
+<pre><code>// 模拟其他语言中的 sleep，实际上可以是任何异步操作
+const sleep = (timeountMS) =&gt; new Promise((resolve) =&gt; {
+    setTimeout(resolve, timeountMS);
+});
+
+(async () =&gt; {  // 声明即执行的 async 函数表达式
+    for (var i = 0; i &lt; 5; i++) {
+        await sleep(1000);
+        console.log(new Date, i);
+    }
+
+    await sleep(1000);
+    console.log(new Date, i);
+})();
+</code></pre><p>这个先占坑，之后再学习一下es7，感觉快跟不上时代了。。。</p>
+<h2 id="闭包的优化"><a href="#闭包的优化" class="headerlink" title="闭包的优化"></a>闭包的优化</h2><p> 比如说一个外部函数，里面定义一个内部函数，我只想用这个内部函数去引用外部函数的一个属性值，但是闭包会把外部函数的所有属性和方法都添加到内部函数的作用域链上，导致占用不必要的内存。</p>
 <p> 可以把要引用的变量用另外的值保存下来，然后把引用的对象设置为null。</p>
 <pre><code>function Outer() {
      var obj = {};
@@ -707,7 +802,7 @@ function AnotherOuter() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -718,7 +813,7 @@ function AnotherOuter() {
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -729,7 +824,7 @@ function AnotherOuter() {
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
