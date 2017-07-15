@@ -297,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/13/web安全之xss学习/">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/01/05/web安全之xss学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sunshineLing">
@@ -316,7 +316,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/13/web安全之xss学习/" itemprop="url">web安全之xss学习</a></h1>
+                <a class="post-title-link" href="/2017/01/05/web安全之xss学习/" itemprop="url">web安全之xss学习</a></h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-13T15:24:26+08:00">
-                2017-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-05T15:24:26+08:00">
+                2017-01-05
               </time>
             
 
@@ -376,6 +376,14 @@
 <h3 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h3><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>对用户输入的数据进行HTML Entity编码，一些实体字符，编码成十进制的</p>
 <h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>移除用户上传的DOM属性，如onerror等<br>移除用户上传的style节点，可以控制页面的显示不显示，js节点，iframe节点</p>
 <h4 id="校正"><a href="#校正" class="headerlink" title="校正"></a>校正</h4><p>避免直接对HTML Entity解码<br>使用DOM Parese转换，校正不匹配的DOM标签</p>
+<p>后台接收到之后，对接收到的数据做解码，用正则替换&amp;&lt;等符号为实体字符，进行转义。</p>
+<p>前台对后台返回的数据用domParse.js里面的HTMLParse(he.unescape(str, {strict: true}))方法进行先解码，反转义，再解析。domParse会有start,end,char,comment几个函数分别对传入的字符串做html或注释解码，拼接，拼接成一个html元素</p>
+<p>这就是前端解码的过程</p>
+<p>第三方库的地址：<br>encode.js：可以使用<a href="https://github.com/mathiasbynens/he" target="_blank" rel="external">https://github.com/mathiasbynens/he</a> 中的he.js</p>
+<p>domParse：可以用楼上说的 <a href="https://github.com/blowsie/Pure-JavaScript-HTML5-Parser" target="_blank" rel="external">https://github.com/blowsie/Pure-JavaScript-HTML5-Parser</a></p>
+<p>接下来就是过滤，在前面的函数里面，就将这几个script等的标签过滤掉。校正.</p>
+<p>上面的模拟过程在github上有fork的案例</p>
+<p>写的比较全面的一个博客：<a href="http://www.cnblogs.com/wqhwe/p/5416976.html" target="_blank" rel="external">http://www.cnblogs.com/wqhwe/p/5416976.html</a></p>
 
           
         

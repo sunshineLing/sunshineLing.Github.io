@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="性能优化," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,16 @@
 
 
 
-<meta name="description" content="背景慕课网学习记录： 页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。 比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载 或者局部加载，一个评论框，下面可以选择表情，也需要把表情全部展示出来，如果不适用预加载，会看到那些表情是一个个加载的，有快有慢，体验不好。">
-<meta name="keywords" content="性能优化">
+<meta name="description" content="xss攻击概念就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本 xss攻击的类型反射型 我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，  比如说img标签，让&amp;quot;xss=&amp;lt;img src=&amp;quot;null&amp;quot; onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;&amp;quot; 这个时候会服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图片优化之预加载">
-<meta property="og:url" content="sunshineLing.github.io/2016/09/22/图片优化之预加载/index.html">
+<meta property="og:title" content="web安全之xss学习">
+<meta property="og:url" content="sunshineLing.github.io/2017/01/05/web安全之xss学习/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="背景慕课网学习记录： 页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。 比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载 或者局部加载，一个评论框，下面可以选择表情，也需要把表情全部展示出来，如果不适用预加载，会看到那些表情是一个个加载的，有快有慢，体验不好。">
-<meta property="og:updated_time" content="2017-07-13T07:08:43.463Z">
+<meta property="og:description" content="xss攻击概念就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本 xss攻击的类型反射型 我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，  比如说img标签，让&amp;quot;xss=&amp;lt;img src=&amp;quot;null&amp;quot; onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;&amp;quot; 这个时候会服务器">
+<meta property="og:updated_time" content="2017-07-13T09:29:32.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图片优化之预加载">
-<meta name="twitter:description" content="背景慕课网学习记录： 页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。 比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载 或者局部加载，一个评论框，下面可以选择表情，也需要把表情全部展示出来，如果不适用预加载，会看到那些表情是一个个加载的，有快有慢，体验不好。">
+<meta name="twitter:title" content="web安全之xss学习">
+<meta name="twitter:description" content="xss攻击概念就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本 xss攻击的类型反射型 我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，  比如说img标签，让&amp;quot;xss=&amp;lt;img src=&amp;quot;null&amp;quot; onerror=&amp;quot;alert(1)&amp;quot;&amp;gt;&amp;quot; 这个时候会服务器">
 
 
 
@@ -131,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/2016/09/22/图片优化之预加载/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2017/01/05/web安全之xss学习/"/>
 
 
 
 
 
-  <title>图片优化之预加载 | sunshine</title>
+  <title>web安全之xss学习 | sunshine</title>
   
 
 
@@ -300,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/09/22/图片优化之预加载/">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/01/05/web安全之xss学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sunshineLing">
@@ -317,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图片优化之预加载</h1>
+          <h1 class="post-title" itemprop="name headline">web安全之xss学习</h1>
         
 
         <div class="post-meta">
@@ -329,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-22T12:31:48+08:00">
-                2016-09-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-05T15:24:26+08:00">
+                2017-01-05
               </time>
             
 
@@ -339,28 +338,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能优化/" itemprop="url" rel="index">
-                    <span itemprop="name">性能优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -386,62 +363,26 @@
       
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>慕课网学习记录：</p>
-<p>页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。</p>
-<p>比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载</p>
-<p>或者局部加载，一个评论框，下面可以选择表情，也需要把表情全部展示出来，如果不适用预加载，会看到那些表情是一个个加载的，有快有慢，体验不好。</p>
-<p>或者是上一页下一页的图片，点击当前一页图片的时候，提前加载下一页的图片。</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>提前加载图片，当用户需要查看时可直接从本地缓存中渲染，可以保证图片无缝的展示，用户体验更好。</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>有序加载</p>
-<p>无序加载</p>
-<h3 id="封装插件image-preLoad"><a href="#封装插件image-preLoad" class="headerlink" title="封装插件image-preLoad"></a>封装插件image-preLoad</h3><p>提供了三个实例：</p>
-<p>1.先loading进度条显示进度，图片再无序预加载，进度条加载完毕，展示所有图片。</p>
-<p>2.qq表情无序加载，点击选择表情按钮时，loading进度条显示完毕，显示所有图片</p>
-<p>3.柯南漫画的有序加载，翻页时提前展示下一页</p>
-<p>原理就是：</p>
-<p>进度条无序加载的原理是先用一个loading进度条显示的图片覆盖住要显示的页面，然后遍历图片的所有地址，在每次循环的时候new 一个 image图片，然后监听图片的load事件，图片加载完毕，就把地址赋值给图片。<br>直到所有的图片都加载完毕，再让进度条消失，让图片显示出来。</p>
-<h4 id="原生代码："><a href="#原生代码：" class="headerlink" title="原生代码："></a>原生代码：</h4><pre><code>  &lt;script&gt;
-    var imgs = [
-      &apos;http://i2.hoopchina.com.cn/user/308/15960308/13383588090.jpg&apos;,
-      &apos;http://img.article.pchome.net/00/44/23/20/pic_lib/wm/2.jpg&apos;,
-      &apos;http://lcd.yesky.com/imagelist/2009/044/404q4y8g4m0p.jpg&apos;,
-      &apos;http://lcd.yesky.com/imagelist/2009/044/cgro54wt2t2x.jpg&apos;
-    ];
-    var index = 0, // 当前是第几张图片
-        len = imgs.length, // 图片的总长度
-        $progress = $(&apos;.progress&apos;),
-        var count = 0  // 当前加载的数量
+        <h2 id="xss攻击概念"><a href="#xss攻击概念" class="headerlink" title="xss攻击概念"></a>xss攻击概念</h2><p>就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本</p>
+<h2 id="xss攻击的类型"><a href="#xss攻击的类型" class="headerlink" title="xss攻击的类型"></a>xss攻击的类型</h2><p><strong>反射型</strong></p>
+<pre><code>我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，
 
-    // 遍历所有图片的src
-    $.each(imgs, function (i, src) {
-      // 创建图片
-      var imgObj = new Image();
-      // 当前图片加载完毕的时候
-      $(imgObj).on(&apos;load error&apos;, function () {
-        // 每加载一次,显示加载
-        $progress.html(Math.round((count + 1) / len) + &apos;%&apos;);
-        // 如果所有的都加载完毕，就将loading页面隐藏起来
-        if (count &gt;= len - 1) {
-          $(&apos;loading&apos;).hide();
-          // 当前页是第一张
-          document.title = &apos;1/&apos;;
-        }
-        count++;
-      });
-      imgObj.src = src
-    })
-&lt;/script&gt;
-</code></pre><h4 id="封装插件："><a href="#封装插件：" class="headerlink" title="封装插件："></a>封装插件：</h4><p>这里就不详细贴代码了，按照jquery插件封装的方法：</p>
-<pre><code>1.一个自执行函数，不会污染全局变量；
-2.面向对象的方法，创造一个preload构造函数，传入参数；
-3.设置默认参数，用$extend{target, obj1, obj2}进行合并；
-4.将有序时执行的方法和无序时的方法挂载在构造函数的原型上；
-5.用$.extend({
-    preLoad: funciton() {new PreLoad()}的方法将其作为工具函数，合并到jquery函数中，
-    // 调用的时候直接：$.perload(传参)即可
-    如果是$.fn.extend话，是实例方法，要用一个元素去调用。
-    })
-</code></pre>
+比如说img标签，让&quot;xss=&lt;img src=&quot;null&quot; onerror=&quot;alert(1)&quot;&gt;&quot;
+</code></pre><p>这个时候会服务器会接收并解析，xss:req.query.xss,render渲染到模板返回。这个时候如果在服务器设置res.set(‘x-xss-protection’, 0)<br>不让浏览器拦截xss响应，那么就会在页面弹出1。</p>
+<p>如果是恶意的，在search栏里面嵌入了iframe，那么会在页面嵌入一个页面，通常见到插入恶意广告，或者直接嵌入一段让用户登陆个人信息的页面，客户输入登陆时，就会泄露了个人的隐私信息。</p>
+<p><strong>存储型</strong><br>不是放在search栏里面，而是会存储到服务器端，如数据库，内存，文件系统里面，并不会马上响应回来，下次请求的时候也不用再每次都提交xss代码，通过服务端读取seq里面的文件返回</p>
+<h3 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h3><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>对用户输入的数据进行HTML Entity编码，一些实体字符，编码成十进制的</p>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>移除用户上传的DOM属性，如onerror等<br>移除用户上传的style节点，可以控制页面的显示不显示，js节点，iframe节点</p>
+<h4 id="校正"><a href="#校正" class="headerlink" title="校正"></a>校正</h4><p>避免直接对HTML Entity解码<br>使用DOM Parese转换，校正不匹配的DOM标签</p>
+<p>后台接收到之后，对接收到的数据做解码，用正则替换&amp;&lt;等符号为实体字符，进行转义。</p>
+<p>前台对后台返回的数据用domParse.js里面的HTMLParse(he.unescape(str, {strict: true}))方法进行先解码，反转义，再解析。domParse会有start,end,char,comment几个函数分别对传入的字符串做html或注释解码，拼接，拼接成一个html元素</p>
+<p>这就是前端解码的过程</p>
+<p>第三方库的地址：<br>encode.js：可以使用<a href="https://github.com/mathiasbynens/he" target="_blank" rel="external">https://github.com/mathiasbynens/he</a> 中的he.js</p>
+<p>domParse：可以用楼上说的 <a href="https://github.com/blowsie/Pure-JavaScript-HTML5-Parser" target="_blank" rel="external">https://github.com/blowsie/Pure-JavaScript-HTML5-Parser</a></p>
+<p>接下来就是过滤，在前面的函数里面，就将这几个script等的标签过滤掉。校正.</p>
+<p>上面的模拟过程在github上有fork的案例</p>
+<p>写的比较全面的一个博客：<a href="http://www.cnblogs.com/wqhwe/p/5416976.html" target="_blank" rel="external">http://www.cnblogs.com/wqhwe/p/5416976.html</a></p>
+
       
     </div>
 
@@ -468,12 +409,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
-          
-        </div>
-      
 
       
       
@@ -483,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/20/闭包对事件处理程序的封装/" rel="next" title="闭包对事件处理程序的封装">
-                <i class="fa fa-chevron-left"></i> 闭包对事件处理程序的封装
+              <a href="/2016/09/22/图片优化之预加载/" rel="next" title="图片优化之预加载">
+                <i class="fa fa-chevron-left"></i> 图片优化之预加载
               </a>
             
           </div>
@@ -492,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/05/web安全之xss学习/" rel="prev" title="web安全之xss学习">
-                web安全之xss学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">2.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装插件image-preLoad"><span class="nav-number">2.2.</span> <span class="nav-text">封装插件image-preLoad</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原生代码："><span class="nav-number">2.2.1.</span> <span class="nav-text">原生代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装插件："><span class="nav-number">2.2.2.</span> <span class="nav-text">封装插件：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xss攻击概念"><span class="nav-number">1.</span> <span class="nav-text">xss攻击概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xss攻击的类型"><span class="nav-number">2.</span> <span class="nav-text">xss攻击的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#防御措施"><span class="nav-number">2.1.</span> <span class="nav-text">防御措施</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码"><span class="nav-number">2.1.1.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">2.1.2.</span> <span class="nav-text">过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#校正"><span class="nav-number">2.1.3.</span> <span class="nav-text">校正</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
