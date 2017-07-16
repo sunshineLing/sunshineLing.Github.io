@@ -297,6 +297,799 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/" itemprop="url">移动端底部tab或按钮显示问题-css sticky footer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-12T20:05:00+08:00">
+                2016-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题：</strong> 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。</p>
+<p>但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。</p>
+<p><strong>解决方法：</strong><br>设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
+<pre><code>// wrapper层
+&lt;div class=&quot;detail&quot;&gt;
+    // 和关闭按钮并列的层
+    &lt;div class=&quot;detail-wrapper clearfix&quot;&gt; 
+        // 里面的主题内容层
+        &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    // 关闭按钮层
+    &lt;div class=&quot;detail-close&quot;&gt;
+        &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+// 样式
+    .detail 
+        /*设置全屏效果，占满视窗*/
+        position: fixed
+        z-index: 100
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        overflow: auto
+        background-color: rgba(7, 17, 27, 0.8)
+        // filter: blur(10px)
+    // 内容的wrapper层也宽高也占满100%，占满屏幕
+    .detail-wrapper
+        min-width: 100%
+        height: 100%
+        .detail-main
+            margin-top: 64px
+            padding-bottom: 64px (这个是关键，设置一个下padding，给底部留出空间)
+    .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
+        position: relative
+        width: 32px
+        height: 32px
+        margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
+        clear: both
+        font-size: 32px
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/05/手机端click事件时的点透问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/05/手机端click事件时的点透问题/" itemprop="url">手机端click事件时的点透问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-05T19:11:40+08:00">
+                2016-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。</p>
+<h2 id="点透事件的原理"><a href="#点透事件的原理" class="headerlink" title="点透事件的原理"></a>点透事件的原理</h2><p>根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。</p>
+<p>原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mask，后面真正的点击事件到来的时候，点击的是下面一层。</p>
+<p>解决方法：</p>
+<h3 id="给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。"><a href="#给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。" class="headerlink" title="给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。"></a>给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。</h3><h3 id="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"><a href="#封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理" class="headerlink" title="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"></a>封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理</h3><p>tap.js如下：</p>
+<pre><code>// 参数1 dom元素 参数2 回调函数
+function tap(dom,callBack) {
+  /*
+    tap是轻敲
+    1. 手指 放上去 离开的速度 很快
+    2. 手指如果放上去之后 移动了 失效
+    3. 手指放上去 按了超过一定时间（长按）
+  */
+
+  // 获取起始时间
+  var startTime;
+  var isMove = false; // 标识符
+  dom.addEventListener(&apos;touchstart&apos;, function (event) {
+    startTime = Date.now();
+    // 还原isMove的值
+    isMove = false;
+  })
+  // 进入到这个事件中 说明 移动了
+  dom.addEventListener(&apos;touchmove&apos;, function (event) {
+    // console.log(&apos;move&apos;);
+    isMove = true;
+  })
+  // 计算 停留的时间
+  dom.addEventListener(&apos;touchend&apos;, function (event) {
+    var delayTime = Date.now() - startTime;
+    // 如果移动了 也失效
+    if (isMove == true) {
+      // console.log(&apos;移动了，失效&apos;);
+      return;
+    }
+    // 判断停留时间，是否太久了
+    // 这里的时间 可以根据需求调整
+    if (delayTime &gt; 300) {
+      // console.log(&apos;太久了，失效&apos;);
+      return;
+    }
+
+    // 正常执行
+    // console.log(&apos;轻敲&apos;);
+    callBack();
+  })
+}
+</code></pre><h3 id="用FastClick"><a href="#用FastClick" class="headerlink" title="用FastClick"></a>用FastClick</h3><p>原理：FastClick 在检测到 touchend 事件的时候，会通过 DOM 自定义事件立即触发一个模拟click 事件，并把浏览器在 300 毫秒之后真正触发的 click 事件阻止掉。</p>
+<p>地址：<a href="https://github.com/ftlabs/fastclick/" target="_blank" rel="external">https://github.com/ftlabs/fastclick/</a></p>
+<p>用法：<br>1.引入js</p>
+<p><script type="application/javascript" src="/path/to/fastclick.js"></script><br>2.绑定在document.body上</p>
+<pre><code>if (&apos;addEventListener&apos; in document) {
+    document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+
+$(function() {
+    FastClick.attach(document.body);
+});
+
+var attachFastClick = require(&apos;fastclick&apos;);
+attachFastClick(document.body);
+</code></pre><h3 id="fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）"><a href="#fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）" class="headerlink" title="fastclick源码分析，转：https://segmentfault.com/a/1190000005850383（转）"></a>fastclick源码分析，转：<a href="https://segmentfault.com/a/1190000005850383（转）" target="_blank" rel="external">https://segmentfault.com/a/1190000005850383（转）</a></h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/12/31/闭包学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/31/闭包学习笔记/" itemprop="url">闭包学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-31T11:47:16+08:00">
+                2015-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/闭包/" itemprop="url" rel="index">
+                    <span itemprop="name">闭包</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。</p>
+<p>闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。</p>
+<h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有权访问原函数的私有变量，再把这个内部函数返回出去，在外部调用这个内部函数。</p>
+<p>总结起来：</p>
+<pre><code>1.函数嵌套函数；
+2.能在函数外部访问函数内部声明的变量
+</code></pre><h2 id="闭包的基本模式"><a href="#闭包的基本模式" class="headerlink" title="闭包的基本模式"></a>闭包的基本模式</h2><pre><code>function add(outerArg) {
+     function inner(innerArg) {
+         return innerArg + outerArg 
+     }
+     return inner;
+}
+
+var addTen = add(10);
+console.log(addTen(1))   // 输出11
+console.log(addTen(2))   // 输出12
+</code></pre><p>本质是利用函数的作用域链，函数内部定义的函数，会把外部函数的作用域中的对象添加到自己到作用域链中，因为子对象可以沿着作用域链向上查找父对象的变量。</p>
+<p>在外部函数执行完的时候，执行环境（变量）本来应该被销毁，但是因为被return出去的内部函数还在引用外部函数的变量，所以外部函数的变量不会被销毁，仍然保留在内部函数的作用域链里面，直到内部函数被销毁之后，外部函数的变量才会跟着销毁。</p>
+<h2 id="闭包调用方式不同，结果不同"><a href="#闭包调用方式不同，结果不同" class="headerlink" title="闭包调用方式不同，结果不同"></a>闭包调用方式不同，结果不同</h2><p>如果只调用1次外部outer函数，那么多次使用outer()返回的值访问的变量是同一个变量，如果多次调用外部函数，那么每次调用都生成一个新的变量</p>
+<pre><code>&lt;script&gt;
+    function func() {
+        var num = Math.random();
+        return function () {
+            return num;
+        }
+    }
+    //每次的结果相同，因为外部函数func只调用了一次，只开辟了一次空间，存储了num的值，里面的函数每次调用时引用的变量都相同
+    // var num = func();
+    // console.log(num());
+    // console.log(num());
+    // console.log(num());
+
+    //每次结果不同，因为每次调用func的时候都开辟了一个新的空间，所以彼此之间是独立的，作用域是兄弟关系，没有直接联系，互相无法访问，每一次调用时num都生成新的值
+    console.log(func()()); 
+    console.log(func()());
+    console.log(func()());
+&lt;/script&gt;
+</code></pre><h2 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h2><p>1.可以使用闭包保护变量，防止放在外部的变量被别人随意修改，使用闭包，可以给别人提供一个访问变量的接口，在定义接口的时候，在为别人提供的修改变量的方法中设置一些校验逻辑，来判断用户设置的数据的合法性</p>
+<pre><code>function func(){
+    var name = &quot;小明&quot;;
+    var yanzhi = 99999999999;
+    var obj = {
+        setYanZhi: function(value){
+            if(value &lt; 999999999999){
+                throw &quot;你是不是不想混了！&quot;;
+            }
+        },
+        getYanZhi: function(){
+            return yanzhi;
+        }
+    }
+    return obj;
+}
+
+//小同
+var o = func();
+o.setYanZhi(9999999999999);
+
+console.log(o.getYanZhi());
+</code></pre><p>2.保护变量，暴露接口，获取元素的所有子元素方法</p>
+<pre><code>function outer(){
+    var list = [];
+    function getChildren(ele){
+        //1. 获取所有的子元素
+        var children = ele.children;
+        //2. 遍历所有的子元素
+        for(var i = 0; i &lt; children.length; i++){
+            var child = children[i];
+            list.push(child);
+            getChildren(child);
+        }
+    }
+    return {
+        getChildren: getChildren,
+        list : list
+    };
+}
+
+// var o = outer();
+// o.getChildren(body);
+// o.list就可以访问获取到的结果了！
+</code></pre><h2 id="闭包的缺陷"><a href="#闭包的缺陷" class="headerlink" title="闭包的缺陷"></a>闭包的缺陷</h2><p>1.会把外部函数的活动对象都添加到自己的作用域链上，会比普通的函数更耗费内存；</p>
+<p>2.垃圾回收机制发现闭包外部函数的变量有人使用的时候，就不会回收。所以会占用内存</p>
+<h2 id="闭包的应用场景"><a href="#闭包的应用场景" class="headerlink" title="闭包的应用场景"></a>闭包的应用场景</h2><h3 id="tab栏切换"><a href="#tab栏切换" class="headerlink" title="tab栏切换"></a>tab栏切换</h3><p>tab栏切换的时候，给ul下面的每一个li添加点击事件，点击的时候，需要获取当前的li的索引</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;item1&lt;/li&gt;
+    &lt;li&gt;item2&lt;/li&gt;
+    &lt;li&gt;item3&lt;/li&gt;
+    &lt;li&gt;item4&lt;/li&gt;
+    &lt;li&gt;item5&lt;/li&gt;
+&lt;/ul&gt;
+
+var list = document.getElementsByTagName(&apos;li&apos;);
+for(var i = 0, len = list.length; i &lt; len; i++) {
+    list[i].onclick = function() {
+        alert(i);   //i=5
+    }
+}
+</code></pre><p> 点击任意一个li的时候，i的值总是5</p>
+<p> 因为onclick事件是被异步触发的，先执行的是for循环的同步事件，执行完i是5，onclick被触发的时候，i是5</p>
+<p> <strong>解决方案1,遍历的时候添加自定义属性index，点击的时候获取：</strong></p>
+<pre><code>var list = document.getElementsByTagName(&apos;li&apos;);
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 循环的时候就给每一个btn设置自定义属性
+     list[i].index = i;
+    list[i].onclick = function() {
+        alert(this.index);   //解决了问题
+    }
+}
+</code></pre><p><strong>解决方案2：闭包，每次一for循环的时候，将i的值存储起来</strong></p>
+<pre><code>var list = document.getElementsByTagName(&apos;button&apos;);                       
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 创建一个闭包
+     function outer(){
+          var j = i;
+          function func(){
+               alert(j);
+          }
+          return func;
+     }
+     var f = outer();    //关键是这一步，for循环的时候就执行了
+    list[i].onclick = f  //每次循环都存储i的值
+}
+
+// 简化版：
+for(var i = 0, len = list.length; i &lt; len; i++) {
+     // 创建一个闭包
+     list[i].onclick = function(j) {
+          return function(){
+              alert(j) 
+          }
+     }(i)
+}
+</code></pre><h3 id="保护私有变量"><a href="#保护私有变量" class="headerlink" title="保护私有变量"></a>保护私有变量</h3><p>写js代码的时候，为了防止全局变量污染，也为了别人不能随意更改自己的变量值，所以经常会把自己的代码写在一个自执行函数里面。</p>
+<p>但是又想向外面暴露接口，修改里面的值和获取里面的值，修改的时候设置校验条件，判断用户设置的值的合法性，就可以考虑闭包。</p>
+<pre><code>var foo = (function(){
+     var secret = &apos;secret&apos;;
+     return {
+          get_secret: function() {
+              return secret; 
+          },
+          set_secret: function(newValue) {
+               if（newValue &lt; 0）{
+                   throw(&apos;修改值不符合要求&apos;); 
+               }
+               secret = newValue;
+          }
+     }
+}())
+
+foo.get_secret()   //&apos;secret&apos;
+foo.secret  // 不能访问
+foo.set_secret(&apos;new_secret&apos;);
+foo.get_secret()  // new_secret
+</code></pre><h3 id="解决for循环里面setTimeout问题"><a href="#解决for循环里面setTimeout问题" class="headerlink" title="解决for循环里面setTimeout问题"></a>解决for循环里面setTimeout问题</h3><pre><code>for(var i = 0; i &lt; 5; i++){
+     setTimeout(function(){
+        console.log(new Date, i);
+      }, 1000);
+}
+console.log(new Date, i);
+// 异步的，先for循环完毕，i为5,然后一下子打印5个5
+// 5-》5，5，5，5，5
+
+// 解决方法：闭包
+for(var i = 0; i &lt; 5; i++){
+     function outer(){
+          var j = i;
+          function inner(){
+               console.log(j);
+          }
+          return inner;
+     }
+     var f = outer();  //每一次for循环都会执行Outer函数，开辟内存，保存当时的i变量
+     setTimeout(f, 1000);
+}
+
+// 简化之后
+for (var i = 0; i &lt; 5; i++) {
+    (function(j) {  // i = j
+        setTimeout(function() {
+            console.log(new Date, j)
+        })
+    })(i)
+}
+
+或者：闭包的另一种做法：
+var output = function (i) {
+    setTimeout(function() {
+        console.log(new Date, i);
+    }, 1000);
+};
+
+for (var i = 0; i &lt; 5; i++) {
+    output(i);  // 这里传过去的 i 值被复制了
+}
+
+console.log(new Date, i);
+</code></pre><p>补充： 其实如果不是需要在外部打印，其实可以用let作用域，把var换成let，就解决了问题。因为let只作用在循环内部的作用域。</p>
+<p>补充：看到简书上一个对闭包进一步深化的学习，解决这个问题的需求和答案：</p>
+<p><strong>问题：</strong></p>
+<p>如果期望代码的输出变成 0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5，并且要求原有的代码块中的循环和两处 console.log 不变，该怎么改造代码？新的需求可以精确的描述为：代码执行时，立即输出 0，之后每隔 1 秒依次输出 1,2,3,4，循环结束后在大概第 5 秒的时候输出 5</p>
+<p>1.简单粗暴的解决方法：</p>
+<pre><code>for (var i = 0; i &lt; 5; i++) {
+    (function(j) {
+        setTimeout(function() {
+            console.log(new Date, j);
+        }, 1000 * j));  // 这里修改 0~4 的定时器时间
+    })(i);
+}
+
+setTimeout(function() { // 这里增加定时器，超时设置为 5 秒
+    console.log(new Date, i);
+}, 1000 * i);
+</code></pre><p>2.虽然解决了问题，但是没有联想起异步操作的Promise方法<br>在系列异步操作完成（每次循环都产生了 1 个异步操作）之后，再做其他的事情，代码该怎么组织？</p>
+<pre><code>const tasks = [];
+for (var i = 0; i &lt; 5; i++) {   // 这里 i 的声明不能改成 let，如果要改该怎么做？
+    ((j) =&gt; {
+        tasks.push(new Promise((resolve) =&gt; {
+            setTimeout(() =&gt; {
+                console.log(new Date, j);
+                resolve();  // 这里一定要 resolve，否则代码不会按预期 work
+            }, 1000 * j);   // 定时器的超时时间逐步增加
+        }));
+    })(i);
+}
+
+Promise.all(tasks).then(() =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+    }, 1000);   // 注意这里只需要把超时设置为 1 秒
+});
+</code></pre><p>下面代码会更简洁明了一些</p>
+<pre><code>const tasks = []; // 这里存放异步操作的 Promise
+const output = (i) =&gt; new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+        resolve();
+    }, 1000 * i);
+});
+
+// 生成全部的异步操作
+for (var i = 0; i &lt; 5; i++) {
+    tasks.push(output(i));
+}
+
+// 异步操作完成之后，输出最后的 i
+Promise.all(tasks).then(() =&gt; {
+    setTimeout(() =&gt; {
+        console.log(new Date, i);
+    }, 1000);
+});
+</code></pre><p>之前看过几次阮一峰的ES6的Primise讲解，但是实践中用的还是不多，找时间可以再去研究一下。</p>
+<p>再补充：佩服原作者的好学精神，还给出了es7的解决方案：</p>
+<pre><code>// 模拟其他语言中的 sleep，实际上可以是任何异步操作
+const sleep = (timeountMS) =&gt; new Promise((resolve) =&gt; {
+    setTimeout(resolve, timeountMS);
+});
+
+(async () =&gt; {  // 声明即执行的 async 函数表达式
+    for (var i = 0; i &lt; 5; i++) {
+        await sleep(1000);
+        console.log(new Date, i);
+    }
+
+    await sleep(1000);
+    console.log(new Date, i);
+})();
+</code></pre><p>这个先占坑，之后再学习一下es7，感觉快跟不上时代了。。。</p>
+<h2 id="闭包的优化"><a href="#闭包的优化" class="headerlink" title="闭包的优化"></a>闭包的优化</h2><p> 比如说一个外部函数，里面定义一个内部函数，我只想用这个内部函数去引用外部函数的一个属性值，但是闭包会把外部函数的所有属性和方法都添加到内部函数的作用域链上，导致占用不必要的内存。</p>
+<p> 可以把要引用的变量用另外的值保存下来，然后把引用的对象设置为null。</p>
+<pre><code>function Outer() {
+     var obj = {};
+     obj.id = &apos;12345678&apos;;
+     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
+     return function() {
+          return obj.id;
+     };
+}
+
+function AnotherOuter() {
+     var obj = {};
+     obj.id = &apos;12345678&apos;;
+     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
+     var id = obj.id;
+     obj = null;
+     return function() {
+     return id;
+     };
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/07/12/移动端1px的border问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -921,6 +1714,224 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/04/15/图片优化之懒加载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/15/图片优化之懒加载/" itemprop="url">图片优化之懒加载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-15T20:29:03+08:00">
+                2015-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>页面里面图片资源比较丰富，做优化的时候，首先考虑的就是图片按需加载，延迟加载。</p>
+<p>因为如果一次性都加载完，等待时间会比较长。而且用户可能本来就不会一直拉到页面底部浏览完才离开，所以即为了加载速度，又为了节约流量。可以等到需要的时候再加载图片。</p>
+<h3 id="jquery懒加载插件-Lazy-Load"><a href="#jquery懒加载插件-Lazy-Load" class="headerlink" title="jquery懒加载插件-Lazy Load"></a>jquery懒加载插件-Lazy Load</h3><p>地址：<a href="https://github.com/tuupola/jquery_lazyload" target="_blank" rel="external">https://github.com/tuupola/jquery_lazyload</a></p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>1.引入jquery和lazyload插件，或者直接npm安装</p>
+<pre><code>// npm 安装
+$ npm install jquery-lazyload
+
+// 直接引入
+&lt;script src=&quot;jquery.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;jquery.lazyload.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre><p>2.给html页面的img设置lazy样式，并用自定义属性来存储图片实际指向的地址</p>
+<pre><code>&lt;img class=&quot;lazy&quot; data-original=&quot;img/example.jpg&quot; width=&quot;640&quot; height=&quot;480&quot;&gt;
+</code></pre><p>3.js调用</p>
+<pre><code>$(&quot;img.lazy&quot;).lazyload();
+</code></pre><p>4.注意:必须设置图片的宽高，否则插件无法正常工作</p>
+<h4 id="特殊需求参数设置"><a href="#特殊需求参数设置" class="headerlink" title="特殊需求参数设置"></a>特殊需求参数设置</h4><h5 id="设置临界点"><a href="#设置临界点" class="headerlink" title="设置临界点"></a>设置临界点</h5><p>默认情况下图片会出现在屏幕时加载. 如果你想提前加载图片, 可以设置threshold 选项, 如：设置 threshold 为 200 令图片在距离屏幕 200 像素时提前加载.</p>
+<pre><code>$(&quot;img&quot;).lazyload({
+    threshold : 200
+});
+</code></pre><h5 id="使用特效"><a href="#使用特效" class="headerlink" title="使用特效"></a>使用特效</h5><p>默认情况下，图像完全加载并调用show()。你可以使用任何你想要的效果。下面的代码使用fadeIn （淡入效果）</p>
+<pre><code>$(&quot;img&quot;).lazyload({
+    effect : &quot;fadeIn&quot;
+});
+</code></pre><h5 id="当图片不连续时"><a href="#当图片不连续时" class="headerlink" title="当图片不连续时"></a>当图片不连续时</h5><p>滚动页面的时候, Lazy Load 会循环为加载的图片. 在循环中检测图片是否在可视区域内. 默认情况下在找到第一张不在可见区域的图片时停止循环. 图片被认为是流式分布的, 图片在页面中的次序和 HTML 代码中次序相同. 但是在一些布局中, 这样的假设是不成立的. 不过你可以通过 failurelimit 选项来控制加载行为.</p>
+<pre><code>$(&quot;img&quot;).lazyload({
+    failure_limit : 20 // 将 failurelimit 设为 20 ，当插件找到 20 个不在可见区域的图片时停止搜索.
+});
+</code></pre><h5 id="加载隐藏图片"><a href="#加载隐藏图片" class="headerlink" title="加载隐藏图片"></a>加载隐藏图片</h5><p>当界面有很多隐藏图片的时候并希望加载他们的时候则使用kip_invisible 属性，将其设置为false</p>
+<pre><code>$(&quot;img&quot;).lazyload({ 
+    skip_invisible : false
+});
+</code></pre><p>其他的需求可以看官网的api</p>
+<h3 id="懒加载的原理"><a href="#懒加载的原理" class="headerlink" title="懒加载的原理"></a>懒加载的原理</h3><p>页面的img元素，如果不给src属性，浏览器是不会发送请求去下载图片的，只有通过src设置了图片路径，浏览器才会发送请求。</p>
+<p>懒加载就是页面打开的时候，先把页面里的所有img元素或者是其他元素的背景图片路径替换成一个大小为1*1px的图片的路径，用来占位。</p>
+<p>把真正的路径存在元素的自定义属性“data-original”里面</p>
+<p>页面加载完成，根据scrollTop判断图片是否出现在浏览器可视区域里，如果在，再把自定义属性里面的路径取出来，赋值给图片的src，让图片显示出来。</p>
+<p>在滚动事件中重复判断图片是否进入视野，如果进入，就把data-original属性里面的值取出来放在src属性里面。</p>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>（一）获取窗口、窗口滚动和元素距离窗口顶部的偏移高度，计算元素是否出现在窗口范围内；</p>
+<p>1）屏幕可视窗口的大小</p>
+<pre><code>js原生方法：window.innerHeight标准浏览器IE9+ || document.documentElement.clientHeight标准浏览器及ie||document.body.clientHeight
+
+jquery方法： $(window).height()
+</code></pre><p>2）浏览器窗口顶部和文档顶部之间的距离，也就是滚动条的滚动的距离</p>
+<pre><code>原生js方法：window.pageYoffset  (IE9+标准) || document.documentElement.scrollTop 兼容ie低版本的 || document.body.scrollTop 兼容混杂模式
+
+jquery方法： $(document).scrollTop()
+</code></pre><p>3）获取元素距离窗口顶部偏移高度</p>
+<pre><code>jquery方法：$(0).offset().top   //距离文档顶部的距离
+原生js：getoffsetTop()
+</code></pre><p>判断图片是否在可视区域内</p>
+<pre><code>function isShow($el){
+      var winH = $(window).height(),//获取窗口高度
+    scrollH = $(window).scrollTop(),//获取窗口滚动高度
+    top = $el.offset().top;//获取元素距离窗口顶部偏移高度
+      if(top &lt; scrollH + winH){
+        return true;//在可视范围
+    }else{
+        return false;//不在可视范围
+    }
+  }
+</code></pre><p>(二)监听窗口滚动事件，判断元素是否在可视范围内</p>
+<pre><code>$(window).on(&apos;scroll&apos;, function(){    //监听滚动事件
+    checkShow();  
+})
+checkShow();    // 先加载一次，首屏
+function checkShow(){    //检查元素是否在可视范围内
+    $(&apos;img&apos;).each(function(){    //遍历每一个元素
+        var $cur = $(this);
+
+        if(!!isloaded($cur)){
+            return;
+        }    //判断是否已加载
+
+        if (isShow($cur)) {
+          setTimeout(function(){
+            showImg($cur);
+            },300)    //设置时间是为了更好的看出效果
+        };
+    });
+}
+</code></pre><p>（三）元素显示的时候，把之前的地址设置为data-origin的地址</p>
+<pre><code>function showImg($el){
+    $el.attr(&apos;src&apos;, $el.attr(&apos;data-src&apos;));
+    $cur.data(&apos;isloaded&apos;,true);
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/04/01/artical/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1096,7 +2107,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1107,7 +2118,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1118,7 +2129,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

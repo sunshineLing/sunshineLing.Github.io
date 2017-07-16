@@ -1,0 +1,1448 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。 环境搭建，用vue-cli1.npm i -g vue-cli; 2.可以用vue 命令 例如vue init / vue list  3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装 4.安装完毕之后，切换到文件夹      cd sel">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue eleme">
+<meta property="og:url" content="sunshineLing.github.io/2017/03/25/Vue-高仿饿了么项目总结/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。 环境搭建，用vue-cli1.npm i -g vue-cli; 2.可以用vue 命令 例如vue init / vue list  3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装 4.安装完毕之后，切换到文件夹      cd sel">
+<meta property="og:updated_time" content="2017-07-16T08:50:54.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue eleme">
+<meta name="twitter:description" content="把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。 环境搭建，用vue-cli1.npm i -g vue-cli; 2.可以用vue 命令 例如vue init / vue list  3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装 4.安装完毕之后，切换到文件夹      cd sel">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2017/03/25/Vue-高仿饿了么项目总结/"/>
+
+
+
+
+
+  <title>Vue eleme | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/03/25/Vue-高仿饿了么项目总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue eleme</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T19:21:17+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。</p>
+<h3 id="环境搭建，用vue-cli"><a href="#环境搭建，用vue-cli" class="headerlink" title="环境搭建，用vue-cli"></a>环境搭建，用vue-cli</h3><pre><code>1.npm i -g vue-cli;
+2.可以用vue 命令 例如vue init / vue list 
+3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装
+4.安装完毕之后，切换到文件夹
+     cd sell
+     npm install
+     npm run dev
+
+注意：同时会安装vue-router
+</code></pre><h4 id="项目上线依赖"><a href="#项目上线依赖" class="headerlink" title="项目上线依赖"></a>项目上线依赖</h4><pre><code>&quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^2.3.3&quot;,
+    &quot;vue-router&quot;: &quot;^2.3.1&quot;,
+    &quot;vue-resource&quot;: &quot;^1.3.4&quot;,
+    &quot;better-scroll&quot;: &quot;^0.2.1&quot;
+  },
+</code></pre><h4 id="项目开发依赖"><a href="#项目开发依赖" class="headerlink" title="项目开发依赖"></a>项目开发依赖</h4><p>1.css部分用stylus语法编译，stylus语法需要把{}和；都去掉</p>
+<p>2.安装loader时遇到的坑</p>
+<pre><code>stylus-loader@2.5.1 requires a peer of stylus@&gt;=0.52.4 but none was installed.
+</code></pre><p>3.解决办法</p>
+<pre><code>在package.json里面增加：
+&quot;stylus-loader&quot;: &quot;^3.0.1&quot;,
+&quot;stylus&quot;: &quot;0.52.4&quot;,
+
+再执行npn install 和 npn run dev
+</code></pre><h3 id="cli生成的项目文件介绍"><a href="#cli生成的项目文件介绍" class="headerlink" title="cli生成的项目文件介绍"></a>cli生成的项目文件介绍</h3><pre><code>1.static里面的.gitkeep表示即使文件夹为空，也可以提交到git仓库，因为空文件夹会忽略
+2..babelrc是把es6转成es5，方便浏览器识别，其中有依赖的插件，comment是注释不会显示；
+3.editorconfig是编码风格文件，比如字体缩进，换行，去除首尾空格等
+4.eslintignore是忽略对里面的文件做语法检查；
+5.eslintrc是es6的语法标准的配置
+</code></pre><h3 id="css-设置的关键点"><a href="#css-设置的关键点" class="headerlink" title="css 设置的关键点"></a>css 设置的关键点</h3><h4 id="编码习惯"><a href="#编码习惯" class="headerlink" title="编码习惯"></a>编码习惯</h4><p>如果有一个元素，绑定class是为了在js里面做选择，而不是为了设置样式，用类似food-list-hook</p>
+<h4 id="1像素边框的制作"><a href="#1像素边框的制作" class="headerlink" title="1像素边框的制作"></a>1像素边框的制作</h4><p>设置伪元素，用media+scale</p>
+<pre><code>.border(@borderColor){
+    position: relative;
+
+    &amp;::after{
+        content: &quot;&quot;;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid @borderColor;
+    }
+}
+
+@media (min-device-pixel-ratio: 1.5) {
+    .border{
+
+        &amp;::after{
+            transform: scaleY(0.7);
+        }
+    }
+}
+
+@media (min-device-pixel-ratio: 2) {
+    .border{
+
+        &amp;::after{
+            transform: scaleY(0.5);
+        }
+    }
+}
+</code></pre><h4 id="自适应宽，flex布局"><a href="#自适应宽，flex布局" class="headerlink" title="自适应宽，flex布局"></a>自适应宽，flex布局</h4><p>左边宽度固定，右边宽度自适应</p>
+<pre><code>.food{
+    display: flex;
+    width: 100%;
+
+    .nav{
+        flex: 0 0 80px;
+        width: 80px;
+    }
+
+    .foodList{
+        flex: 1;
+    }
+}
+</code></pre><h4 id="Sticky-footer"><a href="#Sticky-footer" class="headerlink" title="Sticky footer"></a>Sticky footer</h4><p><strong>解决的问题：</strong>如果页面内容不够长的时候，页脚块固定在视窗底部；如果内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字</p>
+<p><strong>解决办法：</strong></p>
+<p>1.设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
+<pre><code>&lt;div v-show=&quot;detailShow&quot; class=&quot;detail&quot;&gt;
+    &lt;div class=&quot;detail-wrapper clearfix&quot;&gt;   //clearfix样式另外自己写
+        &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;detail-close&quot;&gt;
+        &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>2.设置css</p>
+<pre><code>.detail
+   position: fixed
+   z-index: 100
+   top: 0
+   left: 0
+   width: 100%
+   height: 100%
+   overflow: auto
+   background-color: rgba(7, 17, 27, 0.8)
+   // filter: blur(10px)
+   .detail-wrapper
+       min-width: 100%
+       height: 100%
+       .detail-main
+           margin-top: 64px
+           padding-bottom: 64px(这个是关键，设置一个下padding，给底部留出空间)
+   .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
+       position: relative
+       width: 32px
+       height: 32px
+       margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
+       clear: both
+       font-size: 32px
+</code></pre><h4 id="自适相等宽高"><a href="#自适相等宽高" class="headerlink" title="自适相等宽高"></a>自适相等宽高</h4><p>需要设置一个宽高相等的图片，但是每张图的宽高比例是不同的，需要做到自适应，就可以设置父元素的高度为0，上边距为100%，子元素设置宽为100%，高为100%</p>
+<pre><code>.image-header
+    position: relative
+    width: 100%
+    height: 0
+    padding-top: 100%   // 让图片的宽高一致，保持同等比例
+    img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+</code></pre><h4 id="媒体查询，适用于ipone5"><a href="#媒体查询，适用于ipone5" class="headerlink" title="媒体查询，适用于ipone5"></a>媒体查询，适用于ipone5</h4><pre><code>@media only screen and (max-width: 320px)   // 仅仅当屏幕最大尺寸为320px时适用
+    padding-left: 6px
+</code></pre><h3 id="Vue知识要点"><a href="#Vue知识要点" class="headerlink" title="Vue知识要点"></a>Vue知识要点</h3><h4 id="vue动画设置"><a href="#vue动画设置" class="headerlink" title="vue动画设置"></a>vue动画设置</h4><p>看文档，此处是需要设置页面从右向左移入<br>给需要动画的元素的外层设置包裹，在html里面设置：</p>
+<pre><code>html:
+&lt;transition name=&quot;move&quot;&gt;
+    &lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
+    &lt;/food&gt;
+&lt;/transition&gt;
+
+css:
+.food
+    transform: translate3d(0, 0, 0)
+    &amp;.move-enter-active, &amp;.move-leave-active
+        transition: all 0.2s linear  // 过渡效果
+    &amp;.move-enter, &amp;.move-leave-active
+        transform: translate3d(100%, 0, 0)  // 动画开始的位置，从右到左飞入
+</code></pre><h4 id="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"><a href="#transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面" class="headerlink" title="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"></a>transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面</h4><pre><code>&lt;div class=&quot;ball-container&quot;&gt;
+    &lt;div v-for=&quot;ball in balls&quot;&gt;
+        &lt;transition name=&quot;drop&quot;&gt;
+            &lt;div class=&quot;ball&quot; v-show=&quot;ball.show&quot;&gt;
+                &lt;div class=&quot;inner inner-hook&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/transition&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h3 id="vue路由设置"><a href="#vue路由设置" class="headerlink" title="vue路由设置"></a>vue路由设置</h3><h4 id="重定向路由"><a href="#重定向路由" class="headerlink" title="重定向路由"></a>重定向路由</h4><p>首页进入希望停在商品页面，可以在路由里面设置重定向</p>
+<pre><code>const router = new VueRouter({
+  routes: [
+    {path: &apos;/&apos;, redirect: &apos;/goods&apos;}, // 重定向
+    {path: &apos;/&apos;, component: goods},
+    {path: &apos;/seller&apos;, component: seller},
+    {path: &apos;/ratings&apos;, component: ratings},
+    {path: &apos;/goods&apos;, component: goods}
+  ]
+})
+
+或者在后面用router.push({path: &apos;/goods&apos;})  //测试可以成功
+</code></pre><h4 id="路由激活样式修改"><a href="#路由激活样式修改" class="headerlink" title="路由激活样式修改"></a>路由激活样式修改</h4><p>《router-link to=‘’》有默认的class,可以在路由里面配置修改</p>
+<pre><code>linkActiveClass: &apos;active&apos;，在router实例里面
+</code></pre><h3 id="组件设置滚动效果"><a href="#组件设置滚动效果" class="headerlink" title="组件设置滚动效果"></a>组件设置滚动效果</h3><p>食物左侧的菜单导航，以及食物容器自身，在内容超出浏览器可视区域的时候，会出现滚动条，但是移动端设计效果是希望可以滚动，触摸上去的时候，滑动，移动端常用的插件是Iscroll，这里使用的是better-scroll插件。<br>Iscroll插件（<a href="http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。" target="_blank" rel="external">http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。</a></p>
+<h4 id="安装时候的问题："><a href="#安装时候的问题：" class="headerlink" title="安装时候的问题："></a>安装时候的问题：</h4><p>npm 安装better-scroll时报错</p>
+<pre><code>npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\browser-sync\node_modules\chokidar\node_modules\fsevents)
+
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.14: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+
+是因为$sevents不兼容win系统，忽略警告，执行下面的既可以安装成功
+npm -g install npm
+</code></pre><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><p>关键在于给需要设置的滚动的容器外层添加一个div，滚动的时候会计算要滚动的容器的高度，外层div的高度是固定的，超出的部分隐藏，里层的高度超出就可以滚动。</p>
+<pre><code>&lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
+    &lt;div class=&quot;food-content&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>用法：初始化，进行实例化</p>
+<pre><code>new BScroll(dom对象， { //options });
+
+如果需要直接对dom做操作，需要在html标签里面绑定ref=&quot;div&quot;   
+用this.$refs.div获取
+为了让子元素可以被点击，设置click: true,
+</code></pre><p>VUE里面数据更新是异步的，在数据还没有加载完成之前，BScroll是无法获取目标容器的高度的，就会出现无法滚动的情况，即数据改变，dom没有变化</p>
+<p>所以需要放在this.$nextTick里面去实例化</p>
+<pre><code>methods: {
+        // 定义food详情页面显示或隐藏的方法
+        show () {
+            this.showFlag = true
+            this.selectType = ALL   // 每一次进入商品详情页面都初始化，显示全部内容
+            this.onlyContent = false // 进入商品页面初始化显示有内容的评价
+            this.$nextTick(() =&gt; {  // 实例化better-scroll方法，使food详情页面可以滚动
+                if (!this.scroll) {
+                    this.scroll = new BScroll(this.$refs.food, {
+                        click: true
+                    })
+                } else {
+                    this.scroll.refresh()
+                }
+            })
+        }
+}
+</code></pre><p>nextTick应该被用在某些计算属性或者watch再或者某个按钮click事件绑定的methods当中。这时，nextTick才能保证你的数据更新完成之后再执行你绑定的函数。</p>
+<pre><code>实例用法：
+this.$nextTick(() =&gt; {
+     this.initScroll();
+})
+</code></pre><h4 id="better-scroll的点击事件注意事项"><a href="#better-scroll的点击事件注意事项" class="headerlink" title="better-scroll的点击事件注意事项"></a>better-scroll的点击事件注意事项</h4><p>1.为了能点击，在实例化的时候，需要设置参数：</p>
+<pre><code>click: true
+</code></pre><p>2.在pc上，点击事件会执行两次。因为pc端不会阻止默认事件，由于better-scroll派发的事件有event_constructed: true属性，可以去判断原生事件有没有这个属性。</p>
+<p>在html里面点击事件传递一个参数$event,在后面接收获取</p>
+<pre><code>&lt;div @click=&quot;addFirst($event)&quot; class=&quot;buy&quot; v-show=&quot;!food.count || food.count===0&quot;&gt;加入购物车&lt;/div&gt;
+
+// 点击加入购物车按钮，添加商品
+addFirst (event) {
+    if (!event._constructed) {
+        return
+    }
+    Vue.set(this.food, &apos;count&apos;, 1)
+    this.$emit(&apos;add&apos;, event.target) // 父子组件传值，在子组件触发
+}
+</code></pre><h3 id="vue给对象新增属性"><a href="#vue给对象新增属性" class="headerlink" title="vue给对象新增属性"></a>vue给对象新增属性</h3><pre><code>vue.set(this.food.count, &quot;1&quot;)
+</code></pre><h3 id="vue非父子组件传值"><a href="#vue非父子组件传值" class="headerlink" title="vue非父子组件传值"></a>vue非父子组件传值</h3><p>这个项目里面，cartcontrol组件需要在每个增加或减少的按钮被点击的时候，将被点击的元素，传递给另外一个组件shopcart，这两个组件之间不是包含和被包含的关系<br><strong>解决的思路1：</strong><br>因为他们有同一个父组件，goods.vue，可以先将按钮所在的子组件的值传递给父组件，再由父组件传递给另外一个子组件shopcart</p>
+<pre><code>1.cartcontrol里面用下面的代码来触发
+this.$emit(&apos;addFood&apos;, event.target) // 父子组件传值，在子组件触发
+
+2.父组件good.vue里面在子组件标签上面用自定义事件来接收
+&lt;cartcontrol @addFood=&quot;receiveAddFood&quot; :food=&quot;food&quot;&gt;&lt;/cartcontrol&gt;
+
+3.父组件methods方法里面，调用函数
+// 接收cartcontrol里面传递过来的事件对象
+receiveAddFood (target) {
+    console.log(target)
+}
+</code></pre><p><strong>解决思路2：</strong>利用bus</p>
+<h3 id="vue阻止事件冒泡"><a href="#vue阻止事件冒泡" class="headerlink" title="vue阻止事件冒泡"></a>vue阻止事件冒泡</h3><p>vue里面阻止事件冒泡，只是为了点击处理一个点击事件，但是因为父元素上面也定义了点击事件，用stop.prevent来阻止</p>
+<pre><code>&lt;div class=&quot;content-right&quot; @click.stop.prevent=&quot;pay&quot;&gt;
+// 只会触发content-right上面的事件，不会触发它的父元素上面的点击事件
+</code></pre><h3 id="vue父组件调用子组件里面定义的方法"><a href="#vue父组件调用子组件里面定义的方法" class="headerlink" title="vue父组件调用子组件里面定义的方法"></a>vue父组件调用子组件里面定义的方法</h3><pre><code>1.先在子组件methods里面定义方法，比如show();
+2.在父组件的子组件元素上面写ref=&quot;foodEl&quot;;
+3.在父组件methods里面先获取子组件
+this.$refs.foodEl.show()
+</code></pre><h3 id="v-show用计算属性返回boolean"><a href="#v-show用计算属性返回boolean" class="headerlink" title="v-show用计算属性返回boolean"></a>v-show用计算属性返回boolean</h3><p>//   绑定函数，计算点击吐槽或推荐时，评论列表里面显示的内容</p>
+<pre><code>needShow (type, text) {
+    if (this.onlyContent &amp;&amp; !text) {    // 只显示有内容的评价，而没有文本，返回false，v-show不显示
+        return false
+    }
+    if (this.selectTypeNum === ALL) {  // 选择的是类型是全部时
+        return true
+    } else {    // 选择的是推荐或吐槽的时候，判断当前的这条评论的类型是否和选择的类型一致，一致就显示，不一致就不显示
+        return type === this.selectTypeNum
+    }
+}
+</code></pre><h3 id="时间格式的过滤器"><a href="#时间格式的过滤器" class="headerlink" title="时间格式的过滤器"></a>时间格式的过滤器</h3><p>vue里面日期时间字符串格式化为yyyy-mm-dd hh:mm之类的方法，用过滤的方法</p>
+<h4 id="全局过滤器"><a href="#全局过滤器" class="headerlink" title="全局过滤器"></a>全局过滤器</h4><pre><code>1.用moment插件，因为为了复用性，写一个全局的过滤器
+
+// 导入moment模块
+var moment = require(&apos;moment&apos;);
+
+// 全局过滤器
+Vue.filter(&apos;dmtDate&apos;, (input, formatString) =&gt; {
+    const lastFormatString = formatString || &quot;YYYY-MM-DD HH:mm:ss&quot;
+
+    // 在format中指定要把我们前面的时间按照什么样的格式输出
+    // 参数1：格式化的原始时间
+    // 参数2： 把院士时间，最终要格式化的字符串
+    // 参数：http://momentjs.cn/docs/
+    return moment(input).format(lastFormatString)
+})
+
+&lt;p&gt;{{newsdetail.add_time | dmtDate('YYYY-MM-DD')}}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{{newsdetail.click}}次浏览&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                分类：民生经济
+            &lt;/p&gt;
+</code></pre><h4 id="局部过滤器"><a href="#局部过滤器" class="headerlink" title="局部过滤器"></a>局部过滤器</h4><p>局部过滤器，在输出模块里面，和methods方法平级，定义一个过滤器</p>
+<pre><code>1.// 时间过滤器方法
+    filters: {
+        formatDate (time) {
+            let date = new Date(time)   // 先转换成date类型的对象
+            return formatDate(date, &apos;yyyy-MM-dd hh:mm&apos;)
+        }
+    }
+
+2.在common的js里面定义一个date.js方法，
+export function formatDate(date, fmt) {
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + &apos;&apos;).substr(4 - RegExp.$1.length));
+    }
+    let o = {
+        &apos;M+&apos;: date.getMonth() + 1,
+        &apos;d+&apos;: date.getDate(),
+        &apos;h+&apos;: date.getHours(),
+        &apos;m+&apos;: date.getMinutes(),
+        &apos;s+&apos;: date.getSeconds()
+    };
+    for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)) {
+            let str = o[k] + &apos;&apos;;
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+        }
+    }
+    return fmt;
+}
+
+3.用import 导入这个方法
+import {formatDate} from &apos;../../common/js/date.js&apos;  // 引入日期方法
+</code></pre><h3 id="正则相关"><a href="#正则相关" class="headerlink" title="正则相关"></a>正则相关</h3><p>正则提取url里面的参数，把参数分割成以&amp;为分隔符的key=value形式</p>
+<pre><code>var reg = /([^?&amp;=]+)=([^?&amp;=]*)/g
+
+解析：/表示分隔符，g表示全局匹配，匹配到第一个之后会继续向后查找
+     （）表示子组
+     [^]表示字符类取反，比如[^abc]匹配的就不是a和b和c的单个字符，[^?&amp;=]匹配不是^和?和=的单个字符
+     字符类[]后面的+和*表示量词
+     +等价于{1, }表示1次或多次
+     *等价于{0，}表示重复0次或多次
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /[^?&amp;=]{1,}=[^?&amp;=]{0,}/g
+console.log(str.match(reg));   // 输出[&quot;foo=bar&quot;, &quot;lang=js&quot;]
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /[^?&amp;=]+=[^?&amp;=]*/;
+console.log(str.match(reg));     // 输出[&quot;foo=bar&quot;]
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /([^?&amp;=]{1,})=([^?&amp;=]{0,})/;
+console.log(str.match(reg)); //输出 [&quot;foo=bar&quot;, &quot;foo&quot;, &quot;bar&quot;]
+
+&quot;http:/www.baidu.com/?a=1&amp;b=2&quot;.match(/([^?&amp;=]+)=([^?&amp;=]*)/g);     // [&quot;a=1&quot;,&quot;b=2&quot;]
+</code></pre><p>总结：将url里面的参数解析成key=val的对象的方法</p>
+<pre><code>/**
+ * 解析url参数
+ * @example ?id=12345&amp;a=b
+ * @return Object {id:12345,a:b}
+ */
+export function urlParse () {
+    let url = window.location.search
+    let obj = {}
+    let reg = /[^?&amp;=]+=[^?&amp;=]*/g
+    let arr = url.match(reg)
+    // [&apos;id=12345&apos;, &apos;a=b&apos;]
+    if (arr) {
+        arr.forEach((item) =&gt; {
+            let tempArr = item.split(&apos;=&apos;)
+            //  [&quot;id&quot;, &quot;12345&quot;]
+            let key = decodeURIComponent(tempArr[0])
+            let val = decodeURIComponent(tempArr[1])
+            obj[key] = val
+        })
+    }
+    return obj
+}
+</code></pre><h3 id="keep-alive缓存组件"><a href="#keep-alive缓存组件" class="headerlink" title="keep-alive缓存组件"></a>keep-alive缓存组件</h3><p>keep-alive缓存vue组件，当请求的数据没有变化的时候，不希望再发送请求，可以用keep-alive将组件缓存起来，缓存的同时也会记录上一次的滚动的位置</p>
+<p><strong>使用场景：</strong></p>
+<p>比如一个列表和一个详情，那么用户就会经常在打开详情=》返回列表=》打开详情之间切换，切换频率高，这样每次从详情返回列表的时候，都能从缓存里面快速渲染，而不是重新渲染</p>
+<p>原理是把组件的状态缓存在内存里</p>
+<p>如果并不想所有的组件都被缓存，有些切换回来的时候是已经加载过的，解决方法：在app.vue里面设置</p>
+<pre><code>&lt;!-- 这里是需要keepalive的 --&gt;
+&lt;keep-alive&gt;
+     &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+
+&lt;!-- 这里不会被keepalive --&gt;
+&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+
+然后在设置路由信息的时候这样
+
+{
+  path: &apos;&apos;,
+  name: &apos;&apos;,
+  component: ,
+  meta: {keepAlive: true} // 这个是需要keepalive的},{
+  path: &apos;&apos;,
+  name: &apos;&apos;,
+  component: ,
+  meta: {keepAlive: false} // 这是不会被keepalive的}
+</code></pre><p>或者这里利用active的方法：<a href="http://www.cnblogs.com/zion0707/p/6213159.html" target="_blank" rel="external">http://www.cnblogs.com/zion0707/p/6213159.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/05/web安全之xss学习/" rel="next" title="web安全之xss学习">
+                <i class="fa fa-chevron-left"></i> web安全之xss学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/16/vue音乐webApp项目总结/" rel="prev" title="vue音乐webApp项目总结">
+                vue音乐webApp项目总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境搭建，用vue-cli"><span class="nav-number">1.</span> <span class="nav-text">环境搭建，用vue-cli</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目上线依赖"><span class="nav-number">1.1.</span> <span class="nav-text">项目上线依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目开发依赖"><span class="nav-number">1.2.</span> <span class="nav-text">项目开发依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cli生成的项目文件介绍"><span class="nav-number">2.</span> <span class="nav-text">cli生成的项目文件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css-设置的关键点"><span class="nav-number">3.</span> <span class="nav-text">css 设置的关键点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编码习惯"><span class="nav-number">3.1.</span> <span class="nav-text">编码习惯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1像素边框的制作"><span class="nav-number">3.2.</span> <span class="nav-text">1像素边框的制作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自适应宽，flex布局"><span class="nav-number">3.3.</span> <span class="nav-text">自适应宽，flex布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sticky-footer"><span class="nav-number">3.4.</span> <span class="nav-text">Sticky footer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自适相等宽高"><span class="nav-number">3.5.</span> <span class="nav-text">自适相等宽高</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#媒体查询，适用于ipone5"><span class="nav-number">3.6.</span> <span class="nav-text">媒体查询，适用于ipone5</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue知识要点"><span class="nav-number">4.</span> <span class="nav-text">Vue知识要点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vue动画设置"><span class="nav-number">4.1.</span> <span class="nav-text">vue动画设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"><span class="nav-number">4.2.</span> <span class="nav-text">transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue路由设置"><span class="nav-number">5.</span> <span class="nav-text">vue路由设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重定向路由"><span class="nav-number">5.1.</span> <span class="nav-text">重定向路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由激活样式修改"><span class="nav-number">5.2.</span> <span class="nav-text">路由激活样式修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件设置滚动效果"><span class="nav-number">6.</span> <span class="nav-text">组件设置滚动效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装时候的问题："><span class="nav-number">6.1.</span> <span class="nav-text">安装时候的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用法："><span class="nav-number">6.2.</span> <span class="nav-text">用法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#better-scroll的点击事件注意事项"><span class="nav-number">6.3.</span> <span class="nav-text">better-scroll的点击事件注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue给对象新增属性"><span class="nav-number">7.</span> <span class="nav-text">vue给对象新增属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue非父子组件传值"><span class="nav-number">8.</span> <span class="nav-text">vue非父子组件传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue阻止事件冒泡"><span class="nav-number">9.</span> <span class="nav-text">vue阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue父组件调用子组件里面定义的方法"><span class="nav-number">10.</span> <span class="nav-text">vue父组件调用子组件里面定义的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show用计算属性返回boolean"><span class="nav-number">11.</span> <span class="nav-text">v-show用计算属性返回boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间格式的过滤器"><span class="nav-number">12.</span> <span class="nav-text">时间格式的过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局过滤器"><span class="nav-number">12.1.</span> <span class="nav-text">全局过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部过滤器"><span class="nav-number">12.2.</span> <span class="nav-text">局部过滤器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则相关"><span class="nav-number">13.</span> <span class="nav-text">正则相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keep-alive缓存组件"><span class="nav-number">14.</span> <span class="nav-text">keep-alive缓存组件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

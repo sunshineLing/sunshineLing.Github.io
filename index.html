@@ -297,6 +297,624 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/16/vue音乐webApp项目总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/16/vue音乐webApp项目总结/" itemprop="url">vue音乐webApp项目总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T12:15:02+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/03/25/Vue-高仿饿了么项目总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/25/Vue-高仿饿了么项目总结/" itemprop="url">Vue eleme</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T19:21:17+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。</p>
+<h3 id="环境搭建，用vue-cli"><a href="#环境搭建，用vue-cli" class="headerlink" title="环境搭建，用vue-cli"></a>环境搭建，用vue-cli</h3><pre><code>1.npm i -g vue-cli;
+2.可以用vue 命令 例如vue init / vue list 
+3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装
+4.安装完毕之后，切换到文件夹
+     cd sell
+     npm install
+     npm run dev
+
+注意：同时会安装vue-router
+</code></pre><h4 id="项目上线依赖"><a href="#项目上线依赖" class="headerlink" title="项目上线依赖"></a>项目上线依赖</h4><pre><code>&quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^2.3.3&quot;,
+    &quot;vue-router&quot;: &quot;^2.3.1&quot;,
+    &quot;vue-resource&quot;: &quot;^1.3.4&quot;,
+    &quot;better-scroll&quot;: &quot;^0.2.1&quot;
+  },
+</code></pre><h4 id="项目开发依赖"><a href="#项目开发依赖" class="headerlink" title="项目开发依赖"></a>项目开发依赖</h4><p>1.css部分用stylus语法编译，stylus语法需要把{}和；都去掉</p>
+<p>2.安装loader时遇到的坑</p>
+<pre><code>stylus-loader@2.5.1 requires a peer of stylus@&gt;=0.52.4 but none was installed.
+</code></pre><p>3.解决办法</p>
+<pre><code>在package.json里面增加：
+&quot;stylus-loader&quot;: &quot;^3.0.1&quot;,
+&quot;stylus&quot;: &quot;0.52.4&quot;,
+
+再执行npn install 和 npn run dev
+</code></pre><h3 id="cli生成的项目文件介绍"><a href="#cli生成的项目文件介绍" class="headerlink" title="cli生成的项目文件介绍"></a>cli生成的项目文件介绍</h3><pre><code>1.static里面的.gitkeep表示即使文件夹为空，也可以提交到git仓库，因为空文件夹会忽略
+2..babelrc是把es6转成es5，方便浏览器识别，其中有依赖的插件，comment是注释不会显示；
+3.editorconfig是编码风格文件，比如字体缩进，换行，去除首尾空格等
+4.eslintignore是忽略对里面的文件做语法检查；
+5.eslintrc是es6的语法标准的配置
+</code></pre><h3 id="css-设置的关键点"><a href="#css-设置的关键点" class="headerlink" title="css 设置的关键点"></a>css 设置的关键点</h3><h4 id="编码习惯"><a href="#编码习惯" class="headerlink" title="编码习惯"></a>编码习惯</h4><p>如果有一个元素，绑定class是为了在js里面做选择，而不是为了设置样式，用类似food-list-hook</p>
+<h4 id="1像素边框的制作"><a href="#1像素边框的制作" class="headerlink" title="1像素边框的制作"></a>1像素边框的制作</h4><p>设置伪元素，用media+scale</p>
+<pre><code>.border(@borderColor){
+    position: relative;
+
+    &amp;::after{
+        content: &quot;&quot;;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid @borderColor;
+    }
+}
+
+@media (min-device-pixel-ratio: 1.5) {
+    .border{
+
+        &amp;::after{
+            transform: scaleY(0.7);
+        }
+    }
+}
+
+@media (min-device-pixel-ratio: 2) {
+    .border{
+
+        &amp;::after{
+            transform: scaleY(0.5);
+        }
+    }
+}
+</code></pre><h4 id="自适应宽，flex布局"><a href="#自适应宽，flex布局" class="headerlink" title="自适应宽，flex布局"></a>自适应宽，flex布局</h4><p>左边宽度固定，右边宽度自适应</p>
+<pre><code>.food{
+    display: flex;
+    width: 100%;
+
+    .nav{
+        flex: 0 0 80px;
+        width: 80px;
+    }
+
+    .foodList{
+        flex: 1;
+    }
+}
+</code></pre><h4 id="Sticky-footer"><a href="#Sticky-footer" class="headerlink" title="Sticky footer"></a>Sticky footer</h4><p><strong>解决的问题：</strong>如果页面内容不够长的时候，页脚块固定在视窗底部；如果内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字</p>
+<p><strong>解决办法：</strong></p>
+<p>1.设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
+<pre><code>&lt;div v-show=&quot;detailShow&quot; class=&quot;detail&quot;&gt;
+    &lt;div class=&quot;detail-wrapper clearfix&quot;&gt;   //clearfix样式另外自己写
+        &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;detail-close&quot;&gt;
+        &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>2.设置css</p>
+<pre><code>.detail
+   position: fixed
+   z-index: 100
+   top: 0
+   left: 0
+   width: 100%
+   height: 100%
+   overflow: auto
+   background-color: rgba(7, 17, 27, 0.8)
+   // filter: blur(10px)
+   .detail-wrapper
+       min-width: 100%
+       height: 100%
+       .detail-main
+           margin-top: 64px
+           padding-bottom: 64px(这个是关键，设置一个下padding，给底部留出空间)
+   .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
+       position: relative
+       width: 32px
+       height: 32px
+       margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
+       clear: both
+       font-size: 32px
+</code></pre><h4 id="自适相等宽高"><a href="#自适相等宽高" class="headerlink" title="自适相等宽高"></a>自适相等宽高</h4><p>需要设置一个宽高相等的图片，但是每张图的宽高比例是不同的，需要做到自适应，就可以设置父元素的高度为0，上边距为100%，子元素设置宽为100%，高为100%</p>
+<pre><code>.image-header
+    position: relative
+    width: 100%
+    height: 0
+    padding-top: 100%   // 让图片的宽高一致，保持同等比例
+    img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+</code></pre><h4 id="媒体查询，适用于ipone5"><a href="#媒体查询，适用于ipone5" class="headerlink" title="媒体查询，适用于ipone5"></a>媒体查询，适用于ipone5</h4><pre><code>@media only screen and (max-width: 320px)   // 仅仅当屏幕最大尺寸为320px时适用
+    padding-left: 6px
+</code></pre><h3 id="Vue知识要点"><a href="#Vue知识要点" class="headerlink" title="Vue知识要点"></a>Vue知识要点</h3><h4 id="vue动画设置"><a href="#vue动画设置" class="headerlink" title="vue动画设置"></a>vue动画设置</h4><p>看文档，此处是需要设置页面从右向左移入<br>给需要动画的元素的外层设置包裹，在html里面设置：</p>
+<pre><code>html:
+&lt;transition name=&quot;move&quot;&gt;
+    &lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
+    &lt;/food&gt;
+&lt;/transition&gt;
+
+css:
+.food
+    transform: translate3d(0, 0, 0)
+    &amp;.move-enter-active, &amp;.move-leave-active
+        transition: all 0.2s linear  // 过渡效果
+    &amp;.move-enter, &amp;.move-leave-active
+        transform: translate3d(100%, 0, 0)  // 动画开始的位置，从右到左飞入
+</code></pre><h4 id="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"><a href="#transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面" class="headerlink" title="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"></a>transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面</h4><pre><code>&lt;div class=&quot;ball-container&quot;&gt;
+    &lt;div v-for=&quot;ball in balls&quot;&gt;
+        &lt;transition name=&quot;drop&quot;&gt;
+            &lt;div class=&quot;ball&quot; v-show=&quot;ball.show&quot;&gt;
+                &lt;div class=&quot;inner inner-hook&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/transition&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h3 id="vue路由设置"><a href="#vue路由设置" class="headerlink" title="vue路由设置"></a>vue路由设置</h3><h4 id="重定向路由"><a href="#重定向路由" class="headerlink" title="重定向路由"></a>重定向路由</h4><p>首页进入希望停在商品页面，可以在路由里面设置重定向</p>
+<pre><code>const router = new VueRouter({
+  routes: [
+    {path: &apos;/&apos;, redirect: &apos;/goods&apos;}, // 重定向
+    {path: &apos;/&apos;, component: goods},
+    {path: &apos;/seller&apos;, component: seller},
+    {path: &apos;/ratings&apos;, component: ratings},
+    {path: &apos;/goods&apos;, component: goods}
+  ]
+})
+
+或者在后面用router.push({path: &apos;/goods&apos;})  //测试可以成功
+</code></pre><h4 id="路由激活样式修改"><a href="#路由激活样式修改" class="headerlink" title="路由激活样式修改"></a>路由激活样式修改</h4><p>《router-link to=‘’》有默认的class,可以在路由里面配置修改</p>
+<pre><code>linkActiveClass: &apos;active&apos;，在router实例里面
+</code></pre><h3 id="组件设置滚动效果"><a href="#组件设置滚动效果" class="headerlink" title="组件设置滚动效果"></a>组件设置滚动效果</h3><p>食物左侧的菜单导航，以及食物容器自身，在内容超出浏览器可视区域的时候，会出现滚动条，但是移动端设计效果是希望可以滚动，触摸上去的时候，滑动，移动端常用的插件是Iscroll，这里使用的是better-scroll插件。<br>Iscroll插件（<a href="http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。" target="_blank" rel="external">http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。</a></p>
+<h4 id="安装时候的问题："><a href="#安装时候的问题：" class="headerlink" title="安装时候的问题："></a>安装时候的问题：</h4><p>npm 安装better-scroll时报错</p>
+<pre><code>npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\browser-sync\node_modules\chokidar\node_modules\fsevents)
+
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.14: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+
+是因为$sevents不兼容win系统，忽略警告，执行下面的既可以安装成功
+npm -g install npm
+</code></pre><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><p>关键在于给需要设置的滚动的容器外层添加一个div，滚动的时候会计算要滚动的容器的高度，外层div的高度是固定的，超出的部分隐藏，里层的高度超出就可以滚动。</p>
+<pre><code>&lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
+    &lt;div class=&quot;food-content&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>用法：初始化，进行实例化</p>
+<pre><code>new BScroll(dom对象， { //options });
+
+如果需要直接对dom做操作，需要在html标签里面绑定ref=&quot;div&quot;   
+用this.$refs.div获取
+为了让子元素可以被点击，设置click: true,
+</code></pre><p>VUE里面数据更新是异步的，在数据还没有加载完成之前，BScroll是无法获取目标容器的高度的，就会出现无法滚动的情况，即数据改变，dom没有变化</p>
+<p>所以需要放在this.$nextTick里面去实例化</p>
+<pre><code>methods: {
+        // 定义food详情页面显示或隐藏的方法
+        show () {
+            this.showFlag = true
+            this.selectType = ALL   // 每一次进入商品详情页面都初始化，显示全部内容
+            this.onlyContent = false // 进入商品页面初始化显示有内容的评价
+            this.$nextTick(() =&gt; {  // 实例化better-scroll方法，使food详情页面可以滚动
+                if (!this.scroll) {
+                    this.scroll = new BScroll(this.$refs.food, {
+                        click: true
+                    })
+                } else {
+                    this.scroll.refresh()
+                }
+            })
+        }
+}
+</code></pre><p>nextTick应该被用在某些计算属性或者watch再或者某个按钮click事件绑定的methods当中。这时，nextTick才能保证你的数据更新完成之后再执行你绑定的函数。</p>
+<pre><code>实例用法：
+this.$nextTick(() =&gt; {
+     this.initScroll();
+})
+</code></pre><h4 id="better-scroll的点击事件注意事项"><a href="#better-scroll的点击事件注意事项" class="headerlink" title="better-scroll的点击事件注意事项"></a>better-scroll的点击事件注意事项</h4><p>1.为了能点击，在实例化的时候，需要设置参数：</p>
+<pre><code>click: true
+</code></pre><p>2.在pc上，点击事件会执行两次。因为pc端不会阻止默认事件，由于better-scroll派发的事件有event_constructed: true属性，可以去判断原生事件有没有这个属性。</p>
+<p>在html里面点击事件传递一个参数$event,在后面接收获取</p>
+<pre><code>&lt;div @click=&quot;addFirst($event)&quot; class=&quot;buy&quot; v-show=&quot;!food.count || food.count===0&quot;&gt;加入购物车&lt;/div&gt;
+
+// 点击加入购物车按钮，添加商品
+addFirst (event) {
+    if (!event._constructed) {
+        return
+    }
+    Vue.set(this.food, &apos;count&apos;, 1)
+    this.$emit(&apos;add&apos;, event.target) // 父子组件传值，在子组件触发
+}
+</code></pre><h3 id="vue给对象新增属性"><a href="#vue给对象新增属性" class="headerlink" title="vue给对象新增属性"></a>vue给对象新增属性</h3><pre><code>vue.set(this.food.count, &quot;1&quot;)
+</code></pre><h3 id="vue非父子组件传值"><a href="#vue非父子组件传值" class="headerlink" title="vue非父子组件传值"></a>vue非父子组件传值</h3><p>这个项目里面，cartcontrol组件需要在每个增加或减少的按钮被点击的时候，将被点击的元素，传递给另外一个组件shopcart，这两个组件之间不是包含和被包含的关系<br><strong>解决的思路1：</strong><br>因为他们有同一个父组件，goods.vue，可以先将按钮所在的子组件的值传递给父组件，再由父组件传递给另外一个子组件shopcart</p>
+<pre><code>1.cartcontrol里面用下面的代码来触发
+this.$emit(&apos;addFood&apos;, event.target) // 父子组件传值，在子组件触发
+
+2.父组件good.vue里面在子组件标签上面用自定义事件来接收
+&lt;cartcontrol @addFood=&quot;receiveAddFood&quot; :food=&quot;food&quot;&gt;&lt;/cartcontrol&gt;
+
+3.父组件methods方法里面，调用函数
+// 接收cartcontrol里面传递过来的事件对象
+receiveAddFood (target) {
+    console.log(target)
+}
+</code></pre><p><strong>解决思路2：</strong>利用bus</p>
+<h3 id="vue阻止事件冒泡"><a href="#vue阻止事件冒泡" class="headerlink" title="vue阻止事件冒泡"></a>vue阻止事件冒泡</h3><p>vue里面阻止事件冒泡，只是为了点击处理一个点击事件，但是因为父元素上面也定义了点击事件，用stop.prevent来阻止</p>
+<pre><code>&lt;div class=&quot;content-right&quot; @click.stop.prevent=&quot;pay&quot;&gt;
+// 只会触发content-right上面的事件，不会触发它的父元素上面的点击事件
+</code></pre><h3 id="vue父组件调用子组件里面定义的方法"><a href="#vue父组件调用子组件里面定义的方法" class="headerlink" title="vue父组件调用子组件里面定义的方法"></a>vue父组件调用子组件里面定义的方法</h3><pre><code>1.先在子组件methods里面定义方法，比如show();
+2.在父组件的子组件元素上面写ref=&quot;foodEl&quot;;
+3.在父组件methods里面先获取子组件
+this.$refs.foodEl.show()
+</code></pre><h3 id="v-show用计算属性返回boolean"><a href="#v-show用计算属性返回boolean" class="headerlink" title="v-show用计算属性返回boolean"></a>v-show用计算属性返回boolean</h3><p>//   绑定函数，计算点击吐槽或推荐时，评论列表里面显示的内容</p>
+<pre><code>needShow (type, text) {
+    if (this.onlyContent &amp;&amp; !text) {    // 只显示有内容的评价，而没有文本，返回false，v-show不显示
+        return false
+    }
+    if (this.selectTypeNum === ALL) {  // 选择的是类型是全部时
+        return true
+    } else {    // 选择的是推荐或吐槽的时候，判断当前的这条评论的类型是否和选择的类型一致，一致就显示，不一致就不显示
+        return type === this.selectTypeNum
+    }
+}
+</code></pre><h3 id="时间格式的过滤器"><a href="#时间格式的过滤器" class="headerlink" title="时间格式的过滤器"></a>时间格式的过滤器</h3><p>vue里面日期时间字符串格式化为yyyy-mm-dd hh:mm之类的方法，用过滤的方法</p>
+<h4 id="全局过滤器"><a href="#全局过滤器" class="headerlink" title="全局过滤器"></a>全局过滤器</h4><pre><code>1.用moment插件，因为为了复用性，写一个全局的过滤器
+
+// 导入moment模块
+var moment = require(&apos;moment&apos;);
+
+// 全局过滤器
+Vue.filter(&apos;dmtDate&apos;, (input, formatString) =&gt; {
+    const lastFormatString = formatString || &quot;YYYY-MM-DD HH:mm:ss&quot;
+
+    // 在format中指定要把我们前面的时间按照什么样的格式输出
+    // 参数1：格式化的原始时间
+    // 参数2： 把院士时间，最终要格式化的字符串
+    // 参数：http://momentjs.cn/docs/
+    return moment(input).format(lastFormatString)
+})
+
+&lt;p&gt;{{newsdetail.add_time | dmtDate('YYYY-MM-DD')}}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{{newsdetail.click}}次浏览&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                分类：民生经济
+            &lt;/p&gt;
+</code></pre><h4 id="局部过滤器"><a href="#局部过滤器" class="headerlink" title="局部过滤器"></a>局部过滤器</h4><p>局部过滤器，在输出模块里面，和methods方法平级，定义一个过滤器</p>
+<pre><code>1.// 时间过滤器方法
+    filters: {
+        formatDate (time) {
+            let date = new Date(time)   // 先转换成date类型的对象
+            return formatDate(date, &apos;yyyy-MM-dd hh:mm&apos;)
+        }
+    }
+
+2.在common的js里面定义一个date.js方法，
+export function formatDate(date, fmt) {
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + &apos;&apos;).substr(4 - RegExp.$1.length));
+    }
+    let o = {
+        &apos;M+&apos;: date.getMonth() + 1,
+        &apos;d+&apos;: date.getDate(),
+        &apos;h+&apos;: date.getHours(),
+        &apos;m+&apos;: date.getMinutes(),
+        &apos;s+&apos;: date.getSeconds()
+    };
+    for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)) {
+            let str = o[k] + &apos;&apos;;
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+        }
+    }
+    return fmt;
+}
+
+3.用import 导入这个方法
+import {formatDate} from &apos;../../common/js/date.js&apos;  // 引入日期方法
+</code></pre><h3 id="正则相关"><a href="#正则相关" class="headerlink" title="正则相关"></a>正则相关</h3><p>正则提取url里面的参数，把参数分割成以&amp;为分隔符的key=value形式</p>
+<pre><code>var reg = /([^?&amp;=]+)=([^?&amp;=]*)/g
+
+解析：/表示分隔符，g表示全局匹配，匹配到第一个之后会继续向后查找
+     （）表示子组
+     [^]表示字符类取反，比如[^abc]匹配的就不是a和b和c的单个字符，[^?&amp;=]匹配不是^和?和=的单个字符
+     字符类[]后面的+和*表示量词
+     +等价于{1, }表示1次或多次
+     *等价于{0，}表示重复0次或多次
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /[^?&amp;=]{1,}=[^?&amp;=]{0,}/g
+console.log(str.match(reg));   // 输出[&quot;foo=bar&quot;, &quot;lang=js&quot;]
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /[^?&amp;=]+=[^?&amp;=]*/;
+console.log(str.match(reg));     // 输出[&quot;foo=bar&quot;]
+
+var str = &quot;foo=bar&amp;lang=js&quot;;
+var reg = /([^?&amp;=]{1,})=([^?&amp;=]{0,})/;
+console.log(str.match(reg)); //输出 [&quot;foo=bar&quot;, &quot;foo&quot;, &quot;bar&quot;]
+
+&quot;http:/www.baidu.com/?a=1&amp;b=2&quot;.match(/([^?&amp;=]+)=([^?&amp;=]*)/g);     // [&quot;a=1&quot;,&quot;b=2&quot;]
+</code></pre><p>总结：将url里面的参数解析成key=val的对象的方法</p>
+<pre><code>/**
+ * 解析url参数
+ * @example ?id=12345&amp;a=b
+ * @return Object {id:12345,a:b}
+ */
+export function urlParse () {
+    let url = window.location.search
+    let obj = {}
+    let reg = /[^?&amp;=]+=[^?&amp;=]*/g
+    let arr = url.match(reg)
+    // [&apos;id=12345&apos;, &apos;a=b&apos;]
+    if (arr) {
+        arr.forEach((item) =&gt; {
+            let tempArr = item.split(&apos;=&apos;)
+            //  [&quot;id&quot;, &quot;12345&quot;]
+            let key = decodeURIComponent(tempArr[0])
+            let val = decodeURIComponent(tempArr[1])
+            obj[key] = val
+        })
+    }
+    return obj
+}
+</code></pre><h3 id="keep-alive缓存组件"><a href="#keep-alive缓存组件" class="headerlink" title="keep-alive缓存组件"></a>keep-alive缓存组件</h3><p>keep-alive缓存vue组件，当请求的数据没有变化的时候，不希望再发送请求，可以用keep-alive将组件缓存起来，缓存的同时也会记录上一次的滚动的位置</p>
+<p><strong>使用场景：</strong></p>
+<p>比如一个列表和一个详情，那么用户就会经常在打开详情=》返回列表=》打开详情之间切换，切换频率高，这样每次从详情返回列表的时候，都能从缓存里面快速渲染，而不是重新渲染</p>
+<p>原理是把组件的状态缓存在内存里</p>
+<p>如果并不想所有的组件都被缓存，有些切换回来的时候是已经加载过的，解决方法：在app.vue里面设置</p>
+<pre><code>&lt;!-- 这里是需要keepalive的 --&gt;
+&lt;keep-alive&gt;
+     &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+
+&lt;!-- 这里不会被keepalive --&gt;
+&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+
+然后在设置路由信息的时候这样
+
+{
+  path: &apos;&apos;,
+  name: &apos;&apos;,
+  component: ,
+  meta: {keepAlive: true} // 这个是需要keepalive的},{
+  path: &apos;&apos;,
+  name: &apos;&apos;,
+  component: ,
+  meta: {keepAlive: false} // 这是不会被keepalive的}
+</code></pre><p>或者这里利用active的方法：<a href="http://www.cnblogs.com/zion0707/p/6213159.html" target="_blank" rel="external">http://www.cnblogs.com/zion0707/p/6213159.html</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/01/05/web安全之xss学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1018,6 +1636,172 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/08/16/移动端页面样式设置的一些总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/16/移动端页面样式设置的一些总结/" itemprop="url">移动端页面样式设置的一些总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-16T19:19:46+08:00">
+                2016-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>移动端的页面写了几个了，除了前面的1px，rem这些坑，还有一些要考虑的问题，在这里再开一个坑，记录下来，下次少踩一点。</p>
+<h3 id="扩展点击区域"><a href="#扩展点击区域" class="headerlink" title="扩展点击区域"></a>扩展点击区域</h3><p>手机端的，header部分的back按钮，需要将其点击的区域扩大，方便点击，这个用过的方法主要有两种：</p>
+<h4 id="利用伪元素"><a href="#利用伪元素" class="headerlink" title="利用伪元素"></a>利用伪元素</h4><pre><code>// 扩展点击区域
+extend-click()
+position: relative
+&amp;:before
+    content: &apos;&apos;
+    position: absolute
+    top: -10px
+    left: -10
+    right: -10px
+    bottom: -10px
+在common/css/mixin.styl里面设置，需要的时候导入
+</code></pre><h4 id="back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性"><a href="#back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性" class="headerlink" title="back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性"></a>back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性</h4><pre><code>// back按钮，a标签设置的，利用精灵图
+header a.back {
+  left: 0px;
+  top: 1px;
+  background-position: -20px 0;
+  padding: 12px 10px;  // 扩展的点击区域
+  box-sizing: content-box; // 默认的盒子模型
+  background-origin: content-box; // 设置背景图片的起始位置
+  background-clip: content-box; // 切割，只保留content内容
+}
+</code></pre><h3 id="文本超出不显示，显示省略号"><a href="#文本超出不显示，显示省略号" class="headerlink" title="文本超出不显示，显示省略号"></a>文本超出不显示，显示省略号</h3><p>为文字的父元素设置，且父元素不能设置width:100%</p>
+<pre><code>div.test {
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+</code></pre><h3 id="chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置"><a href="#chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置" class="headerlink" title="chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置"></a>chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置</h3><pre><code>-webkit-text-size-adjust: none
+</code></pre><h3 id="点击高亮问题处理"><a href="#点击高亮问题处理" class="headerlink" title="点击高亮问题处理"></a>点击高亮问题处理</h3><p>ios设备上，点击按钮的是时候，屏幕会闪动一下，这是因为移动端，有事件监听的元素被点击的时候会被高亮显示，而-webkit-tap-highlight-color属性会在当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色</p>
+<pre><code>-webkit-tap-highlight-color:rgba(0,0,0,0)
+//webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/06/16/移动端dpr不同时，2x图，3x图的处理方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1551,799 +2335,6 @@ dpr(device pixel ratio).设备像素比；i5,6 = 2;i6plus=3;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/" itemprop="url">移动端底部tab或按钮显示问题-css sticky footer</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-12T20:05:00+08:00">
-                2016-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>问题：</strong> 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。</p>
-<p>但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。</p>
-<p><strong>解决方法：</strong><br>设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
-<pre><code>// wrapper层
-&lt;div class=&quot;detail&quot;&gt;
-    // 和关闭按钮并列的层
-    &lt;div class=&quot;detail-wrapper clearfix&quot;&gt; 
-        // 里面的主题内容层
-        &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    // 关闭按钮层
-    &lt;div class=&quot;detail-close&quot;&gt;
-        &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-// 样式
-    .detail 
-        /*设置全屏效果，占满视窗*/
-        position: fixed
-        z-index: 100
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
-        overflow: auto
-        background-color: rgba(7, 17, 27, 0.8)
-        // filter: blur(10px)
-    // 内容的wrapper层也宽高也占满100%，占满屏幕
-    .detail-wrapper
-        min-width: 100%
-        height: 100%
-        .detail-main
-            margin-top: 64px
-            padding-bottom: 64px (这个是关键，设置一个下padding，给底部留出空间)
-    .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
-        position: relative
-        width: 32px
-        height: 32px
-        margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
-        clear: both
-        font-size: 32px
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/05/手机端click事件时的点透问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/05/手机端click事件时的点透问题/" itemprop="url">手机端click事件时的点透问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-05T19:11:40+08:00">
-                2016-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>移动端点透事件，其实网上已经大把这样的案例说明和解决方法，项目里面遇到过一次之后，就已经解决了。</p>
-<h2 id="点透事件的原理"><a href="#点透事件的原理" class="headerlink" title="点透事件的原理"></a>点透事件的原理</h2><p>根据遇到的问题来分析，项目里是一个页面要做一个弹出层，弹出层后面有一个mask，点击mask的时候，弹出层隐藏，但是触发了主页面的input输入框的焦点。</p>
-<p>原因就是移动端click有300ms的滞后性，要去判断你是不是缩放，还会不会双击。所以touchend的时候，先隐藏了弹出层和mask，后面真正的点击事件到来的时候，点击的是下面一层。</p>
-<p>解决方法：</p>
-<h3 id="给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。"><a href="#给这个事件添加阻止默认事件方法：e-preventDefault-但是每一次都要添加，很麻烦。" class="headerlink" title="给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。"></a>给这个事件添加阻止默认事件方法：e.preventDefault();但是每一次都要添加，很麻烦。</h3><h3 id="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"><a href="#封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理" class="headerlink" title="封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理"></a>封装了一个tap事件，利用touch事件的执行时机比click要早，通过事件的判断来进行逻辑处理</h3><p>tap.js如下：</p>
-<pre><code>// 参数1 dom元素 参数2 回调函数
-function tap(dom,callBack) {
-  /*
-    tap是轻敲
-    1. 手指 放上去 离开的速度 很快
-    2. 手指如果放上去之后 移动了 失效
-    3. 手指放上去 按了超过一定时间（长按）
-  */
-
-  // 获取起始时间
-  var startTime;
-  var isMove = false; // 标识符
-  dom.addEventListener(&apos;touchstart&apos;, function (event) {
-    startTime = Date.now();
-    // 还原isMove的值
-    isMove = false;
-  })
-  // 进入到这个事件中 说明 移动了
-  dom.addEventListener(&apos;touchmove&apos;, function (event) {
-    // console.log(&apos;move&apos;);
-    isMove = true;
-  })
-  // 计算 停留的时间
-  dom.addEventListener(&apos;touchend&apos;, function (event) {
-    var delayTime = Date.now() - startTime;
-    // 如果移动了 也失效
-    if (isMove == true) {
-      // console.log(&apos;移动了，失效&apos;);
-      return;
-    }
-    // 判断停留时间，是否太久了
-    // 这里的时间 可以根据需求调整
-    if (delayTime &gt; 300) {
-      // console.log(&apos;太久了，失效&apos;);
-      return;
-    }
-
-    // 正常执行
-    // console.log(&apos;轻敲&apos;);
-    callBack();
-  })
-}
-</code></pre><h3 id="用FastClick"><a href="#用FastClick" class="headerlink" title="用FastClick"></a>用FastClick</h3><p>原理：FastClick 在检测到 touchend 事件的时候，会通过 DOM 自定义事件立即触发一个模拟click 事件，并把浏览器在 300 毫秒之后真正触发的 click 事件阻止掉。</p>
-<p>地址：<a href="https://github.com/ftlabs/fastclick/" target="_blank" rel="external">https://github.com/ftlabs/fastclick/</a></p>
-<p>用法：<br>1.引入js</p>
-<p><script type="application/javascript" src="/path/to/fastclick.js"></script><br>2.绑定在document.body上</p>
-<pre><code>if (&apos;addEventListener&apos; in document) {
-    document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
-        FastClick.attach(document.body);
-    }, false);
-}
-
-$(function() {
-    FastClick.attach(document.body);
-});
-
-var attachFastClick = require(&apos;fastclick&apos;);
-attachFastClick(document.body);
-</code></pre><h3 id="fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）"><a href="#fastclick源码分析，转：https-segmentfault-com-a-1190000005850383（转）" class="headerlink" title="fastclick源码分析，转：https://segmentfault.com/a/1190000005850383（转）"></a>fastclick源码分析，转：<a href="https://segmentfault.com/a/1190000005850383（转）" target="_blank" rel="external">https://segmentfault.com/a/1190000005850383（转）</a></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/12/31/闭包学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/31/闭包学习笔记/" itemprop="url">闭包学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-31T11:47:16+08:00">
-                2015-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/闭包/" itemprop="url" rel="index">
-                    <span itemprop="name">闭包</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。</p>
-<p>闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。</p>
-<h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有权访问原函数的私有变量，再把这个内部函数返回出去，在外部调用这个内部函数。</p>
-<p>总结起来：</p>
-<pre><code>1.函数嵌套函数；
-2.能在函数外部访问函数内部声明的变量
-</code></pre><h2 id="闭包的基本模式"><a href="#闭包的基本模式" class="headerlink" title="闭包的基本模式"></a>闭包的基本模式</h2><pre><code>function add(outerArg) {
-     function inner(innerArg) {
-         return innerArg + outerArg 
-     }
-     return inner;
-}
-
-var addTen = add(10);
-console.log(addTen(1))   // 输出11
-console.log(addTen(2))   // 输出12
-</code></pre><p>本质是利用函数的作用域链，函数内部定义的函数，会把外部函数的作用域中的对象添加到自己到作用域链中，因为子对象可以沿着作用域链向上查找父对象的变量。</p>
-<p>在外部函数执行完的时候，执行环境（变量）本来应该被销毁，但是因为被return出去的内部函数还在引用外部函数的变量，所以外部函数的变量不会被销毁，仍然保留在内部函数的作用域链里面，直到内部函数被销毁之后，外部函数的变量才会跟着销毁。</p>
-<h2 id="闭包调用方式不同，结果不同"><a href="#闭包调用方式不同，结果不同" class="headerlink" title="闭包调用方式不同，结果不同"></a>闭包调用方式不同，结果不同</h2><p>如果只调用1次外部outer函数，那么多次使用outer()返回的值访问的变量是同一个变量，如果多次调用外部函数，那么每次调用都生成一个新的变量</p>
-<pre><code>&lt;script&gt;
-    function func() {
-        var num = Math.random();
-        return function () {
-            return num;
-        }
-    }
-    //每次的结果相同，因为外部函数func只调用了一次，只开辟了一次空间，存储了num的值，里面的函数每次调用时引用的变量都相同
-    // var num = func();
-    // console.log(num());
-    // console.log(num());
-    // console.log(num());
-
-    //每次结果不同，因为每次调用func的时候都开辟了一个新的空间，所以彼此之间是独立的，作用域是兄弟关系，没有直接联系，互相无法访问，每一次调用时num都生成新的值
-    console.log(func()()); 
-    console.log(func()());
-    console.log(func()());
-&lt;/script&gt;
-</code></pre><h2 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h2><p>1.可以使用闭包保护变量，防止放在外部的变量被别人随意修改，使用闭包，可以给别人提供一个访问变量的接口，在定义接口的时候，在为别人提供的修改变量的方法中设置一些校验逻辑，来判断用户设置的数据的合法性</p>
-<pre><code>function func(){
-    var name = &quot;小明&quot;;
-    var yanzhi = 99999999999;
-    var obj = {
-        setYanZhi: function(value){
-            if(value &lt; 999999999999){
-                throw &quot;你是不是不想混了！&quot;;
-            }
-        },
-        getYanZhi: function(){
-            return yanzhi;
-        }
-    }
-    return obj;
-}
-
-//小同
-var o = func();
-o.setYanZhi(9999999999999);
-
-console.log(o.getYanZhi());
-</code></pre><p>2.保护变量，暴露接口，获取元素的所有子元素方法</p>
-<pre><code>function outer(){
-    var list = [];
-    function getChildren(ele){
-        //1. 获取所有的子元素
-        var children = ele.children;
-        //2. 遍历所有的子元素
-        for(var i = 0; i &lt; children.length; i++){
-            var child = children[i];
-            list.push(child);
-            getChildren(child);
-        }
-    }
-    return {
-        getChildren: getChildren,
-        list : list
-    };
-}
-
-// var o = outer();
-// o.getChildren(body);
-// o.list就可以访问获取到的结果了！
-</code></pre><h2 id="闭包的缺陷"><a href="#闭包的缺陷" class="headerlink" title="闭包的缺陷"></a>闭包的缺陷</h2><p>1.会把外部函数的活动对象都添加到自己的作用域链上，会比普通的函数更耗费内存；</p>
-<p>2.垃圾回收机制发现闭包外部函数的变量有人使用的时候，就不会回收。所以会占用内存</p>
-<h2 id="闭包的应用场景"><a href="#闭包的应用场景" class="headerlink" title="闭包的应用场景"></a>闭包的应用场景</h2><h3 id="tab栏切换"><a href="#tab栏切换" class="headerlink" title="tab栏切换"></a>tab栏切换</h3><p>tab栏切换的时候，给ul下面的每一个li添加点击事件，点击的时候，需要获取当前的li的索引</p>
-<pre><code>&lt;ul&gt;
-    &lt;li&gt;item1&lt;/li&gt;
-    &lt;li&gt;item2&lt;/li&gt;
-    &lt;li&gt;item3&lt;/li&gt;
-    &lt;li&gt;item4&lt;/li&gt;
-    &lt;li&gt;item5&lt;/li&gt;
-&lt;/ul&gt;
-
-var list = document.getElementsByTagName(&apos;li&apos;);
-for(var i = 0, len = list.length; i &lt; len; i++) {
-    list[i].onclick = function() {
-        alert(i);   //i=5
-    }
-}
-</code></pre><p> 点击任意一个li的时候，i的值总是5</p>
-<p> 因为onclick事件是被异步触发的，先执行的是for循环的同步事件，执行完i是5，onclick被触发的时候，i是5</p>
-<p> <strong>解决方案1,遍历的时候添加自定义属性index，点击的时候获取：</strong></p>
-<pre><code>var list = document.getElementsByTagName(&apos;li&apos;);
-for(var i = 0, len = list.length; i &lt; len; i++) {
-     // 循环的时候就给每一个btn设置自定义属性
-     list[i].index = i;
-    list[i].onclick = function() {
-        alert(this.index);   //解决了问题
-    }
-}
-</code></pre><p><strong>解决方案2：闭包，每次一for循环的时候，将i的值存储起来</strong></p>
-<pre><code>var list = document.getElementsByTagName(&apos;button&apos;);                       
-for(var i = 0, len = list.length; i &lt; len; i++) {
-     // 创建一个闭包
-     function outer(){
-          var j = i;
-          function func(){
-               alert(j);
-          }
-          return func;
-     }
-     var f = outer();    //关键是这一步，for循环的时候就执行了
-    list[i].onclick = f  //每次循环都存储i的值
-}
-
-// 简化版：
-for(var i = 0, len = list.length; i &lt; len; i++) {
-     // 创建一个闭包
-     list[i].onclick = function(j) {
-          return function(){
-              alert(j) 
-          }
-     }(i)
-}
-</code></pre><h3 id="保护私有变量"><a href="#保护私有变量" class="headerlink" title="保护私有变量"></a>保护私有变量</h3><p>写js代码的时候，为了防止全局变量污染，也为了别人不能随意更改自己的变量值，所以经常会把自己的代码写在一个自执行函数里面。</p>
-<p>但是又想向外面暴露接口，修改里面的值和获取里面的值，修改的时候设置校验条件，判断用户设置的值的合法性，就可以考虑闭包。</p>
-<pre><code>var foo = (function(){
-     var secret = &apos;secret&apos;;
-     return {
-          get_secret: function() {
-              return secret; 
-          },
-          set_secret: function(newValue) {
-               if（newValue &lt; 0）{
-                   throw(&apos;修改值不符合要求&apos;); 
-               }
-               secret = newValue;
-          }
-     }
-}())
-
-foo.get_secret()   //&apos;secret&apos;
-foo.secret  // 不能访问
-foo.set_secret(&apos;new_secret&apos;);
-foo.get_secret()  // new_secret
-</code></pre><h3 id="解决for循环里面setTimeout问题"><a href="#解决for循环里面setTimeout问题" class="headerlink" title="解决for循环里面setTimeout问题"></a>解决for循环里面setTimeout问题</h3><pre><code>for(var i = 0; i &lt; 5; i++){
-     setTimeout(function(){
-        console.log(new Date, i);
-      }, 1000);
-}
-console.log(new Date, i);
-// 异步的，先for循环完毕，i为5,然后一下子打印5个5
-// 5-》5，5，5，5，5
-
-// 解决方法：闭包
-for(var i = 0; i &lt; 5; i++){
-     function outer(){
-          var j = i;
-          function inner(){
-               console.log(j);
-          }
-          return inner;
-     }
-     var f = outer();  //每一次for循环都会执行Outer函数，开辟内存，保存当时的i变量
-     setTimeout(f, 1000);
-}
-
-// 简化之后
-for (var i = 0; i &lt; 5; i++) {
-    (function(j) {  // i = j
-        setTimeout(function() {
-            console.log(new Date, j)
-        })
-    })(i)
-}
-
-或者：闭包的另一种做法：
-var output = function (i) {
-    setTimeout(function() {
-        console.log(new Date, i);
-    }, 1000);
-};
-
-for (var i = 0; i &lt; 5; i++) {
-    output(i);  // 这里传过去的 i 值被复制了
-}
-
-console.log(new Date, i);
-</code></pre><p>补充： 其实如果不是需要在外部打印，其实可以用let作用域，把var换成let，就解决了问题。因为let只作用在循环内部的作用域。</p>
-<p>补充：看到简书上一个对闭包进一步深化的学习，解决这个问题的需求和答案：</p>
-<p><strong>问题：</strong></p>
-<p>如果期望代码的输出变成 0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5，并且要求原有的代码块中的循环和两处 console.log 不变，该怎么改造代码？新的需求可以精确的描述为：代码执行时，立即输出 0，之后每隔 1 秒依次输出 1,2,3,4，循环结束后在大概第 5 秒的时候输出 5</p>
-<p>1.简单粗暴的解决方法：</p>
-<pre><code>for (var i = 0; i &lt; 5; i++) {
-    (function(j) {
-        setTimeout(function() {
-            console.log(new Date, j);
-        }, 1000 * j));  // 这里修改 0~4 的定时器时间
-    })(i);
-}
-
-setTimeout(function() { // 这里增加定时器，超时设置为 5 秒
-    console.log(new Date, i);
-}, 1000 * i);
-</code></pre><p>2.虽然解决了问题，但是没有联想起异步操作的Promise方法<br>在系列异步操作完成（每次循环都产生了 1 个异步操作）之后，再做其他的事情，代码该怎么组织？</p>
-<pre><code>const tasks = [];
-for (var i = 0; i &lt; 5; i++) {   // 这里 i 的声明不能改成 let，如果要改该怎么做？
-    ((j) =&gt; {
-        tasks.push(new Promise((resolve) =&gt; {
-            setTimeout(() =&gt; {
-                console.log(new Date, j);
-                resolve();  // 这里一定要 resolve，否则代码不会按预期 work
-            }, 1000 * j);   // 定时器的超时时间逐步增加
-        }));
-    })(i);
-}
-
-Promise.all(tasks).then(() =&gt; {
-    setTimeout(() =&gt; {
-        console.log(new Date, i);
-    }, 1000);   // 注意这里只需要把超时设置为 1 秒
-});
-</code></pre><p>下面代码会更简洁明了一些</p>
-<pre><code>const tasks = []; // 这里存放异步操作的 Promise
-const output = (i) =&gt; new Promise((resolve) =&gt; {
-    setTimeout(() =&gt; {
-        console.log(new Date, i);
-        resolve();
-    }, 1000 * i);
-});
-
-// 生成全部的异步操作
-for (var i = 0; i &lt; 5; i++) {
-    tasks.push(output(i));
-}
-
-// 异步操作完成之后，输出最后的 i
-Promise.all(tasks).then(() =&gt; {
-    setTimeout(() =&gt; {
-        console.log(new Date, i);
-    }, 1000);
-});
-</code></pre><p>之前看过几次阮一峰的ES6的Primise讲解，但是实践中用的还是不多，找时间可以再去研究一下。</p>
-<p>再补充：佩服原作者的好学精神，还给出了es7的解决方案：</p>
-<pre><code>// 模拟其他语言中的 sleep，实际上可以是任何异步操作
-const sleep = (timeountMS) =&gt; new Promise((resolve) =&gt; {
-    setTimeout(resolve, timeountMS);
-});
-
-(async () =&gt; {  // 声明即执行的 async 函数表达式
-    for (var i = 0; i &lt; 5; i++) {
-        await sleep(1000);
-        console.log(new Date, i);
-    }
-
-    await sleep(1000);
-    console.log(new Date, i);
-})();
-</code></pre><p>这个先占坑，之后再学习一下es7，感觉快跟不上时代了。。。</p>
-<h2 id="闭包的优化"><a href="#闭包的优化" class="headerlink" title="闭包的优化"></a>闭包的优化</h2><p> 比如说一个外部函数，里面定义一个内部函数，我只想用这个内部函数去引用外部函数的一个属性值，但是闭包会把外部函数的所有属性和方法都添加到内部函数的作用域链上，导致占用不必要的内存。</p>
-<p> 可以把要引用的变量用另外的值保存下来，然后把引用的对象设置为null。</p>
-<pre><code>function Outer() {
-     var obj = {};
-     obj.id = &apos;12345678&apos;;
-     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
-     return function() {
-          return obj.id;
-     };
-}
-
-function AnotherOuter() {
-     var obj = {};
-     obj.id = &apos;12345678&apos;;
-     obj.name = &apos;aha&apos;; // ... 假设经过很多处理过程，最后obj上带有很多属性
-     var id = obj.id;
-     obj = null;
-     return function() {
-     return id;
-     };
-}
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2394,7 +2385,7 @@ function AnotherOuter() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2405,7 +2396,7 @@ function AnotherOuter() {
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2416,7 +2407,7 @@ function AnotherOuter() {
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
