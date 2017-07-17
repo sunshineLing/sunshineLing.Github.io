@@ -297,6 +297,329 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/17/requireJS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/17/requireJS/" itemprop="url">requireJS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-17T09:26:11+08:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端模块化/" itemprop="url" rel="index">
+                    <span itemprop="name">前端模块化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="requireJs"><a href="#requireJs" class="headerlink" title="requireJs"></a>requireJs</h2><p><strong>AMD（ Asynchronous Module Definition）异步加载模块定义</strong></p>
+<h3 id="AMD规范化加载的由来"><a href="#AMD规范化加载的由来" class="headerlink" title="AMD规范化加载的由来"></a>AMD规范化加载的由来</h3><ul>
+<li><p>前端的模块化，是参照commonjs规范实现的，有一个全局性的方法require(),用于加载模块，如果有一个add.js，加载的时候，直接使用var add = require(“add”)就可以实现，使用时直接调用add方法，因为在服务端，模块是放在硬盘里面，加载的很快，几乎可以同步读取。</p>
+</li>
+<li><p>但是在客户端，使用这种方法加载，因为模块放在服务端的，读取的时间取决于网速的快慢，可能会等待很长时间，没有加载完，后面的就不能执行，会造成浏览器假死状态。</p>
+</li>
+<li><p>所以浏览器模块的加载，不能使用同步，需要异步加载，所以有了AMD规范。即异步模块定义</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">require([&quot;add&quot;], function(add) &#123;</div><div class="line">     </div><div class="line">&#125;)</div><div class="line">```   </div><div class="line"></div><div class="line">	使用require()来加载，第一个参数是模块，是一个数组，第二个参数是回调函数，依赖这个模块的语句，放在回调函数里面，加载完成之后，才会运行回调函数。</div><div class="line"></div><div class="line">使用AMD规范的库，用过的是require.js。</div><div class="line">### requireJs解决的问题</div><div class="line">- 当一个网页要引入多个外部文件，且文件之间的依赖关系较强的时候，必须保证文件的加载顺序，并且当浏览器加载外部文件的时候就会停止网页的渲染，加载的文件越多，网页失去响应的时间越长，代码的编写和维护也会很麻烦。</div><div class="line">- requirejs实现了js 文件的异步加载，避免网页失去响应</div><div class="line">- 管理模块直接的依赖性，便于代码的编写和维护。</div><div class="line">- 解决了命名冲突问题（不同模块中的同名变量不会有冲突）</div><div class="line"></div><div class="line">### requirejs的基本使用</div><div class="line"></div><div class="line">### 主模块</div><div class="line">- 如果主模块不依赖于其他模块</div></pre></td></tr></table></figure>
+<!-- data-main的作用是指定网页程序的主模板，即main.js。这个文件会第一个被require.js加载。main是省略了后缀名js -->
+<p><script src="require.js" data-main="js/main"></script><br>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/16/Vuewendang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/16/Vuewendang/" itemprop="url">Vue基础知识学习总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-16T17:06:12+08:00">
+                2017-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="学习文档目录"><a href="#学习文档目录" class="headerlink" title="学习文档目录"></a>学习文档目录</h2><p>官网:<br><a href="http://cn.vuejs.org/" target="_blank" rel="external">http://cn.vuejs.org/</a></p>
+<p><a href="http://cn.vuejs.org/v2/guide/" target="_blank" rel="external">http://cn.vuejs.org/v2/guide/</a></p>
+<p><a href="https://www.awesomes.cn/subject/vue" target="_blank" rel="external">https://www.awesomes.cn/subject/vue</a></p>
+<h2 id="MVVM机制"><a href="#MVVM机制" class="headerlink" title="MVVM机制"></a>MVVM机制</h2><pre><code>M:model 数据模型:提供数据(ajax)
+V:view 视图 视图、负责展现在我们浏览器端东西
+VM:view-model 相当于是控制器
+</code></pre><h3 id="和angular对比，数据双向绑定原理的不同"><a href="#和angular对比，数据双向绑定原理的不同" class="headerlink" title="和angular对比，数据双向绑定原理的不同"></a>和angular对比，数据双向绑定原理的不同</h3><h4 id="angular是脏检查机制"><a href="#angular是脏检查机制" class="headerlink" title="angular是脏检查机制"></a>angular是脏检查机制</h4><p>脏数据就是之前的数据已经更新了，有了新数据，但是视图不知道，没有更新数据，就需要检查数据有没有更新，有就去通知视图更新。</p>
+<p>如果用原生的异步方法，比如setTimeout,setInterval，ajax，事件click会阻断数据的脏检查，需要手动触发脏检查，把要执行的代码放在$apply()的回调函数里面。</p>
+<p>而以ng-click开头的有脏检查。</p>
+<p>原理就是：</p>
+<p>Angular 在 作用域$scope上设置了一个监听队列，用来监听数据变化并更新 view 。</p>
+<p>当每次给view绑定一个事件，比如ng-click的时候，AngularJs内部 就会往 $watch 队列里插入一条新 $watch，用来检测它监视的 model 里是否有变化的东西。$watch对象里面有三个参数，其中getNewValue()方法可以得到$scope上的最新值，listener方法可以比较新旧值，做操作。</p>
+<p>当view接收到可以被 angular context 处理的事件，比如说dom事件，ng-click,ajax事件（angular里面是$http），$timeout,$interval定时器事件,主要是异步事件，$digest 循环就会触发，遍历所有的 $watch队列，有变化，就会更新$scope里面的val值对应的 dom。</p>
+<h4 id="Vue-js通过属性劫持再结合发布者-订阅者模式来绑定"><a href="#Vue-js通过属性劫持再结合发布者-订阅者模式来绑定" class="headerlink" title="Vue.js通过属性劫持再结合发布者-订阅者模式来绑定"></a>Vue.js通过属性劫持再结合发布者-订阅者模式来绑定</h4><p>比如说有一份数据a.b，a对象里面有属性b，在Vue实例化的过程中（new Vue()）,会用Object.defineProperty()方法给a.b添加getter和setter方法；</p>
+<p>同时，vue.js的compile会解析模板，生成一个指令对象，比如v-text=”a.b”，每一个指令对象都会关联一个watcher（a.b），指令对应的a.b的有值时候，就会触发到它上面的getter，会被通知到watcher，a.b的值再有变化的时候，就会触发setter，watcher会再次获取a.b的值，并对比新旧的值，发现值改变了，就会通知指令v-text。</p>
+<p>指令v-text是vue内部封装好的dom操作方法，会调用原生的innerText更改值。</p>
+<h3 id="vue和angular对比的优缺点"><a href="#vue和angular对比的优缺点" class="headerlink" title="vue和angular对比的优缺点"></a>vue和angular对比的优缺点</h3><p>vue比angular1好用的多，更轻量，大小只有26k，移动端开发很占优势，就是环境搭建比较复杂，但是组件化开发，维护成本低；学习称本地，学习曲线平稳。</p>
+<p>vue借鉴了angular的指令和react的组件化，把页面抽成组件树，每个组件都有完整的声明周期</p>
+<p>angular1后面从2开始就重写了，$scope变成zone.js，控制器也变成了component组件，学习成本太高了。现在都发展到4了，1早晚会被淘汰的。</p>
+<p>angular1和vue的数据双向绑定机制是不一样的。如上。</p>
+<h3 id="vue指令"><a href="#vue指令" class="headerlink" title="vue指令"></a>vue指令</h3><pre><code>v-text&amp;v-html
+v-text：显示文本
+v-html：解析并且显示html字符串
+
+v-on:
+给我们的dom元素上绑定事件的
+
+v-bind:
+给我们标签绑定属性，它的目的是让我们的某些标签属性上面的值来自我们model
+
+v-model:
+用来实现数据双向绑定（模型更改之后，会更新视图，视图更改之后，会影响模型）
+
+v-if/v-else:
+判断是否需要渲染我们标签
+
+v-for:
+循环渲染html标签
+
+注意点:
+1、指令要和html元素作用在一起
+2、v-bind和我们v-on都有缩写的方式    
+v-bind: 可以缩写成 `:`
+v-on: 可以缩写成`@`
+3、v-model只会作用于哪些有value值的标签(input checkbox...)
+4、v-else/v-else-if必须紧跟在上一个v-if后面
+</code></pre><h3 id="vue路由"><a href="#vue路由" class="headerlink" title="vue路由"></a>vue路由</h3><p>步骤:</p>
+<pre><code>1、写好html中的代码
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-link to=&quot;/xxxx&quot;&gt;&lt;/router-link&gt;</div></pre></td></tr></table></figure>
+
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-view&gt;&lt;/router-view&gt;</div></pre></td></tr></table></figure>
+
+
+2、写好js中的代码
+    1、定义好组件
+
+    2、将组件和具体跳转路径配置在路由中
+
+    3、将路由和vue实例关联起来
+</code></pre><h3 id="vue-resource"><a href="#vue-resource" class="headerlink" title="vue-resource"></a>vue-resource</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤:"></a>步骤:</h4><pre><code>参考:https://github.com/pagekit/vue-resource/blob/develop/docs/http.md
+
+1、导入vue-resource
+
+2、调用方法
+    this.$http.get/post/jsonp(url).then(成功的回调，失败的回调)
+</code></pre><h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><pre><code>post请求，在我们第三个参数中，一定得设置{emulateJSON:true}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/16/vue音乐webApp项目总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,6 +661,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -427,7 +772,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/25/Vue-高仿饿了么项目总结/" itemprop="url">Vue eleme</a></h1>
+                <a class="post-title-link" href="/2017/03/25/Vue-高仿饿了么项目总结/" itemprop="url">Vue-高仿饿了么项目总结</a></h1>
         
 
         <div class="post-meta">
@@ -1985,356 +2330,6 @@ img {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/06/15/移动端高清、多屏幕适配方案总结-rem/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/15/移动端高清、多屏幕适配方案总结-rem/" itemprop="url">移动端高清、多屏幕适配方案总结-rem</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-15T20:58:37+08:00">
-                2016-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这篇文章，算是对学习rem及用在手机端项目里面的一个汇总。</p>
-<h2 id="rem是什么？"><a href="#rem是什么？" class="headerlink" title="rem是什么？"></a>rem是什么？</h2><p>在开发移动端h5页面的时候，一套设计图，需要适配不同尺寸的手机，手机的分辨率也不同。所以不能把单位写死为xxpx。</p>
-<p><strong>这里对rem、px、em做一个区分：</strong></p>
-<p>px是绝对字体大小，但是页面缩放的时候因为字体不变，网页还是那么大，会变形。</p>
-<p>em计算方式是乘以当前对象从父级遗传的字体大小，参考对象是一个变化的值</p>
-<pre><code>父级： height: 1em;    // 16px,如果html的font-size是100%
-子元素： font-size: 0.625em     // 16 * 0.625 = 10px
-        height: 1em  // 实际上是10px
-</code></pre><p>rem是rem是基于根节点html的字体大小进行计算，浏览器一般默认字体是16px,1em = 16px;<br>但是是css3的新属性，不支持ie678，兼容性处理，再写px或者100%</p>
-<pre><code>1.5rem = 根节点默认字体大小 * 1.5 = 24px;
-
-// 转化的时候，可以用
-28px = 28/16 = 1.75rem
-</code></pre><p>可以把根节点设置为10px或62.5%（100%是16px），方便以10计算而不是16，为了兼容IE7和ie8,默认字体可以设置为：</p>
-<pre><code>html {
-     font-size: 62.5%;
-}
-</code></pre><h2 id="利用rem实现多屏幕适配的思路"><a href="#利用rem实现多屏幕适配的思路" class="headerlink" title="利用rem实现多屏幕适配的思路"></a>利用rem实现多屏幕适配的思路</h2><p>相同的rem,只需要更改页面根元素html的font-size,把和元素尺寸有关的css，如width,height,line-height,margin,padding等都以rem作为单位,这样页面在不同设备下就能保持一致的网页布局，也解决了1px的问题。</p>
-<h2 id="怎么判断屏幕的尺寸（宽度），去动态的调整html的font-size？"><a href="#怎么判断屏幕的尺寸（宽度），去动态的调整html的font-size？" class="headerlink" title="怎么判断屏幕的尺寸（宽度），去动态的调整html的font-size？"></a>怎么判断屏幕的尺寸（宽度），去动态的调整html的font-size？</h2><h3 id="方法一、css-media-query"><a href="#方法一、css-media-query" class="headerlink" title="方法一、css media query"></a>方法一、css media query</h3><pre><code>@media screen and (max-width: 320px) {
-     html{
-        font-size: 14px;
-    } 
-} 
-@media screen and (min-width: 321px) and (max-width: 413px) { 
-    html{
-    font-size: 16px;
-    } 
-}
- @media screen and (min-width: 414px) and (max-width: 639px) { 
-    html{
-        font-size: 17px;
-    } 
-}
- @media screen and (min-width: 640px) { 
-    html{
-        font-size: 18px;
-    } 
-}
-</code></pre><h3 id="方法二、通过js来判断页面宽度，动态调整html的font-size"><a href="#方法二、通过js来判断页面宽度，动态调整html的font-size" class="headerlink" title="方法二、通过js来判断页面宽度，动态调整html的font-size"></a>方法二、通过js来判断页面宽度，动态调整html的font-size</h3><p><img src="http://i.imgur.com/IVNw2lq.png" alt=""></p>
-<h3 id="方法三、引入淘宝的lib-flexible"><a href="#方法三、引入淘宝的lib-flexible" class="headerlink" title="方法三、引入淘宝的lib-flexible"></a>方法三、引入淘宝的lib-flexible</h3><p>地址：<a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">https://github.com/amfe/lib-flexible</a><br>使用文档说明：<a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external">http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html</a><br>1.把flexible.js和flexible_css.js引入，放在head标签的utf-8meta标签下面<br>此时不用再写</p>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;/&gt;
-</code></pre><p>2.此时,F12,会发现ip6下面，html的font-size会自动被设置为font-size: 75px（设计稿的尺寸是750），也会给html元素上增加一个data-dpr属性，js会根据不同的设备添加不同的data-dpr值，比如ip6是2.</p>
-<p>3写css样式的时候，其他样式尺寸设置为rem，根据标注稿尺寸 / 标注稿基准字体大小来转换</p>
-<p>1）实现定义了一个变量来保存基准字体大小<br>    @font-size-base: 75;</p>
-<p>2）某一个元素的尺寸设置方式：<br>    .item {<br>        width: 350rem/@font-size-base;    // 350 / 70 = 5rem<br>        height: 80rem/@font-size-base;<br>    }</p>
-<p>标注稿基准字体大小 = 标注稿宽度 / 10，如标注稿宽为750，标注稿基准字体大小为75；<br>标注稿宽为640，标注稿基准字体大小为64；（所以淘宝这个方案是可以在任意设计稿尺寸下使用的）</p>
-<p>4.如果还需要设置某一个元素的字体大小，可以根据html的data-dpr属性来处理，写法如下：</p>
-<pre><code>[data-dpr=&quot;2&quot;] p {
-    font-size: 16px;
-}
-
-[data-dpr=&quot;3&quot;] p {
-    font-size: 24px;
-}
-
-dpr(device pixel ratio).设备像素比；i5,6 = 2;i6plus=3;
-</code></pre><h2 id="使用rem时候的问题，最多的问题就是-小数像素造成background-image-的问题，经常会因为小数像素导致背景图被裁掉一部分。"><a href="#使用rem时候的问题，最多的问题就是-小数像素造成background-image-的问题，经常会因为小数像素导致背景图被裁掉一部分。" class="headerlink" title="使用rem时候的问题，最多的问题就是 小数像素造成background-image 的问题，经常会因为小数像素导致背景图被裁掉一部分。"></a>使用rem时候的问题，最多的问题就是 小数像素造成background-image 的问题，经常会因为小数像素导致背景图被裁掉一部分。</h2><p>所以可以的话，尽量使用iconfont,或者尽量给背景图设置一定的空白间隙</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/03/15/github使用之将项目推送到远程仓库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/15/github使用之将项目推送到远程仓库/" itemprop="url">github使用之将项目推送到远程仓库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-15T16:13:23+08:00">
-                2016-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/github/" itemprop="url" rel="index">
-                    <span itemprop="name">github</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>总结一下在本地创建好项目之后，把项目推送到github上的步骤：</p>
-<p>1 在github创建一个远程仓库<br>2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行：</p>
-<pre><code>$ git clone 仓库地址
-</code></pre><p>可以看到git文件夹下面已经有了一个和远程仓库同名的仓库</p>
-<p>3 将你已经完成的项目拷贝过去</p>
-<p>4 git切换到当前目录</p>
-<p>5.git log 查看日志</p>
-<p>6.git status 查看当前状态<br>可以看到未追踪的和已修改的文件</p>
-<p>7.如果有.project这样的隐藏目录，不需要提交到github,创建一个ignore文件</p>
-<pre><code>$ touch .gitignore
-</code></pre><p>8.把需要忽略的文件写进gitignore里面，如果是忽略文件夹，在后面加/，如$ echo .dir/ &gt;&gt; .gitignore,忽略所有的隐藏文件，.* &gt;&gt; </p>
-<pre><code>$ echo .project &gt;&gt; .gitignore
-</code></pre><p>9.git status 查看状态</p>
-<p>10.把.gitignore自身也忽略不提交</p>
-<pre><code>$ echo .gitignore &gt;&gt; .gitignore
-</code></pre><ol>
-<li>如果想操作.gitnore里面的文件，用vi .gitignore进入操作，完成后退出</li>
-</ol>
-<p>12.添加到本地仓库</p>
-<pre><code>git add -A
-</code></pre><p>13.提交到本地仓库</p>
-<pre><code>git commit -m &apos;描述信息&apos;
-</code></pre><p>14 git log 查看日志</p>
-<p>15.push到远程仓库,第一次Push加-u</p>
-<pre><code>$ git push -u origin master
-</code></pre><p>16.下一次需要修改增加项目的时候，先去远程仓库上拉取</p>
-<pre><code>$ git pull origin master
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2385,7 +2380,7 @@ dpr(device pixel ratio).设备像素比；i5,6 = 2;i6plus=3;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2396,7 +2391,7 @@ dpr(device pixel ratio).设备像素比；i5,6 = 2;i6plus=3;
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
