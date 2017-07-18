@@ -1,0 +1,1278 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="事件概念 用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；  事件流概念 是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。  dom事件流DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；IE不支持dom事件流。 冒泡型事件流和捕获型事件流冒泡型事件流：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS事件知识学习总结">
+<meta property="og:url" content="sunshineLing.github.io/2015/06/18/事件知识学习总结/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="事件概念 用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；  事件流概念 是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。  dom事件流DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；IE不支持dom事件流。 冒泡型事件流和捕获型事件流冒泡型事件流：">
+<meta property="og:image" content="http://i.imgur.com/mQSETcm.png">
+<meta property="og:image" content="http://i.imgur.com/DpPAJG4.png">
+<meta property="og:updated_time" content="2017-07-18T03:26:36.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS事件知识学习总结">
+<meta name="twitter:description" content="事件概念 用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；  事件流概念 是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。  dom事件流DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；IE不支持dom事件流。 冒泡型事件流和捕获型事件流冒泡型事件流：">
+<meta name="twitter:image" content="http://i.imgur.com/mQSETcm.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2015/06/18/事件知识学习总结/"/>
+
+
+
+
+
+  <title>JS事件知识学习总结 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/06/18/事件知识学习总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS事件知识学习总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-18T09:36:04+08:00">
+                2015-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="事件概念"><a href="#事件概念" class="headerlink" title="事件概念"></a>事件概念</h2><ul>
+<li>用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；</li>
+</ul>
+<h3 id="事件流概念"><a href="#事件流概念" class="headerlink" title="事件流概念"></a>事件流概念</h3><ul>
+<li>是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。</li>
+</ul>
+<h4 id="dom事件流"><a href="#dom事件流" class="headerlink" title="dom事件流"></a>dom事件流</h4><p>DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；<br>IE不支持dom事件流。</p>
+<h4 id="冒泡型事件流和捕获型事件流"><a href="#冒泡型事件流和捕获型事件流" class="headerlink" title="冒泡型事件流和捕获型事件流"></a>冒泡型事件流和捕获型事件流</h4><p><strong>冒泡型事件流：</strong> </p>
+<pre><code>从特定的事件目标开始接收到事件，从树叶到树根传播。 比如从div》body&gt;html&gt;document，是大部分浏览器默认的方式
+</code></pre><p><strong>事件捕获型</strong></p>
+<pre><code>从最不特定的事件目标开始传播到你意向的事件目标，和冒泡型是相反的。
+</code></pre><h5 id="DOM2级事件流"><a href="#DOM2级事件流" class="headerlink" title="DOM2级事件流"></a>DOM2级事件流</h5><p>规定事件发生时，包括三个阶段： 事件捕获阶段-处于目标阶段-冒泡阶段，只有在冒泡阶段，才会对事件做出响应。事件捕获阶段，从html到body就停止了。</p>
+<p><img src="http://i.imgur.com/mQSETcm.png" alt=""></p>
+<h4 id="IE和DOM事件流的区别"><a href="#IE和DOM事件流的区别" class="headerlink" title="IE和DOM事件流的区别"></a>IE和DOM事件流的区别</h4><ul>
+<li>IE是冒泡，div-&gt;body-&gt;doucment</li>
+<li>DOM事件流：先事件捕获，再到目标元素，最后事件冒泡阶段响应事件，document -&gt; body -&gt; div -&gt; (click) -&gt; div -&gt; body -&gt; document</li>
+</ul>
+<h2 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h2><p>事件处理程序默认是采用了事件冒泡机制，如果想用事件捕获，可以这样设置：<br>btn.addEventListener(“click”, function(){}, false);  // 在冒泡阶段响应</p>
+<h2 id="用闭包的方式封装事件处理程序"><a href="#用闭包的方式封装事件处理程序" class="headerlink" title="用闭包的方式封装事件处理程序"></a>用闭包的方式封装事件处理程序</h2><p><strong>注意他们的参数不同</strong><br>    addEventListener的参数是type,handler,false<br>    而IE是”on”+type,比如onclick<br><strong>回调函数handler的this指向和event事件对象不同</strong></p>
+<pre><code>attachEvent事件中listener调用时，因为IE和chrome调用的方式不同，chrome调用时是将e作为参数传入进入的，el.onclcik = function (e) ;
+
+而IE是var func = el.onclcik;
+ func();
+
+// IE事件没有传递event参数，且执行时this指向window对象，所以listener执行的时候，无法直接获取event事件对象，也无法让直接调用this = el，
+
+// 所以需要想办法将listener执行时获取window.event参数，且this指向el.onclick的el对象。
+
+// 解决方法：
+function createEventRegister() {
+     if (document.addEventListener) {
+          return function(ele, type, eventHandler) {
+              ele.addEventListener(type, eventHandler);
+          }
+     } else if (document.attachEvent) {
+          return function(ele, type, eventHandler) {
+               ele.attachEvent(&apos;on&apos; + type, function() {  // 重点
+                    eventHandler.call(ele, window.event);  // 用call改变this指向为当前的事件函数，参数为当前的e对象
+               })
+          }
+     } else {
+          return function(ele, type, eventHandler) {
+               ele[&apos;on&apos; + type] = eventHandler;
+          }
+     }
+}
+</code></pre><h2 id="事件委托-事件代理"><a href="#事件委托-事件代理" class="headerlink" title="事件委托/事件代理"></a>事件委托/事件代理</h2><ul>
+<li><p>利用事件冒泡的原理，把自己所触发的事件交给父元素（广义的，祖先元素）代替执行，可以解决：</p>
+<p>  1.可以大量节省内存占用，减少事件注册，比如在table上代理所有td的click事件就非常棒，因为每个函数都是对象，都会占用内存，内存的对象越多，性能就越差；</p>
+<p>  2.当父元素下面的子元素是动态生成的，那么原先绑定的方法在新添加的元素上就不适用了，可以利用事件代理，绑定在父元素上。</p>
+</li>
+<li><p>典型的例子是创建li的时候，如果是ul.innerHtml的方法创建的，新老的Li都没有方法了，如果是通过append方法添加，那么原来的Li有，新的Li 没有原来的方法了。</p>
+</li>
+</ul>
+<h3 id="事件代理的封装"><a href="#事件代理的封装" class="headerlink" title="事件代理的封装"></a>事件代理的封装</h3><p><strong>一、给ul下面的每一个标签注册同样的事件：</strong></p>
+<pre><code>//parentEle是父元素dom元素，tag是子元素，可以用li的class名，&quot;.save&quot;，
+//或者是&apos;li&apos;tag标签
+
+function delegate(parentEle, tag, event, listener) {
+    parentEle.addEventListener(event, function(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        if (target &amp;&amp; target.tagName === tag.toUpperCase()) {
+            listener.call(target, event);  //this指向target对象
+        }
+    })
+}
+
+//使用示例：
+delegate(ul, &apos;li&apos;, &apos;click&apos;, function() {
+    alert(this.innerHTML);
+})
+</code></pre><p><strong>二.给其中的某一个li标签注册事件</strong></p>
+<pre><code>function delegate(parentEle, childId, event, eventHandler) {
+    parentEle[&apos;on&apos; + event] = function(ev) {
+        ev = ev || window.event;
+        var target = event.target || event.srcElement;
+        if (target &amp;&amp; target.id === childId) {
+            eventHandler();
+            //或者
+            //eventHander.call(target, event);
+        }
+    }
+}
+
+//使用示例
+delegate(ul, &quot;inner&quot;, &quot;click&quot;, function(){
+    alert(1);
+})
+</code></pre><h3 id="jQuery中的事件代理"><a href="#jQuery中的事件代理" class="headerlink" title="jQuery中的事件代理"></a>jQuery中的事件代理</h3><pre><code>$(function(){
+    $(&quot;ul&quot;).on(&quot;click&quot;, &quot;li&quot;, function(){
+        console.log(this);
+    })
+})
+
+$(&quot;ul&quot;).on(&quot;click&quot;, &quot;a&quot;, function(e) {
+    console.log(e.currentTarget);  // jquery里面e事件对象包装了一层
+})
+</code></pre><h2 id="如何阻止事件冒泡和默认事件"><a href="#如何阻止事件冒泡和默认事件" class="headerlink" title="如何阻止事件冒泡和默认事件"></a>如何阻止事件冒泡和默认事件</h2><h3 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h3><ul>
+<li>阻止事件冒泡,使成为捕获型事件触发机制.比如只希望点击事件发生在子元素身上，不希望发生在父元素身上</li>
+</ul>
+<pre><code>function stopBubble() { 
+    var e=arguments.callee.caller.arguments[0]||event;
+
+    //如果提供了事件对象，则这是一个非IE浏览器 
+    if ( e &amp;&amp; e.stopPropagation )
+        //因此它支持W3C的stopPropagation()方法 
+        e.stopPropagation(); 
+    else {
+        //否则，我们需要使用IE的方式来取消事件冒泡 
+        window.event.cancelBubble = true; 
+    }
+}
+
+// 一般在IE环境下可以省略掉（var e=arguments.callee.caller.arguments[0]||event;）
+直接运行即可，但是在FF下不行了，它会报e.stopPropagation没有定义，所以要事先定义，才能兼容。
+</code></pre><h3 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h3><ul>
+<li><p>当按键后,不希望按键继续传递给如HTML文本框对象时,可以取消返回值.即停止默认事件默认行为.</p>
+<pre><code>//阻止浏览器的默认行为 
+function stopDefault( e ) { 
+    if ( e &amp;&amp; e.preventDefault ) {  
+        e.preventDefault(); //阻止默认浏览器动作(W3C) 
+       } else {    
+        window.event.returnValue = false;  // IE中阻止函数器默认动作的方式 
+        return false; 
+    }
+}
+</code></pre></li>
+</ul>
+<h2 id="事件循环（Event-Loop）和任务队列（Task-Queue）"><a href="#事件循环（Event-Loop）和任务队列（Task-Queue）" class="headerlink" title="事件循环（Event Loop）和任务队列（Task Queue）"></a>事件循环（Event Loop）和任务队列（Task Queue）</h2><ul>
+<li>JS 是单线程的，但是却能执行异步任务，这主要是因为 JS 中存在事件循环（Event Loop）和任务队列（Task Queue）。</li>
+</ul>
+<p><img src="http://i.imgur.com/DpPAJG4.png" alt=""></p>
+<h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><ul>
+<li>JS 会创建一个类似于 while (true) 的循环，每执行一次循环体的过程称之为 Tick。每次 Tick 的过程就是查看是否有待处理事件，如果有则取出相关事件及回调函数放入执行栈中由主线程执行。待处理的事件会存储在一个任务队列中，也就是每次 Tick 会查看任务队列中是否有需要执行的任务。</li>
+</ul>
+<h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h3><ul>
+<li>异步操作会将相关回调添加到任务队列中。而不同的异步操作添加到任务队列的时机也不同，如 onclick, setTimeout, ajax 处理的方式都不同，这些异步操作是由浏览器内核的 webcore 来执行的，webcore 包含上图中的3种 webAPI，分别是 DOM Binding、network、timer模块。</li>
+</ul>
+<pre><code>onclick 由浏览器内核的 DOM Binding 模块来处理，当事件触发的时候，回调函数会立即添加到任务队列中。
+
+setTimeout 会由浏览器内核的 timer 模块来进行延时处理，当时间到达的时候，才会将回调函数添加到任务队列中。
+
+ajax 则会由浏览器内核的 network 模块来处理，在网络请求完成返回之后，才将回调添加到任务队列中。
+</code></pre><h3 id="主线程："><a href="#主线程：" class="headerlink" title="主线程："></a>主线程：</h3><ul>
+<li>JS 只有一个线程，称之为主线程。而事件循环是主线程中执行栈里的代码执行完毕之后，才开始执行的。</li>
+<li>所以，主线程中要执行的代码时间过长，会阻塞事件循环的执行，也就会阻塞异步操作的执行。</li>
+<li>只有当主线程中执行栈为空的时候（即同步代码执行完后），才会进行事件循环来观察要执行的事件回调，当事件循环检测到任务队列中有事件就取出相关回调放入执行栈中由主线程执行。</li>
+</ul>
+<p>用示例来说明</p>
+<pre><code>例1：
+var req = new XMLHttpRequest();
+    req.open(&apos;GET&apos;, url);    
+    req.onload = function (){};    // 这两个异步方法就会在 ajax 完成后推入任务队列，再由主线程执行
+    req.onerror = function (){};    
+    req.send();
+
+例2：
+setTimeout(function(){
+　　// 如果有大量的操作，可能会阻塞 UI 等，则可以使用 setTimeout 让这些操作在主线程把更重要的代码执行完毕之后，再来执行这里的操作。从而提高浏览器的性能。
+},0);  // 设置为 0，也会有个最小间隔值，也会在主线程中的代码运行完成后，由事件循环从任务队列将回调添加到执行栈中才执行
+
+例3：
+// 事件循环测试。执行结果是 2-3-4-1，1在最后输出，说明事件循环是所有同步代码执行完后才开始执行的。
+
+&apos;use strict&apos;;
+
+setTimeout(function() {
+　　console.log(1);
+}, 0);
+
+console.log(2);
+
+let end = Date.now() + 1000*5;
+
+while (Date.now() &lt; end) {
+}
+
+console.log(3);
+
+end = Date.now() + 1000*5;
+
+while (Date.now() &lt; end) {
+}
+
+console.log(4);
+</code></pre><p>Update：<br>《你不知道的 JavaScript》一书中，重新讲解了 ES6 新增的任务队列，和上面的任务队列略有不同，上面的任务队列书中称为事件队列。</p>
+<p>上面提到的任务（事件）队列是在事件循环中的，事件循环每一次 tick 便执行上面所述的任务（事件）队列中的一个任务。而任务（事件）队列是只能往尾部添加任务。</p>
+<p>而 ES6 中新增的任务队列是在事件循环之上的，事件循环每次 tick 后会查看 ES6 的任务队列中是否有任务要执行，也就是 ES6 的任务队列比事件循环中的任务（事件）队列优先级更高。</p>
+<p>如 Promise 就使用了 ES6 的任务队列特性。</p>
+<p>参考：<br><a href="http://www.cnblogs.com/Medeor/p/4945687.html" target="_blank" rel="external">http://www.cnblogs.com/Medeor/p/4945687.html</a><br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a><br><a href="http://www.cnblogs.com/zhaodongyu/p/3922961.html" target="_blank" rel="external">http://www.cnblogs.com/zhaodongyu/p/3922961.html</a><br>深入浅出 node.js　　</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/20/css的一些常用布局/" rel="next" title="css布局总结">
+                <i class="fa fa-chevron-left"></i> css布局总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/12/移动端1px的border问题/" rel="prev" title="移动端1px的border问题">
+                移动端1px的border问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件概念"><span class="nav-number">1.</span> <span class="nav-text">事件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流概念"><span class="nav-number">1.1.</span> <span class="nav-text">事件流概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dom事件流"><span class="nav-number">1.1.1.</span> <span class="nav-text">dom事件流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡型事件流和捕获型事件流"><span class="nav-number">1.1.2.</span> <span class="nav-text">冒泡型事件流和捕获型事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM2级事件流"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DOM2级事件流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IE和DOM事件流的区别"><span class="nav-number">1.1.3.</span> <span class="nav-text">IE和DOM事件流的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理程序"><span class="nav-number">2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用闭包的方式封装事件处理程序"><span class="nav-number">3.</span> <span class="nav-text">用闭包的方式封装事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件委托-事件代理"><span class="nav-number">4.</span> <span class="nav-text">事件委托/事件代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理的封装"><span class="nav-number">4.1.</span> <span class="nav-text">事件代理的封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的事件代理"><span class="nav-number">4.2.</span> <span class="nav-text">jQuery中的事件代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何阻止事件冒泡和默认事件"><span class="nav-number">5.</span> <span class="nav-text">如何阻止事件冒泡和默认事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止事件冒泡"><span class="nav-number">5.1.</span> <span class="nav-text">阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止默认行为"><span class="nav-number">5.2.</span> <span class="nav-text">阻止默认行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环（Event-Loop）和任务队列（Task-Queue）"><span class="nav-number">6.</span> <span class="nav-text">事件循环（Event Loop）和任务队列（Task Queue）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环"><span class="nav-number">6.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列"><span class="nav-number">6.2.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主线程："><span class="nav-number">6.3.</span> <span class="nav-text">主线程：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

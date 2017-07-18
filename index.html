@@ -58,13 +58,19 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -297,6 +303,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/18/cookie基础知识及用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/18/cookie基础知识及用法/" itemprop="url">cookie基础知识及用法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T00:36:16+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          应用场景
+保存用户登录状态。例如将用户id存储于一个cookie内，这样当用户下次访问该页面时就不需要重新登录了，现在很多论坛和社区都提供这样的功能。 cookie还可以设置过期时间，当超过时间期限后，cookie就会自动消失。因此，系统往往可以提示用户保持登录状态的时间：常见选项有一个月、三个 月
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/18/cookie基础知识及用法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/07/17/requireJS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -387,20 +512,17 @@
       
         
           
-            <h2 id="requireJs"><a href="#requireJs" class="headerlink" title="requireJs"></a>requireJs</h2><p><strong>AMD（ Asynchronous Module Definition）异步加载模块定义</strong></p>
-<h3 id="AMD规范化加载的由来"><a href="#AMD规范化加载的由来" class="headerlink" title="AMD规范化加载的由来"></a>AMD规范化加载的由来</h3><ul>
-<li><p>前端的模块化，是参照commonjs规范实现的，有一个全局性的方法require(),用于加载模块，如果有一个add.js，加载的时候，直接使用var add = require(“add”)就可以实现，使用时直接调用add方法，因为在服务端，模块是放在硬盘里面，加载的很快，几乎可以同步读取。</p>
-</li>
-<li><p>但是在客户端，使用这种方法加载，因为模块放在服务端的，读取的时间取决于网速的快慢，可能会等待很长时间，没有加载完，后面的就不能执行，会造成浏览器假死状态。</p>
-</li>
-<li><p>所以浏览器模块的加载，不能使用同步，需要异步加载，所以有了AMD规范。即异步模块定义</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">	require([&quot;add&quot;], function(add) &#123;</div><div class="line">	     </div><div class="line">	&#125;)</div><div class="line">	</div><div class="line">	```  </div><div class="line"> </div><div class="line">	使用require()来加载，第一个参数是模块，是一个数组，第二个参数是回调函数，依赖这个模块的语句，放在回调函数里面，加载完成之后，才会运行回调函数。</div><div class="line"></div><div class="line">使用AMD规范的库，用过的是require.js。</div><div class="line">### requireJs解决的问题</div><div class="line">- 当一个网页要引入多个外部文件，且文件之间的依赖关系较强的时候，必须保证文件的加载顺序，并且当浏览器加载外部文件的时候就会停止网页的渲染，加载的文件越多，网页失去响应的时间越长，代码的编写和维护也会很麻烦。</div><div class="line">- requirejs实现了js 文件的异步加载，避免网页失去响应</div><div class="line">- 管理模块直接的依赖性，便于代码的编写和维护。</div><div class="line">- 解决了命名冲突问题（不同模块中的同名变量不会有冲突）</div><div class="line"></div><div class="line">### requirejs的基本使用</div><div class="line"></div><div class="line">### 主模块</div><div class="line">- 如果主模块不依赖于其他模块</div></pre></td></tr></table></figure>
-  <!-- data-main的作用是指定网页程序的主模板，即main.js。这个文件会第一个被require.js加载。main是省略了后缀名js -->
-<p>  <script src="require.js" data-main="js/main"></script><br>  ```</p>
-</li>
-</ul>
-
-          
+          requireJsAMD（ Asynchronous Module Definition）异步加载模块定义
+AMD规范化加载的由来
+前端的模块化，是参照commonjs规范实现的，有一个全局性的方法require(),用于加载模块，如果有一个add.js，加载的时候，直接使用var add = re
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/17/requireJS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -510,75 +632,19 @@
       
         
           
-            <h2 id="学习文档目录"><a href="#学习文档目录" class="headerlink" title="学习文档目录"></a>学习文档目录</h2><p>官网:<br><a href="http://cn.vuejs.org/" target="_blank" rel="external">http://cn.vuejs.org/</a></p>
-<p><a href="http://cn.vuejs.org/v2/guide/" target="_blank" rel="external">http://cn.vuejs.org/v2/guide/</a></p>
-<p><a href="https://www.awesomes.cn/subject/vue" target="_blank" rel="external">https://www.awesomes.cn/subject/vue</a></p>
-<h2 id="MVVM机制"><a href="#MVVM机制" class="headerlink" title="MVVM机制"></a>MVVM机制</h2><pre><code>M:model 数据模型:提供数据(ajax)
-V:view 视图 视图、负责展现在我们浏览器端东西
-VM:view-model 相当于是控制器
-</code></pre><h3 id="和angular对比，数据双向绑定原理的不同"><a href="#和angular对比，数据双向绑定原理的不同" class="headerlink" title="和angular对比，数据双向绑定原理的不同"></a>和angular对比，数据双向绑定原理的不同</h3><h4 id="angular是脏检查机制"><a href="#angular是脏检查机制" class="headerlink" title="angular是脏检查机制"></a>angular是脏检查机制</h4><p>脏数据就是之前的数据已经更新了，有了新数据，但是视图不知道，没有更新数据，就需要检查数据有没有更新，有就去通知视图更新。</p>
-<p>如果用原生的异步方法，比如setTimeout,setInterval，ajax，事件click会阻断数据的脏检查，需要手动触发脏检查，把要执行的代码放在$apply()的回调函数里面。</p>
-<p>而以ng-click开头的有脏检查。</p>
-<p>原理就是：</p>
-<p>Angular 在 作用域$scope上设置了一个监听队列，用来监听数据变化并更新 view 。</p>
-<p>当每次给view绑定一个事件，比如ng-click的时候，AngularJs内部 就会往 $watch 队列里插入一条新 $watch，用来检测它监视的 model 里是否有变化的东西。$watch对象里面有三个参数，其中getNewValue()方法可以得到$scope上的最新值，listener方法可以比较新旧值，做操作。</p>
-<p>当view接收到可以被 angular context 处理的事件，比如说dom事件，ng-click,ajax事件（angular里面是$http），$timeout,$interval定时器事件,主要是异步事件，$digest 循环就会触发，遍历所有的 $watch队列，有变化，就会更新$scope里面的val值对应的 dom。</p>
-<h4 id="Vue-js通过属性劫持再结合发布者-订阅者模式来绑定"><a href="#Vue-js通过属性劫持再结合发布者-订阅者模式来绑定" class="headerlink" title="Vue.js通过属性劫持再结合发布者-订阅者模式来绑定"></a>Vue.js通过属性劫持再结合发布者-订阅者模式来绑定</h4><p>比如说有一份数据a.b，a对象里面有属性b，在Vue实例化的过程中（new Vue()）,会用Object.defineProperty()方法给a.b添加getter和setter方法；</p>
-<p>同时，vue.js的compile会解析模板，生成一个指令对象，比如v-text=”a.b”，每一个指令对象都会关联一个watcher（a.b），指令对应的a.b的有值时候，就会触发到它上面的getter，会被通知到watcher，a.b的值再有变化的时候，就会触发setter，watcher会再次获取a.b的值，并对比新旧的值，发现值改变了，就会通知指令v-text。</p>
-<p>指令v-text是vue内部封装好的dom操作方法，会调用原生的innerText更改值。</p>
-<h3 id="vue和angular对比的优缺点"><a href="#vue和angular对比的优缺点" class="headerlink" title="vue和angular对比的优缺点"></a>vue和angular对比的优缺点</h3><p>vue比angular1好用的多，更轻量，大小只有26k，移动端开发很占优势，就是环境搭建比较复杂，但是组件化开发，维护成本低；学习称本地，学习曲线平稳。</p>
-<p>vue借鉴了angular的指令和react的组件化，把页面抽成组件树，每个组件都有完整的声明周期</p>
-<p>angular1后面从2开始就重写了，$scope变成zone.js，控制器也变成了component组件，学习成本太高了。现在都发展到4了，1早晚会被淘汰的。</p>
-<p>angular1和vue的数据双向绑定机制是不一样的。如上。</p>
-<h3 id="vue指令"><a href="#vue指令" class="headerlink" title="vue指令"></a>vue指令</h3><pre><code>v-text&amp;v-html
-v-text：显示文本
-v-html：解析并且显示html字符串
-
-v-on:
-给我们的dom元素上绑定事件的
-
-v-bind:
-给我们标签绑定属性，它的目的是让我们的某些标签属性上面的值来自我们model
-
-v-model:
-用来实现数据双向绑定（模型更改之后，会更新视图，视图更改之后，会影响模型）
-
-v-if/v-else:
-判断是否需要渲染我们标签
-
-v-for:
-循环渲染html标签
-
-注意点:
-1、指令要和html元素作用在一起
-2、v-bind和我们v-on都有缩写的方式    
-v-bind: 可以缩写成 `:`
-v-on: 可以缩写成`@`
-3、v-model只会作用于哪些有value值的标签(input checkbox...)
-4、v-else/v-else-if必须紧跟在上一个v-if后面
-</code></pre><h3 id="vue路由"><a href="#vue路由" class="headerlink" title="vue路由"></a>vue路由</h3><p>步骤:</p>
-<pre><code>1、写好html中的代码
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-link to=&quot;/xxxx&quot;&gt;&lt;/router-link&gt;</div></pre></td></tr></table></figure>
-
-
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;router-view&gt;&lt;/router-view&gt;</div></pre></td></tr></table></figure>
-
-
-2、写好js中的代码
-    1、定义好组件
-
-    2、将组件和具体跳转路径配置在路由中
-
-    3、将路由和vue实例关联起来
-</code></pre><h3 id="vue-resource"><a href="#vue-resource" class="headerlink" title="vue-resource"></a>vue-resource</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤:"></a>步骤:</h4><pre><code>参考:https://github.com/pagekit/vue-resource/blob/develop/docs/http.md
-
-1、导入vue-resource
-
-2、调用方法
-    this.$http.get/post/jsonp(url).then(成功的回调，失败的回调)
-</code></pre><h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><pre><code>post请求，在我们第三个参数中，一定得设置{emulateJSON:true}
-</code></pre>
-          
+          学习文档目录官网:http://cn.vuejs.org/
+http://cn.vuejs.org/v2/guide/
+https://www.awesomes.cn/subject/vue
+MVVM机制M:model 数据模型:提供数据(ajax)
+V:view 视图 视图、负责展现在我们浏览器端
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/16/Vuewendang/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -710,8 +776,15 @@ v-on: 可以缩写成`@`
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/16/vue音乐webApp项目总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -843,382 +916,18 @@ v-on: 可以缩写成`@`
       
         
           
-            <p>把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。</p>
-<h3 id="环境搭建，用vue-cli"><a href="#环境搭建，用vue-cli" class="headerlink" title="环境搭建，用vue-cli"></a>环境搭建，用vue-cli</h3><pre><code>1.npm i -g vue-cli;
+          把慕课网上的Vue高仿饿了么项目学习完了，记录一下课程里面的所得。
+环境搭建，用vue-cli1.npm i -g vue-cli;
 2.可以用vue 命令 例如vue init / vue list 
-3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue init webpack-simple去安装
-4.安装完毕之后，切换到文件夹
-     cd sell
-     npm install
-     npm run dev
-
-注意：同时会安装vue-router
-</code></pre><h4 id="项目上线依赖"><a href="#项目上线依赖" class="headerlink" title="项目上线依赖"></a>项目上线依赖</h4><pre><code>&quot;dependencies&quot;: {
-    &quot;vue&quot;: &quot;^2.3.3&quot;,
-    &quot;vue-router&quot;: &quot;^2.3.1&quot;,
-    &quot;vue-resource&quot;: &quot;^1.3.4&quot;,
-    &quot;better-scroll&quot;: &quot;^0.2.1&quot;
-  },
-</code></pre><h4 id="项目开发依赖"><a href="#项目开发依赖" class="headerlink" title="项目开发依赖"></a>项目开发依赖</h4><p>1.css部分用stylus语法编译，stylus语法需要把{}和；都去掉</p>
-<p>2.安装loader时遇到的坑</p>
-<pre><code>stylus-loader@2.5.1 requires a peer of stylus@&gt;=0.52.4 but none was installed.
-</code></pre><p>3.解决办法</p>
-<pre><code>在package.json里面增加：
-&quot;stylus-loader&quot;: &quot;^3.0.1&quot;,
-&quot;stylus&quot;: &quot;0.52.4&quot;,
-
-再执行npn install 和 npn run dev
-</code></pre><h3 id="cli生成的项目文件介绍"><a href="#cli生成的项目文件介绍" class="headerlink" title="cli生成的项目文件介绍"></a>cli生成的项目文件介绍</h3><pre><code>1.static里面的.gitkeep表示即使文件夹为空，也可以提交到git仓库，因为空文件夹会忽略
-2..babelrc是把es6转成es5，方便浏览器识别，其中有依赖的插件，comment是注释不会显示；
-3.editorconfig是编码风格文件，比如字体缩进，换行，去除首尾空格等
-4.eslintignore是忽略对里面的文件做语法检查；
-5.eslintrc是es6的语法标准的配置
-</code></pre><h3 id="css-设置的关键点"><a href="#css-设置的关键点" class="headerlink" title="css 设置的关键点"></a>css 设置的关键点</h3><h4 id="编码习惯"><a href="#编码习惯" class="headerlink" title="编码习惯"></a>编码习惯</h4><p>如果有一个元素，绑定class是为了在js里面做选择，而不是为了设置样式，用类似food-list-hook</p>
-<h4 id="1像素边框的制作"><a href="#1像素边框的制作" class="headerlink" title="1像素边框的制作"></a>1像素边框的制作</h4><p>设置伪元素，用media+scale</p>
-<pre><code>.border(@borderColor){
-    position: relative;
-
-    &amp;::after{
-        content: &quot;&quot;;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        border-top: 1px solid @borderColor;
-    }
-}
-
-@media (min-device-pixel-ratio: 1.5) {
-    .border{
-
-        &amp;::after{
-            transform: scaleY(0.7);
-        }
-    }
-}
-
-@media (min-device-pixel-ratio: 2) {
-    .border{
-
-        &amp;::after{
-            transform: scaleY(0.5);
-        }
-    }
-}
-</code></pre><h4 id="自适应宽，flex布局"><a href="#自适应宽，flex布局" class="headerlink" title="自适应宽，flex布局"></a>自适应宽，flex布局</h4><p>左边宽度固定，右边宽度自适应</p>
-<pre><code>.food{
-    display: flex;
-    width: 100%;
-
-    .nav{
-        flex: 0 0 80px;
-        width: 80px;
-    }
-
-    .foodList{
-        flex: 1;
-    }
-}
-</code></pre><h4 id="Sticky-footer"><a href="#Sticky-footer" class="headerlink" title="Sticky footer"></a>Sticky footer</h4><p><strong>解决的问题：</strong>如果页面内容不够长的时候，页脚块固定在视窗底部；如果内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字</p>
-<p><strong>解决办法：</strong></p>
-<p>1.设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层</p>
-<pre><code>&lt;div v-show=&quot;detailShow&quot; class=&quot;detail&quot;&gt;
-    &lt;div class=&quot;detail-wrapper clearfix&quot;&gt;   //clearfix样式另外自己写
-        &lt;div class=&quot;detail-main&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;detail-close&quot;&gt;
-        &lt;i class=&quot;icon-close&quot;&gt;&lt;/i&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><p>2.设置css</p>
-<pre><code>.detail
-   position: fixed
-   z-index: 100
-   top: 0
-   left: 0
-   width: 100%
-   height: 100%
-   overflow: auto
-   background-color: rgba(7, 17, 27, 0.8)
-   // filter: blur(10px)
-   .detail-wrapper
-       min-width: 100%
-       height: 100%
-       .detail-main
-           margin-top: 64px
-           padding-bottom: 64px(这个是关键，设置一个下padding，给底部留出空间)
-   .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
-       position: relative
-       width: 32px
-       height: 32px
-       margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
-       clear: both
-       font-size: 32px
-</code></pre><h4 id="自适相等宽高"><a href="#自适相等宽高" class="headerlink" title="自适相等宽高"></a>自适相等宽高</h4><p>需要设置一个宽高相等的图片，但是每张图的宽高比例是不同的，需要做到自适应，就可以设置父元素的高度为0，上边距为100%，子元素设置宽为100%，高为100%</p>
-<pre><code>.image-header
-    position: relative
-    width: 100%
-    height: 0
-    padding-top: 100%   // 让图片的宽高一致，保持同等比例
-    img
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
-</code></pre><h4 id="媒体查询，适用于ipone5"><a href="#媒体查询，适用于ipone5" class="headerlink" title="媒体查询，适用于ipone5"></a>媒体查询，适用于ipone5</h4><pre><code>@media only screen and (max-width: 320px)   // 仅仅当屏幕最大尺寸为320px时适用
-    padding-left: 6px
-</code></pre><h3 id="Vue知识要点"><a href="#Vue知识要点" class="headerlink" title="Vue知识要点"></a>Vue知识要点</h3><h4 id="vue动画设置"><a href="#vue动画设置" class="headerlink" title="vue动画设置"></a>vue动画设置</h4><p>看文档，此处是需要设置页面从右向左移入<br>给需要动画的元素的外层设置包裹，在html里面设置：</p>
-<pre><code>html:
-&lt;transition name=&quot;move&quot;&gt;
-    &lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
-    &lt;/food&gt;
-&lt;/transition&gt;
-
-css:
-.food
-    transform: translate3d(0, 0, 0)
-    &amp;.move-enter-active, &amp;.move-leave-active
-        transition: all 0.2s linear  // 过渡效果
-    &amp;.move-enter, &amp;.move-leave-active
-        transform: translate3d(100%, 0, 0)  // 动画开始的位置，从右到左飞入
-</code></pre><h4 id="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"><a href="#transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面" class="headerlink" title="transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面"></a>transition动画不能用在一个v-for循环生成的一组元素上面，可以写在每一个的里面</h4><pre><code>&lt;div class=&quot;ball-container&quot;&gt;
-    &lt;div v-for=&quot;ball in balls&quot;&gt;
-        &lt;transition name=&quot;drop&quot;&gt;
-            &lt;div class=&quot;ball&quot; v-show=&quot;ball.show&quot;&gt;
-                &lt;div class=&quot;inner inner-hook&quot;&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/transition&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><h3 id="vue路由设置"><a href="#vue路由设置" class="headerlink" title="vue路由设置"></a>vue路由设置</h3><h4 id="重定向路由"><a href="#重定向路由" class="headerlink" title="重定向路由"></a>重定向路由</h4><p>首页进入希望停在商品页面，可以在路由里面设置重定向</p>
-<pre><code>const router = new VueRouter({
-  routes: [
-    {path: &apos;/&apos;, redirect: &apos;/goods&apos;}, // 重定向
-    {path: &apos;/&apos;, component: goods},
-    {path: &apos;/seller&apos;, component: seller},
-    {path: &apos;/ratings&apos;, component: ratings},
-    {path: &apos;/goods&apos;, component: goods}
-  ]
-})
-
-或者在后面用router.push({path: &apos;/goods&apos;})  //测试可以成功
-</code></pre><h4 id="路由激活样式修改"><a href="#路由激活样式修改" class="headerlink" title="路由激活样式修改"></a>路由激活样式修改</h4><p>《router-link to=‘’》有默认的class,可以在路由里面配置修改</p>
-<pre><code>linkActiveClass: &apos;active&apos;，在router实例里面
-</code></pre><h3 id="组件设置滚动效果"><a href="#组件设置滚动效果" class="headerlink" title="组件设置滚动效果"></a>组件设置滚动效果</h3><p>食物左侧的菜单导航，以及食物容器自身，在内容超出浏览器可视区域的时候，会出现滚动条，但是移动端设计效果是希望可以滚动，触摸上去的时候，滑动，移动端常用的插件是Iscroll，这里使用的是better-scroll插件。<br>Iscroll插件（<a href="http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。" target="_blank" rel="external">http://iscrolljs.com/）因为已经很久不维护了，所以采用的是这个仿写的。</a></p>
-<h4 id="安装时候的问题："><a href="#安装时候的问题：" class="headerlink" title="安装时候的问题："></a>安装时候的问题：</h4><p>npm 安装better-scroll时报错</p>
-<pre><code>npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules\browser-sync\node_modules\chokidar\node_modules\fsevents)
-
-npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.14: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
-
-是因为$sevents不兼容win系统，忽略警告，执行下面的既可以安装成功
-npm -g install npm
-</code></pre><h4 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h4><p>关键在于给需要设置的滚动的容器外层添加一个div，滚动的时候会计算要滚动的容器的高度，外层div的高度是固定的，超出的部分隐藏，里层的高度超出就可以滚动。</p>
-<pre><code>&lt;div class=&quot;food&quot; v-show=&quot;showFlag&quot; ref=&quot;food&quot;&gt;
-    &lt;div class=&quot;food-content&quot;&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><p>用法：初始化，进行实例化</p>
-<pre><code>new BScroll(dom对象， { //options });
-
-如果需要直接对dom做操作，需要在html标签里面绑定ref=&quot;div&quot;   
-用this.$refs.div获取
-为了让子元素可以被点击，设置click: true,
-</code></pre><p>VUE里面数据更新是异步的，在数据还没有加载完成之前，BScroll是无法获取目标容器的高度的，就会出现无法滚动的情况，即数据改变，dom没有变化</p>
-<p>所以需要放在this.$nextTick里面去实例化</p>
-<pre><code>methods: {
-        // 定义food详情页面显示或隐藏的方法
-        show () {
-            this.showFlag = true
-            this.selectType = ALL   // 每一次进入商品详情页面都初始化，显示全部内容
-            this.onlyContent = false // 进入商品页面初始化显示有内容的评价
-            this.$nextTick(() =&gt; {  // 实例化better-scroll方法，使food详情页面可以滚动
-                if (!this.scroll) {
-                    this.scroll = new BScroll(this.$refs.food, {
-                        click: true
-                    })
-                } else {
-                    this.scroll.refresh()
-                }
-            })
-        }
-}
-</code></pre><p>nextTick应该被用在某些计算属性或者watch再或者某个按钮click事件绑定的methods当中。这时，nextTick才能保证你的数据更新完成之后再执行你绑定的函数。</p>
-<pre><code>实例用法：
-this.$nextTick(() =&gt; {
-     this.initScroll();
-})
-</code></pre><h4 id="better-scroll的点击事件注意事项"><a href="#better-scroll的点击事件注意事项" class="headerlink" title="better-scroll的点击事件注意事项"></a>better-scroll的点击事件注意事项</h4><p>1.为了能点击，在实例化的时候，需要设置参数：</p>
-<pre><code>click: true
-</code></pre><p>2.在pc上，点击事件会执行两次。因为pc端不会阻止默认事件，由于better-scroll派发的事件有event_constructed: true属性，可以去判断原生事件有没有这个属性。</p>
-<p>在html里面点击事件传递一个参数$event,在后面接收获取</p>
-<pre><code>&lt;div @click=&quot;addFirst($event)&quot; class=&quot;buy&quot; v-show=&quot;!food.count || food.count===0&quot;&gt;加入购物车&lt;/div&gt;
-
-// 点击加入购物车按钮，添加商品
-addFirst (event) {
-    if (!event._constructed) {
-        return
-    }
-    Vue.set(this.food, &apos;count&apos;, 1)
-    this.$emit(&apos;add&apos;, event.target) // 父子组件传值，在子组件触发
-}
-</code></pre><h3 id="vue给对象新增属性"><a href="#vue给对象新增属性" class="headerlink" title="vue给对象新增属性"></a>vue给对象新增属性</h3><pre><code>vue.set(this.food.count, &quot;1&quot;)
-</code></pre><h3 id="vue非父子组件传值"><a href="#vue非父子组件传值" class="headerlink" title="vue非父子组件传值"></a>vue非父子组件传值</h3><p>这个项目里面，cartcontrol组件需要在每个增加或减少的按钮被点击的时候，将被点击的元素，传递给另外一个组件shopcart，这两个组件之间不是包含和被包含的关系<br><strong>解决的思路1：</strong><br>因为他们有同一个父组件，goods.vue，可以先将按钮所在的子组件的值传递给父组件，再由父组件传递给另外一个子组件shopcart</p>
-<pre><code>1.cartcontrol里面用下面的代码来触发
-this.$emit(&apos;addFood&apos;, event.target) // 父子组件传值，在子组件触发
-
-2.父组件good.vue里面在子组件标签上面用自定义事件来接收
-&lt;cartcontrol @addFood=&quot;receiveAddFood&quot; :food=&quot;food&quot;&gt;&lt;/cartcontrol&gt;
-
-3.父组件methods方法里面，调用函数
-// 接收cartcontrol里面传递过来的事件对象
-receiveAddFood (target) {
-    console.log(target)
-}
-</code></pre><p><strong>解决思路2：</strong>利用bus</p>
-<h3 id="vue阻止事件冒泡"><a href="#vue阻止事件冒泡" class="headerlink" title="vue阻止事件冒泡"></a>vue阻止事件冒泡</h3><p>vue里面阻止事件冒泡，只是为了点击处理一个点击事件，但是因为父元素上面也定义了点击事件，用stop.prevent来阻止</p>
-<pre><code>&lt;div class=&quot;content-right&quot; @click.stop.prevent=&quot;pay&quot;&gt;
-// 只会触发content-right上面的事件，不会触发它的父元素上面的点击事件
-</code></pre><h3 id="vue父组件调用子组件里面定义的方法"><a href="#vue父组件调用子组件里面定义的方法" class="headerlink" title="vue父组件调用子组件里面定义的方法"></a>vue父组件调用子组件里面定义的方法</h3><pre><code>1.先在子组件methods里面定义方法，比如show();
-2.在父组件的子组件元素上面写ref=&quot;foodEl&quot;;
-3.在父组件methods里面先获取子组件
-this.$refs.foodEl.show()
-</code></pre><h3 id="v-show用计算属性返回boolean"><a href="#v-show用计算属性返回boolean" class="headerlink" title="v-show用计算属性返回boolean"></a>v-show用计算属性返回boolean</h3><p>//   绑定函数，计算点击吐槽或推荐时，评论列表里面显示的内容</p>
-<pre><code>needShow (type, text) {
-    if (this.onlyContent &amp;&amp; !text) {    // 只显示有内容的评价，而没有文本，返回false，v-show不显示
-        return false
-    }
-    if (this.selectTypeNum === ALL) {  // 选择的是类型是全部时
-        return true
-    } else {    // 选择的是推荐或吐槽的时候，判断当前的这条评论的类型是否和选择的类型一致，一致就显示，不一致就不显示
-        return type === this.selectTypeNum
-    }
-}
-</code></pre><h3 id="时间格式的过滤器"><a href="#时间格式的过滤器" class="headerlink" title="时间格式的过滤器"></a>时间格式的过滤器</h3><p>vue里面日期时间字符串格式化为yyyy-mm-dd hh:mm之类的方法，用过滤的方法</p>
-<h4 id="全局过滤器"><a href="#全局过滤器" class="headerlink" title="全局过滤器"></a>全局过滤器</h4><pre><code>1.用moment插件，因为为了复用性，写一个全局的过滤器
-
-// 导入moment模块
-var moment = require(&apos;moment&apos;);
-
-// 全局过滤器
-Vue.filter(&apos;dmtDate&apos;, (input, formatString) =&gt; {
-    const lastFormatString = formatString || &quot;YYYY-MM-DD HH:mm:ss&quot;
-
-    // 在format中指定要把我们前面的时间按照什么样的格式输出
-    // 参数1：格式化的原始时间
-    // 参数2： 把院士时间，最终要格式化的字符串
-    // 参数：http://momentjs.cn/docs/
-    return moment(input).format(lastFormatString)
-})
-
-&lt;p&gt;{{newsdetail.add_time | dmtDate('YYYY-MM-DD')}}&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;{{newsdetail.click}}次浏览&amp;nbsp;&amp;nbsp;&amp;nbsp;
-                分类：民生经济
-            &lt;/p&gt;
-</code></pre><h4 id="局部过滤器"><a href="#局部过滤器" class="headerlink" title="局部过滤器"></a>局部过滤器</h4><p>局部过滤器，在输出模块里面，和methods方法平级，定义一个过滤器</p>
-<pre><code>1.// 时间过滤器方法
-    filters: {
-        formatDate (time) {
-            let date = new Date(time)   // 先转换成date类型的对象
-            return formatDate(date, &apos;yyyy-MM-dd hh:mm&apos;)
-        }
-    }
-
-2.在common的js里面定义一个date.js方法，
-export function formatDate(date, fmt) {
-    if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + &apos;&apos;).substr(4 - RegExp.$1.length));
-    }
-    let o = {
-        &apos;M+&apos;: date.getMonth() + 1,
-        &apos;d+&apos;: date.getDate(),
-        &apos;h+&apos;: date.getHours(),
-        &apos;m+&apos;: date.getMinutes(),
-        &apos;s+&apos;: date.getSeconds()
-    };
-    for (let k in o) {
-        if (new RegExp(`(${k})`).test(fmt)) {
-            let str = o[k] + &apos;&apos;;
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
-        }
-    }
-    return fmt;
-}
-
-3.用import 导入这个方法
-import {formatDate} from &apos;../../common/js/date.js&apos;  // 引入日期方法
-</code></pre><h3 id="正则相关"><a href="#正则相关" class="headerlink" title="正则相关"></a>正则相关</h3><p>正则提取url里面的参数，把参数分割成以&amp;为分隔符的key=value形式</p>
-<pre><code>var reg = /([^?&amp;=]+)=([^?&amp;=]*)/g
-
-解析：/表示分隔符，g表示全局匹配，匹配到第一个之后会继续向后查找
-     （）表示子组
-     [^]表示字符类取反，比如[^abc]匹配的就不是a和b和c的单个字符，[^?&amp;=]匹配不是^和?和=的单个字符
-     字符类[]后面的+和*表示量词
-     +等价于{1, }表示1次或多次
-     *等价于{0，}表示重复0次或多次
-
-var str = &quot;foo=bar&amp;lang=js&quot;;
-var reg = /[^?&amp;=]{1,}=[^?&amp;=]{0,}/g
-console.log(str.match(reg));   // 输出[&quot;foo=bar&quot;, &quot;lang=js&quot;]
-
-var str = &quot;foo=bar&amp;lang=js&quot;;
-var reg = /[^?&amp;=]+=[^?&amp;=]*/;
-console.log(str.match(reg));     // 输出[&quot;foo=bar&quot;]
-
-var str = &quot;foo=bar&amp;lang=js&quot;;
-var reg = /([^?&amp;=]{1,})=([^?&amp;=]{0,})/;
-console.log(str.match(reg)); //输出 [&quot;foo=bar&quot;, &quot;foo&quot;, &quot;bar&quot;]
-
-&quot;http:/www.baidu.com/?a=1&amp;b=2&quot;.match(/([^?&amp;=]+)=([^?&amp;=]*)/g);     // [&quot;a=1&quot;,&quot;b=2&quot;]
-</code></pre><p>总结：将url里面的参数解析成key=val的对象的方法</p>
-<pre><code>/**
- * 解析url参数
- * @example ?id=12345&amp;a=b
- * @return Object {id:12345,a:b}
- */
-export function urlParse () {
-    let url = window.location.search
-    let obj = {}
-    let reg = /[^?&amp;=]+=[^?&amp;=]*/g
-    let arr = url.match(reg)
-    // [&apos;id=12345&apos;, &apos;a=b&apos;]
-    if (arr) {
-        arr.forEach((item) =&gt; {
-            let tempArr = item.split(&apos;=&apos;)
-            //  [&quot;id&quot;, &quot;12345&quot;]
-            let key = decodeURIComponent(tempArr[0])
-            let val = decodeURIComponent(tempArr[1])
-            obj[key] = val
-        })
-    }
-    return obj
-}
-</code></pre><h3 id="keep-alive缓存组件"><a href="#keep-alive缓存组件" class="headerlink" title="keep-alive缓存组件"></a>keep-alive缓存组件</h3><p>keep-alive缓存vue组件，当请求的数据没有变化的时候，不希望再发送请求，可以用keep-alive将组件缓存起来，缓存的同时也会记录上一次的滚动的位置</p>
-<p><strong>使用场景：</strong></p>
-<p>比如一个列表和一个详情，那么用户就会经常在打开详情=》返回列表=》打开详情之间切换，切换频率高，这样每次从详情返回列表的时候，都能从缓存里面快速渲染，而不是重新渲染</p>
-<p>原理是把组件的状态缓存在内存里</p>
-<p>如果并不想所有的组件都被缓存，有些切换回来的时候是已经加载过的，解决方法：在app.vue里面设置</p>
-<pre><code>&lt;!-- 这里是需要keepalive的 --&gt;
-&lt;keep-alive&gt;
-     &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
-&lt;/keep-alive&gt;
-
-&lt;!-- 这里不会被keepalive --&gt;
-&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
-
-然后在设置路由信息的时候这样
-
-{
-  path: &apos;&apos;,
-  name: &apos;&apos;,
-  component: ,
-  meta: {keepAlive: true} // 这个是需要keepalive的},{
-  path: &apos;&apos;,
-  name: &apos;&apos;,
-  component: ,
-  meta: {keepAlive: false} // 这是不会被keepalive的}
-</code></pre><p>或者这里利用active的方法：<a href="http://www.cnblogs.com/zion0707/p/6213159.html" target="_blank" rel="external">http://www.cnblogs.com/zion0707/p/6213159.html</a></p>
-
-          
+3.有多种选择的模板：用vue init webpack sell(自己取的名字) / vue 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/25/Vue-高仿饿了么项目总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1328,27 +1037,19 @@ export function urlParse () {
       
         
           
-            <h2 id="xss攻击概念"><a href="#xss攻击概念" class="headerlink" title="xss攻击概念"></a>xss攻击概念</h2><p>就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本</p>
-<h2 id="xss攻击的类型"><a href="#xss攻击的类型" class="headerlink" title="xss攻击的类型"></a>xss攻击的类型</h2><p><strong>反射型</strong></p>
-<pre><code>我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，
+          xss攻击概念就是利用各种手段把恶意代码添加到网页中, 并让受害者执行这段脚本
+xss攻击的类型反射型
+我们可以用node,express来模拟，客户端在url的search里面传入一段xss攻击的脚本，
 
-比如说img标签，让&quot;xss=&lt;img src=&quot;null&quot; onerror=&quot;alert(1)&quot;&gt;&quot;
-</code></pre><p>这个时候会服务器会接收并解析，xss:req.query.xss,render渲染到模板返回。这个时候如果在服务器设置res.set(‘x-xss-protection’, 0)<br>不让浏览器拦截xss响应，那么就会在页面弹出1。</p>
-<p>如果是恶意的，在search栏里面嵌入了iframe，那么会在页面嵌入一个页面，通常见到插入恶意广告，或者直接嵌入一段让用户登陆个人信息的页面，客户输入登陆时，就会泄露了个人的隐私信息。</p>
-<p><strong>存储型</strong><br>不是放在search栏里面，而是会存储到服务器端，如数据库，内存，文件系统里面，并不会马上响应回来，下次请求的时候也不用再每次都提交xss代码，通过服务端读取seq里面的文件返回</p>
-<h3 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h3><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>对用户输入的数据进行HTML Entity编码，一些实体字符，编码成十进制的</p>
-<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><p>移除用户上传的DOM属性，如onerror等<br>移除用户上传的style节点，可以控制页面的显示不显示，js节点，iframe节点</p>
-<h4 id="校正"><a href="#校正" class="headerlink" title="校正"></a>校正</h4><p>避免直接对HTML Entity解码<br>使用DOM Parese转换，校正不匹配的DOM标签</p>
-<p>后台接收到之后，对接收到的数据做解码，用正则替换&amp;&lt;等符号为实体字符，进行转义。</p>
-<p>前台对后台返回的数据用domParse.js里面的HTMLParse(he.unescape(str, {strict: true}))方法进行先解码，反转义，再解析。domParse会有start,end,char,comment几个函数分别对传入的字符串做html或注释解码，拼接，拼接成一个html元素</p>
-<p>这就是前端解码的过程</p>
-<p>第三方库的地址：<br>encode.js：可以使用<a href="https://github.com/mathiasbynens/he" target="_blank" rel="external">https://github.com/mathiasbynens/he</a> 中的he.js</p>
-<p>domParse：可以用楼上说的 <a href="https://github.com/blowsie/Pure-JavaScript-HTML5-Parser" target="_blank" rel="external">https://github.com/blowsie/Pure-JavaScript-HTML5-Parser</a></p>
-<p>接下来就是过滤，在前面的函数里面，就将这几个script等的标签过滤掉。校正.</p>
-<p>上面的模拟过程在github上有fork的案例</p>
-<p>写的比较全面的一个博客：<a href="http://www.cnblogs.com/wqhwe/p/5416976.html" target="_blank" rel="external">http://www.cnblogs.com/wqhwe/p/5416976.html</a></p>
-
-          
+比如说img标签，让&quot;xss=&lt;img src=&quot;null&quo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/05/web安全之xss学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1480,63 +1181,18 @@ export function urlParse () {
       
         
           
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>慕课网学习记录：</p>
-<p>页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。</p>
-<p>比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载</p>
-<p>或者局部加载，一个评论框，下面可以选择表情，也需要把表情全部展示出来，如果不适用预加载，会看到那些表情是一个个加载的，有快有慢，体验不好。</p>
-<p>或者是上一页下一页的图片，点击当前一页图片的时候，提前加载下一页的图片。</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>提前加载图片，当用户需要查看时可直接从本地缓存中渲染，可以保证图片无缝的展示，用户体验更好。</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>有序加载</p>
-<p>无序加载</p>
-<h3 id="封装插件image-preLoad"><a href="#封装插件image-preLoad" class="headerlink" title="封装插件image-preLoad"></a>封装插件image-preLoad</h3><p>提供了三个实例：</p>
-<p>1.先loading进度条显示进度，图片再无序预加载，进度条加载完毕，展示所有图片。</p>
-<p>2.qq表情无序加载，点击选择表情按钮时，loading进度条显示完毕，显示所有图片</p>
-<p>3.柯南漫画的有序加载，翻页时提前展示下一页</p>
-<p>原理就是：</p>
-<p>进度条无序加载的原理是先用一个loading进度条显示的图片覆盖住要显示的页面，然后遍历图片的所有地址，在每次循环的时候new 一个 image图片，然后监听图片的load事件，图片加载完毕，就把地址赋值给图片。<br>直到所有的图片都加载完毕，再让进度条消失，让图片显示出来。</p>
-<h4 id="原生代码："><a href="#原生代码：" class="headerlink" title="原生代码："></a>原生代码：</h4><pre><code>  &lt;script&gt;
-    var imgs = [
-      &apos;http://i2.hoopchina.com.cn/user/308/15960308/13383588090.jpg&apos;,
-      &apos;http://img.article.pchome.net/00/44/23/20/pic_lib/wm/2.jpg&apos;,
-      &apos;http://lcd.yesky.com/imagelist/2009/044/404q4y8g4m0p.jpg&apos;,
-      &apos;http://lcd.yesky.com/imagelist/2009/044/cgro54wt2t2x.jpg&apos;
-    ];
-    var index = 0, // 当前是第几张图片
-        len = imgs.length, // 图片的总长度
-        $progress = $(&apos;.progress&apos;),
-        var count = 0  // 当前加载的数量
-
-    // 遍历所有图片的src
-    $.each(imgs, function (i, src) {
-      // 创建图片
-      var imgObj = new Image();
-      // 当前图片加载完毕的时候
-      $(imgObj).on(&apos;load error&apos;, function () {
-        // 每加载一次,显示加载
-        $progress.html(Math.round((count + 1) / len) + &apos;%&apos;);
-        // 如果所有的都加载完毕，就将loading页面隐藏起来
-        if (count &gt;= len - 1) {
-          $(&apos;loading&apos;).hide();
-          // 当前页是第一张
-          document.title = &apos;1/&apos;;
-        }
-        count++;
-      });
-      imgObj.src = src
-    })
-&lt;/script&gt;
-</code></pre><h4 id="封装插件："><a href="#封装插件：" class="headerlink" title="封装插件："></a>封装插件：</h4><p>这里就不详细贴代码了，按照jquery插件封装的方法：</p>
-<pre><code>1.一个自执行函数，不会污染全局变量；
-2.面向对象的方法，创造一个preload构造函数，传入参数；
-3.设置默认参数，用$extend{target, obj1, obj2}进行合并；
-4.将有序时执行的方法和无序时的方法挂载在构造函数的原型上；
-5.用$.extend({
-    preLoad: funciton() {new PreLoad()}的方法将其作为工具函数，合并到jquery函数中，
-    // 调用的时候直接：$.perload(传参)即可
-    如果是$.fn.extend话，是实例方法，要用一个元素去调用。
-    })
-</code></pre>
-          
+          背景慕课网学习记录：
+页面里面图片资源比较丰富的时候，加载比较慢，但是又需要全部展示出来给用户看，一张张加载很容易造成假死，效果很不好。
+比如首页有很多图片，展示性的，所以可以用一个loading进度条，显示加载的进度，等加载完毕之后，再全部显示，就需要预加载
+或者局部加载，一个评论框，下面可以选择
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/22/图片优化之预加载/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1668,84 +1324,16 @@ export function urlParse () {
       
         
           
-            <p>看js高程的时候，闭包讲的并不多，研究了网上很多资料，但是实际用的时候还是不多的，一个是因为会携带其他的作用域，容易造成内存泄漏，一个是没有多少意识去用闭包，前面在性能优化总结的章节里面讲了一个闭包来保存兼容性判断结果的优化思想，这里详细的用代码阐述一下。</p>
-<p>js高程里面的eventHandler方法，实际上并不完善，使用的时候，为了做兼容性处理，如果直接使用封装的函数，会导致每一次都要去判断。</p>
-<h2 id="普通事件处理程序封装函数："><a href="#普通事件处理程序封装函数：" class="headerlink" title="普通事件处理程序封装函数："></a>普通事件处理程序封装函数：</h2><p><img src="http://i.imgur.com/fMZDHQm.png" alt=""></p>
-<p>来找一找问题：</p>
-<p>1：没有兼容dom0级事件，且这个函数会每次被调用时都判断浏览器兼容情况，应该用一个闭包函数来优化，一次调用，后面就不用再检测了。</p>
-<p>2.addEventLister第三个参数用时间捕获方法不好，多数情况下还是应该用事件冒泡方法；</p>
-<p>3.attachEvent事件中listener调用时，因为IE和chrome调用的方式不同，chrome调用时是将e作为参数传入进入的，el.onclcik = function (e) ;<br>而IE是var func = el.onclcik;<br>     func()；</p>
-<p>没有传递event参数，且执行时this指向window对象，所以listener执行的时候，无法直接获取event事件对象，也无法让直接调用this = el，</p>
-<p>所以需要想办法将listener执行时获取window.event参数，且this指向el.onclick的el对象。</p>
-<h2 id="闭包封装事件处理程序"><a href="#闭包封装事件处理程序" class="headerlink" title="闭包封装事件处理程序"></a>闭包封装事件处理程序</h2><h3 id="封装eventRegister-js："><a href="#封装eventRegister-js：" class="headerlink" title="封装eventRegister.js："></a>封装eventRegister.js：</h3><pre><code>/**
- *  判断浏览器支持的注册事件的方式， 获取一个注册事件的函数
- *  闭包封装事件处理程序
- *  1.解决IE和普通浏览器的兼容性问题；
-    2.解决了每次调用方法都判断浏览器是否支持某方法的问题，利用闭包；
-    3.解决了IE方法调用时无法直接适用event事件对象和this指向window的问题
- */
-
-function createEventRegister(){
-    //如果浏览器支持的是addEventListener 
-    if(document.addEventListener){
-        //就返回一个函数，这个函数内部使用addEventListener来注册事件
-        return function(ele, type, eventHandler){
-            ele.addEventListener(type, eventHandler);
-        }
-    }else if(document.attachEvent){
-        return function(ele, type, eventHandler){
-            ele.attachEvent(&quot;on&quot; + type, function(){
-                //这里手动通过上下文调用模式调用这个eventHandler
-                //将里面的this指向当前对象，并且将事件对象作为参数传给了eventHandler
-                eventHandler.call(ele, window.event);
-            });
-            //var func = div.onclick
-            //func();
-        }
-    }else{
-        return function(ele, type, eventHandler){
-            ele[&quot;on&quot; + type] = eventHandler;
-        }
-    }
-}
-</code></pre><h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><pre><code>&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;
-// 引入
-&lt;script src=&quot;eventRegister.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-    var div = document.getElementById(&quot;box&quot;);
-    // 保存每次的结果
-    var eventRegister = createEventRegister();
-
-    // 在被监听的元素上使用
-    eventRegister(div, &quot;click&quot;, function(e){
-        // console.log(e);
-        // this
-    })
-&lt;/script&gt;
-</code></pre><h3 id="解决绑定的封装，js高程写法"><a href="#解决绑定的封装，js高程写法" class="headerlink" title="解决绑定的封装，js高程写法"></a>解决绑定的封装，js高程写法</h3><p>删除事件：<br>1.dom0级事件：div.onclick = null;</p>
-<p>2.IE: </p>
-<pre><code>var EventUtil = {
-     addHandler: function(element,type,handler) {
-          if (element.addEventListener) {
-               element.addEventListener(type,handler,false);
-          } else if (element.attachEvent) {
-               element.attachEvent(&apos;on&apos;+type,handler);
-          } else {
-               element[&apos;on&apos;+type] = handler;
-          }
-     },
-     removeHandler: function(element,type,handler) {
-         if (element.removeEventListener) {
-            element.removeEventListener(type,handler,false);
-         } else(element.detachEvent) {
-              element.detachEvent(&apos;on&apos; +type,handler);
-         } else { 
-            element[&apos;on&apos;+type] = null;
-         }
-     }
-}
-</code></pre>
-          
+          看js高程的时候，闭包讲的并不多，研究了网上很多资料，但是实际用的时候还是不多的，一个是因为会携带其他的作用域，容易造成内存泄漏，一个是没有多少意识去用闭包，前面在性能优化总结的章节里面讲了一个闭包来保存兼容性判断结果的优化思想，这里详细的用代码阐述一下。
+js高程里面的eventHandler方法
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/20/闭包对事件处理程序的封装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1877,69 +1465,16 @@ function createEventRegister(){
       
         
           
-            <p>谈到性能优化，好像是一个很大的命题，其实只要代码写的久一些，总会去思考怎么写才可以让网页速度加载的更快，节约更少的带宽，这并不是在项目实现效果后才会去考虑的问题，要在一开始分析需求，组织结构的时候就有意识去用，去思考。</p>
-<p>看过雅虎36条军规，但是很多还是没有实践过的，或者说有些是一开始写js的规则，觉得不值一提的，这里总结一下，开发时候用到过的。</p>
-<h3 id="一、尽量减少HTTP请求次数"><a href="#一、尽量减少HTTP请求次数" class="headerlink" title="一、尽量减少HTTP请求次数"></a>一、尽量减少HTTP请求次数</h3><p>浏览器解析的时候，从上往下执行，页面中的图像，css、js等文件，都需要去外部下载。用gulp或webpack,将文件合并、压缩；</p>
-<h3 id="二、图片优化"><a href="#二、图片优化" class="headerlink" title="二、图片优化"></a>二、图片优化</h3><h4 id="1-写css布局的时候，要给图片一个宽高，给标签一个class名，尽可能不用标签查找"><a href="#1-写css布局的时候，要给图片一个宽高，给标签一个class名，尽可能不用标签查找" class="headerlink" title="1.写css布局的时候，要给图片一个宽高，给标签一个class名，尽可能不用标签查找"></a>1.写css布局的时候，要给图片一个宽高，给标签一个class名，尽可能不用标签查找</h4><h4 id="2-精灵图"><a href="#2-精灵图" class="headerlink" title="2.精灵图"></a>2.精灵图</h4><p>页面有很多小图片的时候，做成精灵图，通过控制background-image和background-position来显；缺点是维护起来麻烦，改一张要改整个图片，合并图片麻烦，要合理安排空间。</p>
-<h4 id="3-iconfont"><a href="#3-iconfont" class="headerlink" title="3.iconfont"></a>3.iconfont</h4><p>页面里面的icon比较小，又比较多的时候，用字体图标，制作网站：iconmon</p>
-<h4 id="4-base64格式图片"><a href="#4-base64格式图片" class="headerlink" title="4.base64格式图片"></a>4.base64格式图片</h4><p>图片个数比较少，不超过2kb，请求的频率又比较高，比如网站头部的logo图片，可以用base64,不会发送http请求。<br>webpack-cli默认设置是不超过1kb的用base64.实际使用看业务情况，既考虑大小，也考虑请求的频率。<br>base64制作方法：</p>
-<pre><code>1、html5的FileReader()方法里面的readAsDataURL转化，
-    var imgFile = new FileReader();
-    imgFile.readAsDataURL(img.files[0]);
-网址：http://blog.csdn.net/qq_30632003/article/details/61201093
-
-2、canvas的 toDataURL(imgurl)方法也可以转
-3、在线工具   
-</code></pre><h4 id="5-svg画图标"><a href="#5-svg画图标" class="headerlink" title="5.svg画图标"></a>5.svg画图标</h4><p>之前项目里面用svg画过两个圆形交叠的图标，去控制进度条显示，这个和canvas很类似，可以在以后项目里多做实践，也不用发送请求</p>
-<h4 id="6-移动端2x、3x图按需加载"><a href="#6-移动端2x、3x图按需加载" class="headerlink" title="6.移动端2x、3x图按需加载"></a>6.移动端2x、3x图按需加载</h4><p>这个在移动端项目里面总结过用法，其实加载还有一个比较新的属性，srcset，只是兼容性不好。</p>
-<h3 id="三、懒加载、预加载技术"><a href="#三、懒加载、预加载技术" class="headerlink" title="三、懒加载、预加载技术"></a>三、懒加载、预加载技术</h3><p>针对页面大图片比较多的情况下，要保证高清效果，还要保证加载速度，不能造成假死，用lazyload插件或者是预加载技术，懒加载是先不给图片src设置真正的地址，等到页面滚动到图片的位置的时候，再给src赋值。</p>
-<h3 id="四、缓存思想"><a href="#四、缓存思想" class="headerlink" title="四、缓存思想"></a>四、缓存思想</h3><p>遇到有用递归来获取的，先把前面的结果缓存起来，下一次递归的时候，先去取值。项目里几乎没用到递归，只是总结一下这个思想。</p>
-<p>几种cache：</p>
-<pre><code>1. 浏览器缓存
-    浏览器缓存会将部分资源缓存在本地，当用户向服务器发送请求的时候，这部分资源会直接从本地读取，避免了网络传输数据内容过多，导致访问效率变差的问题！
-
-2. CDN Content delivery Network
-    提升网站打开速度！
-
-3. 硬件缓存
-    也是为了提升访问效的！
-
-4. 数据库缓存
-    硬盘型数据库： MySQL MSSQL ORACLE
-    内存型数据库： MongoDB Redis
-
-    内存型数据经常被用来做缓存，提升数据存取速度！
-</code></pre><p>补充：2017.5在vue项目里面，有一个很好的方法，keep-alive，可以在当前组件切换到其他组件的时候不销毁页面和数据，而是保存在缓存里面，下一次再调用。<br>另外lazyload也可以使用在vue里面。</p>
-<h3 id="五、闭包的去保存事件处理程序的兼容性测试结果"><a href="#五、闭包的去保存事件处理程序的兼容性测试结果" class="headerlink" title="五、闭包的去保存事件处理程序的兼容性测试结果"></a>五、闭包的去保存事件处理程序的兼容性测试结果</h3><p>js文件写的时候，比如事件处理程序兼容性封装的时候，可以考虑利用闭包的方法，不用每次都去判断浏览器是否支持某种方法，用一个浏览器，检测一次，用变量保存。这个觉得可以专门写一篇分析一下。</p>
-<h3 id="六、减少页面的重绘"><a href="#六、减少页面的重绘" class="headerlink" title="六、减少页面的重绘"></a>六、减少页面的重绘</h3><p>在一个后台项目里面，用模板把请求回来的数据填入模块，渲染到页面上，再下一次，只是部分数据发生变化，有几种方案可以解决，把原来的数据替换，原数组更换，渲染，或者只是把这部分用html字符串拼接方法来改变局部。最后选了后者，虽然看起来麻烦一些，但是渲染的速度更快，减少了dom操作。</p>
-<h3 id="七、动态创建元素，添加到页面时候的优化"><a href="#七、动态创建元素，添加到页面时候的优化" class="headerlink" title="七、动态创建元素，添加到页面时候的优化"></a>七、动态创建元素，添加到页面时候的优化</h3><p>在页面某一部分重新请求了数据，需要重新渲染,在页面添加节点和内容的时候，既可以用document.createElement(‘p’)的方法；</p>
-<p>也可以使用innerHTML实行字符串拼接，对于比较多的dom元素创建，比如for循环一个arr数组，然后根据里面的每一项来创建Li标签，<br>采用innerHTML方法效率会更高；</p>
-<p>同时，因为字符串品拼接具有不可变性，，频繁拼接会造成内存的浪费，可以考虑优化的方法：</p>
-<p>先把每一次循环的字符串push进一个[],然后循环结束，采用arr.join(“”),转成字符串输出</p>
-<p>一个展示在线人员图像的示例：</p>
-<pre><code>&lt;script&gt;
-var datas = [   // json对象，这是一种数据传输的格式  每个大括号就是一个对象
-{&quot;name&quot;: &quot;tdxy01&quot;, &quot;icon&quot;: &quot;images/noavatar_small.gif&quot;},
-{&quot;name&quot;: &quot;沉眠楚人&quot;, &quot;icon&quot;: &quot;images/avatar_11.jpg&quot;},
-{&quot;name&quot;: &quot;爱上karina&quot;, &quot;icon&quot;: &quot;images/75_avatar_small.jpg&quot;},
-{&quot;name&quot;: &quot;today&quot;, &quot;icon&quot;: &quot;images/avatar_02.jpg&quot;},
-{&quot;name&quot;: &quot;hlg&quot;, &quot;icon&quot;: &quot;images/avatar_03.jpg&quot;}
-]
-
-    var arr = [];
-    for (var i = 0; i &lt; datas.length; i++) {
-        var str = &apos;&lt;li&gt;&apos;
-                + &apos;&lt;p&gt;&apos; +datas[i].name+ &apos;&lt;/p&gt;&apos;
-                + &apos;&lt;span&gt;&apos;+datas[i].icon+&apos;&lt;/span&gt;&apos;
-                + &apos;&lt;li&gt;&apos;;
-        arr.push(str);   // 将li标签添加到数组里面
-    }
-    var html = arr.join(&apos;&apos;); // 将数组中的元素连接成字符串
-    ul.innerHTML = html;
-&lt;/script&gt;
-</code></pre><p>。。。。未完待续，想到就补充</p>
-
-          
+          谈到性能优化，好像是一个很大的命题，其实只要代码写的久一些，总会去思考怎么写才可以让网页速度加载的更快，节约更少的带宽，这并不是在项目实现效果后才会去考虑的问题，要在一开始分析需求，组织结构的时候就有意识去用，去思考。
+看过雅虎36条军规，但是很多还是没有实践过的，或者说有些是一开始写js的规则，觉
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/18/项目里面用过的性能优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2071,233 +1606,19 @@ var datas = [   // json对象，这是一种数据传输的格式  每个大括�
       
         
           
-            <p>移动端的页面写了几个了，除了前面的1px，rem这些坑，还有一些要考虑的问题，在这里再开一个坑，记录下来，下次少踩一点。</p>
-<h3 id="扩展点击区域"><a href="#扩展点击区域" class="headerlink" title="扩展点击区域"></a>扩展点击区域</h3><p>手机端的，header部分的back按钮，需要将其点击的区域扩大，方便点击，这个用过的方法主要有两种：</p>
-<h4 id="利用伪元素"><a href="#利用伪元素" class="headerlink" title="利用伪元素"></a>利用伪元素</h4><pre><code>// 扩展点击区域
+          移动端的页面写了几个了，除了前面的1px，rem这些坑，还有一些要考虑的问题，在这里再开一个坑，记录下来，下次少踩一点。
+扩展点击区域手机端的，header部分的back按钮，需要将其点击的区域扩大，方便点击，这个用过的方法主要有两种：
+利用伪元素// 扩展点击区域
 extend-click()
-position: relative
-&amp;:before
-    content: &apos;&apos;
-    position: absolute
-    top: -10px
-    left: -10
-    right: -10px
-    bottom: -10px
-在common/css/mixin.styl里面设置，需要的时候导入
-</code></pre><h4 id="back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性"><a href="#back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性" class="headerlink" title="back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性"></a>back按钮使用精灵图的时候，利用css3的background-clip和background-origin属性</h4><pre><code>// back按钮，a标签设置的，利用精灵图
-header a.back {
-  left: 0px;
-  top: 1px;
-  background-position: -20px 0;
-  padding: 12px 10px;  // 扩展的点击区域
-  box-sizing: content-box; // 默认的盒子模型
-  background-origin: content-box; // 设置背景图片的起始位置
-  background-clip: content-box; // 切割，只保留content内容
-}
-</code></pre><h3 id="文本超出不显示，显示省略号"><a href="#文本超出不显示，显示省略号" class="headerlink" title="文本超出不显示，显示省略号"></a>文本超出不显示，显示省略号</h3><p>为文字的父元素设置，且父元素不能设置width:100%</p>
-<pre><code>div.test {
-    white-space: nowrap;
-    text-overflow:ellipsis;
-    overflow: hidden;
-}
-</code></pre><h3 id="chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置"><a href="#chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置" class="headerlink" title="chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置"></a>chorme浏览器默认的字体大小是12px，如果要设置为10px的话，会失效，需要设置</h3><pre><code>-webkit-text-size-adjust: none
-</code></pre><h3 id="点击高亮问题处理"><a href="#点击高亮问题处理" class="headerlink" title="点击高亮问题处理"></a>点击高亮问题处理</h3><p>ios设备上，点击按钮的是时候，屏幕会闪动一下，这是因为移动端，有事件监听的元素被点击的时候会被高亮显示，而-webkit-tap-highlight-color属性会在当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色</p>
-<pre><code>-webkit-tap-highlight-color:rgba(0,0,0,0)
-//webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节。
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/06/16/移动端dpr不同时，2x图，3x图的处理方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="sunshineLing">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/06/16/移动端dpr不同时，2x图，3x图的处理方法/" itemprop="url">移动端dpr不同时，2x图，3x图的处理方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-16T22:01:18+08:00">
-                2016-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动端/" itemprop="url" rel="index">
-                    <span itemprop="name">移动端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前面总结了移动端页面怎么利用rem实现不同屏幕的适配，解决了尺寸一样，随页面缩放时发生变形的问题。</p>
-<p>但是因为不同手机的屏幕分辨率不同，尤其是受高清屏的影响，有了设备的物理像素和设备的独立像素（css中的px像素）的区别，同样的页面，独立像素是640 <em> 1280，但是物理像素是320 </em> 640，写页面的时候，就需要按照 比例为2， 即 640 * 1280来准备图片。</p>
-<h2 id="dpr-device-pixel-ratio-设备像素比"><a href="#dpr-device-pixel-ratio-设备像素比" class="headerlink" title="dpr(device pixel ratio).设备像素比"></a>dpr(device pixel ratio).设备像素比</h2><p>window.devicePixelRatio = 物理像素 / 独立像素</p>
-<p>浏览器默认的视口获取<br>document.documentElement.clientWidth</p>
-<p>首先需要对视口做设置，不允许用户随意缩放：</p>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;&gt;
-// 让viewport宽度 = 设备的宽度
-</code></pre><h2 id="dpr-不同，造成图片再dpr比较大的情况下，被放大，图片失真，所以需要在切图的时候准备对应的2X图和3x图，普通屏幕下，加载高清图又浪费"><a href="#dpr-不同，造成图片再dpr比较大的情况下，被放大，图片失真，所以需要在切图的时候准备对应的2X图和3x图，普通屏幕下，加载高清图又浪费" class="headerlink" title="dpr 不同，造成图片再dpr比较大的情况下，被放大，图片失真，所以需要在切图的时候准备对应的2X图和3x图，普通屏幕下，加载高清图又浪费"></a>dpr 不同，造成图片再dpr比较大的情况下，被放大，图片失真，所以需要在切图的时候准备对应的2X图和3x图，普通屏幕下，加载高清图又浪费</h2><pre><code>dpr &lt;= 2时，使用2x图
-apr &gt;= 2时，使用3x图
-比如ipone6是375的屏，切750的2x图，3x图切1125px尺寸下的图
-</code></pre><p>在项目里面，两种写法都用过，没有区别：</p>
-<p>1.在common的mixin公共样式里面，写</p>
-<pre><code>// 2x和3x图切换的样式，根据media-query来判断
-bg-image($url)
-    background-image: url($url + &quot;@2x.png&quot;)
-    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
-        background-image: url($url + &quot;@3x.png&quot;)
-
-// $url是前缀，用的时候，先@import引入公共样式，然后
-img {
-    bg-image(&apos;beijing&apos;)
-}
-</code></pre><p>2.也是在公共样式mixin里面写，这个时候根元素里面也需要设置了data-dpr</p>
-<pre><code>img-dpr(){ 
-    background-image: url(image.jpg);//默认 
-    [data-dpr=&quot;2&quot;] &amp; { 
-        background-image: url(image@2x.jpg);//两倍高清 } 
-    [data-dpr=&quot;3&quot;] &amp; { 
-        background-image: url(image@3x.jpg);//三倍高清 } 
-} 
-先引入mixin样式
-.content{ 
-    img-dpr(); 
-}
-</code></pre><h2 id="雪碧图使用rem造成像素偏差的问题"><a href="#雪碧图使用rem造成像素偏差的问题" class="headerlink" title="雪碧图使用rem造成像素偏差的问题"></a>雪碧图使用rem造成像素偏差的问题</h2><p>解决办法：1.先放大100倍，提高图片精度，找到图片位置，再缩小100倍</p>
-<pre><code>.icon-fix { 
-    background: none; 
-    position: relative; 
-    overflow: hidden; 
-} 
-.icon-fix:after { 
-    content: &apos;&apos;; 
-    display: block; 
-    width: 10000%; 
-    height: 10000%; 
-    position: absolute;
-    left: 0; 
-    top: 0; 
-    background-image: url(sprite.png); 
-    background-repeat: no-repeat; 
-    background-size: 140rem; 
-    -webkit-transform-origin: 0 0; 
-    -webkit-transform: scale(.01); 
-    transform-origin: 0 0; 
-    transform: scale(.01); 
-} 
-.icon3:after { 
-    background-position: 0 -280rem; 
-}
-</code></pre>
-          
+p
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/16/移动端页面样式设置的一些总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2334,7 +1655,7 @@ img {
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2380,7 +1701,7 @@ img {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2391,7 +1712,7 @@ img {
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2413,6 +1734,17 @@ img {
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -2443,7 +1775,7 @@ img {
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
