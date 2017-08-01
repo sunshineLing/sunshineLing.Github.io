@@ -1,0 +1,1214 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="之前习惯在项目里面总结问题，这里把一些共性的总结一下，方便查找。 Vue项目back按钮问题问题 需求是back按钮放在app.vue里面的，但是希望只有二级菜单才返回，一级菜单不显示。 思路 1.为按钮绑定@click=’goback’事件，点击的时候，触发methods里面的路由的返回上一级事件： this.$router.go(-1); 2.因为back按钮只有在二级菜单之后才会返回，一级菜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue项目遇到的问题总结">
+<meta property="og:url" content="sunshineLing.github.io/2017/03/25/Vue项目遇到的问题总结/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="之前习惯在项目里面总结问题，这里把一些共性的总结一下，方便查找。 Vue项目back按钮问题问题 需求是back按钮放在app.vue里面的，但是希望只有二级菜单才返回，一级菜单不显示。 思路 1.为按钮绑定@click=’goback’事件，点击的时候，触发methods里面的路由的返回上一级事件： this.$router.go(-1); 2.因为back按钮只有在二级菜单之后才会返回，一级菜">
+<meta property="og:updated_time" content="2017-07-25T04:32:51.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue项目遇到的问题总结">
+<meta name="twitter:description" content="之前习惯在项目里面总结问题，这里把一些共性的总结一下，方便查找。 Vue项目back按钮问题问题 需求是back按钮放在app.vue里面的，但是希望只有二级菜单才返回，一级菜单不显示。 思路 1.为按钮绑定@click=’goback’事件，点击的时候，触发methods里面的路由的返回上一级事件： this.$router.go(-1); 2.因为back按钮只有在二级菜单之后才会返回，一级菜">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2017/03/25/Vue项目遇到的问题总结/"/>
+
+
+
+
+
+  <title>vue项目遇到的问题总结 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/03/25/Vue项目遇到的问题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue项目遇到的问题总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T22:22:26+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前习惯在项目里面总结问题，这里把一些共性的总结一下，方便查找。</p>
+<h2 id="Vue项目back按钮问题"><a href="#Vue项目back按钮问题" class="headerlink" title="Vue项目back按钮问题"></a>Vue项目back按钮问题</h2><p><strong>问题</strong></p>
+<p>需求是back按钮放在app.vue里面的，但是希望只有二级菜单才返回，一级菜单不显示。</p>
+<p><strong>思路</strong></p>
+<p>1.为按钮绑定@click=’goback’事件，点击的时候，触发methods里面的路由的返回上一级事件：</p>
+<pre><code>this.$router.go(-1);
+</code></pre><p>2.因为back按钮只有在二级菜单之后才会返回，一级菜单应该是不显示的，所以需要在back按钮上绑定v-show=”isShow”，在一级菜单的时候不显示。</p>
+<p>3.如何判定是一级菜单还是二级菜单呢？可以通过watch来监控$route的值，里面有path,根据path来判断</p>
+<pre><code>watch: {
+   &apos;$route&apos;: function(newVal, oldVal) {
+        console.log(newVal); //里面有path路径，判断做处理就可以了
+    }
+}
+</code></pre><p>4.一个bug就是刷新之后，按钮又恢复默认情况了。这个时候watch不起作用了，因为路由没有发生更改；</p>
+<p>5.参考网上的资料，监听窗口的Load事件：</p>
+<pre><code>mounted() {
+    window.addEventListener(&apos;load&apos;, this.reload)
+}
+
+// 在reload()方法里面，可以获取this.$route的Path变化，再调用同样的方法，path是二级菜单的，就不显示
+</code></pre><h2 id="vue数据更新，dom不更新的问题"><a href="#vue数据更新，dom不更新的问题" class="headerlink" title="vue数据更新，dom不更新的问题"></a>vue数据更新，dom不更新的问题</h2><p><strong>问题：</strong> 一个数组，改变这个数组中的一个序号为index的值，dom不能更新，代码为：</p>
+<pre><code>this.lists[index] = newValue
+</code></pre><p>解决办法：</p>
+<pre><code>Vue.set(items, index, newValue)
+// 原对象，要改变的对象的索引，新值
+
+items.splice(index, 1, newValue)
+</code></pre><h2 id="给一个对象扩展新属性"><a href="#给一个对象扩展新属性" class="headerlink" title="给一个对象扩展新属性"></a>给一个对象扩展新属性</h2><pre><code>Vue.set(原对象，属性名，属性值)
+
+或者this.$set(obj, key, val)
+
+或者es6方法
+Object.assign({}, obj, {key: val, key: val})
+</code></pre><h2 id="nextTick的使用"><a href="#nextTick的使用" class="headerlink" title="nextTick的使用"></a>nextTick的使用</h2><pre><code>methods: {
+   updateMessage: function () {
+     this.message = &apos;更新完成&apos;
+     console.log(this.$el.textContent) // =&gt; &apos;没有更新&apos;
+     this.$nextTick(function () {
+       console.log(this.$el.textContent) // =&gt; &apos;更新完成&apos;
+     })
+   }
+</code></pre><h2 id="Vue组件和非父子组件传值"><a href="#Vue组件和非父子组件传值" class="headerlink" title="Vue组件和非父子组件传值"></a>Vue组件和非父子组件传值</h2><h3 id="父子组件之间传值—–父组件传值给子组件-父组件view里绑定，子组件props接收"><a href="#父子组件之间传值—–父组件传值给子组件-父组件view里绑定，子组件props接收" class="headerlink" title="父子组件之间传值—–父组件传值给子组件(父组件view里绑定，子组件props接收)"></a>父子组件之间传值—–父组件传值给子组件(父组件view里绑定，子组件props接收)</h3><ul>
+<li>这个项目里面，有新闻页面，有图片页面，每个页面里面都有一个相同的模块，评论功能，考虑到复用，维护，抽取评论为子组件</li>
+</ul>
+<ul>
+<li><p>但是子组件里面要发送http请求给后台的时候，需要父组件传递当前这条新闻列表的id值，涉及到父子组件传值。</p>
+<p>  1.创建子组件： subcomment.vue</p>
+<pre><code>&lt;template&gt;&lt;/template&gt;
+&lt;style&gt;&lt;/style&gt;
+&lt;script&gt;&lt;/script&gt;
+</code></pre><p>  2.在父组件里面注册子组件</p>
+<pre><code>1）引入子组件：
+   import subcomont from &apos;../subcomment.vue&apos;
+   components: {
+         subcomment: subcomment 
+   }
+
+2) 父组件的tempalta模板里面，使用我们的子组件，并让子组件渲染出来
+   template里面：
+   &lt;subcomment&gt;&lt;/subcomment&gt;
+</code></pre><p>  3.父组件将组要的值传递给子组件-id</p>
+<pre><code>3.1 在父组件里面的子组件view视图里面绑定要传递的值，用key=value的形式
+     &lt;subcomment :commentId=&quot;this.$route.params.newsId&quot;&gt;&lt;/subcomment&gt;
+
+3.2 在子组件里面用props接收key值，props是一个数组，可以接收多个值
+     props: [&apos;commentId&apos;]
+
+3.3 子组件根据commentId实现数据请求和渲染
+</code></pre></li>
+</ul>
+<h3 id="子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this-emit来触发事件）"><a href="#子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this-emit来触发事件）" class="headerlink" title="子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this.$emit来触发事件）"></a>子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this.$emit来触发事件）</h3><ul>
+<li><p>项目里面有个商品列表模块，商品件数，可以用+-按钮操作里面的数量，需要在按钮点击的时候把数量传递给父组件，便于存进购物车，也便于更改购物车的徽标。</p>
+</li>
+<li><p>子组件里面需要：</p>
+<p>  1.写好子组件的代码；<br>  2.在需要传值给父组件的地方调用</p>
+<pre><code>this.$emit(key, 值) //这个key在父组件里面需要用到
+// 例如：this.$emit(&apos;numberChange&apos;, this.count);  //numberChange是自定义事件名称
+</code></pre><p>  父组件里面需要：</p>
+<pre><code>1.导入子组件；
+2.在components里面注册子组件
+3.在template里面使用子组件
+4.在父组件视图子组件的标签中，注册接收子组件值的事件
+   &lt;subnumber v-on:key=&quot;函数名称&quot;&gt;&lt;/subnumber&gt;   
+5.在父组件的methods中，写好接收子组件传递过来值的函数
+   methods: {
+        函数名称(子组件传递过来的值) {
+             // 具体代码
+        }
+   }
+</code></pre><p>  或者<br>  4.在父组件的子组件标签里面，自定义事件来接收：</p>
+<pre><code>&lt;subnumber @numberChange=&quot;函数名称，比如receiveCount&quot;&gt;&lt;/subnumber&gt;
+</code></pre><p>  5.父组件方法里面定义函数，将子组件传递的值通过参数来接收：<br>  methods: {</p>
+<pre><code>receiveCount(count) {
+     //
+}
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p><strong>方法2：利用ref属性</strong></p>
+<pre><code>1.在子组件的元素里设置:
+&lt;div id=&quot;app&quot;&gt;
+     &lt;subnumber ref=&quot;subNum&quot;&gt;&lt;/subnumber&gt;
+&lt;/div&gt;
+
+2.在父组件方法里面获取：
+new Vue({
+     el: &apos;#app&apos;,
+     mounted: function() {
+        // 直接访问sub子组件里面的值
+        this.$refs.subNum //拿到了子组件的dom元素，进而操作值 
+     }
+})
+     但是在这个项目里还是不希望父组件主动去取值，而是希望子组件变化的时候传递给父组件，父组件被动接收修改，否则不符合模块化的思想。
+</code></pre><p><strong>非父子组件之间传值（通信）：bus中间件</strong> </p>
+<ul>
+<li>不能再用this，而是要再创建一个空白的vue实例bus，引用进两个组件</li>
+</ul>
+<pre><code>1.创建一个空的bus.vue:
+     export default new Vue();
+2.两个组件都需要导入bus
+  1)传值方：bus.$emit(&apos;updateCount&apos;, 值)；
+  2)接收方：bus.$on(&apos;updateCount&apos;, function(值) {
+               // 回调里面执行代码
+          })
+</code></pre><h2 id="双向数据绑定问题"><a href="#双向数据绑定问题" class="headerlink" title="双向数据绑定问题"></a>双向数据绑定问题</h2><ul>
+<li><p>vue的v-model双向数据绑定，确实是很方便，不用直接再繁琐的去操作dom，但是一个项目里面，有个商品列表，前面用switch开关组件来控制，这个组件是利用v-model=”value”来关联是true或false，来显示是否计算这个商品，value是布尔值类型</p>
+</li>
+<li><p>因为双向绑定的特性，导致所有的商品列表项都共享这一个value,一个变化了，其他的就联动。</p>
+</li>
+<li><p>当时解决的办法是，v-model不能写死为value，里面是一个动态变化的数组switchvalue,用列表项的index来控制，每一个都给一个默认值。</p>
+<pre><code>html
+ &lt;!--开关--&gt;
+&lt;mt-switch @change=&quot;jisuanTotalCountAndTotalPrice&quot; v-model=&quot;switchValues[index]&quot;&gt;&lt;/mt-switch&gt;
+
+// 对http请求返回来的数据
+//给switchValues的i添加默认值
+// 返回的列表数据有几个项目，就对应设置
+this.switchValues[i] = true
+</code></pre></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/25/Vue-高仿饿了么项目总结/" rel="next" title="Vue-高仿饿了么项目总结">
+                <i class="fa fa-chevron-left"></i> Vue-高仿饿了么项目总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/15/项目总结/" rel="prev" title="M站项目记录">
+                M站项目记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue项目back按钮问题"><span class="nav-number">1.</span> <span class="nav-text">Vue项目back按钮问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue数据更新，dom不更新的问题"><span class="nav-number">2.</span> <span class="nav-text">vue数据更新，dom不更新的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给一个对象扩展新属性"><span class="nav-number">3.</span> <span class="nav-text">给一个对象扩展新属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nextTick的使用"><span class="nav-number">4.</span> <span class="nav-text">nextTick的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue组件和非父子组件传值"><span class="nav-number">5.</span> <span class="nav-text">Vue组件和非父子组件传值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父子组件之间传值—–父组件传值给子组件-父组件view里绑定，子组件props接收"><span class="nav-number">5.1.</span> <span class="nav-text">父子组件之间传值—–父组件传值给子组件(父组件view里绑定，子组件props接收)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this-emit来触发事件）"><span class="nav-number">5.2.</span> <span class="nav-text">子组件传值给父组件（父组件里用v-on自定义事件来监听，子组件里用this.$emit来触发事件）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向数据绑定问题"><span class="nav-number">6.</span> <span class="nav-text">双向数据绑定问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

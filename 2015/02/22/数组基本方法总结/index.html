@@ -1,0 +1,1216 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="数组方法concat拼接方法arr.concat(arr1) // 返回一个副本 join：将数组转化为字符串var arr = [1,2,3,4,5,6]; var res = arr.join(&amp;quot;,&amp;quot;);   // &amp;quot;1,2,3,4,5,6&amp;quot;  //无缝连接： arr.join(&amp;quot;&amp;quot;)   返回的是一个新的数组  // &amp;quot;1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组基本方法">
+<meta property="og:url" content="sunshineLing.github.io/2015/02/22/数组基本方法总结/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="数组方法concat拼接方法arr.concat(arr1) // 返回一个副本 join：将数组转化为字符串var arr = [1,2,3,4,5,6]; var res = arr.join(&amp;quot;,&amp;quot;);   // &amp;quot;1,2,3,4,5,6&amp;quot;  //无缝连接： arr.join(&amp;quot;&amp;quot;)   返回的是一个新的数组  // &amp;quot;1">
+<meta property="og:updated_time" content="2017-07-28T10:09:59.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组基本方法">
+<meta name="twitter:description" content="数组方法concat拼接方法arr.concat(arr1) // 返回一个副本 join：将数组转化为字符串var arr = [1,2,3,4,5,6]; var res = arr.join(&amp;quot;,&amp;quot;);   // &amp;quot;1,2,3,4,5,6&amp;quot;  //无缝连接： arr.join(&amp;quot;&amp;quot;)   返回的是一个新的数组  // &amp;quot;1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2015/02/22/数组基本方法总结/"/>
+
+
+
+
+
+  <title>数组基本方法 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/02/22/数组基本方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数组基本方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-22T10:13:27+08:00">
+                2015-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><h3 id="concat拼接方法"><a href="#concat拼接方法" class="headerlink" title="concat拼接方法"></a>concat拼接方法</h3><pre><code>arr.concat(arr1) // 返回一个副本
+</code></pre><h3 id="join：将数组转化为字符串"><a href="#join：将数组转化为字符串" class="headerlink" title="join：将数组转化为字符串"></a>join：将数组转化为字符串</h3><pre><code>var arr = [1,2,3,4,5,6];
+var res = arr.join(&quot;,&quot;);   // &quot;1,2,3,4,5,6&quot;
+
+//无缝连接： arr.join(&quot;&quot;)   返回的是一个新的数组  // &quot;123456&quot;
+
+// toString()方法
+arr.toString()
+</code></pre><h3 id="数组for循环用变量将数组的长度存储起来，会节省时间"><a href="#数组for循环用变量将数组的长度存储起来，会节省时间" class="headerlink" title="数组for循环用变量将数组的长度存储起来，会节省时间"></a>数组for循环用变量将数组的长度存储起来，会节省时间</h3><pre><code>for(var i = 0; var len = arr.length; i++) {
+     //执行函数
+}
+</code></pre><h3 id="push-添加方法"><a href="#push-添加方法" class="headerlink" title="push 添加方法"></a>push 添加方法</h3><pre><code>添加数据到数组的末尾   arr.push(&quot;123&quot;);
+// 返回的是修改后的数组的长度，不是新数组
+</code></pre><h3 id="pop从数组尾部移除一项"><a href="#pop从数组尾部移除一项" class="headerlink" title="pop从数组尾部移除一项"></a>pop从数组尾部移除一项</h3><pre><code>从数组的末尾移除一项
+// 返回的是移除的项
+</code></pre><h3 id="shift移除数组第一项"><a href="#shift移除数组第一项" class="headerlink" title="shift移除数组第一项"></a>shift移除数组第一项</h3><pre><code>移出数组的第一项
+// 返回移除的项
+</code></pre><h3 id="unshift"><a href="#unshift" class="headerlink" title="unshift"></a>unshift</h3><pre><code>向数组最前面添加一项
+// 返回的添加后新数组的长度
+</code></pre><h3 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h3><ul>
+<li>对数组进行切割，返回的是一个新数组，不会改变原数组</li>
+<li>只有一个参数，返回的是从指定位置到末尾的数</li>
+<li><p>有两个参数，返回从开始到结束，不包括结束项的数组</p>
+<pre><code>arr = [1, 2, 3, 4, 5];
+var arr1 = arr.slice(1);  
+//[2, 3, 4, 5] 返回第一项开始所有的数字
+var arr2 = arr.slice(1, 4)  [1, 4)包左不包右   
+// arr2 = [2, 3, 4];
+</code></pre><h3 id="splice-从数组中删除-添加项目"><a href="#splice-从数组中删除-添加项目" class="headerlink" title="splice 从数组中删除/添加项目"></a>splice 从数组中删除/添加项目</h3></li>
+<li><p>删除<br>  arr.splice(要删除的项目开始的位置（下标）， 要删除的项数， 向数组添加新项目（可选项）)</p>
+</li>
+</ul>
+<h3 id="indexOf（）查找"><a href="#indexOf（）查找" class="headerlink" title="indexOf（）查找"></a>indexOf（）查找</h3><ul>
+<li>indexOf(要查找的项目， 查找的起点位置的索引（可选）)</li>
+<li><p>返回查找项在数组中的位置，没找到返回-1</p>
+<p>  arr.indexOf(‘3’)  返回的值为-1或查找项的索引</p>
+</li>
+</ul>
+<h3 id="求一组数的最大值，最小值的方法"><a href="#求一组数的最大值，最小值的方法" class="headerlink" title="求一组数的最大值，最小值的方法"></a>求一组数的最大值，最小值的方法</h3><p>1.Math.max.apply(Math, arr) 求数组的最大值 </p>
+<p>2.原生js方法</p>
+<pre><code> //求一组数中的最大值
+ // 假设数组中的第一个数就是最大值
+ var max = nums[0];
+ for(var i = 1; i &lt; nums.length; i++) {
+      if(max&lt;nums[i]){
+        max = nums[i];
+      }else {
+        max = max;
+      }
+ }
+ console.log(&quot;此数组中的最大值为：&quot;+max);
+
+ //求一组数中的最小值
+//假设数组中的第一项就是最小值
+ var min = nums[0];
+ for(var i = 1; i &lt; nums.length; i++) {
+      if(min&gt;nums[i]){
+        min = nums[i];
+      }else {
+        min = min;
+      }
+ }
+ console.log(&quot;此数组中的最小值是：&quot;+min);
+</code></pre><h3 id="判断是否是数组的方法"><a href="#判断是否是数组的方法" class="headerlink" title="判断是否是数组的方法"></a>判断是否是数组的方法</h3><pre><code>1.console.log(a instanceof Array) 
+
+2.
+function isArray(object){
+    return object &amp;&amp; typeof object===&apos;object&apos; &amp;&amp;
+            Array == object.constructor;
+}
+
+3.
+function isArray(o) {
+    return Object.prototype.toString.call(o) === ‘[object Array]‘;
+}
+</code></pre><h3 id="伪数组转化为真数组"><a href="#伪数组转化为真数组" class="headerlink" title="伪数组转化为真数组"></a>伪数组转化为真数组</h3><p>第一、伪数组的含义</p>
+<pre><code>具有数组的属性，并且属性名都是数字，可以像访问数组一样去访问
+对象中的内容，并且可以被遍历，但是没有数组的方法
+</code></pre><p>第二、把伪数组转化为数组</p>
+<pre><code>var fakeArr = {
+    0: &quot;小明&quot;,
+    1: &quot;小红&quot;,
+    2: &quot;小风&quot;,
+    length: 3
+}
+fakeArr.push(&quot;小树&quot;);   //会报错，不能使用数组方法
+
+//方法一：可以先遍历fakeArr数组，用一个空数组来接收
+var arr = [];
+for(var i = 0; i &lt; fakeArr.length; i++) {arr.push(fakeArr[i])};
+</code></pre><p>//方法二： 伪数组使用真数组的push方法,利用原型继承的方法</p>
+<pre><code>var arr = [];
+arr.push.apply(arr, fakeArr);
+</code></pre><p>// 伪数组使用真数组的concat方法</p>
+<pre><code>数组.concat(1, 2, 3, 4);
+var arr = [].concat.apply([], fakeArr);
+</code></pre><p>第三. 函数中的arguments是伪数组，转化为数组：</p>
+<pre><code>// 1、利用slice方法
+function a() {
+   var args = Array.prototype.slice.call(arguments);
+}
+a(1,2,3);
+
+// 2.ES6的Array.from方法
+     from 方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和
+    可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）
+
+function foo() {
+     Array.from(arguments);   // [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]
+}
+</code></pre><h3 id="数组的拷贝"><a href="#数组的拷贝" class="headerlink" title="数组的拷贝"></a>数组的拷贝</h3><p>浅拷贝是直接将一个数组赋值给另外一个数组，没有考虑到数组是引用类型的数据，原数组改变，复制的数组也会改变；</p>
+<p>深拷贝，考虑到数组是引用类型的数据，数组内部也可能是数组或对象或函数这样的引用类型的数据，所以不能直接复制，需要递归去一层层的遍历，进行拷贝</p>
+<p>其中数组的深拷贝还可以直接用slice方法。或者for循环遍历数组；</p>
+<h3 id="在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？"><a href="#在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？" class="headerlink" title="在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？"></a>在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？</h3><pre><code>使用for方法：
+　　var arr = new Array(100);
+    for(var i=0;i&lt;arr.length;i++){
+        arr[i] = i;
+    }
+    console.log(arr);
+
+ 或者是：
+　　var arr = new Array();
+    for(var i=0;i&lt;100;i++){
+        arr.push(i);
+    }
+    console.log(arr);
+
+
+var arr = Object.keys(Array.apply(null, {length:100})).map(function(item){ return +item; }); console.log(arr);
+
+var arr = Array.from({length:100}, (v,k) =&gt; k); console.log(arr);
+
+　var arr = new Array(100).keys(); console.log(Array.from(arr));
+
+var arr = [...Array(100).keys()]; console.log(arr);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/28/数组去重、排排序方法/" rel="prev" title="数组去重、反转、排序、冒泡排序、过滤方法">
+                数组去重、反转、排序、冒泡排序、过滤方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组方法"><span class="nav-number">1.</span> <span class="nav-text">数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concat拼接方法"><span class="nav-number">1.1.</span> <span class="nav-text">concat拼接方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join：将数组转化为字符串"><span class="nav-number">1.2.</span> <span class="nav-text">join：将数组转化为字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组for循环用变量将数组的长度存储起来，会节省时间"><span class="nav-number">1.3.</span> <span class="nav-text">数组for循环用变量将数组的长度存储起来，会节省时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-添加方法"><span class="nav-number">1.4.</span> <span class="nav-text">push 添加方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop从数组尾部移除一项"><span class="nav-number">1.5.</span> <span class="nav-text">pop从数组尾部移除一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift移除数组第一项"><span class="nav-number">1.6.</span> <span class="nav-text">shift移除数组第一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift"><span class="nav-number">1.7.</span> <span class="nav-text">unshift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.8.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-从数组中删除-添加项目"><span class="nav-number">1.9.</span> <span class="nav-text">splice 从数组中删除/添加项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf（）查找"><span class="nav-number">1.10.</span> <span class="nav-text">indexOf（）查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求一组数的最大值，最小值的方法"><span class="nav-number">1.11.</span> <span class="nav-text">求一组数的最大值，最小值的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是否是数组的方法"><span class="nav-number">1.12.</span> <span class="nav-text">判断是否是数组的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪数组转化为真数组"><span class="nav-number">1.13.</span> <span class="nav-text">伪数组转化为真数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的拷贝"><span class="nav-number">1.14.</span> <span class="nav-text">数组的拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？"><span class="nav-number">1.15.</span> <span class="nav-text">在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

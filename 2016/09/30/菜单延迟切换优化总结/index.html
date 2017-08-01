@@ -1,0 +1,1252 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="菜单延迟优化最近对项目里面的一级菜单切换到二级菜单进行了优化，发现需求简单，但是实现起来，要考虑的技术细节问题很多： bug:  鼠标经过一级菜单的时候，会显示二级菜单，但是如果想从一次菜单移动到二级菜单，只能平移，否则触发了鼠标移出事件；  解决思路：   细节： 1.一级菜单和二级菜单基本结构： 一级菜单外层容器： &amp;lt;div class=&amp;quot;main-menu&amp;quot; id=">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国际站项目技术记录">
+<meta property="og:url" content="sunshineLing.github.io/2016/09/30/菜单延迟切换优化总结/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="菜单延迟优化最近对项目里面的一级菜单切换到二级菜单进行了优化，发现需求简单，但是实现起来，要考虑的技术细节问题很多： bug:  鼠标经过一级菜单的时候，会显示二级菜单，但是如果想从一次菜单移动到二级菜单，只能平移，否则触发了鼠标移出事件；  解决思路：   细节： 1.一级菜单和二级菜单基本结构： 一级菜单外层容器： &amp;lt;div class=&amp;quot;main-menu&amp;quot; id=">
+<meta property="og:updated_time" content="2017-08-01T12:03:53.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="国际站项目技术记录">
+<meta name="twitter:description" content="菜单延迟优化最近对项目里面的一级菜单切换到二级菜单进行了优化，发现需求简单，但是实现起来，要考虑的技术细节问题很多： bug:  鼠标经过一级菜单的时候，会显示二级菜单，但是如果想从一次菜单移动到二级菜单，只能平移，否则触发了鼠标移出事件；  解决思路：   细节： 1.一级菜单和二级菜单基本结构： 一级菜单外层容器： &amp;lt;div class=&amp;quot;main-menu&amp;quot; id=">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2016/09/30/菜单延迟切换优化总结/"/>
+
+
+
+
+
+  <title>国际站项目技术记录 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/09/30/菜单延迟切换优化总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">国际站项目技术记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-30T08:54:38+08:00">
+                2016-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="菜单延迟优化"><a href="#菜单延迟优化" class="headerlink" title="菜单延迟优化"></a>菜单延迟优化</h2><p>最近对项目里面的一级菜单切换到二级菜单进行了优化，发现需求简单，但是实现起来，要考虑的技术细节问题很多：</p>
+<p>bug:</p>
+<ul>
+<li><p>鼠标经过一级菜单的时候，会显示二级菜单，但是如果想从一次菜单移动到二级菜单，只能平移，否则触发了鼠标移出事件；</p>
+</li>
+<li><p>解决思路：</p>
+</li>
+</ul>
+<p>细节：</p>
+<p>1.一级菜单和二级菜单基本结构：</p>
+<pre><code>一级菜单外层容器：
+&lt;div class=&quot;main-menu&quot; id=&quot;mainMenu&quot;&gt;
+    &lt;ul&gt;
+        // 一级菜单项
+        &lt;li data-id=&quot;a&quot;&gt;
+            &lt;span&gt;一级类目&lt;/span&gt;
+        &lt;/li&gt;
+        ....
+    &lt;/ul&gt;
+    // 二级菜单项目
+    &lt;div class=&quot;hide&quot; id=&quot;subMenu&quot;&gt;
+        &lt;div id=&quot;a&quot; class=&quot;sub-content hide&quot;&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;
+                    &lt;a href=&quot;#&quot; target=&quot;blank&quot;&gt;二级类目&lt;/a&gt;
+                &lt;/dt&gt;
+                &lt;dd&gt;
+                    &lt;a href=&quot;#&quot; target=&quot;blank&quot;&gt;二级类目子类&lt;/a&gt;
+                    ...
+                &lt;/dd&gt;
+            &lt;dl&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;b&quot; class=&quot;sub-content hide&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>2.css样式：</p>
+<pre><code>一级菜单相对定位，二级菜单绝对定位
+一级菜单lihover的时候，设置active样式
+</code></pre><p>3.js</p>
+<ul>
+<li><p>菜单移入移出事件，既可以用mouseover和mouseout,也可以用mouseover和mouseleave，但是两者是有区别的：</p>
+<pre><code>mouseover和mouseout支持事件冒泡，所以鼠标从一级菜单移动到二级菜单上面的时候，即使没有离开父元素，也触发了父元素的mouseout事件
+
+而mouseenter和mouseleave则没有事件冒泡，鼠标离开了一级菜单，进入到二级菜单subMenu的时候，浏览器认为还是在该元素内，不会触发mouseleave行为
+</code></pre></li>
+</ul>
+<p>所以这里只用mouseenter和mouseleava比较好，否则还要阻止事件冒泡</p>
+<ul>
+<li><p>因为是根据ajax数据动态生成的一级菜单和二级菜单，所以对一级菜单Li操作的时候，没有直接给Li绑定事件，而是绑定在父元素mainMenu上，做了事件代理</p>
+<pre><code>鼠标滑过一级菜单Li项目时，mouseenter事件绑定在父元素mainMenu上面，根据e.target来确定触发的是哪一个Li，给这个li添加active样式
+
+二级菜单显示的项目，根据对应的id来确定，取自定义属性data-id来拼接成字符串选择器
+</code></pre></li>
+</ul>
+<ul>
+<li><p>bug1:从激活的一级菜单移入到二级菜单的时候，必须平移到当前项的边缘，再进入二级菜单，而不是斜上、斜下，所以需要处理</p>
+<pre><code>分析： 进入另外一个li太快了，所以来不及切到二级菜单，那就延迟300ms
+
+解决：
+1.在移出当前Li,隐藏当前二级菜单，进入另一个li，显示对应二级菜单的时候，加一个setTimeout定时器，让这一系列事件延迟300ms执行。
+2.还需要设置一个标志位，判断鼠标是不是在当前激活项的二级菜单内
+var mouseInSub = false
+sub.on(&apos;mouseenter&apos;, function() {
+    mouseInSub = true;
+})
+对应离开的时候还原
+3.setTimeout的时候，判断一个标志位，如果没有在二级菜单内，就进入下一个菜单。
+</code></pre></li>
+<li><p>bug2:在一级菜单Li切换到另外一个li的时候，快速切换，也会显示每一项对应的子菜单，这样会消耗性能。所以需要采用类似于节流的debounce去抖技术，就是事件短时间内频繁触发的时候，只执行最后一次的。</p>
+<pre><code>在鼠标在一级菜单上移动的时候，判断前面的定时器timer有没有存在，如果有，再定时器事件开始执行前，就清除掉。
+
+在定时器还没有出发的时候，就把定时器清除掉，定时器里面，也设置timer = null
+</code></pre></li>
+<li><p>bug3:前面设置的300ms延迟，虽然解决了切换到二级菜单的问题，但是如果不想切换到二级菜单，只想在一级菜单里面移动，还是会有明显的延迟效果，等到300ms之后，判断没有进入二级菜单事件才会执行，这种体验也不好。</p>
+<p>  分析：判断鼠标下一步要移动的去向，是下一个一级菜单，还是二级菜单</p>
+<p>  解决：引入向量的概念，鼠标上一次的位置，还有对应的二级菜单的左上角，左下角，形成的一个三角区域，判断鼠标的当前位置落不落在这三个点组成的三角形里面，如果在，就说明，是要移动到二级菜单，不在，移动到下一个一级菜单。</p>
+<p>  代码思路：<br>  1.设置一个存储位置信息的数组：[]；<br>  2.给document绑定mousemove事件，将鼠标当前位置push进数组,只需要保存当前和上一次的位置就可以了，所以多的就清除掉</p>
+<pre><code>var moveHandler = function (e) {
+    mouseTrack.push({
+      x: e.pageX,
+      y: e.pageY
+    })// 获取当前鼠标相对于页面的坐标保存到mouseTrack里
+</code></pre></li>
+</ul>
+<pre><code>        if (mouseTrack.length &gt; 3) {
+          mouseTrack.shift()
+        }// 只保存三个信息
+
+      }
+
+3.算法，涉及到的公式：
+
+    向量： Vab = Pb - Pa
+    二维向量叉乘公式：
+    a(x1, y1) * b(x2, y2) = x1 * y2 - x2 * y1
+
+4.另外封装一个判断点在不在三角形内的函数：
+
+    // 判断两个数的符号是否相同 (用异或运算判断)
+    function sameSign (a, b) {
+      return (a ^ b) &gt;= 0  
+    }
+
+    // 向量的计算，终点坐标减去起点坐标        
+    function vector (a, b) {
+      return {
+        x: b.x - a.x,
+        y: b.y - a.y
+      }
+    }
+
+    // 向量的叉乘公式：向量1的x坐标*向量2的y坐标-向量1的y坐标*向量2的x坐标    
+    function vectorProduct (v1, v2) {
+      return v1.x * v2.y - v2.x * v1.y
+    }
+
+    // 判断鼠标当前点是否在三角形内
+    // 点p是鼠标当前的位置，其他是三角形三个点的位置
+    function isPointInTrangle (p, a, b, c) { // p是鼠标当前点
+
+      // 向量
+      var pa = vector(p, a)
+      var pb = vector(p, b)
+      var pc = vector(p, c)
+
+     // 向量叉乘
+      var t1 = vectorProduct(pa, pb)
+      var t2 = vectorProduct(pb, pc)
+      var t3 = vectorProduct(pc, pa)
+      // t1 t2 t3 符号相同时点在三角形内
+
+      // 判断叉乘结果的符号是正还是负，如果是正，就在三角形内
+      return sameSign(t1, t2) &amp;&amp; sameSign(t2, t3)
+    }
+
+    // 根据p在不在三角形里面，来判断是否需要延迟，即进入到二级菜单，否则不延迟，就直接进入下一个一级菜单        
+    function needDelay (elem, leftCorner, currMousePos) {
+
+      // 利用Jquery的offset方法获取二级菜单的上下边缘的坐标        
+      var offset = elem.offset()  // 先获取二级菜单的偏移位置
+
+      var topLeft = {
+        x: offset.left,
+        y: offset.top
+      }
+
+      var bottomLeft = {
+        x: offset.left,
+        y: offset.top + elem.height()
+      }
+
+      // 调用点位置判断函数，传入鼠标当前位置，上一次鼠标位置，子菜单左上角坐标、左下角坐标
+      return isPointInTrangle(currMousePos, leftCorner, topLeft, bottomLeft)
+    }
+</code></pre><p>根据这个工具函数，去传入各个点的位置参数，获取是否需要延迟的结果：</p>
+<pre><code>var currMousePos = mouseTrack[mouseTrack.length - 1] // 当前点的坐标
+
+var leftCorner = mouseTrack[mouseTrack.length - 2]  // 鼠标上一次位置的坐标
+
+ var delay = needDelay(sub, leftCorner, currMousePos) // 是否需要延迟
+</code></pre><p>如果需要延迟，就执行setTimeout这个延迟300ms的函数，否则就直接进入下一个菜单</p>
+<p>以上主要思想其实在于充分的运用了节流、debounce这一技术，这个很值得研究，因为项目里面，做优化的时候，往往会涉及到这个技术点。哪天专门写一篇总结。</p>
+<h2 id="侧边栏滚动特效"><a href="#侧边栏滚动特效" class="headerlink" title="侧边栏滚动特效"></a>侧边栏滚动特效</h2><p>有一个需求，是两栏布局的情况下，侧边栏要求既有固定，又有滚动特效。</p>
+<p>这个其实还是比较好实现的，只要侧边栏的高度比滚动高度 + 屏幕的高度小的时候，用position:fixed，其他时候，设置position:static就好了。</p>
+<p>但是实际上，写的时候，遇到了两个bug:</p>
+<p>1.滚动的时候：设置position:fixed之后，再设置top: 0, right: 0,结果一下子跳到最顶端去了，实际效果是希望这个时候还是停留在当前滚动的位置，左侧固定边栏下面一点的位置。</p>
+<p>最后解决办法是设置一个-top值，这个值是边栏的高度 - 屏幕的高度。</p>
+<p>2.窗口缩小的时候，发现左侧边栏不见了，需要滚动一下，边栏才会出来。</p>
+<p>解决办法就是监听window.resize事件，用trigger(‘scroll’)事件来触发。</p>
+<pre><code>其中：滚动高度：$(window).scrollTop()
+屏幕高度：$(window).height()
+滚动事件：$(window).scroll(function(){})
+窗口大小改变事件：$(window).resize(function(){})    
+</code></pre><h2 id="图片剪切问题"><a href="#图片剪切问题" class="headerlink" title="图片剪切问题"></a>图片剪切问题</h2><p>这个项目里面需要用到图片上传，剪裁，做了一下技术选型，最后选了jQuery-photoClip.js,图片可以实现放大，缩小，移动，旋转，和剪裁，剪裁后的图片以base64的形式返回，通过ajax发送给服务器，返回jpg格式图片<br><a href="http://www.023xs.cn/Article/60" target="_blank" rel="external">http://www.023xs.cn/Article/60</a><br><a href="http://www.qdfuns.com/notes/17791/7b62eebb2eb0a6340a3891ee3457a937.html" target="_blank" rel="external">http://www.qdfuns.com/notes/17791/7b62eebb2eb0a6340a3891ee3457a937.html</a></p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>svg不会失真，比较小</p>
+<p>图片使用：如果颜色比较丰富，可压缩性比较高，用jpg.<br>如果是比较通用的动画，用gif，不支持半透明和icon<br>清晰的图片，显示颜色丰富的图片，用png，降低图片质量，</p>
+<p>小图标，自己合成sprite精灵图</p>
+<p>响应式图片的未来理念    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/25/Promise学习/" rel="next" title="Promise学习">
+                <i class="fa fa-chevron-left"></i> Promise学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/01/快捷键/" rel="prev" title="node快捷键">
+                node快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#菜单延迟优化"><span class="nav-number">1.</span> <span class="nav-text">菜单延迟优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#侧边栏滚动特效"><span class="nav-number">2.</span> <span class="nav-text">侧边栏滚动特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片剪切问题"><span class="nav-number">3.</span> <span class="nav-text">图片剪切问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">4.</span> <span class="nav-text">图片</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

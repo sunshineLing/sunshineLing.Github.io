@@ -1,0 +1,1304 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="同源和跨域 同源是指域名、端口、协议（http\https\ftp）都一样，有一个不一样就是跨域，二级域名不一样的不算跨域。同源是为了保证信息安全，保护隐私信息，防止恶意纂改用户数据，比如用一个网址链接来获取用户的账户密码。 跨域：需要获取到其他的网站的公共数据，比如我们可能做得网页上希望得到豆瓣的电影，还有希望自己的网页上显示天气信息等。  跨域前端怎么解决jsonp方法jsonp的原理 首先发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsonp跨域相关">
+<meta property="og:url" content="sunshineLing.github.io/2017/08/01/jsonp跨域相关/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="同源和跨域 同源是指域名、端口、协议（http\https\ftp）都一样，有一个不一样就是跨域，二级域名不一样的不算跨域。同源是为了保证信息安全，保护隐私信息，防止恶意纂改用户数据，比如用一个网址链接来获取用户的账户密码。 跨域：需要获取到其他的网站的公共数据，比如我们可能做得网页上希望得到豆瓣的电影，还有希望自己的网页上显示天气信息等。  跨域前端怎么解决jsonp方法jsonp的原理 首先发">
+<meta property="og:image" content="http://i.imgur.com/KH3Y9vp.png">
+<meta property="og:updated_time" content="2017-08-01T12:56:10.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsonp跨域相关">
+<meta name="twitter:description" content="同源和跨域 同源是指域名、端口、协议（http\https\ftp）都一样，有一个不一样就是跨域，二级域名不一样的不算跨域。同源是为了保证信息安全，保护隐私信息，防止恶意纂改用户数据，比如用一个网址链接来获取用户的账户密码。 跨域：需要获取到其他的网站的公共数据，比如我们可能做得网页上希望得到豆瓣的电影，还有希望自己的网页上显示天气信息等。  跨域前端怎么解决jsonp方法jsonp的原理 首先发">
+<meta name="twitter:image" content="http://i.imgur.com/KH3Y9vp.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2017/08/01/jsonp跨域相关/"/>
+
+
+
+
+
+  <title>jsonp跨域相关 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/08/01/jsonp跨域相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jsonp跨域相关</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T20:31:04+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">ajax</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="同源和跨域"><a href="#同源和跨域" class="headerlink" title="同源和跨域"></a>同源和跨域</h2><ul>
+<li>同源是指域名、端口、协议（http\https\ftp）都一样，有一个不一样就是跨域，二级域名不一样的不算跨域。同源是为了保证信息安全，保护隐私信息，防止恶意纂改用户数据，比如用一个网址链接来获取用户的账户密码。</li>
+<li>跨域：需要获取到其他的网站的公共数据，比如我们可能做得网页上希望得到豆瓣的电影，还有希望自己的网页上显示天气信息等。</li>
+</ul>
+<h2 id="跨域前端怎么解决"><a href="#跨域前端怎么解决" class="headerlink" title="跨域前端怎么解决"></a>跨域前端怎么解决</h2><h3 id="jsonp方法"><a href="#jsonp方法" class="headerlink" title="jsonp方法"></a>jsonp方法</h3><h4 id="jsonp的原理"><a href="#jsonp的原理" class="headerlink" title="jsonp的原理"></a>jsonp的原理</h4><ul>
+<li>首先发送的并不是一个ajax请求，</li>
+</ul>
+<ul>
+<li><p>具体实现：</p>
+<p>  利用的是动态的创建一个script标签，因为script标签没有跨域限制；</p>
+<pre><code>把scrpit的src指向我们请求的地址，通过在src的url的参数里面附加callback=a,
+</code></pre><p>  然后服务器解析到callbak，返回的数据里面，用a去包裹一段数据，即数据作为a方法的参数：比如请求参数有callback=a,服务器根据callback获取到a,在响应里面返回字符串’a( {name: ‘xioamign’} )’;</p>
+<p>  客户端和服务器的数据交换格式是字符串形式的，浏览器收到服务器返回的a字符串，会自动对其进行eval（’ a({name: ‘xioaming’ })’) 解析，eval解析之后就会自动执行a()函数了，那么就获取到返回的数据了。</p>
+<p>   发送之前要先在window上面注册a方法：function a(data) {}</p>
+<p>   如果发送post请求，会报http状态码，报415错误，格式不正确</p>
+</li>
+</ul>
+<ul>
+<li>原理图：</li>
+</ul>
+<p><img src="http://i.imgur.com/KH3Y9vp.png" alt=""></p>
+<h4 id="jquery的jsonp方法用法："><a href="#jquery的jsonp方法用法：" class="headerlink" title="jquery的jsonp方法用法："></a>jquery的jsonp方法用法：</h4><pre><code>$.ajax({
+     type: &apos;get&apos;,
+     url: &apos;http://api.map.baidu.com/telematics/v3/weather&apos;,
+     data: {
+         ak: &apos;asdfhgf&apos;    // 引用第三方api时，对方提供的密钥
+          location: &apos;深圳&apos; // 接口文档要求传递的参数
+          output: &apos;json&apos; 
+     },
+     dataType: &apos;jsonp&apos;,   // 必须写jsonp才可以实现跨域
+     success: function(data) {
+          console.log(data) {
+               var pageResult = template(&apos;temp&apos;, data.result[0]);
+               $(&apos;tbody&apos;).html(pageResult);
+          }
+     }
+})
+
+缺点：1.只支持get；
+2.登陆注册时需要给后台传一堆数据，用参数的形式拼接在url后main的话太繁琐；
+2.在登录模块中需要用到session来判断当前用户的登录状态,这时候由于是跨域的原因,前后台的取到的session是不一样的,那么就不
+能就行session来判断.
+3.由于jsonp存在安全性问题
+</code></pre><h4 id="jsonp的原理，js标签方法跨域"><a href="#jsonp的原理，js标签方法跨域" class="headerlink" title="jsonp的原理，js标签方法跨域"></a>jsonp的原理，js标签方法跨域</h4><pre><code>function doSomething(data) {
+     // 对data处理
+}
+var script = document.createElement(&quot;script&quot;);
+script.src = &apos;http://www.b.com/b.html?callback=doSomething&apos;;
+document.body.appendChild(script);
+// 添加script标签后会向服务器发送请求；
+// 服务器会根据callback这个参数生成一个包含数据的函数 dosomething({&apos;a&apos;, &apos;1&apos;});
+     例如： 在后台会对接收到请求的参数，并对参数做输出返回，callback.&apos;(&apos;.data.&apos;)&apos;;
+// 页面已经生成了dosomething函数，直接调用执行，就可以获取数据。
+</code></pre><h3 id="CORS-跨资源共享"><a href="#CORS-跨资源共享" class="headerlink" title="CORS(跨资源共享)"></a>CORS(跨资源共享)</h3><ul>
+<li>定义了跨资源时浏览器和服务器之间如何通信，自定义http头部允许浏览器和服务器相互交流，是否可以响应成功</li>
+</ul>
+<ul>
+<li><p>传送信息量比较大或者时移动端比较适合，不存在兼容性问题</p>
+<pre><code>1、jsonp只能实现get请求，cors能支持所有类型的HTTP请求；
+2、大多数现代浏览器都已经支持了cors；但是jsonp的兼容性好。
+3、用法：
+     和不跨域的ajax写法一样，只是需要在服务器设置响应头：header(Access-Control-Allow-Origin: *);
+     也可以设置指定的域名： header(&apos;Access-Control-Allow-Origin:http://www.b.com&apos;);
+     js部分：
+     $.ajax({
+          url: a_cross_domain_url,
+          crossDomain: true,
+          method: &apos;POST&apos;
+     })
+</code></pre></li>
+</ul>
+<h3 id="document-domain-iframe-子域跨域"><a href="#document-domain-iframe-子域跨域" class="headerlink" title="document.domain+iframe(子域跨域)"></a>document.domain+iframe(子域跨域)</h3><ul>
+<li><p>这种方式适用于主域名相同，子域名不同，比如 <a href="http://www.a.com和http://b.a.com" target="_blank" rel="external">http://www.a.com和http://b.a.com</a><br>假如这两个域名下各有a.html和b.html</p>
+<pre><code>// a.html里面设置
+a.html
+document.domain = &apos;a.html&apos;;
+var iframe = document.createElement(&apos;iframe&apos;);
+iframe.src = &apos;http://b.a.com/b.html&apos;;
+document.body.appendChild(iframe);
+iframe.onload = function(){
+     var doc = iframe.contentDocument || iframe.contentWindow;
+     // 相当于window/document
+     doc.getElementById(id);   // 用这个来寻找页面的元素
+}
+</code></pre></li>
+</ul>
+<pre><code>// b.html里面设置
+document.domain = &apos;a.com&apos;;
+
+具体的做法是可以在http://www.a.com/a.html和http://script.a.com/b.html两个文件中分别加上document.domain = &apos;a.com&apos;；
+
+然后通过a.html文件中创建一个iframe，去控制iframe的contentDocument，这样两个js文件之间就可以“交互”了。当然这种办法只能解决主域相同而二级域名不同的情况。
+</code></pre><h3 id="HTML5的postMessage"><a href="#HTML5的postMessage" class="headerlink" title="HTML5的postMessage"></a>HTML5的postMessage</h3><ul>
+<li><p>假设在a.html里嵌套个<iframe src="" http:="" www.b.com="" b.html"="" rel="nofollow">http://www.b.com/b.html" frameborder="0"></iframe>,在这两个页面里互相通信</p>
+<pre><code>a.html
+    window.onload = function() {
+        window.addEventListener(&quot;message&quot;, function(e) {
+            alert(e.data);
+        });
+
+        window.frames[0].postMessage(&quot;b data&quot;, &quot;http://www.b.com/b.html&quot;);
+    }
+b.html
+    window.onload = function() {
+        window.addEventListener(&quot;message&quot;, function(e) {
+            alert(e.data);
+        });
+        window.parent.postMessage(&quot;a data&quot;, &quot;http://www.a.com/a.html&quot;);
+    }
+这样打开a页面就先弹出 a data,再弹出 b data
+</code></pre><h3 id="window-name-iframe"><a href="#window-name-iframe" class="headerlink" title="window.name + iframe"></a>window.name + iframe</h3></li>
+</ul>
+<ul>
+<li><p>window.name的原理是利用同一个窗口在不同的页面共用一个window.name，这个需要在a.com下建立一个代理文件c.html,使同源后a.html能获取c.html的window.name</p>
+<pre><code>// a.html
+
+var iframe = document.createElement(&quot;iframe&quot;); 
+iframe.src = &quot;http://www.b.com/b.html&quot;; 
+document.body.appendChild(iframe); 
+// 现在a.html里建一个引用b.html的iframe，获得b的数据 
+var flag = true; 
+iframe.onload = function() { 
+    if (flag) { 
+        iframe.src = &quot;c.html&quot;; // 判断是第一次载入的话，设置代理c.html使和a.html在同目录同源，这样才能在下面的else取到data 
+        flag = false; 
+    } else { // 第二次载入由于a和c同源，a可以直接获取c的window.name 
+        alert(iframe.contentWindow.name); 
+        iframe.contentWindow.close(); 
+        document.body.removeChild(iframe); 
+        iframe.src = &apos;&apos;; iframe = null; 
+    } 
+}
+
+// b.html
+window.name = &quot;这是 b 页面的数据&quot;;
+</code></pre></li>
+</ul>
+<h3 id="window-location-hash-iframe"><a href="#window-location-hash-iframe" class="headerlink" title="window.location.hash + iframe"></a>window.location.hash + iframe</h3><p>b.html将数据以hash值的方式附加到c.html的url上，在c.html页面通过location.hash获取数据后传到a.html(这个例子是传到a.html的hash上，当然也可以传到其他地方)</p>
+<p>a.html</p>
+<pre><code>var iframe = document.createElement(&quot;iframe&quot;); 
+iframe.src = &quot;http://www.b.com/b.html&quot;; 
+document.body.appendChild(iframe); // 在a页面引用b 
+function check() { // 设置个定时器不断监控hash的变化，hash一变说明数据传过来了
+     var hashs = window.location.hash; 
+     if (hashs) { 
+         clearInterval(time); 
+         alert(hashs.substring(1)); 
+    } 
+} 
+var time = setInterval(check, 30);
+</code></pre><p>b.html</p>
+<pre><code>window.onload = function() { 
+    var data = &quot;this is b&apos;s data&quot;; 
+    var iframe = document.createElement(&quot;iframe&quot;); 
+    iframe.src = &quot;http://www.a.com/c.html#&quot; + data; 
+    document.body.appendChild(iframe); // 将数据附加在c.html的hash上
+}
+</code></pre><p>c.html</p>
+<pre><code>// 获取自身的hash再传到a.html的hash里，数据传输完毕parent.parent.location.hash = self.location.hash.substring(1); 
+</code></pre><h3 id="h5的postMessage"><a href="#h5的postMessage" class="headerlink" title="h5的postMessage"></a>h5的postMessage</h3><pre><code>otherWindow.postMessage(message, targetOrigin);
+otherWindow: 对接收信息页面的window的引用。可以是页面中iframe的contentWindow属性；window.open的返回值；通过name或下标从window.frames取到的值。
+message: 所要发送的数据，string类型。
+targetOrigin: 用于限制otherWindow，“*”表示不作限制
+</code></pre><p>a.com/index.html中的代码：</p>
+<pre><code>&lt;iframe id=&quot;ifr&quot; src=&quot;&quot;&gt;&lt;/iframe&gt;&lt;script type=&quot;text/javascript&quot;&gt;window.onload = function() {
+    var ifr = document.getElementById(&apos;ifr&apos;);
+    var targetOrigin = &apos;http://b.com&apos;;  // 若写成&apos;http://b.com/c/proxy.html&apos;效果一样
+                                        // 若写成&apos;http://c.com&apos;就不会执行postMessage了
+    ifr.contentWindow.postMessage(&apos;I was there!&apos;, targetOrigin);
+};
+&lt;/script&gt;
+</code></pre><p>b.com/index.html中的代码：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    window.addEventListener(&apos;message&apos;, function(event){
+        // 通过origin属性判断消息来源地址
+        if (event.origin == &apos;http://a.com&apos;) {
+            alert(event.data);    // 弹出&quot;I was there!&quot;
+            alert(event.source);  // 对a.com、index.html中window对象的引用
+                                  // 但由于同源策略，这里event.source不可以访问window对象
+        }
+    }, false);
+&lt;/script&gt;
+</code></pre><h2 id="后端代理解决跨域"><a href="#后端代理解决跨域" class="headerlink" title="后端代理解决跨域"></a>后端代理解决跨域</h2><pre><code>1、服务器的反向代理
+     需要对服务器做配置，前台发起跨域请求时，不写要请求的域名，还是写当前的，但是为了放便后台识别，可以在当前域名后面设置标示符，向服务器发起请求。因为在服务器端不会有跨域问题，服务器可以模拟http请求去访问其他域，再把返回的结果返回给前台。
+ 之前有一个项目接口大量跨域的时候用的是反向代理来请求，文档，js文件都可以实现跨域。
+
+2、nginx反向代理，在客户端和跨域请求的服务器直接搭建代理服务器，做处理，以同源的域名去访问需要跨域的资源
+其实可以用nginx做web服务器，将请求转发，就没有跨域的问题了。
+</code></pre><h2 id="jsonp安全性防范"><a href="#jsonp安全性防范" class="headerlink" title="jsonp安全性防范"></a>jsonp安全性防范</h2><p>分为以下几点：</p>
+<p>1、防止callback参数意外截断js代码，特殊字符单引号双引号，换行符均存在风险</p>
+<p>2、防止callback参数恶意添加标签（如script），造成XSS漏洞</p>
+<p>3、防止跨域请求滥用，阻止非法站点恶意调用</p>
+<p>针对第三点，我们可以通过来源refer白名单匹配，以及cookieToken机制来限制</p>
+<p>而前两点，传统的做法分为以下几种：</p>
+<p>1、纯手工过滤特殊字符，引号尖括号等，一旦发现潜在恶意字符则服务端拒绝，返回错误。此种方式较为严格，但是随之而来的问题<br>是失败率会有所提升，尤其对于对外开发者。而且JS中恶意字符的变形十分多，此方式需要枚举所有非法字符，可能存在疏漏。我们<br>不应该将潜在的恶意字符都一概屏蔽，因为确实有些需求需要传入并存储这些字符。</p>
+<p>2、对于callback参数作严整的格式检查，或强制约定指定格式。基本可以彻底解决安全问题，但同样是对调用端不是完全透明，使用<br>者需要额外去知晓相关限制和约定，可能会造成不必要的沟通成本。</p>
+<p>3、返回包体添加header头部，强制指定MIME类型，避免按HTML方式解析，防止XSS漏洞。这似乎是个很完美的解决方案。但是十分诡<br>异的是，在某些版本的火狐浏览器下，直接访问MIME类型为JavaScript的请求时，浏览器仍然会按照HTML解析。或许是该浏览器设计<br>的缺陷，但它忽略了我们设置的header。无法保证所有浏览器严格按照MIME类型解析。</p>
+<p>我们的关注点一直在于如何限制用户输入，但是请从另外一个层面去考虑该问题，或许就会豁然开朗。</p>
+<p>我们先了解一下JS本身的特性。<br>JSONP的本质是构造全局回调函数，之后加载script标签触发回调函数。<br>通常我们使用函数可以这么写</p>
+<p>[javascript] view plain copy print?</p>
+<pre><code>1. function test(){}test();  
+</code></pre><p>而在全局的函数也就默认是window的成员。也可以显示书写为<br>[javascript] view plain copy print?</p>
+<pre><code>1. window.test = function(){};window.test();  
+</code></pre><p>而JS中对象的成员是可以使用字符串索引的方式访问的，故进一步改造为</p>
+<p>[javascript] view plain copy print?</p>
+<pre><code>1. window[&apos;test&apos;]=function(){};window[&apos;test&apos;]();  
+</code></pre><p>现在有注意到么，如此一来我们已经把函数名已经完全限制在了字符串上下文，理论上只要做好了防注入工作，callback参数是不可能跳出字符串上下<br>文意外执行代码的。以PHP为例，单字符串防止注入甚至可以直接使用json_encode该字符串实现.</p>
+<pre><code>1. window[&apos;alert(&quot;123&quot;);abc&apos;]();  
+</code></pre><p>上面的callback参数虽然有注入的风险，可以由于callback参数严格限制在字符串内部，仅会作为文本，不会意外执行,但仍然存在xss漏洞问题看下面例子</p>
+<pre><code>1. window[&apos;&lt;script&gt;alert(123);&lt;/script&gt;&apos;]();  
+</code></pre><p>我们虽然已经保证了<script>严格限制在引号内部，不会造成js注入，但是直接在浏览器中输入该jsonp请求仍会按照HTML解析，产生XSS<br>漏洞，即便设置了header也很难防范。</p>
+<p>在进一步，我们只需要保证浏览器内不会明文出现&lt;&gt;标签，那么问题便可彻底解决。<br>基本思路是在服务端做一次urlencode。而在output输出decodeURIComponent(‘#####’)来规避显示尖括号。Urlencode过的字符串，只可能包含字母<br>数字%，也顺便解决了注入的问题.</p>
+<p>最终附上一段简短的代码。根本解决jsonp的安全问题</p>
+<pre><code>1. &lt;?php header(&apos;Content-type: text/javascript&apos;); //加上此句可以消除chrome的警告 $callback = urlencode($_GET[&apos;callback&apos;]); echo &quot;window[decodeURIComponent(&apos;{$callback}&apos;)]({ret:0,msg:’OK’});&quot;  
+
+
+
+请求1：http://www.test.com/a.PHP?callback=alert(123);abc
+响应1：window[decodeURIComponent(&apos;alert(123)%3Babc&apos;)]({ret:0,msg:&apos;OK&apos;});
+请求2：http://www.test.com/a.php?callback=&lt;script&gt;alert(123);&lt;/script&gt;
+响应2：window[decodeURIComponent(&apos;%3Cscript%3Ealert(123)%3B%3C%2Fscript%3E&apos;)]({ret:0,msg:&apos;OK&apos;});
+</code></pre></script></p>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/31/jQuery插件写法介绍/" rel="next" title="jquer">
+                <i class="fa fa-chevron-left"></i> jquer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源和跨域"><span class="nav-number">1.</span> <span class="nav-text">同源和跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域前端怎么解决"><span class="nav-number">2.</span> <span class="nav-text">跨域前端怎么解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp方法"><span class="nav-number">2.1.</span> <span class="nav-text">jsonp方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonp的原理"><span class="nav-number">2.1.1.</span> <span class="nav-text">jsonp的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jquery的jsonp方法用法："><span class="nav-number">2.1.2.</span> <span class="nav-text">jquery的jsonp方法用法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsonp的原理，js标签方法跨域"><span class="nav-number">2.1.3.</span> <span class="nav-text">jsonp的原理，js标签方法跨域</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS-跨资源共享"><span class="nav-number">2.2.</span> <span class="nav-text">CORS(跨资源共享)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-domain-iframe-子域跨域"><span class="nav-number">2.3.</span> <span class="nav-text">document.domain+iframe(子域跨域)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5的postMessage"><span class="nav-number">2.4.</span> <span class="nav-text">HTML5的postMessage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-name-iframe"><span class="nav-number">2.5.</span> <span class="nav-text">window.name + iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-location-hash-iframe"><span class="nav-number">2.6.</span> <span class="nav-text">window.location.hash + iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h5的postMessage"><span class="nav-number">2.7.</span> <span class="nav-text">h5的postMessage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后端代理解决跨域"><span class="nav-number">3.</span> <span class="nav-text">后端代理解决跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp安全性防范"><span class="nav-number">4.</span> <span class="nav-text">jsonp安全性防范</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

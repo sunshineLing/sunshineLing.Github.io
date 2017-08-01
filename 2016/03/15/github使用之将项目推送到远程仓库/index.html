@@ -99,17 +99,19 @@
 
 
 
-<meta name="description" content="总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当前目录 5.git log 查看日志 6.git st">
+<meta name="description" content="git常用命令 github使用之将项目推送到远程仓库总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当">
 <meta name="keywords" content="github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github使用之将项目推送到远程仓库">
+<meta property="og:title" content="github使用">
 <meta property="og:url" content="sunshineLing.github.io/2016/03/15/github使用之将项目推送到远程仓库/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当前目录 5.git log 查看日志 6.git st">
-<meta property="og:updated_time" content="2017-07-13T08:53:55.571Z">
+<meta property="og:description" content="git常用命令 github使用之将项目推送到远程仓库总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当">
+<meta property="og:image" content="http://i.imgur.com/YJU8ACD.jpg">
+<meta property="og:updated_time" content="2017-07-29T05:49:36.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github使用之将项目推送到远程仓库">
-<meta name="twitter:description" content="总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当前目录 5.git log 查看日志 6.git st">
+<meta name="twitter:title" content="github使用">
+<meta name="twitter:description" content="git常用命令 github使用之将项目推送到远程仓库总结一下在本地创建好项目之后，把项目推送到github上的步骤： 1 在github创建一个远程仓库2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行： $ git clone 仓库地址 可以看到git文件夹下面已经有了一个和远程仓库同名的仓库 3 将你已经完成的项目拷贝过去 4 git切换到当">
+<meta name="twitter:image" content="http://i.imgur.com/YJU8ACD.jpg">
 
 
 
@@ -143,7 +145,7 @@
 
 
 
-  <title>github使用之将项目推送到远程仓库 | sunshine</title>
+  <title>github使用 | sunshine</title>
   
 
 
@@ -313,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">github使用之将项目推送到远程仓库</h1>
+          <h1 class="post-title" itemprop="name headline">github使用</h1>
         
 
         <div class="post-meta">
@@ -382,7 +384,8 @@
       
 
       
-        <p>总结一下在本地创建好项目之后，把项目推送到github上的步骤：</p>
+        <h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><p><img src="http://i.imgur.com/YJU8ACD.jpg" alt=""></p>
+<h2 id="github使用之将项目推送到远程仓库"><a href="#github使用之将项目推送到远程仓库" class="headerlink" title="github使用之将项目推送到远程仓库"></a>github使用之将项目推送到远程仓库</h2><p>总结一下在本地创建好项目之后，把项目推送到github上的步骤：</p>
 <p>1 在github创建一个远程仓库<br>2 进入你需要需要创建的文件夹下面，比如，我一般都放置在D/git目录下，点击git bush,运行：</p>
 <pre><code>$ git clone 仓库地址
 </code></pre><p>可以看到git文件夹下面已经有了一个和远程仓库同名的仓库</p>
@@ -409,6 +412,20 @@
 <pre><code>$ git push -u origin master
 </code></pre><p>16.下一次需要修改增加项目的时候，先去远程仓库上拉取</p>
 <pre><code>$ git pull origin master
+</code></pre><h2 id="在hithub建立自己的网页分支"><a href="#在hithub建立自己的网页分支" class="headerlink" title="在hithub建立自己的网页分支"></a>在hithub建立自己的网页分支</h2><pre><code> a 远程clone，把github分支克隆到自己电脑上
+     git clone url
+ b 将要上传的文件copy到本地仓库目录下 提交自己的文件（把本地电脑文件交给git，准备让git提交）
+     git status 查看状态
+    git add .  跟踪所有改动过的文件 被git管理 准备好提交
+c  git commit -m &quot;modift&quot;
+    git pull
+    git push 
+d 打开分支右上角的setting，在options找到github Pages栏，把Source 选为master branch 点击保存，然后输入后的网址加上自己的文件名即可
+(1) 点击setting
+(2) 进入settings后下拉 找到github Pages栏，把Source 选为master branch 点击保存
+(3)  OK  输入网址即可访问你自己网页了
+
+https://bootstet.github.io/case/map/index.html
 </code></pre>
       
     </div>
@@ -461,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/15/移动端高清、多屏幕适配方案总结-rem/" rel="prev" title="移动端高清、多屏幕适配方案总结-rem">
-                移动端高清、多屏幕适配方案总结-rem <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/28/zepto的animate动画scrollTop方法封装/" rel="prev" title="zepto的animate动画scrollTop方法封装">
+                zepto的animate动画scrollTop方法封装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -511,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
@@ -527,7 +553,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -538,7 +564,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -549,7 +575,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -585,6 +611,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git常用命令"><span class="nav-number">1.</span> <span class="nav-text">git常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github使用之将项目推送到远程仓库"><span class="nav-number">2.</span> <span class="nav-text">github使用之将项目推送到远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在hithub建立自己的网页分支"><span class="nav-number">3.</span> <span class="nav-text">在hithub建立自己的网页分支</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

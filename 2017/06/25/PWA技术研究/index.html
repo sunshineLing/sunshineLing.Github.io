@@ -1,0 +1,1218 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PWA技术研究">
+<meta property="og:url" content="sunshineLing.github.io/2017/06/25/PWA技术研究/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
+<meta property="og:updated_time" content="2017-08-01T12:10:50.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PWA技术研究">
+<meta name="twitter:description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2017/06/25/PWA技术研究/"/>
+
+
+
+
+
+  <title>PWA技术研究 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/06/25/PWA技术研究/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PWA技术研究</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T20:44:40+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PWA/" itemprop="url" rel="index">
+                    <span itemprop="name">PWA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。</p>
+<p>vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。</p>
+<p>在这个背景下，上上周开例会的时候，邱哥介绍了一下饿了么的一篇分享PWA的实践文章，让我们去学习一下，看这个项目是否可以考虑使用。于是，这个类似于谷歌版的小程序就出现在了我眼前。看官容我上面赘述这么多，才揭开这层神秘的面纱。</p>
+<h2 id="PWA是什么"><a href="#PWA是什么" class="headerlink" title="PWA是什么"></a>PWA是什么</h2><p><a href="http://www.jianshu.com/p/9caf2d527431" target="_blank" rel="external">http://www.jianshu.com/p/9caf2d527431</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25459319" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25459319</a><br><a href="https://zhuanlan.zhihu.com/p/25800461" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25800461</a></p>
+<p><a href="https://github.com/sitepoint-editors/pwa-retrofit" target="_blank" rel="external">https://github.com/sitepoint-editors/pwa-retrofit</a></p>
+<p>PWA（Progressive Web Apps）是谷歌家开发的一门技术，目的是使webApp更好的实现类似于原生的效果。</p>
+<ul>
+<li>第一次用这个app的用户，不需要下载安装安卓版本，直接通过浏览器访问即可，可以通过谷歌扩展程序，在主屏幕建立一个图标，点击可以全屏使用。</li>
+<li>在离线的情况下，也可以通过缓存快速加载</li>
+<li>并且可以实现原生app效果的推送</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>渐进式的Web应用，在基本功能实现的基础上，支持的浏览器将可以实现PWA提供的离线、推送、桌面访问的这三个能力，它是可以在开发完app之后，单独添加的。</li>
+<li>核心机制是ServcieWorker：一个单独的后台线程，不依赖于某一个WebView，它是一个Proxy，用于监听以及管理服务的请求以及返回</li>
+<li>允许用户将PWA在桌面上创建图标，并且不必到应用商店去下载搜索下载应用</li>
+<li>保持最新，serive worker使得应用总是保持在最新版本的状态</li>
+<li>独立的网络连接，增强式的服务使PWA可以在无线环境下或网络及其不稳定的环境下工作</li>
+</ul>
+<h2 id="我们需要实现的需求"><a href="#我们需要实现的需求" class="headerlink" title="我们需要实现的需求"></a>我们需要实现的需求</h2><ul>
+<li>让我们的国际站app可以在离线的情况下工作</li>
+<li>存储数据，在离线时也可以使用</li>
+</ul>
+<h2 id="需要的环境"><a href="#需要的环境" class="headerlink" title="需要的环境"></a>需要的环境</h2><ul>
+<li>谷歌浏览器版本52及以上</li>
+</ul>
+<ul>
+<li>Web server for chrome或其他的网络服务器。</li>
+</ul>
+<h2 id="开发app-shell架构"><a href="#开发app-shell架构" class="headerlink" title="开发app shell架构"></a>开发app shell架构</h2><ul>
+<li>pp的shell包含了构建一个PWA所需要的最基本的html，css，javascript文件，并且是确保app有良好的性能的必要组件之一，它的第一次加载非常的快速，并且第一次加载后就能被缓存下来，这意味着在app shell第一次加载完成后，用户再打开app后，app shell将从本地缓存中加载，这是非常快速的。</li>
+</ul>
+<ul>
+<li>app shell架构将app的基础架构和ui分离，所有的基础架构和ui都将在本地缓存，这样在后续加载的时候，PWA只需要检索必要的数据，并不需要再次加载所有数据。</li>
+</ul>
+<h3 id="开发app-shell"><a href="#开发app-shell" class="headerlink" title="开发app shell"></a>开发app shell</h3><p>需要设计核心组件，将第一次加载使需要立刻呈现在屏幕上的，或者是重要的ui组件，js文件，图片文件</p>
+<p>我们的国际站里面需要的是头部的搜索，back按钮，标题，banner，热门商品推荐，热门商家推荐，底部的tab栏切换</p>
+<h2 id="写一个Service-Worker-js"><a href="#写一个Service-Worker-js" class="headerlink" title="写一个Service Worker.js"></a>写一个Service Worker.js</h2><p>Service Worker 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。sw.js 文件需要在 HTML 当中引入:</p>
+<p>worker.js用法：<a href="https://www.villainhr.com/page/2016/08/22/Web%20Worker" target="_blank" rel="external">https://www.villainhr.com/page/2016/08/22/Web%20Worker</a></p>
+<p><a href="http://chuansong.me/n/1616385052717" target="_blank" rel="external">http://chuansong.me/n/1616385052717</a></p>
+<p>这里是一篇详细的教程：<a href="https://www.villainhr.com/page/2017/01/08/Service%20Worker%20%E5%85%A8%E9%9D%A2%E8%BF%9B%E9%98%B6" target="_blank" rel="external">https://www.villainhr.com/page/2017/01/08/Service%20Worker%20%E5%85%A8%E9%9D%A2%E8%BF%9B%E9%98%B6</a></p>
+<p><a href="https://github.com/goldhand/sw-precache-webpack-plugin" target="_blank" rel="external">https://github.com/goldhand/sw-precache-webpack-plugin</a></p>
+<p><a href="https://kymjs.com/code/2017/02/15/01/" target="_blank" rel="external">https://kymjs.com/code/2017/02/15/01/</a></p>
+<p><a href="https://segmentfault.com/a/1190000008929656" target="_blank" rel="external">https://segmentfault.com/a/1190000008929656</a></p>
+<p>首先安装SW</p>
+<pre><code>// 需要缓存的版本
+const cacheVersion = &quot;v1&quot;;
+
+const cacheList = []  // 缓存的列表清大，根据情况注入
+
+//安装SW
+self.addEventListener(&apos;install&apos;, event =&gt; {
+    // 缓存文件
+    event.waitUntil(
+        // 从路径中抓取资源写入缓存
+        caches.open(cacheVersion)
+            .then(cache =&gt; cache.addAll(cacheList))
+            .then(() =&gt; self.skipWaiting())  // 让新的SW即刻生效，而不是等旧的销毁了才生效
+    )
+})
+</code></pre><p>处理动态缓存：</p>
+<pre><code>//catch fetch
+self.addEventListener(&apos;fetch&apos;, event =&gt; {
+    event.respondWith(
+        caches.match(event.request).then(response =&gt; {
+            //有缓存则先取缓存
+            if(response){
+                return response;
+            }
+            //由于fetch请求的request和response都是stream所以多次使用要用副本
+            let requestClone = event.request.clone();
+            return fetch(requestClone).then(response =&gt; {
+                //checking
+                if(!response || response.status!==200|| response.type !== &apos;basic&apos;){
+                    return response;
+                }
+                //response要用于缓存和渲染
+                let responseClone = response.clone();
+
+                caches.open(cacheVersion).then(cache =&gt; {
+                    cache.put(event.request, responseClone);
+                })
+                return response;
+            })
+        })
+    )
+})
+
+这里的caches是浏览器用来控制缓存专门分离出来的一个对象，fetch是现代浏览器代替xmlhttp请求发送ajax的方法。
+
+以上代码的原理就是，caches会根据发送的request,先去缓存空间里面找缓存文件，如果有，就做出reponse,如果没有，就通过fetch去获取
+</code></pre><p>更新静态资源</p>
+<ul>
+<li><p>当 service worker 开始启动时，就会触发 activate 事件。 所以我们监听 activate 在这里更新缓存。</p>
+</li>
+<li><p>缓存的资源随着版本的更新会过期, 所以会根据缓存的字符串名称(这里变量为 cacheVersion, 值用了 “v1”)清除旧缓存, 可以遍历所有的缓存名称逐一判断决决定是否清除:</p>
+<p>  //update<br>  self.addEventListener(‘activate’, event =&gt; {</p>
+<pre><code>event.waitUntil(
+    // 遍历caches里所有缓存的keys的值
+    caches.keys().then(cacheNames =&gt; {
+        return Promise.all(cacheNames.filter(cachename =&gt; {
+                    if(cacheList.includes(cachename)){
+                        return caches.delete(cachename);
+                    }
+                })
+            )
+    }).then(() =&gt; {
+        return self.clients.claim()
+    })
+)
+</code></pre><p>  })</p>
+</li>
+</ul>
+<p>或者类似这种写法是一样的：</p>
+<pre><code>self.addEventListener(&apos;activate&apos;, function(e) {  
+  console.log(&apos;[ServiceWorker] Activate&apos;);  
+  e.waitUntil(  
+    caches.keys().then(function(keyList) {  
+      return Promise.all(keyList.map(function(key) {  
+        console.log(&apos;[ServiceWorker] Removing old cache&apos;, key);  
+        if (key !== cacheName) {  
+          return caches.delete(key);  
+        }  
+      }));  
+    })  
+  );  
+});
+</code></pre><ul>
+<li>在新安装的 Service Worker 中通过调用 self.clients.claim() 取得页面的控制权, 这样之后打开页面都会使用版本更新的缓存。旧的 Service Worker 脚本不再控制着页面之后会被停止。</li>
+</ul>
+<h2 id="注册service-worker"><a href="#注册service-worker" class="headerlink" title="注册service-worker"></a>注册service-worker</h2><pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;./dist/build.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        // 先判断浏览器是不是支持
+        if(navigator.serviceWorker != null){
+            navigator.serviceWorker.register(&apos;sw.js&apos;).then((registration) =&gt; {
+                console.log(`registration events at scope: ${registration.scope}`)
+            })
+        }
+    &lt;/script&gt;
+  &lt;/body&gt;
+</code></pre><h2 id="manifest-json文件"><a href="#manifest-json文件" class="headerlink" title="manifest.json文件"></a>manifest.json文件</h2><p>maifest文件用来在桌面生成图标的，写法如下：<a href="https://developer.mozilla.org/en-US/docs/Web/Manifest" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Manifest</a></p>
+<p>需要在你的文件里面引用</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/15/项目总结/" rel="next" title="M站项目记录">
+                <i class="fa fa-chevron-left"></i> M站项目记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/16/vue音乐webApp项目总结/" rel="prev" title="vue音乐webApp项目总结">
+                vue音乐webApp项目总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA是什么"><span class="nav-number">1.</span> <span class="nav-text">PWA是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们需要实现的需求"><span class="nav-number">3.</span> <span class="nav-text">我们需要实现的需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要的环境"><span class="nav-number">4.</span> <span class="nav-text">需要的环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发app-shell架构"><span class="nav-number">5.</span> <span class="nav-text">开发app shell架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发app-shell"><span class="nav-number">5.1.</span> <span class="nav-text">开发app shell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个Service-Worker-js"><span class="nav-number">6.</span> <span class="nav-text">写一个Service Worker.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册service-worker"><span class="nav-number">7.</span> <span class="nav-text">注册service-worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#manifest-json文件"><span class="nav-number">8.</span> <span class="nav-text">manifest.json文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

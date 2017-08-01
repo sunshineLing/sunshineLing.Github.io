@@ -1,0 +1,1809 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="js基础知识typeof 关键字 返回的数据类型（5种基本数据类型） &amp;apos;undefined&amp;apos; &amp;apos;null&amp;apos; &amp;apos;string&amp;apos; &amp;apos;number&amp;apos;   // typeof NaN === &amp;apos;number&amp;apos; &amp;apos;boolean&amp;apos; &amp;apos;object&amp;apos; &amp;apos;func">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js基础知识学习">
+<meta property="og:url" content="sunshineLing.github.io/2015/05/28/js基础知识学习/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="js基础知识typeof 关键字 返回的数据类型（5种基本数据类型） &amp;apos;undefined&amp;apos; &amp;apos;null&amp;apos; &amp;apos;string&amp;apos; &amp;apos;number&amp;apos;   // typeof NaN === &amp;apos;number&amp;apos; &amp;apos;boolean&amp;apos; &amp;apos;object&amp;apos; &amp;apos;func">
+<meta property="og:updated_time" content="2017-08-01T13:16:36.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js基础知识学习">
+<meta name="twitter:description" content="js基础知识typeof 关键字 返回的数据类型（5种基本数据类型） &amp;apos;undefined&amp;apos; &amp;apos;null&amp;apos; &amp;apos;string&amp;apos; &amp;apos;number&amp;apos;   // typeof NaN === &amp;apos;number&amp;apos; &amp;apos;boolean&amp;apos; &amp;apos;object&amp;apos; &amp;apos;func">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2015/05/28/js基础知识学习/"/>
+
+
+
+
+
+  <title>js基础知识学习 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/05/28/js基础知识学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js基础知识学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-28T09:08:55+08:00">
+                2015-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/js基础/" itemprop="url" rel="index">
+                    <span itemprop="name">js基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="js基础知识"><a href="#js基础知识" class="headerlink" title="js基础知识"></a>js基础知识</h2><h3 id="typeof-关键字"><a href="#typeof-关键字" class="headerlink" title="typeof 关键字"></a>typeof 关键字</h3><ul>
+<li><p>返回的数据类型（5种基本数据类型）</p>
+<pre><code>&apos;undefined&apos;
+&apos;null&apos;
+&apos;string&apos;
+&apos;number&apos;   // typeof NaN === &apos;number&apos;
+&apos;boolean&apos;
+&apos;object&apos;
+&apos;function&apos;
+&apos;symbol&apos;   // typeof Symbol(&apos;foo&apos;) === &apos;symbol&apos;
+</code></pre></li>
+<li><p>Objects类型</p>
+<pre><code>typeof {a: 1} === &apos;object&apos;;
+
+typeof [1, 2, 4] === &apos;object&apos;;
+
+typeof new Date() === &apos;object&apos;;
+</code></pre><h3 id="和-的区别"><a href="#和-的区别" class="headerlink" title="==和===的区别"></a>==和===的区别</h3><p>  “==”是判断值是否相等，会先进行类型转换,不想等是(!=)<br>  ‘===’是判断类型和值是否完全相等<br>  他们返回的都是布尔值<br>  判断方法：</p>
+<pre><code>===：
+1.如果两个值的类型不相同，就不相同；
+2.如果两个值都是字符串，而且字符串里面同一个位置上的字符完全相同，
+  那么他们就完全等同，如果字符串的长度或内容不同，他们就不是等同的。
+3.如果两个值都是布尔类型的true，或者是布尔类型的false，那么等同
+4.如果两个值都是null或undefined,他们完全相同。
+
+==：两个值的类型不同，仍然可能相等
+1.两个值一个null，一个是undefined,相等；
+2.如果一个值是数字，另一个值是字符串，把字符串转化为数字，
+  再用转换后的值进行比较。
+3.如果一个值是1，转true,两一个值是false，转化为0,再进行比较。
+4. 如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。如果valueOf()返回的值还是对象，就调用toString()方法再进行比较。
+   // toString()得到的是&apos;[object Object]&apos;的字符串
+
+   NaN == NaN // false
+   null == undefined  // ture
+   undefined == 0   // false
+   null == 0  // false
+   {} == !{}  // false
+
+   [] == ![]  // true   // https://www.zhihu.com/question/29615998
+   解析：
+       1.![] == false,空数组是对象，对象为true,取反为false.
+       2.一个数组对象和一个布尔值进行比较，先把布尔值转化为数字，ToNumber(false),结果是[] == 0
+       3.因为按照一个对象和一个字符串或布尔值进行比较的规则，除了日期内只是用toString()方法，其他的会先使用valueOf()方法，转化为原始值，[].valueOf()，返回[]，需要调用toString(),返回&quot;&quot;空字符串
+       4.空字符串和0是相等的，所以结果是true
+</code></pre></li>
+</ul>
+<h3 id="判断两个对象相等"><a href="#判断两个对象相等" class="headerlink" title="判断两个对象相等"></a>判断两个对象相等</h3><ol>
+<li>JSON.stringify(obj_a) === JSON.stringify(obj_b);</li>
+</ol>
+<p>2.underscore.js有isEqual方法：</p>
+<p><a href="https://github.com/jashkenas/underscore/blob/master/underscore.js#L1112-1208" target="_blank" rel="external">https://github.com/jashkenas/underscore/blob/master/underscore.js#L1112-1208</a></p>
+<p>用法文档：<br><a href="http://underscorejs.org/#isEqual" target="_blank" rel="external">http://underscorejs.org/#isEqual</a></p>
+<p>3.进行递归比较判断</p>
+<pre><code>function isEqual(a, b) {
+  // 判断是否是数值的情况
+  if (typeof a == &apos;number&apos; &amp;&amp; typeof b == &apos;number&apos;) {
+    return a == b
+  }
+
+  // 判断是对象的情况
+  if (isObject(a) &amp;&amp; isObject(b)) {
+    var aProps = object.getOwnPropertyNames(a);
+    var bProps = object.getOwnPropertyNames(b);
+
+    if (aProps.length != bProps.length) {
+      return false;
+    }
+
+    // 遍历a的属性
+    for (var i = 0; i &lt; aProps.length; i++) {
+        var propName = aProps[i];
+        if(Object.prototype.toString(a[propName]) == &apos;[Object Object]&apos;||Object.prototype.toString(b[propName]) == &apos;[Object Object]&apos;){
+            isObjectValueEqual(a[propName],b[propName])
+        }
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+    return true;
+  }
+}
+
+
+function isObject(arr) {
+  return Object.prototype.toString.call(arr) === &apos;[object Object]&apos;;
+}
+</code></pre><h3 id="判断对象是否为空"><a href="#判断对象是否为空" class="headerlink" title="判断对象是否为空"></a>判断对象是否为空</h3><pre><code>思路一是for in 进行遍历
+function isEmpty(obj) {
+    for (var i in obj) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// 思路二：序列化
+if (JSON.stringify(obj) == &apos;{}&apos;) {
+    return false;
+}
+
+// 思路三：es6方法：
+if（Object.keys(obj).length == 0） {
+    return true;
+} else {
+    return false;
+}
+</code></pre><h3 id="比较两个json对象是否完全相等"><a href="#比较两个json对象是否完全相等" class="headerlink" title="比较两个json对象是否完全相等"></a>比较两个json对象是否完全相等</h3><ul>
+<li><p>思路是判断这两个对象是不是类型一样的，并且属性是不是也是对象类型的，然后如果是数组，判断长度，判断数组的值，如果是对象，判断长度，判断属性值，递归判断</p>
+<p>  // 首先判断是不是对象类型的，是否是数组类型的，获取长度</p>
+<pre><code>function isObj(obj) {
+  return object &amp;&amp; typeof (obj) == &apos;object&apos; &amp;&amp; Object.prototype.toString.call(obj).toLowerCase() == &quot;[object object]&quot;;
+}
+
+function isArray(ob) {
+  return object &amp;&amp; typeof (obj) == &apos;object&apos; &amp;&amp; obj.constructor == Array;
+}
+
+function getLength(object) {
+  var count = 0;
+  for (var i in object) count++;
+  return count;
+}
+
+function Compare(objA, objB) {
+  if (!isObj(objA) || !isObj(objB)) return false; //判断类型是否正确
+  if (getLength(objA) != getLength(objB)) return false; //判断长度是否一致
+  return CompareObj(objA, objB, true); //默认为true
+}
+
+function CompareObj(objA, objB, flag) {
+  for (var key in objA) {
+    if (!flag) //跳出整个循环
+      break;
+    if (!objB.hasOwnProperty(key)) {
+      flag = false;
+      break;
+    }
+    if (!isArray(objA[key])) { //子级不是数组时,比较属性值
+      if (objB[key] != objA[key]) {
+        flag = false;
+        break;
+      }
+    } else {
+      if (!isArray(objB[key])) {
+        flag = false;
+        break;
+      }
+      var oA = objA[key],
+        oB = objB[key];
+      if (oA.length != oB.length) {
+        flag = false;
+        break;
+      }
+      for (var k in oA) {
+        if (!flag) //这里跳出循环是为了不让递归继续
+          break;
+        flag = CompareObj(oA[k], oB[k], flag);
+      }
+    }
+  }
+  return flag;
+}
+</code></pre></li>
+</ul>
+<h3 id="判断json对象是否为空"><a href="#判断json对象是否为空" class="headerlink" title="判断json对象是否为空"></a>判断json对象是否为空</h3><p>1.jquery方法：</p>
+<pre><code>jQuery.isEmptyObject({})；
+</code></pre><p>2.for in遍历</p>
+<h3 id="交换两个变量的值"><a href="#交换两个变量的值" class="headerlink" title="交换两个变量的值"></a>交换两个变量的值</h3><p>1.借助第三方： </p>
+<pre><code>var temp = a;
+a = b;
+b = temp
+</code></pre><p>2.不借助第三方：</p>
+<pre><code>数字型可以直接运算
+
+var a = 1, b = 5;
+a = a + b; // 将a、b的值都放在a里面，a = 6
+b = a - b;  // a的值 - b的值就是原来的a的值了
+a = a - b; // a还是相加之后的a，b是已经交换后的b，a - b就是相加的值 - a的值，就是b的值
+
+// 对象存储的方法：
+a = {a:b, b:a}
+b = a.b;
+a = a.a
+
+// 数组存储的方法：
+a = [a, b];
+b = a[0];
+a = a[1]
+
+// 变态的一行代码：
+a = [b, b=a][0]  
+解析：运算符优先级，首先b = a,然后a = b
+</code></pre><h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>是js的内置对象</p>
+<p>Math.max（a, b, c） // 返回最大值<br>Math.min() // 返回最小值</p>
+<p>舍入：</p>
+<pre><code>Math.ceil()  // 向上舍入
+Math.floor()  // 向下舍入
+Math.round()  // 四舍五入
+</code></pre><p>其他<br>    Math.abs(num) // 绝对值<br>    Math.exp(num) // num次幂<br>    Math.pow(num, power) number的power次幂</p>
+<p>随机数</p>
+<p>Math.random() ：返回0-1之间的随机数，不包括1</p>
+<pre><code>// Math.random()应用
+
+// 1.用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。
+/**
+思路：1.取10个数字，不重复;
+2.数组[0,100]
+**/
+var arr=[];
+for (i = 0; i &lt; 10; i++) {
+    var index = Math.random();   
+    var j = 10 + Math.floor(91 * index);    // 取值范围
+    if(arr.indexOf(j) == -1){
+        arr.push(j);
+    } else {
+        i--;   // 数组有这一项了，不取原数组的这个值，但是次数要退回一次，保证取够10个数
+    }
+
+}
+arr.sort(campare);
+function campare(a,b) {  // 降序
+    return a-b;
+}
+console.log(arr);
+
+
+//2.有一个数组，a = [8, 10, 30, 55, 78, 90, 1],b从A中一次随机取一个元素，取完为止
+/**
+ * Math.random是[0, 1)； [0, 7) Math.ceil(Math.random*a.length)
+    第一次随机数的范围是0-6；
+    第二次随机数的范围时0-5；
+    第三次随机数的范围是0-4；
+    第四次随机数的范围是0-3；
+    第五次随机数的范围是0-2；
+ * */
+var b = [];
+var a = [8, 10, 30, 55, 78, 90, 1];
+for(var i = 0; i &lt; 7; i++) {
+    var key = Math.floor(Math.random()*(a.length));
+    b.push(a[key]);
+    a.splice(key,1);   // a里面删除这一项
+}
+console.log(b);
+</code></pre><h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>1、创建实例：</p>
+<pre><code>var data = new Date();
+var date = Date.now()
+
+date.getFullYear() // 获取年份
+getMonth() // 从0开始计算，获得的比实际少1个月，需要+1
+getDate()  // 获取月份中的天数
+getDay()   // 0 表示星期天
+getHours()/getMinutes()/getSeconds()
+getTime() // 返回时间的毫秒数
+</code></pre><p><strong><br>写一个函数传过来一个日期对象，返回yyyy-MM-dd HH:mm:ss形式的字符串</strong></p>
+<pre><code>  //2015-3-01 15:02:03
+
+  /**
+   * 定义了输出当前字符串时间的一个函数
+   * @param date
+   */
+  function getDate(date) {
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1; // 月份是从0开始
+    var day = date.getDate();//获取的是当月的几号
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+//    if(month&lt;10){
+//      month= &quot;0&quot;+month;
+//    }else {
+//      month = month;
+//    }
+    month = month &lt; 10 ? &quot;0&quot; + month : month;
+    day = day &lt; 10 ? &quot;0&quot; + day : day;
+    hour = hour &lt; 10 ? &quot;0&quot; + hour : hour;
+    min = min &lt; 10 ? &quot;0&quot; + min : min;
+    sec = sec &lt; 10 ? &quot;0&quot; + sec : sec;
+    var str = year + &quot;-&quot; + month + &quot;-&quot; + day + &quot; &quot; + hour + &quot;:&quot; + min + &quot;:&quot; + sec;
+    console.log(str);
+  }
+
+  var date = new Date();
+  getDate(date); // 把创建的date作为参数传进来
+</code></pre><h2 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h2><pre><code>     document.getElementById(&quot;btn&quot;).onclick = function (){
+     console.log(window.location.hash); // 获取地址栏中#后面的字符串
+     console.log(window.location.host); // 主机名和端口号
+     console.log(window.location.hostname); // 主机名
+     console.log(window.location.pathname);// 路径
+     console.log(window.location.port);// 端口号
+     console.log(window.location.protocol);// 协议
+     console.log(window.location.search); //？后面的字符串
+   };
+
+  document.getElementById(&quot;btnHref&quot;).onclick = function (){
+//         window.location.href = &quot;http://www.baidu.com&quot;;
+          location.reload(true); // 刷新
+    // true 表示强制刷新强制加载 ，就是得到服务器去重新请求数据
+    // false 是从本地读取缓存
+  };
+</code></pre><h2 id="dom"><a href="#dom" class="headerlink" title="dom"></a>dom</h2><h3 id="获取当前元素的子节点"><a href="#获取当前元素的子节点" class="headerlink" title="获取当前元素的子节点"></a>获取当前元素的子节点</h3><pre><code>// 1. 获得对象
+  var list = document.getElementById(&quot;list&quot;);
+  var lis = list.childNodes; // 获取当前元素的子节点 不但会获得子标签节点，还会获得文本节点及注释节点
+
+  var lis1 = list.children; // 只会获得当前元素下面的子标签节点
+</code></pre><p>节点类型</p>
+<pre><code> //          nodeType       nodeName         nodeValue
+  /*
+  *    标签      1           对应的标签名         null
+  *    属性      2           属性名             属性值
+  *    文本      3            #text            文本内容
+  *    注释      8            #comment         注释的内容
+  * */
+
+  var box = document.getElementById(&quot;box&quot;);
+//  var node = box.getAttributeNode(&quot;class&quot;);
+  var node = box.getAttributeNode(&quot;id&quot;);
+  console.log(node.nodeType);
+  console.log(node.nodeName);
+  console.log(node.nodeValue);
+</code></pre><h2 id="获取兄弟节点"><a href="#获取兄弟节点" class="headerlink" title="获取兄弟节点"></a>获取兄弟节点</h2><ul>
+<li><strong>nextSibling</strong>  获得下一个相邻的兄弟姊妹级节点，有可能是文本，注释或是标签,IE8以前的浏览器会忽略空白文本节点，只会获得下一个标签节点，或是注释节点</li>
+</ul>
+<ul>
+<li><p><strong>nextElementSibling</strong>  高级浏览器支持的方式，只会获得下一个标签节点 文本和注释都会忽略，而IE8及之前的浏览器不支持此属性</p>
+</li>
+<li><p>封装一个兼容的获取下一个兄弟节点的方法</p>
+<pre><code>/**
+  * 封装了一个兼容版本的获取下一个标签对象的函数
+  * @param ele
+  * @returns {*}
+  */
+ function  getNextElement(ele){
+   if(ele&amp;&amp;ele.nextElementSibling){ //有对象，而且支持nextElementSibling的方式获取下一个标签对象
+     return ele.nextElementSibling;
+   }else {
+     ele = ele.nextSibling;
+
+     while(ele&amp;&amp;ele.nodeType!=1){
+       ele = ele.nextSibling;
+     }
+     return ele;  //返回获取到的下一个标签对象
+   }
+ }
+</code></pre></li>
+</ul>
+<p><strong>获取上一个兄弟节点</strong></p>
+<ul>
+<li><p><strong>previousSibling</strong>  高级浏览器不但会获得标签节点，还会获得文本节点和注释节点 ，而IE8浏览器会忽略空白 文本节点，如果有注释会获取注释节点</p>
+</li>
+<li><p>previousElementSibling  高级浏览器支持的方式，只会获得上一个标签节点，文本啊注释都会忽略</p>
+</li>
+<li><p>封装兼容方法</p>
+<pre><code>function getPreviousElement(ele){
+  if(ele&amp;&amp;ele.previousElementSibling){
+    return ele.previousElementSibling;
+  }else {
+    if(ele){
+      ele = ele.previousSibling;//获得上一个节点
+      while(ele&amp;&amp;ele.nodeType!=1){
+        ele= ele.previousSibling;
+      }
+      return ele;
+    }
+  }
+}
+</code></pre></li>
+</ul>
+<h2 id="获取子节点"><a href="#获取子节点" class="headerlink" title="获取子节点"></a>获取子节点</h2><p>var node = list.firstChild; // 高级浏览不但会获得标签节点还会获得文本节点及注释节点</p>
+<p>var node = list.firstElementChild; //是高级浏览器支持的方式，只会获得标签节点，但是IE8及之前的浏览器不支持</p>
+<p>封装兼容性方法</p>
+<pre><code>function getFirstChild(ele){
+  if(ele&amp;&amp;ele.firstElementChild){
+    return ele.firstElementChild;
+  }else {
+    if(ele){
+      ele = ele.firstChild; //在当前节点的基础上，获取第一个子节点(标签，文本，注释)
+      while(ele&amp;&amp;ele.nodeType!=1){
+        ele = ele.nextSibling;// 在当前节点的基础上，继续往下找
+      }
+      return  ele;
+    }
+  }
+}
+</code></pre><p>最后一个子节点</p>
+<pre><code>function getLastChild(ele){
+   if(ele&amp;&amp;ele.lastElementChild){ //高级浏览器支持的方式
+     return ele.lastElementChild;
+   }else { //IE8及之前的浏览器支持的方式
+     ele = ele.lastChild;
+     while(ele&amp;&amp;ele.nodeType!=1){
+       ele = ele.previousSibling;//在当前标签基础上，往前找兄弟姊妹级节点
+     }
+     return ele;
+   }
+}
+</code></pre><h2 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h2><ul>
+<li>offsetWidth和offsetHeight：检测盒子的宽和高。</li>
+</ul>
+<ul>
+<li><p>offsetWidth = width + border + padding ;<br>获取的值为number类型，不带单位</p>
+</li>
+<li><p>offsetTop和offsetLeft：(absolute/relative/fixed)<br>1.检测盒子距离父系盒子中带有定位的最近的盒子的距离。<br>2.如果都没有默认为距离body的距离</p>
+</li>
+<li><p>offsetParent: 父系盒子中最近的带有定位的盒子。如果都没有默认是body</p>
+</li>
+<li>用div.style.left赋值。   2.用div.offsetLeft获取值</li>
+</ul>
+<h3 id="利用offset封装动画"><a href="#利用offset封装动画" class="headerlink" title="利用offset封装动画"></a>利用offset封装动画</h3><p>动画的原理：原来的位置 + 步长，利用setInterval定时器，间隔一段时间执行</p>
+<ul>
+<li><p>匀速动画封装</p>
+<pre><code>//匀速动画封装
+function animate(ele,target) {
+    //要用定时器，先清定时器。
+    clearInterval(ele.timer);//一个盒子，一个定时器。想回不会产生影响
+
+    //把定时器绑定到盒子上。(一个盒子，一个定时器。)
+    ele.timer  = setInterval(function () {
+
+        //步长的处理：步长不能永远都是10；
+        var step = target &gt; ele.offsetLeft? 10 : -10;
+
+        ele.style.left = ele.offsetLeft + step + &quot;px&quot;;
+        //停下来：目标位置和当前位置只差不足一个步长的时候
+        //抖动问题；   &lt;后面加=
+        if(Math.abs(target-ele.offsetLeft) &lt;= Math.abs(step)){
+            ele.style.left = target + &quot;px&quot;;
+            clearInterval(ele.timer);
+        }
+    },30);
+}
+</code></pre></li>
+</ul>
+<pre><code>// 使用方法：
+btn.onclick = function () {
+  fn(div, 200)
+}
+</code></pre><ul>
+<li><p>缓动动画封装  </p>
+<pre><code>btn.onclick = function () {
+    animate(div,400.75);
+}
+
+//封装一个方法。  解决定时器问题。
+function animate(ele,target) {
+
+    //: 要用定时器，先清定时器
+    clearInterval(ele.timer);
+
+    //设置定时器移动盒子。
+    ele.timer = setInterval(function () {
+        //动画原理 = 盒子本身位置 + (目标位置-当前位置)/10;
+        //获取步长。
+        var step = (target-ele.offsetLeft)/10;
+
+        //要解决小数问题，步长就不能为小数。要求盒子最小步长为1；
+            //二次处理步长。如果步长&gt;0，向上取整。   如果步长&lt;0，向下取整。(目标位置是在当前位置之前还是之后)
+        step = step&gt;0? Math.ceil(step):Math.floor(step);
+
+        //赋值
+        ele.style.left = ele.offsetLeft + step + &quot;px&quot;;
+        console.log(1);
+        //什么时候清除定时器???
+            //如果目标位置和当前位置之差不足一个步长的时候
+        if(Math.abs(target-ele.offsetLeft) &lt;= Math.abs(step)){
+            直接让盒子移动到目标位置
+            ele.style.left = target + &quot;px&quot;;
+            clearInterval(ele.timer);
+        }
+    },30);
+}
+</code></pre></li>
+</ul>
+<p><strong>但是以上方法有两个不足：</strong></p>
+<p>1.在获取属性值的时候不够精确。(是检测后期值，有的甚至无法获取)</p>
+<ul>
+<li><p>解决办法：引入新的技术。(可以获取内嵌/外链/行内三种属性值。最高权限的属性值)</p>
+<pre><code> //1.火狐谷歌ie9+以上：支持window.getComputedStyle();
+ var objStyle = window.getComputedStyle(div,null);
+
+//2.IE678支持的是：div.currentStyle
+var objStyle = div.currentStyle;
+</code></pre></li>
+</ul>
+<p>所以也需要封装兼容性写法</p>
+<pre><code>//兼容写法：//两个参数，一个是哪个盒子的样式，什么属性。
+function getStyle(ele,attr){
+    //判断：看浏览器支持哪个方法。
+    if(window.getComputedStyle !== undefined){
+       //或者if(window.getComputedStyle &amp;&amp; typeof window.getComputedStyle === &quot;function&quot;){
+        return window.getComputedStyle(ele,null)[attr];
+    }else{
+        //ie678才能到这里。
+        return ele.currentStyle[attr];
+    }
+
+    //简单方法：
+   return window.getComputedStyle!==undefined?window.getComputedStyle(ele,null)[attr]:ele.currentStyle[attr];
+}
+</code></pre><p>2.只能每次修改一个属性，不能一把一把的操作。</p>
+<ul>
+<li>解决办法：利用对象(json);(利用for…in…变量这个对象)</li>
+</ul>
+<p>最后的缓动动画封装方法：</p>
+<pre><code>//封装缓动动画
+function animate(ele,json,fn){
+    //要用定时器，先清定时器
+    clearInterval(ele.timer);
+    ele.timer = setInterval(function () {
+        //整体的代码用json来做，用for...in...循环来做。
+            //1.把原来的attr,变成for...in...中的 k;
+            //2.把原来的target,变成for...in...中的 值：json[k];
+        //默认所有人都到了目标位置。(开闭原则)
+        var flag = true;
+
+        for(var k in json){
+                //k;//json中的每一个属性。
+               //json[k];//json中的每一个属性对应的值。
+            //不必停止定时器
+
+            //0.获取盒子当前最高权限的属性值,要转换成number类型。
+            var leader = parseFloat(getStyle(ele,k)) || 0;
+            //1.获取步长
+            var step = (json[k]-leader)/10;
+            //2.二次处理步长
+            step = step&gt;0?Math.ceil(step):Math.floor(step);
+            //3.赋值
+            leader += step;
+            ele.style[k] = leader + &quot;px&quot;;
+
+            //要求：必须所有属性都到达指定位置，才能清除定时器。
+                //没到的举手，只要没到就不走。(如果所有人都不说话，那么就全都到了)
+                //有一个没有到达目标位置的也不能清除定时器
+//          if(Math.abs(json[k]-leader) &gt; Math.abs(step)){
+            if(json[k] !== leader){
+                flag = false;
+            }
+        }
+        console.log(1);
+        //for循环之外：
+        //整轮for循环执行完毕之后，只要判断：flag的值是true，还是false。
+            //如果是true。说明所有属性都到达指定值。
+            //如果是false。说明至少还有一个属性未到达指定值。
+        if(flag){
+            clearInterval(ele.timer);
+            //本函数走完了，在调用回调函数：规则就是，你完成我在执行
+            //bug:如果传递了函数，就调用，没有传递就不调用
+//          if(fn &amp;&amp; typeof(fn) === &quot;function&quot;){//严谨
+            if(fn){
+                fn();
+            }
+        }
+    },30);
+}
+
+
+//精确获取单个元素的某个最高权限属性值。
+function getStyle(ele,attr){
+    if(window.getComputedStyle !== undefined){
+        return window.getComputedStyle(ele,null)[attr];
+    }else{
+        return ele.currentStyle[attr];
+    }
+}
+</code></pre><p>使用方法：一个动画有多种效果，并且是前一个执行完，再执行后一个</p>
+<pre><code>    btn.onclick = function () {
+    //转一个圈。 --- 后面的animate()会把前面的方法种的定时器清除。
+    var json1 = {left:400};
+    var json2 = {top:440};
+    var json3 = {left:0};
+    var json4 = {top:40};
+
+    //解决办法：第一个走完了，在走第二个....
+        //定时器被清除的时候，就是一个函数走完的时候。
+    animate(div,json1, function () {
+        animate(div,json2, function () {
+            animate(div,json3, function () {
+                animate(div,json4);
+            });
+        });
+    });
+
+}
+</code></pre><p>动画原理： 盒子本身的位置 + （目标位置-当前位置） / 10</p>
+<pre><code>div.style.left = div.offsetLeft + (400 - div.offsetLeft)/10 + &quot;px&quot;;
+</code></pre><p>但是上面的封装还是存在一定问题，当遇到层级和透明度的设置的时候，不能一样的设置：</p>
+<pre><code>btn.onclick = function () {
+       //转一个圈。 --- 后面的animate()会把前面的方法种的定时器清除。
+       var json1 = {&quot;z-index&quot;:5,opacity:0.4};
+
+       //z-index(直接赋值),opacity(没有单位，小数);   border和background-color和color...
+           //jQuery都没有完成所有属性，全部兼容。backgorund-color：都不支持
+
+       //我们只做两：z-index和opacity？  因为旋转木马需要；
+           //1.z-index特别简单。   2.opacity(没有单位，小数，兼容)
+
+
+
+       //解决办法：第一个走完了，在走第二个....
+           //定时器被清除的时候，就是一个函数走完的时候。
+       animate(div,json1);
+
+   }
+
+
+   //封装缓动动画
+   function animate(ele,json,fn){
+       //要用定时器，先清定时器
+       clearInterval(ele.timer);
+       ele.timer = setInterval(function () {
+           //默认所有人都到了目标位置。(开闭原则)
+           var flag = true;
+
+           for(var k in json){
+               //在for循环中进行属性判断：如果是哪个属性，就进行哪个属性的逻辑
+               if(k === &quot;z-index&quot;){
+                   //层级：需求：点击一下，直接到达(层级不需要缓动到目标值)
+                   ele.style.zIndex = json[k];//层级不管定时器
+               }else if(k === &quot;opacity&quot;){//透明度
+                   //0.获取值的时候放大10倍，赋值在缩小10倍(方便步长运算)。 1.小数运算容易出现精度丢失问题。
+                   if(parseInt(getStyle(ele,k)*100) === 0){
+                       var leader = 0;
+                   }else{
+                       var leader = parseInt(getStyle(ele,k)*100) || 100;
+                   }
+                   //1.获取步长(传递的目标值为多少)
+                   var step = (parseInt(json[k]*100)-leader)/10;
+                   //2.二次处理步长
+                   step = step&gt;0?Math.ceil(step):Math.floor(step);
+                   //3.赋值
+                   leader += step;
+                   //赋值opacity的时候注意缩小10倍,没有单位
+                   ele.style.opacity = leader/100;
+                   //兼容ie678
+                   ele.style.filter = &quot;alpha(opacity=&quot;+leader+&quot;)&quot;;
+
+                   //有一个没有到达目标位置的也不能清除定时器
+                   if(parseInt(json[k]*100) !== leader){
+                       flag = false;
+                   }
+               }else{//普通属性。
+                   //0.获取盒子当前最高权限的属性值,要转换成number类型。
+                   var leader = parseFloat(getStyle(ele,k)) || 0;
+                   //1.获取步长
+                   var step = (json[k]-leader)/10;
+                   //2.二次处理步长
+                   step = step&gt;0?Math.ceil(step):Math.floor(step);
+                   //3.赋值
+                   leader += step;
+                   ele.style[k] = leader + &quot;px&quot;;
+                   //有一个没有到达目标位置的也不能清除定时器
+                   if(json[k] !== leader){
+                       flag = false;
+                   }
+               }
+           }
+           console.log(1);
+           //整轮for循环执行完毕之后，只要判断：flag的值是true，还是false。
+           if(flag){
+               clearInterval(ele.timer);
+               //本函数走完了，在调用回调函数：规则就是，你完成我在执行
+               if(fn){
+                   fn();
+               }
+           }
+       },30);
+   }
+
+
+   //精确获取单个元素的某个最高权限属性值。
+   function getStyle(ele,attr){
+       if(window.getComputedStyle !== undefined){
+           return window.getComputedStyle(ele,null)[attr];
+       }else{
+           return ele.currentStyle[attr];
+       }
+   }
+</code></pre><h2 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h2><ul>
+<li>window.onscroll = function () {}  // 页面滚动中处理事件</li>
+</ul>
+<ul>
+<li>document.body.scrollTop;  // 网页被遮住的顶部值</li>
+<li><p>有兼容性</p>
+<pre><code>(1).谷歌只支持     document.body.scrollTop;            (2).IE5678只支持  document.documentElement.scrollTop;            (3).正常浏览器支持：是否拥有dtd约束。没有：body。有：documentElement。
+ w3cshool: window.pageY/XOffset; 获取页面顶部被遮挡住的部分的距离:
+ 缺点在于ie678不支持。
+</code></pre></li>
+</ul>
+<ul>
+<li><p>兼容性封装</p>
+<pre><code>//封装获取页面被圈去的头部和左侧部分的距离。
+function scroll(){
+    return {
+        &quot;top&quot;: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop,
+        &quot;left&quot;: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+    };
+}
+</code></pre></li>
+</ul>
+<h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><ul>
+<li>event.pageX    //光标相对于该网页的水平位置（ie无）</li>
+</ul>
+<ul>
+<li>event.pageY    //光标相对于该网页的垂直位置（ie无）</li>
+</ul>
+<ul>
+<li>event.clientX  //光标相对于该网页的水平位置 （当前可见区域）</li>
+</ul>
+<ul>
+<li>event.clientY  //光标相对于该网页的垂直位置</li>
+</ul>
+<ul>
+<li><p>鼠标位于整个页面的距离(event.pageY/X) = 页面被卷去的头部或者左侧部分( scroll().left/top ) + 鼠标距离网页可视区域的距离(event.clientX/Y)</p>
+<pre><code>var pagey = event.pageY || scroll().top + event.clientY;
+var pagex = event.pageX || scroll().left + event.clientX;
+
+function scroll(){
+    return {
+        top: window.pageYOffset || document.documentElement.scrollTop,
+        left:window.pageXOffset || document.documentElement.scrollLeft
+    }
+}
+</code></pre></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/20/css的一些常用布局/" rel="next" title="css布局总结">
+                <i class="fa fa-chevron-left"></i> css布局总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/01/ajax请求get和post的区别/" rel="prev" title="ajax基础">
+                ajax基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js基础知识"><span class="nav-number">1.</span> <span class="nav-text">js基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-关键字"><span class="nav-number">1.1.</span> <span class="nav-text">typeof 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和-的区别"><span class="nav-number">1.2.</span> <span class="nav-text">==和===的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断两个对象相等"><span class="nav-number">1.3.</span> <span class="nav-text">判断两个对象相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断对象是否为空"><span class="nav-number">1.4.</span> <span class="nav-text">判断对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较两个json对象是否完全相等"><span class="nav-number">1.5.</span> <span class="nav-text">比较两个json对象是否完全相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断json对象是否为空"><span class="nav-number">1.6.</span> <span class="nav-text">判断json对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换两个变量的值"><span class="nav-number">1.7.</span> <span class="nav-text">交换两个变量的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math对象"><span class="nav-number">1.8.</span> <span class="nav-text">Math对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期对象"><span class="nav-number">2.</span> <span class="nav-text">日期对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM对象"><span class="nav-number">3.</span> <span class="nav-text">BOM对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number">4.</span> <span class="nav-text">dom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取当前元素的子节点"><span class="nav-number">4.1.</span> <span class="nav-text">获取当前元素的子节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取兄弟节点"><span class="nav-number">5.</span> <span class="nav-text">获取兄弟节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取子节点"><span class="nav-number">6.</span> <span class="nav-text">获取子节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">7.</span> <span class="nav-text">offset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用offset封装动画"><span class="nav-number">7.1.</span> <span class="nav-text">利用offset封装动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">8.</span> <span class="nav-text">scroll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">9.</span> <span class="nav-text">event</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

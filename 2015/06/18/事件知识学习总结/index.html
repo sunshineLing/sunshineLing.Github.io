@@ -107,7 +107,7 @@
 <meta property="og:description" content="事件概念 用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；  事件流概念 是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。  dom事件流DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；IE不支持dom事件流。 冒泡型事件流和捕获型事件流冒泡型事件流：">
 <meta property="og:image" content="http://i.imgur.com/mQSETcm.png">
 <meta property="og:image" content="http://i.imgur.com/DpPAJG4.png">
-<meta property="og:updated_time" content="2017-07-18T04:15:58.510Z">
+<meta property="og:updated_time" content="2017-07-18T09:07:11.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS事件知识学习总结">
 <meta name="twitter:description" content="事件概念 用户或浏览器自身执行的某种动作，页面和用户交互的瞬间，比如clcik等；  事件流概念 是从页面中接收事件的顺序，或者说是在页面中传播响应的顺序，是从里面向外面流的，还是从外面向里面流的。  dom事件流DOM事件流，就是事件发生的时候，dom树从目标元素到根元素，按照特定的顺序传播，路径上所有的节点都会接收到该事件；IE不支持dom事件流。 冒泡型事件流和捕获型事件流冒泡型事件流：">
@@ -586,6 +586,8 @@ console.log(4);
 <p>而 ES6 中新增的任务队列是在事件循环之上的，事件循环每次 tick 后会查看 ES6 的任务队列中是否有任务要执行，也就是 ES6 的任务队列比事件循环中的任务（事件）队列优先级更高。</p>
 <p>如 Promise 就使用了 ES6 的任务队列特性。</p>
 <p>参考：<br><a href="http://www.cnblogs.com/Medeor/p/4945687.html" target="_blank" rel="external">http://www.cnblogs.com/Medeor/p/4945687.html</a><br><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a><br><a href="http://www.cnblogs.com/zhaodongyu/p/3922961.html" target="_blank" rel="external">http://www.cnblogs.com/zhaodongyu/p/3922961.html</a><br>深入浅出 node.js　　</p>
+<h3 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h3><p><a href="http://www.cnblogs.com/xcmylrl/p/5405797.html" target="_blank" rel="external">http://www.cnblogs.com/xcmylrl/p/5405797.html</a></p>
+<p>比较绕,留下来慢慢研究….</p>
 
       
     </div>
@@ -622,8 +624,8 @@ console.log(4);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/20/css的一些常用布局/" rel="next" title="css布局总结">
-                <i class="fa fa-chevron-left"></i> css布局总结
+              <a href="/2015/06/01/ajax请求get和post的区别/" rel="next" title="ajax基础">
+                <i class="fa fa-chevron-left"></i> ajax基础
               </a>
             
           </div>
@@ -707,7 +709,7 @@ console.log(4);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -718,7 +720,7 @@ console.log(4);
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -729,7 +731,7 @@ console.log(4);
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -775,7 +777,7 @@ console.log(4);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件概念"><span class="nav-number">1.</span> <span class="nav-text">事件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流概念"><span class="nav-number">1.1.</span> <span class="nav-text">事件流概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dom事件流"><span class="nav-number">1.1.1.</span> <span class="nav-text">dom事件流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡型事件流和捕获型事件流"><span class="nav-number">1.1.2.</span> <span class="nav-text">冒泡型事件流和捕获型事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM2级事件流"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DOM2级事件流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IE和DOM事件流的区别"><span class="nav-number">1.1.3.</span> <span class="nav-text">IE和DOM事件流的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理程序"><span class="nav-number">2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用闭包的方式封装事件处理程序"><span class="nav-number">3.</span> <span class="nav-text">用闭包的方式封装事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件委托-事件代理"><span class="nav-number">4.</span> <span class="nav-text">事件委托/事件代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理的封装"><span class="nav-number">4.1.</span> <span class="nav-text">事件代理的封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的事件代理"><span class="nav-number">4.2.</span> <span class="nav-text">jQuery中的事件代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何阻止事件冒泡和默认事件"><span class="nav-number">5.</span> <span class="nav-text">如何阻止事件冒泡和默认事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止事件冒泡"><span class="nav-number">5.1.</span> <span class="nav-text">阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止默认行为"><span class="nav-number">5.2.</span> <span class="nav-text">阻止默认行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环（Event-Loop）和任务队列（Task-Queue）"><span class="nav-number">6.</span> <span class="nav-text">事件循环（Event Loop）和任务队列（Task Queue）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环"><span class="nav-number">6.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列"><span class="nav-number">6.2.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主线程："><span class="nav-number">6.3.</span> <span class="nav-text">主线程：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件概念"><span class="nav-number">1.</span> <span class="nav-text">事件概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流概念"><span class="nav-number">1.1.</span> <span class="nav-text">事件流概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dom事件流"><span class="nav-number">1.1.1.</span> <span class="nav-text">dom事件流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡型事件流和捕获型事件流"><span class="nav-number">1.1.2.</span> <span class="nav-text">冒泡型事件流和捕获型事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM2级事件流"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DOM2级事件流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IE和DOM事件流的区别"><span class="nav-number">1.1.3.</span> <span class="nav-text">IE和DOM事件流的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理程序"><span class="nav-number">2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用闭包的方式封装事件处理程序"><span class="nav-number">3.</span> <span class="nav-text">用闭包的方式封装事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件委托-事件代理"><span class="nav-number">4.</span> <span class="nav-text">事件委托/事件代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理的封装"><span class="nav-number">4.1.</span> <span class="nav-text">事件代理的封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的事件代理"><span class="nav-number">4.2.</span> <span class="nav-text">jQuery中的事件代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何阻止事件冒泡和默认事件"><span class="nav-number">5.</span> <span class="nav-text">如何阻止事件冒泡和默认事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止事件冒泡"><span class="nav-number">5.1.</span> <span class="nav-text">阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止默认行为"><span class="nav-number">5.2.</span> <span class="nav-text">阻止默认行为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环（Event-Loop）和任务队列（Task-Queue）"><span class="nav-number">6.</span> <span class="nav-text">事件循环（Event Loop）和任务队列（Task Queue）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环"><span class="nav-number">6.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列"><span class="nav-number">6.2.</span> <span class="nav-text">任务队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主线程："><span class="nav-number">6.3.</span> <span class="nav-text">主线程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义事件"><span class="nav-number">6.4.</span> <span class="nav-text">自定义事件</span></a></li></ol></li></ol></div>
             
 
           </div>

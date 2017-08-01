@@ -1,0 +1,1175 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是表单提交 通过form表单把数据提交到后台怎么实现表单提交  get步骤:  前端:  1. 提交的地址  在form标签上写action属性 值代表要把input中的值传给哪个程序 2. 数据的保存  在input的标签上写name属性的值 3. 提交方式　　在form标签上写method属性  现在有两种提交 get(默认的提交方式)  post  后端接受   接受前端数据  用一个数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax基础">
+<meta property="og:url" content="sunshineLing.github.io/2015/06/01/ajax请求get和post的区别/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="什么是表单提交 通过form表单把数据提交到后台怎么实现表单提交  get步骤:  前端:  1. 提交的地址  在form标签上写action属性 值代表要把input中的值传给哪个程序 2. 数据的保存  在input的标签上写name属性的值 3. 提交方式　　在form标签上写method属性  现在有两种提交 get(默认的提交方式)  post  后端接受   接受前端数据  用一个数">
+<meta property="og:updated_time" content="2017-08-01T12:36:27.346Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax基础">
+<meta name="twitter:description" content="什么是表单提交 通过form表单把数据提交到后台怎么实现表单提交  get步骤:  前端:  1. 提交的地址  在form标签上写action属性 值代表要把input中的值传给哪个程序 2. 数据的保存  在input的标签上写name属性的值 3. 提交方式　　在form标签上写method属性  现在有两种提交 get(默认的提交方式)  post  后端接受   接受前端数据  用一个数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2015/06/01/ajax请求get和post的区别/"/>
+
+
+
+
+
+  <title>ajax基础 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2015/06/01/ajax请求get和post的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ajax基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-01T20:22:10+08:00">
+                2015-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">ajax</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是表单提交"><a href="#什么是表单提交" class="headerlink" title="什么是表单提交"></a>什么是表单提交</h2><ul>
+<li>通过form表单把数据提交到后台<h2 id="怎么实现表单提交"><a href="#怎么实现表单提交" class="headerlink" title="怎么实现表单提交"></a>怎么实现表单提交</h2></li>
+</ul>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>步骤:</p>
+<ul>
+<li>前端:</li>
+</ul>
+<pre><code>1. 提交的地址  在form标签上写action属性 值代表要把input中的值传给哪个程序
+2. 数据的保存  在input的标签上写name属性的值
+3. 提交方式　　在form标签上写method属性  现在有两种提交 get(默认的提交方式)  post
+</code></pre><ul>
+<li><p>后端接受</p>
+<p>  接受前端数据  用一个数组接受  先用$_GET数组(php中早就定义好的 内置数组) 用什么样的方式提交就用什么数组接受</p>
+</li>
+</ul>
+<h3 id="post"><a href="#post" class="headerlink" title="post"></a>post</h3><pre><code>前端:
+  1.1 提交的地址  在form标签上写action属性 值代表要把input中的值传给哪个程序
+  1.2 数据的保存  在input的标签上写name属性
+  1.3 提交方式　　在form标签上写method属性  必须显式声明提交方式post
+后端接受:
+  1.4 接受前端数据  用一个数组接受 只能用$_POST 用什么样的方式提交就用什么数组接受
+</code></pre><h2 id="表单提交的方式"><a href="#表单提交的方式" class="headerlink" title="表单提交的方式"></a>表单提交的方式</h2><h3 id="get-1"><a href="#get-1" class="headerlink" title="get"></a>get</h3><pre><code>一般用于信息的获取，在地址栏里面里面用key=value&amp;key=value的方式传值（路径后面+？），因为参数都写在地址栏里面，暴露出来了，所以不安全，
+
+而且地址栏里面传值是由数量限制的，http协议里没有限制，但是浏览器一般限制在2-8k。get请求在项目里用的比post请求要多.
+
+但是get请求是有缓存的，这个发送ajax请求时候要注意，比如说我们需要发送验证码的请求给后台，每次发送的地址和参数都是一样的，浏览器就会直接从cache里面读取上一次的相应结果，如果你不对参数做处理，每次点验证码的图片都没有变化。
+
+我比较常用的是在请求地址后面url? +freshTime=new Date().getTime(),用一个时间戳，每次都是不一样的get请求，或者是+Math.random()
+
+另外get请求参数里面有中文的，浏览器会自动做编码， encodeURIComponent，看到的是%这种。
+</code></pre><h3 id="post提交"><a href="#post提交" class="headerlink" title="post提交"></a>post提交</h3><pre><code>主要是用于通过表单收集到数据，传到后台去修改数据库里面的数据时候使用。传递的数据放在请求体里面（ xmlHttp.send(name)），比较安全，而且没有数量大小的限制。
+
+post请求不会被缓存
+
+发送的时候，请求头里面要设置xmlHttp.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;)，告诉服务器我传过来的是表单文件的普通类型，没有type=file的文件类型，用key=value来分隔的。如果是type=file,就需要设置成multipart/form-data
+</code></pre><h3 id="除了get-post还有其他请求方式"><a href="#除了get-post还有其他请求方式" class="headerlink" title="除了get post还有其他请求方式"></a>除了get post还有其他请求方式</h3><p>put  delete </p>
+<h2 id="表单提交的特点"><a href="#表单提交的特点" class="headerlink" title="表单提交的特点"></a>表单提交的特点</h2><pre><code>1.表单提交会发生页面的跳转
+2.如果后台运算数据较慢 浏览器要一直等待
+</code></pre><h2 id="什么是同步-什么是异步"><a href="#什么是同步-什么是异步" class="headerlink" title="什么是同步 什么是异步"></a>什么是同步 什么是异步</h2><pre><code>同步: 两个部分是互相依赖的  上一个步骤没有完成下一个步骤无法进行
+异步:
+   故事: 小明问小强要钱 小明钱一定要要  现在小明家中有事(立马要回家)  找人(催债) 
+   定义:两个部分没有依赖关系 省时 不会阻塞下面的部分运行
+</code></pre><h2 id="什么是ajax，缺点？"><a href="#什么是ajax，缺点？" class="headerlink" title="什么是ajax，缺点？"></a>什么是ajax，缺点？</h2><ul>
+<li>是利用 XMLHttpRequest支持异步请求的技术，在不刷新整个页面的情况下，向服务器请求数据，服务器把数据返回来之后，通过对dom做操作，更新页面的局部视图。</li>
+</ul>
+<ul>
+<li>发请求数据的时候，页面还是正常执行代码，不会因为后台没有返回数据，页面就停在当前的这一步。</li>
+</ul>
+<ul>
+<li>缺点：只是局部刷新，点击back按钮是没有作用的。</li>
+</ul>
+<h2 id="为什么需要学习ajax-ajax有哪些应用"><a href="#为什么需要学习ajax-ajax有哪些应用" class="headerlink" title="为什么需要学习ajax ajax有哪些应用"></a>为什么需要学习ajax ajax有哪些应用</h2><p> 1.ajax请求不需要跳转页面</p>
+<p> 2.ajax请求不需要表单</p>
+<p> 3.ajax请求不需要用户等待 即使等待也有良好的用户体验</p>
+<p> 4.局部刷新页面</p>
+<p><strong> ajax有哪些应用</strong></p>
+<pre><code>1.瀑布流页面的加载
+2.分页
+3.动态请求数据
+4.百度搜索
+</code></pre><h2 id="怎么实现ajax"><a href="#怎么实现ajax" class="headerlink" title="怎么实现ajax"></a>怎么实现ajax</h2><p>http协议</p>
+<pre><code>http协议请求信息 分为那三部分
+ 请求行 请求方式 请求地址
+ 请求头 Content-Type:application/x-www-form-urlencoded;
+ 请求正文 格式:key=value&amp;key=vaule 
+</code></pre><p>实现一个js的ajax请求</p>
+<pre><code>//1.实例化对象
+var xhr = new XMLHttpRequest();
+//2.xhr.readyState == 0,表示已经实例化，但是Open方法还没有调用
+
+//3.设置请求行
+xhr.open(&apos;get&apos;, url);
+
+//4.如果是post需要设置请求头
+xhr.serRequestHeader(&apos;contentType&apos;, &apos;application/x-www-form-urlencoded&apos;);//
+
+//5.设置请求正文  格式：key=value&amp;key=value
+xhr.send(&apos;username=wanl&amp;password=1234&apos;);  //如果是get方法，可以设置send(null)
+//xhr.readyState == 1代表设置了请求头，也发送了请求正文，但还没有收到内容
+
+//xhr.seng(null);
+
+//6.监听并响应
+xhr.onreadystatechange = function() {
+    //xhr.readyState == 4代表收到一个响应，但是不知道是否成功，
+    if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
+        console.log(xhr.reponseText);
+        //或者200 &lt;= xhr.ready &lt;= 300 || xhr.status == 304 //表示已有缓存
+    }
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/28/js基础知识学习/" rel="next" title="js基础知识学习">
+                <i class="fa fa-chevron-left"></i> js基础知识学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/18/事件知识学习总结/" rel="prev" title="JS事件知识学习总结">
+                JS事件知识学习总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是表单提交"><span class="nav-number">1.</span> <span class="nav-text">什么是表单提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么实现表单提交"><span class="nav-number">2.</span> <span class="nav-text">怎么实现表单提交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">2.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">2.2.</span> <span class="nav-text">post</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单提交的方式"><span class="nav-number">3.</span> <span class="nav-text">表单提交的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-1"><span class="nav-number">3.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post提交"><span class="nav-number">3.2.</span> <span class="nav-text">post提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#除了get-post还有其他请求方式"><span class="nav-number">3.3.</span> <span class="nav-text">除了get post还有其他请求方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单提交的特点"><span class="nav-number">4.</span> <span class="nav-text">表单提交的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是同步-什么是异步"><span class="nav-number">5.</span> <span class="nav-text">什么是同步 什么是异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是ajax，缺点？"><span class="nav-number">6.</span> <span class="nav-text">什么是ajax，缺点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要学习ajax-ajax有哪些应用"><span class="nav-number">7.</span> <span class="nav-text">为什么需要学习ajax ajax有哪些应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么实现ajax"><span class="nav-number">8.</span> <span class="nav-text">怎么实现ajax</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

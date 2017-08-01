@@ -1,0 +1,1311 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="项目里面需要用到拦截，用这个demo加深对vue全家桶的学习，以及通过axios实现登录、拦截和登出功能，利用axios的http拦截器拦截请求和响应，这是之前没有用过的。 这里记录一下学习及项目构建的整个过程。 接口准备github接口文档：https://developer.github.com/v3/ &amp;apos;https://api.github.com/user/repos?page=">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue登陆拦截学习">
+<meta property="og:url" content="sunshineLing.github.io/2017/03/20/vue登陆拦截学习/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="项目里面需要用到拦截，用这个demo加深对vue全家桶的学习，以及通过axios实现登录、拦截和登出功能，利用axios的http拦截器拦截请求和响应，这是之前没有用过的。 这里记录一下学习及项目构建的整个过程。 接口准备github接口文档：https://developer.github.com/v3/ &amp;apos;https://api.github.com/user/repos?page=">
+<meta property="og:updated_time" content="2017-08-01T12:02:36.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue登陆拦截学习">
+<meta name="twitter:description" content="项目里面需要用到拦截，用这个demo加深对vue全家桶的学习，以及通过axios实现登录、拦截和登出功能，利用axios的http拦截器拦截请求和响应，这是之前没有用过的。 这里记录一下学习及项目构建的整个过程。 接口准备github接口文档：https://developer.github.com/v3/ &amp;apos;https://api.github.com/user/repos?page=">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2017/03/20/vue登陆拦截学习/"/>
+
+
+
+
+
+  <title>vue登陆拦截学习 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/03/20/vue登陆拦截学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue登陆拦截学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T12:56:17+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>项目里面需要用到拦截，用这个demo加深对vue全家桶的学习，以及通过axios实现登录、拦截和登出功能，利用axios的http拦截器拦截请求和响应，这是之前没有用过的。</p>
+<p>这里记录一下学习及项目构建的整个过程。</p>
+<h2 id="接口准备"><a href="#接口准备" class="headerlink" title="接口准备"></a>接口准备</h2><p>github接口文档：<a href="https://developer.github.com/v3/" target="_blank" rel="external">https://developer.github.com/v3/</a></p>
+<pre><code>&apos;https://api.github.com/user/repos?page=2&amp;per_page=100&apos;
+</code></pre><p>默认返回30条，可以调整参数获取</p>
+<p>利用github提供的个人token作为登录的token，通过token直接访问仓库列表</p>
+<p>所以需要先在github生成自己的token,步骤如下：</p>
+<p>在settings里面找到获取token的选项，创建后复制黏贴即可。</p>
+<p>我的：934355797556982b1a32b39809d338e084d6906e</p>
+<h2 id="用vue-cli生成项目目录"><a href="#用vue-cli生成项目目录" class="headerlink" title="用vue-cli生成项目目录"></a>用vue-cli生成项目目录</h2><pre><code>1 // install vue-cli  安装依赖包
+   npm install --g vue-cli
+
+2 // 使用vue-cli初始化项目
+    vue init webpack my-project
+
+3 // install dependencies and go!
+    //进入项目目录
+    cd my-project
+
+4 //在项目中安装依赖包
+    npm install
+
+5 //运行项目
+  npm run dev
+</code></pre><h2 id="布局使用vue-material"><a href="#布局使用vue-material" class="headerlink" title="布局使用vue-material"></a>布局使用vue-material</h2><p>英文文档：<a href="http://vuematerial.io/#/" target="_blank" rel="external">http://vuematerial.io/#/</a><br>中文文档：<a href="http://vuematerial.com/#/" target="_blank" rel="external">http://vuematerial.com/#/</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install vue-material
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1.引入css和js文件</p>
+<pre><code>import Vue from &apos;vue&apos;
+import VueMaterial from &apos;vue-material&apos;
+import &apos;vue-material/dist/vue-material.css&apos;
+</code></pre><p>或者按需加载，只加载需要的组件</p>
+<pre><code>import Vue from &apos;vue&apos;
+import VueMaterial from &apos;vue-material&apos;
+import &apos;vue-material/dist/components/mdCore/index.css&apos; //Required to boot vue material
+import &apos;vue-material/dist/components/mdButton/index.css&apos;
+import &apos;vue-material/dist/components/mdIcon/index.css&apos;
+import &apos;vue-material/dist/components/mdSidenav/index.css&apos;
+import &apos;vue-material/dist/components/mdToolbar/index.css&apos;
+</code></pre><p>使用：</p>
+<pre><code>Vue.use(VueMaterial.mdCore) //Required to boot vue material
+Vue.use(VueMaterial.mdButton)
+Vue.use(VueMaterial.mdIcon)
+Vue.use(VueMaterial.mdSidenav)
+Vue.use(VueMaterial.mdToolbar)
+</code></pre><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>安装项目依赖</p>
+<pre><code>// 项目依赖
+&quot;vue&quot;: &quot;^2.3.3&quot;,
+&quot;vue-material&quot;: &quot;^0.7.4&quot;,
+&quot;vue-router&quot;: &quot;^2.6.0&quot;,
+&quot;vuex&quot;: &quot;^2.1.2&quot;,
+&quot;axios&quot;: &quot;^0.15.3&quot;
+
+// 项目开发依赖
+// sass
+&quot;node-sass&quot;: &quot;^4.5.0&quot;,
+&quot;sass-loader&quot;: &quot;^5.0.1&quot;,
+
+// 需要先把package.lock删除,再执行npm install,否则就需要直接安装包名
+</code></pre><h2 id="vuex仓库数据的建立"><a href="#vuex仓库数据的建立" class="headerlink" title="vuex仓库数据的建立"></a>vuex仓库数据的建立</h2><p>在src下面再建立一个store文件夹</p>
+<p>1.state.js定义需要共享的用户的初始信息</p>
+<p>2.mutation-types.js用来设置修改状态值的方法的常量</p>
+<p>3.mutation.js用来设置修改方法</p>
+<pre><code>import * as types from &apos;mutation-types.js&apos;
+
+// 定义matutaions
+const matutaions = {
+    // 相关的修改方法，同步的修改状态
+    [types.SET_LOGIN](state, token) {
+        // 登录的时候将获取到的token数据设置到本地和state跟新
+        localStorage.setItem(&apos;token&apos;, data)
+        state.token = data
+    },
+    [types.SET_LOGOUT](state) {
+        // 退出的时候，从本地删除token
+        localStorage.removeItem(&apos;token&apos;)
+        state.token = null
+    },
+    [types.SET_TITLE](state, title) {
+        state.title = title
+    }
+}
+
+// 导出
+export default matutaions
+
+// 以上写法相当于下面的写法，是定义一个函数，有传递参数
+    // [types.SET_LOGIN]: (state, token) =&gt; {
+    //     // 登录的时候将获取到的token数据设置到本地和state跟新
+    //     localStorage.setItem(&apos;token&apos;, data)
+    //     state.token = data
+    // }
+</code></pre><p>4.建立一个包装用来获取state数据的方法</p>
+<pre><code>// 包装获取数据
+export const user = state =&gt; state.user
+// 相当于
+// function user(state) {
+//     return state.user
+// }
+
+export const token = state =&gt; state.token
+
+export const title = state =&gt; state.title
+</code></pre><p>5.建立一个index.js的文件，导入这些方法，进行store的初始化</p>
+<pre><code>// store的初始化
+import Vue from &apos;vue&apos;
+import Vuex from &apos;vuex&apos;
+import state from &apos;./state.js&apos;
+import mutations from &apos;./mutations.js&apos;
+import getters from &apos;./getters.js&apos;
+import createLogger from &apos;vuex/dist/logger&apos; // 每次修改state的时候会在控制台打印，之前的状态和现在的状态
+
+Vue.use(Vuex)  // 注册插件
+
+// 调试工具，调用webpack编译的时候，如果说是npm run dev的话，是dev环境，如果是build的话，是生产环境，线下调试的时候，可以开启测试 
+const debug = process.env.NODE_ENV !== &apos;production&apos;
+
+export default new Vuex.Store({
+    state,
+    mutations,
+    getters,
+    strict: debug, // 开发环境开启严格模式，上线环境关闭，因为损耗性能
+    plugins: debug ? [createLogger()] : []    // 打印state的值
+})
+</code></pre><p>6.在main.js里面引入vuex的store，并挂在到vue实例上</p>
+<pre><code>import store from &apos;./store&apos; // 引入vuex的store
+
+new Vue({
+  el: &apos;#app&apos;,
+  router,
+  store,
+  template: &apos;&lt;App/&gt;&apos;,
+  components: { App },
+  render: h =&gt; h(App)
+})
+</code></pre><h3 id="简化版"><a href="#简化版" class="headerlink" title="简化版"></a>简化版</h3><p>如果不考虑需要设置的对象比较多的情况，可以简单的写在一个里面</p>
+<pre><code>import Vuex from &apos;vuex&apos;
+import Vue from &apos;vue&apos;
+import * as types from &apos;./types&apos;
+
+Vue.use(Vuex);
+export default new Vuex.Store({
+    state: {
+        user: {},
+        token: null,
+        title: &apos;&apos;
+    },
+    mutations: {
+        [types.SET_LOGIN]: (state, data) =&gt; {
+            localStorage.token = data;
+            state.token = data;
+        },
+        [types.SET_LOGOUT]: (state) =&gt; {
+            localStorage.removeItem(&apos;token&apos;);
+            state.token = null
+        },
+        [types.SET_TITLE]: (state, data) =&gt; {
+            state.title = data;
+        }
+    }
+})
+</code></pre><h3 id="获取vuex里面定义的数据"><a href="#获取vuex里面定义的数据" class="headerlink" title="获取vuex里面定义的数据"></a>获取vuex里面定义的数据</h3><pre><code>import { mapGetters, mapMutations } from &apos;vuex&apos;
+
+// 通过计算属性，获取到state里面的数据
+    computed: {
+    // 获取到state里面的数据
+    ...mapGetters([
+      &apos;title&apos;,
+      &apos;token&apos;
+    ])
+  },
+
+// 在method里面提交Mutations
+...mapMutations({
+  setLogoutToken: &apos;SET_LOGIN&apos;,  // 前面是起的别名，直接
+})
+</code></pre><p>官方文档里有mutations调用的详细方法：<br><a href="https://vuex.vuejs.org/zh-cn/mutations.html" target="_blank" rel="external">https://vuex.vuejs.org/zh-cn/mutations.html</a></p>
+<h2 id="路由导航"><a href="#路由导航" class="headerlink" title="路由导航"></a>路由导航</h2><p>this.$router.push({})</p>
+<h2 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h2><p><router-link :to="{ name: 'user', params: { userId: 123 }}">User</router-link></p>
+<h3 id="拦截导航，vue-router钩子"><a href="#拦截导航，vue-router钩子" class="headerlink" title="拦截导航，vue-router钩子"></a>拦截导航，vue-router钩子</h3><p>vue-router 提供的导航钩子主要用来拦截导航，让它完成跳转或取消</p>
+<h4 id="全局钩子"><a href="#全局钩子" class="headerlink" title="全局钩子"></a>全局钩子</h4><pre><code>const router = new VueRouter({ ... })
+
+router.beforeEach((to, from, next) =&gt; {
+  // ...
+})
+
+每个钩子方法接收三个参数：
+
+to: Route: 即将要进入的目标 路由对象
+from: Route: 当前导航正要离开的路由
+next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
+next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。
+next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。
+next(&apos;/&apos;) 或者 next({ path: &apos;/&apos; }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。
+确保要调用 next 方法，否则钩子就不会被 resolved。
+## babel-polyfill的使用 ##
+相当于一个垫片，会模拟es6环境，安装之后，可以使用新的内置的东西如Promise和weakMap等。静态方法如Array.from Object.assign等。实例方法Array.prototype.include，generator函数(建议你使用regenator插件).polyfill会添加到全局的环境中，作为原生的原型如String那样的方式执行。
+</code></pre><h2 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h2><p>state,是存放变量的，是共享的数据，相当于data()里面的数据，是保存在计算属性上的，所以使用的时候可以通过mapState来导入，然后在计算属性里面获取</p>
+<p>getter是存放公共函数供组件调用的，从getter里面获取state的值</p>
+<p>mutations存放的是改变state数据的方法，不能直接调用mutaitons事件，必须通过store.commit(‘函数名’)来调用，必须是同步函数</p>
+<p>比较多的时候，用types常量来保存事件类型    </p>
+<p>mutation 像事件注册，需要相应的触发条件。actions是管理触发条件的</p>
+<p><a href="http://www.cnblogs.com/huansky/p/6517237.html" target="_blank" rel="external">http://www.cnblogs.com/huansky/p/6517237.html</a></p>
+<h2 id="axios发送ajax请求的使用"><a href="#axios发送ajax请求的使用" class="headerlink" title="axios发送ajax请求的使用"></a>axios发送ajax请求的使用</h2><p>文档：<a href="https://github.com/mzabriskie/axios" target="_blank" rel="external">https://github.com/mzabriskie/axios</a></p>
+<p>通用的get\post请求就不特别说明了</p>
+<ul>
+<li><p>如果想在全局使用，可以挂在在vue的原型上：</p>
+<p>  // 将axios挂载到prototype上，在组件中可以直接使用this.axios访问<br>  Vue.prototype.axios = axios;</p>
+</li>
+</ul>
+<ul>
+<li><p>如果只在几个组件里使用，可以直接导入，然后直接用axios.get来访问</p>
+</li>
+<li><p>如果组件比较多的情况下，可以抽象出来，放在api里面处理，用一个函数来请求对应的数据，然后在需要的页面将这个函数引入</p>
+</li>
+</ul>
+<h3 id="axios的配置"><a href="#axios的配置" class="headerlink" title="axios的配置"></a>axios的配置</h3><p>如果有需要，是可以对axios做一些定制的，这样，每一次请求的时候，都会基于这些配置，如下：</p>
+<ul>
+<li><p>全局配置</p>
+<p>  axios.defaults.baseURL = ‘<a href="https://api.example.com" target="_blank" rel="external">https://api.example.com</a>‘;<br>  axios.defaults.headers.common[‘Authorization’] = AUTH_TOKEN;<br>  axios.defaults.headers.post[‘Content-Type’] = ‘application/x-www-form-urlencoded’;</p>
+</li>
+<li><p>某一个实例里面配置</p>
+<p>  // Set config defaults when creating the instance<br>  var instance = axios.create({</p>
+<pre><code>baseURL: &apos;https://api.example.com&apos;
+</code></pre><p>  });</p>
+<p>  // Alter defaults after instance has been created<br>  instance.defaults.headers.common[‘Authorization’] = AUTH_TOKEN;</p>
+</li>
+</ul>
+<h3 id="请求拦截"><a href="#请求拦截" class="headerlink" title="请求拦截"></a>请求拦截</h3><p>axios中文文档：<a href="https://www.kancloud.cn/yunye/axios/234845" target="_blank" rel="external">https://www.kancloud.cn/yunye/axios/234845</a></p>
+<p>拦截器，在请求发送之前进行处理</p>
+<p>注意设置自定义头部时候的跨域问题：<a href="https://segmentfault.com/q/1010000009530504" target="_blank" rel="external">https://segmentfault.com/q/1010000009530504</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/01/Vue基础知识学习总结/" rel="next" title="Vue基础知识学习总结">
+                <i class="fa fa-chevron-left"></i> Vue基础知识学习总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/25/Vue-高仿饿了么项目总结/" rel="prev" title="Vue-高仿饿了么项目总结">
+                Vue-高仿饿了么项目总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口准备"><span class="nav-number">1.</span> <span class="nav-text">接口准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用vue-cli生成项目目录"><span class="nav-number">2.</span> <span class="nav-text">用vue-cli生成项目目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局使用vue-material"><span class="nav-number">3.</span> <span class="nav-text">布局使用vue-material</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装依赖"><span class="nav-number">4.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex仓库数据的建立"><span class="nav-number">5.</span> <span class="nav-text">vuex仓库数据的建立</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简化版"><span class="nav-number">5.1.</span> <span class="nav-text">简化版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取vuex里面定义的数据"><span class="nav-number">5.2.</span> <span class="nav-text">获取vuex里面定义的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由导航"><span class="nav-number">6.</span> <span class="nav-text">路由导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名路由"><span class="nav-number">7.</span> <span class="nav-text">命名路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截导航，vue-router钩子"><span class="nav-number">7.1.</span> <span class="nav-text">拦截导航，vue-router钩子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局钩子"><span class="nav-number">7.1.1.</span> <span class="nav-text">全局钩子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuex"><span class="nav-number">8.</span> <span class="nav-text">vuex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios发送ajax请求的使用"><span class="nav-number">9.</span> <span class="nav-text">axios发送ajax请求的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#axios的配置"><span class="nav-number">9.1.</span> <span class="nav-text">axios的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求拦截"><span class="nav-number">9.2.</span> <span class="nav-text">请求拦截</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

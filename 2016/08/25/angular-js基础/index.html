@@ -1,0 +1,1280 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="angular的指令：ng-app 入口指令，表示html使用angular; ng-model 将input/select/textarea的value赋值给变量;  &amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;val&amp;quot;&amp;gt;{{ val }}; ng-init  设置变量的初始值 &amp;lt;body ng-init=&amp;quot;val">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular.js基础">
+<meta property="og:url" content="sunshineLing.github.io/2016/08/25/angular-js基础/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="angular的指令：ng-app 入口指令，表示html使用angular; ng-model 将input/select/textarea的value赋值给变量;  &amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;val&amp;quot;&amp;gt;{{ val }}; ng-init  设置变量的初始值 &amp;lt;body ng-init=&amp;quot;val">
+<meta property="og:updated_time" content="2017-08-01T13:10:29.818Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular.js基础">
+<meta name="twitter:description" content="angular的指令：ng-app 入口指令，表示html使用angular; ng-model 将input/select/textarea的value赋值给变量;  &amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;val&amp;quot;&amp;gt;{{ val }}; ng-init  设置变量的初始值 &amp;lt;body ng-init=&amp;quot;val">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="sunshineLing.github.io/2016/08/25/angular-js基础/"/>
+
+
+
+
+
+  <title>angular.js基础 | sunshine</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">sunshine</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2016/08/25/angular-js基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sunshineLing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">angular.js基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-25T21:00:24+08:00">
+                2016-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="angular的指令："><a href="#angular的指令：" class="headerlink" title="angular的指令："></a>angular的指令：</h2><pre><code>ng-app 入口指令，表示html使用angular;
+ng-model 将input/select/textarea的value赋值给变量;  &lt;input type=&quot;text&quot; ng-model=&quot;val&quot;&gt;{{ val }};
+ng-init  设置变量的初始值 &lt;body ng-init=&quot;val=1&quot;&gt;;
+ng-click 给元素注册事件 ng-click=&quot; val=val+1 &quot;;
+</code></pre><h2 id="angularJs控制器-作用域"><a href="#angularJs控制器-作用域" class="headerlink" title="angularJs控制器/作用域"></a>angularJs控制器/作用域</h2><pre><code>&lt;div ng-app=&apos;myApp&apos; ng-controller=&apos;myCtrl&apos;&gt;
+     名:&lt;input type=&apos;text&apos; ng-module=&apos;name1&apos;&gt;
+     姓：&lt;input type=&apos;text&apos; ng-model=&apos;name2&apos;&gt;
+     姓名：{{ name1 + "" + name2}}
+
+&lt;ul&gt;
+     &lt;li ng-repeat=&apos;x in name3&apos;&gt;
+          {{ x.name + ',' + x.country }}
+     &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module(&apos;myApp&apos;, []);
+app.controller(&apos;myCtrl&apos;, [&apos;$scope&apos;, function($scope) {
+     $scope.name1 = &apos;小黄&apos;;
+     $scope.name2 = &apos;小黑&apos;;
+     $scope.name3 = [
+          {name:&apos;Jani&apos;, country: &apos;Norway&apos;},
+          {name: &apos;Hege&apos;, country: &apos;Sweden&apos;},
+          {name: &apos;Kai&apos;, country: &apos;Denmark&apos;}
+     ];
+     $scope.sayHello = function() {
+          $scope.greeting = &apos;Hello&apos; + $scope.name + &apos;!&apos;;
+     }
+ }])
+</code></pre><h2 id="scope作用域的问题"><a href="#scope作用域的问题" class="headerlink" title="$scope作用域的问题"></a>$scope作用域的问题</h2><pre><code>&lt;div ng-app ng-controller=&gt;
+     &lt;h1&gt;{{lastname}}家族成员&lt;/h1&gt;
+     &lt;ul&gt;
+          &lt;li ng-repeat=&apos;x in names&apos;&gt; {{x}} {{lastname}}&lt;/li&gt;
+     &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+     var app = angular.module(&apos;myApp&apos;, []);
+     app.controller(&apos;myCtrl&apos;, [&apos;$scope&apos;, &apos;$rootScope&apos;, function($scope, $rootScope) {
+          $scope.names = [&apos;name1&apos;, &apos;name2&apos;, &apos;name3&apos;];
+          $rootScope.lastname = &apos;Resefre&apos;;
+     }]);
+&lt;/script&gt;
+</code></pre><h2 id="angularJs过滤器"><a href="#angularJs过滤器" class="headerlink" title="angularJs过滤器"></a>angularJs过滤器</h2><pre><code> 通过一个管道字符（|）和一个过滤器添加到表达式
+
+&lt;div ng-app=&apos;myApp&apos; ng-controller=&apos;personCtrl&apos;&gt;
+     &lt;p&gt;姓名为{{ lastname | uppercase }}   // 将其转化为大写
+&lt;/div&gt;
+
+date格式化
+
+{{new Date().getTime() | date: 'yyyy-mm-dd hh:ss:mm'}}  // 2017-03-22 12:03:44
+number格式化，保留小数
+</code></pre><h2 id="angular双向数据绑定采用什么机制？简述原理"><a href="#angular双向数据绑定采用什么机制？简述原理" class="headerlink" title="angular双向数据绑定采用什么机制？简述原理"></a>angular双向数据绑定采用什么机制？简述原理</h2><pre><code>理解为脏检查机制：
+     1.angularjs里面有一个概念是脏数据，脏数据是过时的数据，比如说两个人都像存钱罐里面存了2元硬币，共4枚，其中一人偷偷拿了1枚，另一个人不知道，以为里面还有4枚。实际上只有三个，但是以为里面有4个这种已经过时的数据就是脏数据；
+     2.
+</code></pre><h2 id="ng-repeat"><a href="#ng-repeat" class="headerlink" title="ng-repeat"></a>ng-repeat</h2><pre><code>&lt;ele ng-repeat=&apos;item in items&apos;&gt;  // items是数组,item相当于数组for循环的value
+&lt;/ele&gt;
+
+// 属性
+$even: 模板在html的DOM节点中位置是否是偶数；
+$odd: 是不是奇数；
+$first/$last： html的DOM节点中位置是否是首个/最后一个
+$index: 代表模板在DOM节点中的索引，不是数组的索引
+
+&lt;ele ng-repeat=&apos;item in items track by $index&apos;   
+// angularjs 默认不允许重复元素，靠数组元素的名字来进行遍历，如果要重复，换成索引来遍历
+</code></pre><h2 id="watch监听值的变化、数组的长度的变化"><a href="#watch监听值的变化、数组的长度的变化" class="headerlink" title="$watch监听值的变化、数组的长度的变化"></a>$watch监听值的变化、数组的长度的变化</h2><pre><code>语法：
+&lt;input type=&apos;text&apos; ng-model=&apos;value&apos;&gt;
+1.$scope.$watch(&apos;value&apos;, function(newVal, oldVal) {})  // value是$scope.value;
+
+2.$scope.$watchCollection(&apos;arr&apos;, function(newVal, oldVal) {});
+
+3.$scope.$watch(&apos;arr&apos;, function() {}, true);  // 既可以监控属性值的变化，也可以监控数组长度的变化
+工作中要使用第三种方法，第三种方法包括对象里面更深层次的属性值的变化，都可以被监听到
+</code></pre><h2 id="angularjs提供的jqlite-是部分jquery操作方法，不支持选择器"><a href="#angularjs提供的jqlite-是部分jquery操作方法，不支持选择器" class="headerlink" title="angularjs提供的jqlite,是部分jquery操作方法，不支持选择器"></a>angularjs提供的jqlite,是部分jquery操作方法，不支持选择器</h2><pre><code>使用：
+
+1.原生方法获取dom元素；
+var box = document.getElementById(id);
+2.封装jqlite
+var $ = angular.element;
+3.利用angular.element提供的方法，来操作DOM,如果有方法不生效，先检测支持行
+$(box).on(&apos;mouseenter&apos;, function() {
+     if (!$(box).hasClass(&apos;large&apos;)) {
+          $(box).addClass(&apos;large&apos;);
+     }
+}).on(&apos;mouseleave&apos;, function(){})
+</code></pre><h2 id="解决闪烁问题："><a href="#解决闪烁问题：" class="headerlink" title="解决闪烁问题："></a>解决闪烁问题：</h2><pre><code>    1. 问题的产生： 在angularjs的库没有加载完成的情况下，不会按照规则解析{{}} 
+    2. 解决方法： ng-bind=&apos;value&apos;     $scope.value = &apos;xiaoming&apos;;
+将双标签之间的innerHTML用ng-bind=&apos;value&apos;来替代，不需要再设置，是单项绑定，只输出，不能编辑，只能作用于一行，这样需要绑定的多了，就很麻烦
+    3. 针对多个需要解决的问题，使用ng-cloak:用法是，多个双标签之间的{{}}绑定，需要把ng-cloak放在根元素上 &lt;html ng-cloak&gt;
+在样式里面定义：[ng-cloak]{display: none !important}
+原理：浏览器开始解析html页面的{{}}，将通过这个属性选择器选择的元素都以藏起来，等angularjs加载完毕，开始解析时，再将这个元素上面的ng-cloak样式移除，那么这个元素会显示出来
+</code></pre><h2 id="引用外部的模板，类似于项目里面的用include来加载公共模板的功能"><a href="#引用外部的模板，类似于项目里面的用include来加载公共模板的功能" class="headerlink" title="引用外部的模板，类似于项目里面的用include来加载公共模板的功能"></a>引用外部的模板，类似于项目里面的用include来加载公共模板的功能</h2><pre><code>引入外部模板：
+ng-include=&apos;变量&apos;，变量在controller中赋值，表示外部外部的模板的路径
+页面是靠发送ajax请求的方式将外部的模板加载到页面中的
+
+&lt;div ng-include=&apos;headerPath&apos;&gt;&lt;/div&gt;
+&lt;div ng-include=&apos;footerPath&apos;&gt;&lt;/div&gt;
+
+angular.module(&apos;myApp&apos;, []).controller(&apos;myCtrl&apos;, [&apos;scope&apos;, function($scope) {
+     $scope.headerPath = &apos;./template/header.html；&apos;
+}])
+缺点： 多个ajax的使用造成发起请求多，效率底，但是页面结构清晰，易于维护
+
+引用内部模板
+创建指令时，使用驼峰式命令，使用的时候需要分开  &apos;mouseEnter&apos; --&gt; &apos;mouse-enter&apos;
+
+1.先在内部创建
+&lt;script type=&quot;text/ng-template&quot; id=&quot;header&quot;&gt;
+     &lt;h1&gt;内容&lt;/h1&gt;
+&lt;/script&gt;
+2.引用内部模板,不需要在controller里面定义
+&lt;div ng-include=&quot; &apos;header&apos; &quot;&gt;&lt;/div&gt;   // 这里引入的是模板的id
+
+缺点：对http加载次数有要求的情况下，可以使用；
+但是html模板都放在主页里面，代码冗余，难以维护。
+</code></pre><h2 id="自定义指令问题"><a href="#自定义指令问题" class="headerlink" title="自定义指令问题"></a>自定义指令问题</h2><pre><code>// 1.使用方式
+&apos;E&apos;
+&lt;hello&gt;&lt;/hello&gt;
+
+&apos;A&apos;
+&lt;div hello&gt;&lt;/div&gt;
+
+&apos;C&apos;
+&lt;div class=&apos;hello&apos;&gt;&lt;/div&gt;
+
+&apos;M&apos;
+&lt;!-- directive: hello --&gt;
+
+// 2.定义模板
+&lt;script type=&quot;text/ng-template&quot; id=&quot;myTemplate&quot;&gt;
+     &lt;ng-transclude&gt;&lt;/ng-transclude&gt;
+     &lt;div&gt;这是自定义指令&lt;/div&gt;
+&lt;/script&gt;
+
+// 3.在controller里面引用
+angular.module(&apos;myApp&apos;, []).directive(&apos;hello&apos;, [&apos;$http&apos;, function($http) {
+     return {
+          // template: &apos;&lt;div&gt;这是自定义指令&lt;/div&gt;&apos;；
+          templateUrl: &apos;myTemplate&apos;;  // 因为直接在controller里面写会很麻烦，所以可以从外部引用
+          restrict: &apos;EACM&apos;  // E是直接作为元素使用
+          replace: true  //如果没有这一项，模板里的内容输出的在&lt;hello&gt;标签里面，如果定义了就会覆盖页面写的标签
+          transclude: true;  // 原始内容保留,并且需要在模板里面放置需要保留的内容
+          scope: {}  // 表示为一个模板创建自己的作用域，进行隔离
+          require: &apos;^?common&apos;,  // common是另外一个指令的名称，需要引用这个指令里面的controller，^是允许查找父元素的controller？找不到不要抛出异常，只是可选
+          link: function(scope, element, attrs){}  // 定义函数，类似于controller里面定义的方法,参数： scope是模板的作用域,
+                                                       element = angular.element(&quot;box&quot;),使用这个指令的元素的jqueryLITE方法
+                                                                 用法： element.on(&apos;mouseenter&apos;, function&amp;(){})
+                                                       attrs 是使用这个指令的元素上面的所有属性的集合，是对象
+     }
+}])
+</code></pre><h2 id="ng-show-和-ng-hide-和-ng-if"><a href="#ng-show-和-ng-hide-和-ng-if" class="headerlink" title="ng-show 和 ng-hide 和　ng-if"></a>ng-show 和 ng-hide 和　ng-if</h2><pre><code>ng-show=&quot;true&quot;则显示，否则隐藏
+原理是元素的display属性none或者是block
+
+ng-if=&apos;true&apos; // 也是一样的用法，但是显示的时候是将这个元素添加到dom树上
+               隐藏的时候将其从dom树上清除
+</code></pre><h2 id="ng-class"><a href="#ng-class" class="headerlink" title="ng-class"></a>ng-class</h2><pre><code>用法：
+1.可以添加多个样式：
+&lt;div class=&quot;{&apos;calss名1&apos;： true(或变量名1), &apos;calss2&apos;: 变量名2, &apos;class3&apos;: 变量名3}&quot;
+
+2.只能添加1个样式：
+&lt;div class=&quot;{true: &apos;large&apos;, false: &apos;color&apos;}[size]&quot;  ng-class=&quot;{匹配值1：&apos;样式1&apos;， 匹配2： &apos;样式2&apos;}[匹配变量]&quot;
+只能添加一个样式
+</code></pre><h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><pre><code>$scope的用法：
+控制器可以层层嵌套，如果子控制器在自己里面没有找到某个属性，会先找父元素，没有再找祖先作用域，最后到达$rootScope;
+
+如果需要对一个全局变量在页面加载的时候初始化，供各个控制器引用，可以用：
+app.run([&apos;$rootScope&apos;, function($rootScope) {
+     $rootScope.name = &apos;zhangsan&apos;;
+}])
+</code></pre><h2 id="app-service和app-factory的区别"><a href="#app-service和app-factory的区别" class="headerlink" title="app.service和app.factory的区别"></a>app.service和app.factory的区别</h2><pre><code>第一、两者的用法：
+     都是为了不使所有的业务逻辑代码都放在app.controller里面，造成代码冗余，复用性低，所以把复用的功能抽取出来，相当于创建一个util。
+可以供多个模块使用
+
+第二、不同点：
+factory的用法：
+// 返回的是一个对象，包括数组、函数、对象,必须要有返回值，否则在controller里面加载时会报错
+
+app.controller(&quot;myCtrl&quot;, [&quot;$scope&quot;, &quot;myFactory&quot;, &quot;mySerive&quot;, function($scope, myFactory, myService) {
+     // 执行代码
+     myFactory.name;
+     myService.get();
+}])
+app.factory(&quot;myFactory&quot;, [function() {
+     return {
+          name: &apos;xiaomign&apos;
+     }
+}])；
+
+//返回的是一个构造函数
+app.service(&quot;myService&quot;, [&quot;$http&quot;, function(#http) {
+     // 在构造函数里面定义方法：
+     this.set = function() {};
+     this.save = function() {};
+}])
+</code></pre><h2 id="app-value-和-app-constant"><a href="#app-value-和-app-constant" class="headerlink" title="app.value 和 app.constant"></a>app.value 和 app.constant</h2><pre><code>对传递的参数做出定义,使用时注入
+app.value(&apos;myValue&apos;, {
+     type: &apos;get&apos;,
+     url: &apos;&apos;
+})
+</code></pre><h2 id="location对象"><a href="#location对象" class="headerlink" title="$location对象"></a>$location对象</h2><pre><code>angular对location对象做了封装，使用$location;
+1.获取完整的url地址： $location.absUrl( );
+2.获取url里面#后面的内容： $location.url( )   --&gt; http://baidu.com#/news?key=value;
+3.获取url里面#号-？号之间的内容： $location.path( )  --&gt; http://baidu.com#/news?key=value;
+
+4.设置url地址： $location.url(&apos; /index &apos;);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/23/比较好的博客收录/" rel="next" title="比较好的博客收录">
+                <i class="fa fa-chevron-left"></i> 比较好的博客收录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/28/复杂数据类型之深度克隆和浅克隆问题/" rel="prev" title="复杂数据类型之深度克隆和浅克隆问题">
+                复杂数据类型之深度克隆和浅克隆问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/23090073?v=3&s=460"
+               alt="sunshineLing" />
+          <p class="site-author-name" itemprop="name">sunshineLing</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sunshineLing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-https://github.com/sunshineling"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#angular的指令："><span class="nav-number">1.</span> <span class="nav-text">angular的指令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angularJs控制器-作用域"><span class="nav-number">2.</span> <span class="nav-text">angularJs控制器/作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scope作用域的问题"><span class="nav-number">3.</span> <span class="nav-text">$scope作用域的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angularJs过滤器"><span class="nav-number">4.</span> <span class="nav-text">angularJs过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angular双向数据绑定采用什么机制？简述原理"><span class="nav-number">5.</span> <span class="nav-text">angular双向数据绑定采用什么机制？简述原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-repeat"><span class="nav-number">6.</span> <span class="nav-text">ng-repeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watch监听值的变化、数组的长度的变化"><span class="nav-number">7.</span> <span class="nav-text">$watch监听值的变化、数组的长度的变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#angularjs提供的jqlite-是部分jquery操作方法，不支持选择器"><span class="nav-number">8.</span> <span class="nav-text">angularjs提供的jqlite,是部分jquery操作方法，不支持选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决闪烁问题："><span class="nav-number">9.</span> <span class="nav-text">解决闪烁问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用外部的模板，类似于项目里面的用include来加载公共模板的功能"><span class="nav-number">10.</span> <span class="nav-text">引用外部的模板，类似于项目里面的用include来加载公共模板的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义指令问题"><span class="nav-number">11.</span> <span class="nav-text">自定义指令问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-show-和-ng-hide-和-ng-if"><span class="nav-number">12.</span> <span class="nav-text">ng-show 和 ng-hide 和　ng-if</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ng-class"><span class="nav-number">13.</span> <span class="nav-text">ng-class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">14.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-service和app-factory的区别"><span class="nav-number">15.</span> <span class="nav-text">app.service和app.factory的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-value-和-app-constant"><span class="nav-number">16.</span> <span class="nav-text">app.value 和 app.constant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location对象"><span class="nav-number">17.</span> <span class="nav-text">$location对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sunshineLing</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
