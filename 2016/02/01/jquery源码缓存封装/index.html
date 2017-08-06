@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/02/01/jquery源码缓存封装/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="jquery源码里面的缓存function createCache() {      var keys = {};      function cache(key, value) {           if(keys.push(key + &amp;quot;&amp;quot;) &amp;gt; 20) {                delete cache([kyes.shift()]);">
-<meta property="og:updated_time" content="2017-08-01T13:52:04.884Z">
+<meta property="og:updated_time" content="2017-08-02T09:20:10.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery源码缓存封装及模仿封装缓存方法，递归">
 <meta name="twitter:description" content="jquery源码里面的缓存function createCache() {      var keys = {};      function cache(key, value) {           if(keys.push(key + &amp;quot;&amp;quot;) &amp;gt; 20) {                delete cache([kyes.shift()]);">
@@ -461,7 +461,109 @@ personCache(&apos;xc&apos;, {name:&apos;&apos;,age: 18});
 personCache(&apos;xc&apos;)
 </code></pre></li>
 </ul>
+<h2 id="实现一个简单的jquery选择器"><a href="#实现一个简单的jquery选择器" class="headerlink" title="实现一个简单的jquery选择器"></a>实现一个简单的jquery选择器</h2><pre><code>    &lt;script&gt;
+    // 实现简单的Jquery选择器
+    function $(selector) {
+        var ele = document;
+        // 考虑: 后代选择器传参  &quot;div  ul&quot;
+        //  \s匹配任何空白字符,包括空格、制表符、换页符等等，等价于[ \f\n\r\t\v]    +匹配前面的子表达式一次或多次
+        var sele = selector.replace(/\s+/, &apos; &apos;).split(&apos; &apos;); // 去除多余的空格并分割，将传递的参数分割成数组的形式
 
+        for (var i = 0, len = sele.length; i &lt; len; i++) {
+
+            switch (sele[i][0]) { // 判断数组第一项的第一个字符
+                case &apos;#&apos;:
+                    // ele = ele.getElementById( sele[i].substring(1) );
+                    ele = ele.getElementById( sele[i].replace(&quot;#&quot;, &quot;&quot;) );
+                    break;
+                case &apos;.&apos;:
+                    // ele = ele.getElementsByClassName( sele[i].substring(1) )[0];
+                    var classname = sele[i].replace(/^\./, &quot;&quot;);  // 取得类名
+                    ele = getByClassName(ele, classname)[0];
+                    break;
+                case &apos;[&apos;:  // 属性选择器
+                    var valueLoc = sele[i].indexOf(&apos;=&apos;);
+                    var temp = ele.getElementsByTagName(&apos;*&apos;);
+                    var tLen = temp.length;
+                    if (valueLoc !== -1) {  // 有属性值 [key=value]
+                        var key = sele[i].substring(1, valueLoc);  // 属性名
+                        var value = sele[i].substring(valueLoc + 1, sele[i].length - 1);  // 属性值
+                        for (var j = 0; j &lt; tLen; j++) {  // 遍历dom树的node
+                            if (temp[j][key] === value) {
+                                ele = temp[j];
+                                break;
+                            }
+                        }
+                    } else { // 根据属性的key值查找 [herf]
+                        var key = sele[i].substring(1, sele[i].length - 1);
+                        for (var j = 0; j &lt; tLen; j++) {
+                            if (temp[j][key]) {
+                                ele = temp[j];
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                default:  // 标签选择器
+                    ele = ele.getElementsByTagName(sele[i])[0];
+                    break;
+            }
+        }
+
+        if (!ele) {
+            ele = null;
+        }
+
+        return ele;
+    }
+
+    //通过class获取元素的兼容性方法
+    function getByClass(classname) {
+        if (document.getElementsByClassName) {
+            document.getElementsByClassName(classname);
+        } else {
+            var arr = [];
+            var nodes = document.getElementsByTagName(&quot;*&quot;);
+            for (var i = 0; i &lt; nodes.length; i++) {
+                var txtArr = nodes[i].className.split(&quot; &quot;);
+                for (var j = 0; j &lt; txtArr.length; j++) {
+                    if (txtArr[j] === classname) {
+                        arr.push(nodes[i]);
+                    }
+                }
+            }
+        }
+    }
+
+    function getByClassName(ele, classname) {
+        if (document.getElementsByClassName) {
+            return ele.getElementsByClassName(classname);
+        } else {
+            var nodes = document.getElementsByName(&quot;*&quot;);
+            var arr = [];
+            for (var i = 0, len = nodes.length; i &lt; len; i++) {
+                // 不能直接判断nodes[i].className === calssname
+                // 可能Nodes的class=&apos;save edit&apos;
+                if ( hasClass(nodes[i], classname) ) {
+                    arr.push(nodes[i]);
+                }
+            }
+            return arr;
+        }
+    }
+
+    function hasClass(node, classname) {
+        var cNames = node.className.split(/\s+/);  // 根据空白字符来分割类名
+        for (var i = 0; i &lt; cNames.length; i++) {
+            if (cNames[i] === classname) {
+                return true;
+            } else {
+                return false;
+            }
+        }    
+    }
+&lt;/script&gt;
+</code></pre>
       
     </div>
 
@@ -582,7 +684,7 @@ personCache(&apos;xc&apos;)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -650,7 +752,7 @@ personCache(&apos;xc&apos;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jquery源码里面的缓存"><span class="nav-number">1.</span> <span class="nav-text">jquery源码里面的缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jquery里面的缓存原理分析"><span class="nav-number">2.</span> <span class="nav-text">jquery里面的缓存原理分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jquery源码里面的缓存"><span class="nav-number">1.</span> <span class="nav-text">jquery源码里面的缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jquery里面的缓存原理分析"><span class="nav-number">2.</span> <span class="nav-text">jquery里面的缓存原理分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现一个简单的jquery选择器"><span class="nav-number">3.</span> <span class="nav-text">实现一个简单的jquery选择器</span></a></li></ol></div>
             
 
           </div>

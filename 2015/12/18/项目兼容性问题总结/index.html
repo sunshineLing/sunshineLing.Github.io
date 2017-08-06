@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/12/18/项目兼容性问题总结/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="这是一个大坑，只会在浏览器彻底统一标准，世界大和谐之后，才可能填平。。。 IE8下的兼容性问题Placeholder的IE8兼容问题解决方法jQuery的placeholder插件https://gist.github.com/oec2003/8946120用法：将placeholder.js文件引用到页面，页面中添加下面脚本： &amp;lt;script type=&amp;quot;text/javascr">
-<meta property="og:updated_time" content="2017-08-01T14:28:55.971Z">
+<meta property="og:updated_time" content="2017-08-02T08:26:57.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目兼容性问题总结">
 <meta name="twitter:description" content="这是一个大坑，只会在浏览器彻底统一标准，世界大和谐之后，才可能填平。。。 IE8下的兼容性问题Placeholder的IE8兼容问题解决方法jQuery的placeholder插件https://gist.github.com/oec2003/8946120用法：将placeholder.js文件引用到页面，页面中添加下面脚本： &amp;lt;script type=&amp;quot;text/javascr">
@@ -401,6 +401,56 @@ $(function() {
               that.val(text).addClass(&apos;placeholder&apos;);
            }
        }
+</code></pre><h2 id="js里面处理transfrom前缀兼容性问题"><a href="#js里面处理transfrom前缀兼容性问题" class="headerlink" title="js里面处理transfrom前缀兼容性问题"></a>js里面处理transfrom前缀兼容性问题</h2><p>问题是：在js里面通过dom.style.transfrom = ‘translateX(10px)’设置时，为了兼容不同的浏览器，如果加前缀一行行写的话，很繁琐。</p>
+<p>所以考虑封装一个prefixed方法，根据浏览器的支持能力去自动确定添加前缀</p>
+<pre><code>let elementStyle = document.createElement(&apos;div&apos;).style
+
+ let vendor = (() =&gt; {
+    // 列举浏览器支持的
+    let transformNames = {
+        webkit: &apos;webkitTransform&apos;,
+        Moz: &apos;MozTransform&apos;,
+        O: &apos;OTransform&apos;,
+        ms: &apos;msTransform&apos;,
+        standard: &apos;transform&apos;
+    }
+    // 测试浏览器支持哪一种
+    for (let key in transformNames) {
+        if (elementStyle[transformNames[key]] !== undefined) {
+            return key
+        }
+    }
+
+    // 如果所有的都不支持，则浏览器有故障
+    return false
+ })()
+
+ export function prefixStyle (style) {
+    if (vendor === false) {
+        return false
+    }
+    // 支持标准的
+    if (vendor === &apos;standard&apos;) {
+        return style
+    }
+
+    return vendor + style.charAt(0).toUpperCase() + style.substr(1)
+ }
+</code></pre><p>使用的时候：</p>
+<pre><code>// 先引入函数
+import {prefixStyle} from &apos;../../common/js/dom.js&apos;
+
+const transform = prefixStyle(&apos;transfrom&apos;);
+
+this.$refs.box[transform] = `translate3d(0, ${translteY}px, 0)`
+</code></pre><h3 id="事件e的兼容性"><a href="#事件e的兼容性" class="headerlink" title="事件e的兼容性"></a>事件e的兼容性</h3><pre><code>e || window.event
+
+事件对象e.target || e.srcElement
+</code></pre><p>### </p>
+<h3 id="禁止网页选取"><a href="#禁止网页选取" class="headerlink" title="禁止网页选取"></a>禁止网页选取</h3><p>FF需要用CSS禁止，IE用JS禁止</p>
+<pre><code>解决方法：
+IE: obj.onselectstart = function() {return false;}
+FF: -moz-user-select:none;
 </code></pre>
       
     </div>
@@ -522,7 +572,7 @@ $(function() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -590,7 +640,7 @@ $(function() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IE8下的兼容性问题"><span class="nav-number">1.</span> <span class="nav-text">IE8下的兼容性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Placeholder的IE8兼容问题"><span class="nav-number">1.1.</span> <span class="nav-text">Placeholder的IE8兼容问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IE8下的兼容性问题"><span class="nav-number">1.</span> <span class="nav-text">IE8下的兼容性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Placeholder的IE8兼容问题"><span class="nav-number">1.1.</span> <span class="nav-text">Placeholder的IE8兼容问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js里面处理transfrom前缀兼容性问题"><span class="nav-number">2.</span> <span class="nav-text">js里面处理transfrom前缀兼容性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件e的兼容性"><span class="nav-number">2.1.</span> <span class="nav-text">事件e的兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止网页选取"><span class="nav-number">2.2.</span> <span class="nav-text">禁止网页选取</span></a></li></ol></li></ol></div>
             
 
           </div>

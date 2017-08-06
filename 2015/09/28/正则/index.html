@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/09/28/正则/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="正则声明方法//1.声明方法1:构造函数 var reg1 = new RegExp(/abc/); console.log(reg1);   //2.声明方法2: 字面量 var reg2 = /abc/; console.log(reg2);  console.log(reg1.test(&amp;quot;abc&amp;quot;)); 量词//量词： *       重复零次或更多   (&amp;gt;=0)">
-<meta property="og:updated_time" content="2017-08-01T14:31:14.686Z">
+<meta property="og:updated_time" content="2017-08-05T03:02:41.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则">
 <meta name="twitter:description" content="正则声明方法//1.声明方法1:构造函数 var reg1 = new RegExp(/abc/); console.log(reg1);   //2.声明方法2: 字面量 var reg2 = /abc/; console.log(reg2);  console.log(reg1.test(&amp;quot;abc&amp;quot;)); 量词//量词： *       重复零次或更多   (&amp;gt;=0)">
@@ -467,7 +467,31 @@ console.log(reg.test()); // true
 }
 </code></pre></li>
 </ul>
-
+<p><strong>将字符串”<tr><td>{$id}</td><td>{$name}</td></tr>”中的{$id}替换成10，{$name}替换成Tony （使用正则表达式）</strong></p>
+<pre><code>var str = ”&lt;tr&gt;&lt;td&gt;{$id}&lt;/td&gt;&lt;td&gt;{$name}&lt;/td&gt;&lt;/tr&gt;”；
+str.replace(/{\$id}/g, &apos;10&apos;).replace({\$name}/g, &apos;tony&apos;);
+</code></pre><p><strong>写一个function，清除字符串前后的空格。（兼容所有浏览器）<br>使用自带接口trim()，考虑兼容性：</strong></p>
+<pre><code>if (!String.prototype.trim) {
+    String.prototype.trim = function() {
+        return this.replace(/(^\s+) | (\s+$)/g, &apos;&apos;)
+    }
+}
+</code></pre><p><strong>为了保证页面输出安全，我们经常需要对一些特殊的字符进行转义，请写一个函数escapeHtml，将&lt;, &gt;, &amp;, “进行转义</strong></p>
+<pre><code>function escapeHtml(str) {
+    return str.replace(/[&lt;&gt;&quot;&amp;]/g, function (match) {
+        switch (match) {
+            case &quot;&lt;&quot;:
+                return &quot;&amp;lt;&quot;;
+            case &quot;&gt;&quot;:
+                return &quot;&amp;gt;&quot;;
+            case &quot;&amp;&quot;:
+                return &quot;&amp;amp;&quot;;
+            case &quot;\&quot;&quot;:
+                return &quot;&amp;quot;&quot;;
+        }
+    });
+}
+</code></pre>
       
     </div>
 
@@ -588,7 +612,7 @@ console.log(reg.test()); // true
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

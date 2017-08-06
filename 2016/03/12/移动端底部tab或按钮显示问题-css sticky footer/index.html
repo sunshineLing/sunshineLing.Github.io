@@ -106,7 +106,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/03/12/移动端底部tab或按钮显示问题-css sticky footer/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决方法：设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &amp;l">
-<meta property="og:updated_time" content="2017-07-12T12:56:55.402Z">
+<meta property="og:updated_time" content="2017-08-04T08:44:33.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端底部tab或按钮显示问题-css sticky footer">
 <meta name="twitter:description" content="问题： 项目里面需要设置一个弹出框，下面有一个浮层，浮层上面，分别是内容区块和底部关闭按钮，要求关闭按钮总是固定在窗口底部。 但是实际遇到的问题是，页面内容不够长的时候，页脚块固定在视窗底部；页面内容足够长，需要滚动的时候，页脚块随着内容向下推送，而不是固定视窗底部，挡住了页面的文字。 解决方法：设置三个层，一个内容的包裹层，里面再有一个层，是内容；再有一个层是底部层 // wrapper层 &amp;l">
@@ -410,20 +410,21 @@
         overflow: auto
         background-color: rgba(7, 17, 27, 0.8)
         // filter: blur(10px)
-    // 内容的wrapper层也宽高也占满100%，占满屏幕
-    .detail-wrapper
-        min-width: 100%
-        height: 100%
-        .detail-main
-            margin-top: 64px
-            padding-bottom: 64px (这个是关键，设置一个下padding，给底部留出空间)
-    .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
-        position: relative
-        width: 32px
-        height: 32px
-        margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
-        clear: both
-        font-size: 32px
+        // 内容的wrapper层也宽高也占满100%，占满屏幕
+        .detail-wrapper
+            min-width: 100%
+            height: 100%
+            .detail-main
+                margin-top: 64px
+                padding-bottom: 64px (这个是关键，设置一个下padding，给底部留出空间)
+        .detail-close   // 和wrapper层一个层级，wrapper层占有100%的高度，
+        所以footer层永远在视口之外，需要下面用-margin-top调整至视口之内
+            position: relative
+            width: 32px
+            height: 32px
+            margin: -64px  auto 0 auto // 设置一个-margin,将自己放置在上面预留的-margin处
+            clear: both
+            font-size: 32px
 </code></pre>
       
     </div>
@@ -542,7 +543,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

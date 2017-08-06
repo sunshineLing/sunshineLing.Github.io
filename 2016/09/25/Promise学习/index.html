@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/09/25/Promise学习/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="作用 是一个异步对象，将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。  使用var promise = new Promise(function(resolve, reject) {      if (/* 异步操作成功 */){      resolve(value);  // 将成功的结果抛出去      }">
-<meta property="og:updated_time" content="2017-08-01T14:25:43.959Z">
+<meta property="og:updated_time" content="2017-08-02T09:16:37.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Promise学习">
 <meta name="twitter:description" content="作用 是一个异步对象，将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。  使用var promise = new Promise(function(resolve, reject) {      if (/* 异步操作成功 */){      resolve(value);  // 将成功的结果抛出去      }">
@@ -410,7 +410,55 @@ promise.then(function(value) {
 });
 </code></pre><h2 id="学习文档"><a href="#学习文档" class="headerlink" title="学习文档"></a>学习文档</h2><p>阮一峰大神的：<a href="http://es6.ruanyifeng.com/#docs/class-extends" target="_blank" rel="external">http://es6.ruanyifeng.com/#docs/class-extends</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzAwNzExNg==&amp;mid=209354478&amp;idx=1&amp;sn=edd70e826b6f9e8a570024f431c5f7fe&amp;scene=1&amp;key=c76941211a49ab58efed75a0405e3ca61338952103fe9eabf8528d801906e4522737274eecca5489d635a5c1aa5d8b12&amp;ascene=0&amp;uin=MTYxMDY3MjU1&amp;devicetype=iMac+MacBookPro11%2C3+OSX+OSX+10.10.4+build(14E46)&amp;version=11020113&amp;pass_ticket=ws1Ar8vSXgH8%2FuRvUaFkiKCA57pR8100%2BhwA5Ifuc00%3D" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzIyMzAwNzExNg==&amp;mid=209354478&amp;idx=1&amp;sn=edd70e826b6f9e8a570024f431c5f7fe&amp;scene=1&amp;key=c76941211a49ab58efed75a0405e3ca61338952103fe9eabf8528d801906e4522737274eecca5489d635a5c1aa5d8b12&amp;ascene=0&amp;uin=MTYxMDY3MjU1&amp;devicetype=iMac+MacBookPro11%2C3+OSX+OSX+10.10.4+build(14E46)&amp;version=11020113&amp;pass_ticket=ws1Ar8vSXgH8%2FuRvUaFkiKCA57pR8100%2BhwA5Ifuc00%3D</a></p>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><pre><code>    &lt;script&gt;
+    console.dir(Promise);
+    // 构造函数，有all()、reject()、resolve(),原型上有then()方法
+    var P = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log(&apos;执行完成&apos;);
+            resolve(&apos;等待数据&apos;);
+        }, 2000);
+    });
 
+    function runAsync1() {
+        var p = new Promise(function (resolve, reject) {
+            //做一些异步操作
+            setTimeout(function () {
+                console.log(&apos;执行完成&apos;);
+                resolve(&apos;随便什么数据&apos;);
+            }, 2000);
+        });
+        return p;
+    }
+    // var result = runAsync(); // 返回promise对象
+    runAsync1()
+        .then(function (data) {
+            console.log(data);
+            return runAsync2();
+        })
+        .then(function (data) {
+            console.log(data);
+            return runAsync3();
+        })
+        .then(function (data) {
+            console.log(data);
+        });
+
+    var myFirstPromise = new Promise(function (resolve, reject) {
+        //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+        //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+        setTimeout(function () {
+            resolve(&quot;成功!&quot;); //代码正常执行！
+        }, 2000);
+    });
+
+    myFirstPromise.then(function (successMessage) {
+        //successMessage的值是上面调用resolve(...)方法传入的值.
+        //successMessage参数不一定非要是字符串类型，这里只是举个例子
+        console.log(&quot;Yay! &quot; + successMessage);
+    });
+&lt;/script&gt;
+</code></pre>
       
     </div>
 
@@ -531,7 +579,7 @@ promise.then(function(value) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -599,7 +647,7 @@ promise.then(function(value) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习文档"><span class="nav-number">3.</span> <span class="nav-text">学习文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习文档"><span class="nav-number">3.</span> <span class="nav-text">学习文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo"><span class="nav-number">4.</span> <span class="nav-text">demo</span></a></li></ol></div>
             
 
           </div>

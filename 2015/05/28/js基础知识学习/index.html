@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/05/28/js基础知识学习/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="js基础知识typeof 关键字 返回的数据类型（5种基本数据类型） &amp;apos;undefined&amp;apos; &amp;apos;null&amp;apos; &amp;apos;string&amp;apos; &amp;apos;number&amp;apos;   // typeof NaN === &amp;apos;number&amp;apos; &amp;apos;boolean&amp;apos; &amp;apos;object&amp;apos; &amp;apos;func">
-<meta property="og:updated_time" content="2017-08-01T13:16:36.255Z">
+<meta property="og:updated_time" content="2017-08-05T05:18:08.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js基础知识学习">
 <meta name="twitter:description" content="js基础知识typeof 关键字 返回的数据类型（5种基本数据类型） &amp;apos;undefined&amp;apos; &amp;apos;null&amp;apos; &amp;apos;string&amp;apos; &amp;apos;number&amp;apos;   // typeof NaN === &amp;apos;number&amp;apos; &amp;apos;boolean&amp;apos; &amp;apos;object&amp;apos; &amp;apos;func">
@@ -570,7 +570,8 @@ b = temp
 var a = 1, b = 5;
 a = a + b; // 将a、b的值都放在a里面，a = 6
 b = a - b;  // a的值 - b的值就是原来的a的值了
-a = a - b; // a还是相加之后的a，b是已经交换后的b，a - b就是相加的值 - a的值，就是b的值
+a = a - b; // a还是相加之后的a，b是已经交换后的b，
+              a - b就是相加的值 - a的值，就是b的值
 
 // 对象存储的方法：
 a = {a:b, b:a}
@@ -591,13 +592,14 @@ a = [b, b=a][0]
 <pre><code>Math.ceil()  // 向上舍入
 Math.floor()  // 向下舍入
 Math.round()  // 四舍五入
-</code></pre><p>其他<br>    Math.abs(num) // 绝对值<br>    Math.exp(num) // num次幂<br>    Math.pow(num, power) number的power次幂</p>
-<p>随机数</p>
-<p>Math.random() ：返回0-1之间的随机数，不包括1</p>
-<pre><code>// Math.random()应用
-
-// 1.用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。
-/**
+</code></pre><p>其他</p>
+<pre><code>Math.abs(num) // 绝对值
+Math.exp(num) // num次幂
+Math.pow(num, power) number的power次幂
+</code></pre><h4 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h4><p>Math.random() ：返回0-1之间的随机数，不包括1</p>
+<p><strong>Math.random()应用</strong></p>
+<p> 1.用js实现随机选取10-100之间的10个数字，存入一个数组，并排序。</p>
+<pre><code>/**
 思路：1.取10个数字，不重复;
 2.数组[0,100]
 **/
@@ -608,7 +610,8 @@ for (i = 0; i &lt; 10; i++) {
     if(arr.indexOf(j) == -1){
         arr.push(j);
     } else {
-        i--;   // 数组有这一项了，不取原数组的这个值，但是次数要退回一次，保证取够10个数
+        i--;   // 数组有这一项了，不取原数组的这个值，
+                但是次数要退回一次，保证取够10个数
     }
 
 }
@@ -617,10 +620,18 @@ function campare(a,b) {  // 降序
     return a-b;
 }
 console.log(arr);
-
-
-//2.有一个数组，a = [8, 10, 30, 55, 78, 90, 1],b从A中一次随机取一个元素，取完为止
-/**
+</code></pre><p>或者：用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。</p>
+<pre><code>var iArray = [];
+funtion getRandom(istart, iend) {
+    var iChoice = istart - iend + 1;
+    return Math.floor(Math.random() * iChoice + istart;
+}
+for (var i = 0; i &lt; 10; i++) {
+    iArray.push(getRandom(10, 100));
+}
+iArray.sort();
+</code></pre><p> 2.有一个数组，a = [8, 10, 30, 55, 78, 90, 1],b从A中一次随机取一个元素，取完为止</p>
+<pre><code>/**
  * Math.random是[0, 1)； [0, 7) Math.ceil(Math.random*a.length)
     第一次随机数的范围是0-6；
     第二次随机数的范围时0-5；
@@ -636,6 +647,25 @@ for(var i = 0; i &lt; 7; i++) {
     a.splice(key,1);   // a里面删除这一项
 }
 console.log(b);
+</code></pre><p>3.数组顺序打乱，随机返回一个数组</p>
+<pre><code>export function shuffle (arr) {
+    let _arr = arr.slice()
+    // 从0-i之间去取一个数，取一个索引，
+       将这个索引和arr[i]作交换
+    for (let i = 0; i &lt; _arr.length; i++) {
+        let j = getRandomInt(0, i)
+        // 临时交换
+        let t = _arr[i]
+        _arr[i] = _arr[j]
+        _arr[j] = t
+    }
+    return arr
+}
+
+// 返回min到max之间的一个随机数，包括max
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 </code></pre><h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>1、创建实例：</p>
 <pre><code>var data = new Date();
 var date = Date.now()
@@ -1237,7 +1267,7 @@ function scroll(){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1305,7 +1335,7 @@ function scroll(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js基础知识"><span class="nav-number">1.</span> <span class="nav-text">js基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-关键字"><span class="nav-number">1.1.</span> <span class="nav-text">typeof 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和-的区别"><span class="nav-number">1.2.</span> <span class="nav-text">==和===的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断两个对象相等"><span class="nav-number">1.3.</span> <span class="nav-text">判断两个对象相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断对象是否为空"><span class="nav-number">1.4.</span> <span class="nav-text">判断对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较两个json对象是否完全相等"><span class="nav-number">1.5.</span> <span class="nav-text">比较两个json对象是否完全相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断json对象是否为空"><span class="nav-number">1.6.</span> <span class="nav-text">判断json对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换两个变量的值"><span class="nav-number">1.7.</span> <span class="nav-text">交换两个变量的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math对象"><span class="nav-number">1.8.</span> <span class="nav-text">Math对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期对象"><span class="nav-number">2.</span> <span class="nav-text">日期对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM对象"><span class="nav-number">3.</span> <span class="nav-text">BOM对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number">4.</span> <span class="nav-text">dom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取当前元素的子节点"><span class="nav-number">4.1.</span> <span class="nav-text">获取当前元素的子节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取兄弟节点"><span class="nav-number">5.</span> <span class="nav-text">获取兄弟节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取子节点"><span class="nav-number">6.</span> <span class="nav-text">获取子节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">7.</span> <span class="nav-text">offset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用offset封装动画"><span class="nav-number">7.1.</span> <span class="nav-text">利用offset封装动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">8.</span> <span class="nav-text">scroll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">9.</span> <span class="nav-text">event</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js基础知识"><span class="nav-number">1.</span> <span class="nav-text">js基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-关键字"><span class="nav-number">1.1.</span> <span class="nav-text">typeof 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和-的区别"><span class="nav-number">1.2.</span> <span class="nav-text">==和===的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断两个对象相等"><span class="nav-number">1.3.</span> <span class="nav-text">判断两个对象相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断对象是否为空"><span class="nav-number">1.4.</span> <span class="nav-text">判断对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较两个json对象是否完全相等"><span class="nav-number">1.5.</span> <span class="nav-text">比较两个json对象是否完全相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断json对象是否为空"><span class="nav-number">1.6.</span> <span class="nav-text">判断json对象是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换两个变量的值"><span class="nav-number">1.7.</span> <span class="nav-text">交换两个变量的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math对象"><span class="nav-number">1.8.</span> <span class="nav-text">Math对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机数"><span class="nav-number">1.8.1.</span> <span class="nav-text">随机数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期对象"><span class="nav-number">2.</span> <span class="nav-text">日期对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM对象"><span class="nav-number">3.</span> <span class="nav-text">BOM对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number">4.</span> <span class="nav-text">dom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取当前元素的子节点"><span class="nav-number">4.1.</span> <span class="nav-text">获取当前元素的子节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取兄弟节点"><span class="nav-number">5.</span> <span class="nav-text">获取兄弟节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取子节点"><span class="nav-number">6.</span> <span class="nav-text">获取子节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#offset"><span class="nav-number">7.</span> <span class="nav-text">offset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用offset封装动画"><span class="nav-number">7.1.</span> <span class="nav-text">利用offset封装动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scroll"><span class="nav-number">8.</span> <span class="nav-text">scroll</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">9.</span> <span class="nav-text">event</span></a></li></ol></div>
             
 
           </div>

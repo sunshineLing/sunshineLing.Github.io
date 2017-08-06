@@ -99,16 +99,16 @@
 
 
 
-<meta name="description" content="斐波那契函数的缓存优化：原方法： function fib(){      if (n == 1 || n == 2) {           return 1;      }      return fib(n-1) + fib(n-2); } fib(44) // 存在的性能问题就是存在大量的重复运算，算过的下一次还算一次。 // 优化方法： var cache = []; function">
+<meta name="description" content="caller是返回一个对函数的引用，该函数调用了当前函数； callee是返回正在被执行的function函数，也就是所指定的function对象的正文。 斐波那契函数的缓存优化：经典题目：如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成） 原方法： function fib(){">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓存优化递归性能问题">
 <meta property="og:url" content="sunshineLing.github.io/2016/02/05/缓存优化递归性能问题/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="斐波那契函数的缓存优化：原方法： function fib(){      if (n == 1 || n == 2) {           return 1;      }      return fib(n-1) + fib(n-2); } fib(44) // 存在的性能问题就是存在大量的重复运算，算过的下一次还算一次。 // 优化方法： var cache = []; function">
-<meta property="og:updated_time" content="2017-08-01T13:56:45.270Z">
+<meta property="og:description" content="caller是返回一个对函数的引用，该函数调用了当前函数； callee是返回正在被执行的function函数，也就是所指定的function对象的正文。 斐波那契函数的缓存优化：经典题目：如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成） 原方法： function fib(){">
+<meta property="og:updated_time" content="2017-08-05T05:08:47.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓存优化递归性能问题">
-<meta name="twitter:description" content="斐波那契函数的缓存优化：原方法： function fib(){      if (n == 1 || n == 2) {           return 1;      }      return fib(n-1) + fib(n-2); } fib(44) // 存在的性能问题就是存在大量的重复运算，算过的下一次还算一次。 // 优化方法： var cache = []; function">
+<meta name="twitter:description" content="caller是返回一个对函数的引用，该函数调用了当前函数； callee是返回正在被执行的function函数，也就是所指定的function对象的正文。 斐波那契函数的缓存优化：经典题目：如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成） 原方法： function fib(){">
 
 
 
@@ -392,7 +392,10 @@
       
 
       
-        <h2 id="斐波那契函数的缓存优化："><a href="#斐波那契函数的缓存优化：" class="headerlink" title="斐波那契函数的缓存优化："></a>斐波那契函数的缓存优化：</h2><pre><code>原方法：
+        <p>caller是返回一个对函数的引用，该函数调用了当前函数；</p>
+<p>callee是返回正在被执行的function函数，也就是所指定的function对象的正文。</p>
+<h2 id="斐波那契函数的缓存优化："><a href="#斐波那契函数的缓存优化：" class="headerlink" title="斐波那契函数的缓存优化："></a>斐波那契函数的缓存优化：</h2><p><strong>经典题目：</strong><br>如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成）</p>
+<pre><code>原方法：
 function fib(){
      if (n == 1 || n == 2) {
           return 1;
@@ -417,6 +420,24 @@ function fib(n){
           cache[n] = num;
           return num;
      }
+}
+</code></pre><p>或者：</p>
+<pre><code>var result = [];
+
+function fn(n) { //典型的斐波那契数列
+    if (n == 1) {
+        return 1;
+    } else if (n == 2) {
+        return 1;
+    } else {
+        if (result[n]) {
+            return result[n];
+        } else {
+            //argument.callee()表示fn()
+            result[n] = arguments.callee(n - 1) + arguments.callee(n - 2);
+            return result[n];
+        }
+    }
 }
 </code></pre>
       
@@ -539,7 +560,7 @@ function fib(n){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

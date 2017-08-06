@@ -106,12 +106,10 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/08/20/闭包对事件处理程序的封装/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="看js高程的时候，闭包讲的并不多，研究了网上很多资料，但是实际用的时候还是不多的，一个是因为会携带其他的作用域，容易造成内存泄漏，一个是没有多少意识去用闭包，前面在性能优化总结的章节里面讲了一个闭包来保存兼容性判断结果的优化思想，这里详细的用代码阐述一下。 js高程里面的eventHandler方法，实际上并不完善，使用的时候，为了做兼容性处理，如果直接使用封装的函数，会导致每一次都要去判断。 普">
-<meta property="og:image" content="http://i.imgur.com/fMZDHQm.png">
-<meta property="og:updated_time" content="2017-07-18T04:19:19.010Z">
+<meta property="og:updated_time" content="2017-08-05T05:42:20.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包对事件处理程序的封装">
 <meta name="twitter:description" content="看js高程的时候，闭包讲的并不多，研究了网上很多资料，但是实际用的时候还是不多的，一个是因为会携带其他的作用域，容易造成内存泄漏，一个是没有多少意识去用闭包，前面在性能优化总结的章节里面讲了一个闭包来保存兼容性判断结果的优化思想，这里详细的用代码阐述一下。 js高程里面的eventHandler方法，实际上并不完善，使用的时候，为了做兼容性处理，如果直接使用封装的函数，会导致每一次都要去判断。 普">
-<meta name="twitter:image" content="http://i.imgur.com/fMZDHQm.png">
 
 
 
@@ -397,14 +395,41 @@
       
         <p>看js高程的时候，闭包讲的并不多，研究了网上很多资料，但是实际用的时候还是不多的，一个是因为会携带其他的作用域，容易造成内存泄漏，一个是没有多少意识去用闭包，前面在性能优化总结的章节里面讲了一个闭包来保存兼容性判断结果的优化思想，这里详细的用代码阐述一下。</p>
 <p>js高程里面的eventHandler方法，实际上并不完善，使用的时候，为了做兼容性处理，如果直接使用封装的函数，会导致每一次都要去判断。</p>
-<h2 id="普通事件处理程序封装函数："><a href="#普通事件处理程序封装函数：" class="headerlink" title="普通事件处理程序封装函数："></a>普通事件处理程序封装函数：</h2><p><img src="http://i.imgur.com/fMZDHQm.png" alt=""></p>
-<p>来找一找问题：</p>
-<p>1：没有兼容dom0级事件，且这个函数会每次被调用时都判断浏览器兼容情况，应该用一个闭包函数来优化，一次调用，后面就不用再检测了。</p>
+<h2 id="普通事件处理程序封装函数："><a href="#普通事件处理程序封装函数：" class="headerlink" title="普通事件处理程序封装函数："></a>普通事件处理程序封装函数：</h2><p>评价以下代码并给出改进意见</p>
+<pre><code>if(window.addEventListener){
+    var addListener = function(el,type,listener,useCapture){
+        el.addEventListener(type,listener,useCapture);
+  };
+}
+else if(document.all){
+    addListener = function(el,type,listener){
+        el.attachEvent(&quot;on&quot;+type,function(){
+          listener.apply(el);
+      });
+   } 
+}
+</code></pre><p>来找一找问题：</p>
+<p>1：应该用能力检测的方法，没有兼容dom0级事件，且这个函数会每次被调用时都判断浏览器兼容情况，应该用一个闭包函数来优化，一次调用，后面就不用再检测了。</p>
 <p>2.addEventLister第三个参数用时间捕获方法不好，多数情况下还是应该用事件冒泡方法；</p>
 <p>3.attachEvent事件中listener调用时，因为IE和chrome调用的方式不同，chrome调用时是将e作为参数传入进入的，el.onclcik = function (e) ;<br>而IE是var func = el.onclcik;<br>     func()；</p>
 <p>没有传递event参数，且执行时this指向window对象，所以listener执行的时候，无法直接获取event事件对象，也无法让直接调用this = el，</p>
 <p>所以需要想办法将listener执行时获取window.event参数，且this指向el.onclick的el对象。</p>
-<h2 id="闭包封装事件处理程序"><a href="#闭包封装事件处理程序" class="headerlink" title="闭包封装事件处理程序"></a>闭包封装事件处理程序</h2><h3 id="封装eventRegister-js："><a href="#封装eventRegister-js：" class="headerlink" title="封装eventRegister.js："></a>封装eventRegister.js：</h3><pre><code>/**
+<p>评价：</p>
+<p>不应该在if和else语句中声明addListener函数，应该先声明；<br>不需要使用window.addEventListener或document.all来进行检测浏览器，应该使用能力检测；<br>由于attachEvent在IE中有this指向问题，所以调用它时需要处理一下<br>改进如下：</p>
+<pre><code> 1 function addEvent(elem, type, handler){
+ 2 　　if(elem.addEventListener){
+ 3 　　　　elem.addEventListener(type, handler, false);
+ 4 　　}else if(elem.attachEvent){
+ 5 　　　　elem[&apos;temp&apos; + type + handler] = handler;
+ 6 　　　　elem[type + handler] = function(){
+ 7 　　　　elem[&apos;temp&apos; + type + handler].apply(elem);
+ 8 　　};
+ 9 　　elem.attachEvent(&apos;on&apos; + type, elem[type + handler]);　
+10   }else{
+11 　　elem[&apos;on&apos; + type] = handler;
+12 　　}
+13 }
+</code></pre><h2 id="闭包封装事件处理程序"><a href="#闭包封装事件处理程序" class="headerlink" title="闭包封装事件处理程序"></a>闭包封装事件处理程序</h2><h3 id="封装eventRegister-js："><a href="#封装eventRegister-js：" class="headerlink" title="封装eventRegister.js："></a>封装eventRegister.js：</h3><pre><code>/**
  *  判断浏览器支持的注册事件的方式， 获取一个注册事件的函数
  *  闭包封装事件处理程序
  *  1.解决IE和普通浏览器的兼容性问题；
@@ -600,7 +625,7 @@ function createEventRegister(){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

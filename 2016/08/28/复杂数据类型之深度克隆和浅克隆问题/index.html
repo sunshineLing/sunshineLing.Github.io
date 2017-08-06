@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2016/08/28/复杂数据类型之深度克隆和浅克隆问题/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="最早是在做百度ife题目的时候，看到了这个问题，发现对理解js复杂数据类型很有帮助，就陆陆续续的记录了一下，后来又总结了其他的一些方法。 js原生方法 /**     需求：实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝       被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等     分析：根据数据类型不同，采用不同的复制方法，因">
-<meta property="og:updated_time" content="2017-07-28T03:51:31.059Z">
+<meta property="og:updated_time" content="2017-08-05T05:19:12.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="复杂数据类型之深度克隆和浅克隆问题">
 <meta name="twitter:description" content="最早是在做百度ife题目的时候，看到了这个问题，发现对理解js复杂数据类型很有帮助，就陆陆续续的记录了一下，后来又总结了其他的一些方法。 js原生方法 /**     需求：实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝       被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等     分析：根据数据类型不同，采用不同的复制方法，因">
@@ -660,6 +660,44 @@ const obj2 = {...obj1};
 function deepCopy (data) {
   return JSON.parse(JSON.stringify(data));
 }
+</code></pre><ol>
+<li>实现一个函数clone， 可以对JavaScript中的5种主要的数据类型（ 包括Number、 String、 Object、 Array、 Boolean） 进行值复制</li>
+</ol>
+<p>考察点1： 对于基本数据类型和引用数据类型在内存中存放的是值还是指针这一区别是否清楚<br>考察点2： 是否知道如何判断一个变量是什么类型的<br>考察点3： 递归算法的设计</p>
+<pre><code>// 方法一：
+Object.prototype.clone = function () {
+    var o = this.constructor === Array ? [] : {};
+    for (var e in this) {
+        o[e] = typeof this[e] === &quot;object&quot; ? this[e].clone() : this[e];
+    }
+    return o;
+}
+
+//方法二：
+/**
+ * 克隆一个对象
+ * @param Obj     
+ *  * @returns
+ */
+function clone(Obj) {
+    var buf;
+    if (Obj instanceof Array) {
+        buf = []; //创建一个空的数组 
+        var i = Obj.length;
+        while (i--) {
+            buf[i] = clone(Obj[i]);
+        }
+        return buf;
+    } else if (Obj instanceof Object) {
+        buf = {}; //创建一个空对象 
+        for (var k in Obj) { //为这个对象添加新的属性 
+            buf[k] = clone(Obj[k]);
+        }
+        return buf;
+    } else { //普通变量直接赋值
+        return Obj;
+    }
+}
 </code></pre>
       
     </div>
@@ -781,7 +819,7 @@ function deepCopy (data) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

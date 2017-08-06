@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/02/22/数组基本方法总结/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="数组方法concat拼接方法arr.concat(arr1) // 返回一个副本 join：将数组转化为字符串var arr = [1,2,3,4,5,6]; var res = arr.join(&amp;quot;,&amp;quot;);   // &amp;quot;1,2,3,4,5,6&amp;quot;  //无缝连接： arr.join(&amp;quot;&amp;quot;)   返回的是一个新的数组  // &amp;quot;1">
-<meta property="og:updated_time" content="2017-07-28T10:09:59.196Z">
+<meta property="og:updated_time" content="2017-08-05T02:52:52.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组基本方法">
 <meta name="twitter:description" content="数组方法concat拼接方法arr.concat(arr1) // 返回一个副本 join：将数组转化为字符串var arr = [1,2,3,4,5,6]; var res = arr.join(&amp;quot;,&amp;quot;);   // &amp;quot;1,2,3,4,5,6&amp;quot;  //无缝连接： arr.join(&amp;quot;&amp;quot;)   返回的是一个新的数组  // &amp;quot;1">
@@ -527,6 +527,28 @@ var arr = Array.from({length:100}, (v,k) =&gt; k); console.log(arr);
 　var arr = new Array(100).keys(); console.log(Array.from(arr));
 
 var arr = [...Array(100).keys()]; console.log(arr);
+</code></pre><h2 id="检测数组的数据类型"><a href="#检测数组的数据类型" class="headerlink" title="检测数组的数据类型"></a>检测数组的数据类型</h2><pre><code>1.obj instanceof Array；
+2.toString.call([]);  // &apos;[object Array]&apos;
+3.Array.isArray(obj)   // ecma5,不兼容ie6/7/8
+
+// 封装兼容性 mdn
+if (!Array.isArray) {
+Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === &apos;[object Array]&apos;;
+  };
+}
+
+// 调用的时候： Array.isArray(obj)
+</code></pre><p>URL：网页链接，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。</p>
+<pre><code>function serilizeUrl(url) {
+    var result = {};
+    url = url.split(&apos;&amp;&apos;)[1];  //a=1&amp;b=2&amp;c=&amp;d=xxx&amp;e
+    var arr = url.split(&apos;&amp;&apos;); //[&quot;a=1&quot;, &quot;b=2&quot;, &quot;c=&quot;, &quot;d=xxx&quot;, &quot;e&quot;]
+    for (var i = 0; i &lt; arr.length; i++) {
+        result[arr[i].split(&apos;=&apos;)[0]] = arr[i].split(&apos;=&apos;)[1];
+    }
+    return result;
+}
 </code></pre>
       
     </div>
@@ -644,7 +666,7 @@ var arr = [...Array(100).keys()]; console.log(arr);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -712,7 +734,7 @@ var arr = [...Array(100).keys()]; console.log(arr);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组方法"><span class="nav-number">1.</span> <span class="nav-text">数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concat拼接方法"><span class="nav-number">1.1.</span> <span class="nav-text">concat拼接方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join：将数组转化为字符串"><span class="nav-number">1.2.</span> <span class="nav-text">join：将数组转化为字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组for循环用变量将数组的长度存储起来，会节省时间"><span class="nav-number">1.3.</span> <span class="nav-text">数组for循环用变量将数组的长度存储起来，会节省时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-添加方法"><span class="nav-number">1.4.</span> <span class="nav-text">push 添加方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop从数组尾部移除一项"><span class="nav-number">1.5.</span> <span class="nav-text">pop从数组尾部移除一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift移除数组第一项"><span class="nav-number">1.6.</span> <span class="nav-text">shift移除数组第一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift"><span class="nav-number">1.7.</span> <span class="nav-text">unshift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.8.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-从数组中删除-添加项目"><span class="nav-number">1.9.</span> <span class="nav-text">splice 从数组中删除/添加项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf（）查找"><span class="nav-number">1.10.</span> <span class="nav-text">indexOf（）查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求一组数的最大值，最小值的方法"><span class="nav-number">1.11.</span> <span class="nav-text">求一组数的最大值，最小值的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是否是数组的方法"><span class="nav-number">1.12.</span> <span class="nav-text">判断是否是数组的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪数组转化为真数组"><span class="nav-number">1.13.</span> <span class="nav-text">伪数组转化为真数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的拷贝"><span class="nav-number">1.14.</span> <span class="nav-text">数组的拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？"><span class="nav-number">1.15.</span> <span class="nav-text">在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组方法"><span class="nav-number">1.</span> <span class="nav-text">数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#concat拼接方法"><span class="nav-number">1.1.</span> <span class="nav-text">concat拼接方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join：将数组转化为字符串"><span class="nav-number">1.2.</span> <span class="nav-text">join：将数组转化为字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组for循环用变量将数组的长度存储起来，会节省时间"><span class="nav-number">1.3.</span> <span class="nav-text">数组for循环用变量将数组的长度存储起来，会节省时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-添加方法"><span class="nav-number">1.4.</span> <span class="nav-text">push 添加方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop从数组尾部移除一项"><span class="nav-number">1.5.</span> <span class="nav-text">pop从数组尾部移除一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift移除数组第一项"><span class="nav-number">1.6.</span> <span class="nav-text">shift移除数组第一项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift"><span class="nav-number">1.7.</span> <span class="nav-text">unshift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.8.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice-从数组中删除-添加项目"><span class="nav-number">1.9.</span> <span class="nav-text">splice 从数组中删除/添加项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf（）查找"><span class="nav-number">1.10.</span> <span class="nav-text">indexOf（）查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求一组数的最大值，最小值的方法"><span class="nav-number">1.11.</span> <span class="nav-text">求一组数的最大值，最小值的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是否是数组的方法"><span class="nav-number">1.12.</span> <span class="nav-text">判断是否是数组的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪数组转化为真数组"><span class="nav-number">1.13.</span> <span class="nav-text">伪数组转化为真数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的拷贝"><span class="nav-number">1.14.</span> <span class="nav-text">数组的拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？"><span class="nav-number">1.15.</span> <span class="nav-text">在不使用循环的条件下，如何创建一个长度为100的数组，并且数组的每一个元素是该元素的下标？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测数组的数据类型"><span class="nav-number">2.</span> <span class="nav-text">检测数组的数据类型</span></a></li></ol></div>
             
 
           </div>

@@ -105,7 +105,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2017/03/01/Vue基础知识学习总结/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="学习文档目录官网:http://cn.vuejs.org/ http://cn.vuejs.org/v2/guide/ https://www.awesomes.cn/subject/vue MVVM机制M:model 数据模型:提供数据(ajax) V:view 视图 视图、负责展现在我们浏览器端东西 VM:view-model 相当于是控制器 和angular对比，数据双向绑定原理的不同ang">
-<meta property="og:updated_time" content="2017-08-01T12:09:23.165Z">
+<meta property="og:updated_time" content="2017-08-03T02:19:43.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue基础知识学习总结">
 <meta name="twitter:description" content="学习文档目录官网:http://cn.vuejs.org/ http://cn.vuejs.org/v2/guide/ https://www.awesomes.cn/subject/vue MVVM机制M:model 数据模型:提供数据(ajax) V:view 视图 视图、负责展现在我们浏览器端东西 VM:view-model 相当于是控制器 和angular对比，数据双向绑定原理的不同ang">
@@ -388,17 +388,17 @@
 V:view 视图 视图、负责展现在我们浏览器端东西
 VM:view-model 相当于是控制器
 </code></pre><h3 id="和angular对比，数据双向绑定原理的不同"><a href="#和angular对比，数据双向绑定原理的不同" class="headerlink" title="和angular对比，数据双向绑定原理的不同"></a>和angular对比，数据双向绑定原理的不同</h3><h4 id="angular是脏检查机制"><a href="#angular是脏检查机制" class="headerlink" title="angular是脏检查机制"></a>angular是脏检查机制</h4><ul>
-<li>脏数据就是之前的数据已经更新了，有了新数据，但是视图不知道，没有更新数据，就需要检查数据有没有更新，有就去通知视图更新。</li>
+<li><p>脏数据就是之前的数据已经更新了，有了新数据，但是视图不知道，没有更新数据，就需要检查数据有没有更新，有就去通知视图更新。</p>
+</li>
+<li><p>原生的dom事件、ajax事件、timer事件、Location变更事件，会阻断angular的脏检查机制，如果需要手动触发脏检查，要把执行的代码放在$apply()的回调里面；</p>
+</li>
+<li>angular对这些事件做了封装，在事件触发的时候，执行$digest()或$apply.</li>
 </ul>
 <ul>
-<li>如果用原生的异步方法，比如setTimeout,setInterval，ajax，事件click会阻断数据的脏检查，需要手动触发脏检查，把要执行的代码放在$apply()的回调函数里面。</li>
-</ul>
-<ul>
-<li>而以ng-click开头的有脏检查。</li>
-</ul>
-<ul>
-<li><p>原理就是：</p>
-<p>  Angular 在 作用域$scope上设置了一个监听队列，用来监听数据变化并更新 view 。</p>
+<li><p><a href="https://github.com/xufei/blog/issues/10" target="_blank" rel="external">https://github.com/xufei/blog/issues/10</a></p>
+</li>
+<li><p>步骤就是：</p>
+<p>  Angular 在作用域$scope上设置了一个监听队列，用来监听数据变化并更新 view 。</p>
 <p>  当每次给view绑定一个事件，比如ng-click的时候，AngularJs内部 就会往 $watch 队列里插入一条新 $watch，用来检测它监视的 model 里是否有变化的东西。$watch对象里面有三个参数，其中getNewValue()方法可以得到$scope上的最新值，listener方法可以比较新旧值，做操作。</p>
 <p>  当view接收到可以被 angular context 处理的事件，比如说dom事件，ng-click,ajax事件（angular里面是$http），$timeout,$interval定时器事件,主要是异步事件，$digest 循环就会触发，遍历所有的 $watch队列，有变化，就会更新$scope里面的val值对应的 dom。</p>
 </li>
@@ -413,12 +413,13 @@ VM:view-model 相当于是控制器
 <li>指令v-text是vue内部封装好的dom操作方法，会调用原生的innerText更改值。</li>
 </ul>
 <h3 id="vue和angular对比的优缺点"><a href="#vue和angular对比的优缺点" class="headerlink" title="vue和angular对比的优缺点"></a>vue和angular对比的优缺点</h3><ul>
-<li>vue比angular1好用的多，更轻量，大小只有26k，移动端开发很占优势，就是环境搭建比较复杂，但是组件化开发，维护成本低；学习称本地，学习曲线平稳。</li>
+<li>vue比angular1好用的多，更轻量，大小只有26k，移动端开发很占优势，就是环境搭建比较复杂，但是组件化开发，维护成本低；学习成本地，学习曲线平稳。</li>
 </ul>
 <ul>
-<li>vue借鉴了angular的指令和react的组件化，把页面抽成组件树，每个组件都有完整的声明周期</li>
+<li>vue借鉴了angular的指令和react的组件化，把页面抽成组件树，每个组件都有完整的生命周期</li>
 </ul>
 <ul>
+<li>vue.js 2.0 新增了虚拟dom，提升了加载速度<br><a href="http://www.cnblogs.com/lvyongbo/p/5931636.html" target="_blank" rel="external">http://www.cnblogs.com/lvyongbo/p/5931636.html</a></li>
 <li>angular1后面从2开始就重写了，$scope变成zone.js，控制器也变成了component组件，学习成本太高了。现在都发展到4了，1早晚会被淘汰的。</li>
 </ul>
 <ul>
@@ -592,7 +593,7 @@ v-on: 可以缩写成`@`
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

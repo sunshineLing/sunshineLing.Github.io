@@ -106,7 +106,7 @@
 <meta property="og:url" content="sunshineLing.github.io/2015/12/31/闭包学习笔记/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
-<meta property="og:updated_time" content="2017-07-18T04:19:21.090Z">
+<meta property="og:updated_time" content="2017-08-05T05:27:39.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包学习笔记">
 <meta name="twitter:description" content="今天又是一年的平安夜，还是不去人潮里面凑热闹了，一个人的平安夜是虐狗夜，静静的打开电脑，让蓝光屏映在脸旁，再啃一个发的大苹果，继续来学习之旅吧。 闭包知乎上一大把问题和答案，博客也是，早已经被各位大牛分析的很透彻了，但是对小菜鸟来说，不懂依然迷迷糊糊，希望能通过这篇学习笔记，有进一步的认识吧。 闭包的概念函数局部变量在外部是不可以访问的，这个时候，我们就可以在函数内部创建一个函数，这个内部函数就有">
@@ -520,11 +520,11 @@ for(var i = 0, len = list.length; i &lt; len; i++) {
 // 简化版：
 for(var i = 0, len = list.length; i &lt; len; i++) {
      // 创建一个闭包
-     list[i].onclick = function(j) {
+     list[i].onclick = (function(j) {
           return function(){
-              alert(j) 
+              alert(j)；
           }
-     }(i)
+     }(i)；
 }
 </code></pre><h3 id="保护私有变量"><a href="#保护私有变量" class="headerlink" title="保护私有变量"></a>保护私有变量</h3><p>写js代码的时候，为了防止全局变量污染，也为了别人不能随意更改自己的变量值，所以经常会把自己的代码写在一个自执行函数里面。</p>
 <p>但是又想向外面暴露接口，修改里面的值和获取里面的值，修改的时候设置校验条件，判断用户设置的值的合法性，就可以考虑闭包。</p>
@@ -809,7 +809,7 @@ function AnotherOuter() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
