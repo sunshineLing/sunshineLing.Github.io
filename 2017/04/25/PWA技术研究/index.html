@@ -99,16 +99,16 @@
 
 
 
-<meta name="description" content="项目打包上线方法总结1.将压缩上线的dist目录及下面的文件，再用一个目录，比如sell1，将index.html和bundle.js放置进去 2.在sell1目录下打开npm，运行npm install express 3.直接安装会报错，所以需要先npm init -f生成package.json文件 4.再创建server.js文件，开启express，监听传递过来的请求，返回数据 vue-">
+<meta name="description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue打包上线流程总结">
-<meta property="og:url" content="sunshineLing.github.io/2017/04/18/ittun的配置和使用/index.html">
+<meta property="og:title" content="PWA技术研究">
+<meta property="og:url" content="sunshineLing.github.io/2017/04/25/PWA技术研究/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="项目打包上线方法总结1.将压缩上线的dist目录及下面的文件，再用一个目录，比如sell1，将index.html和bundle.js放置进去 2.在sell1目录下打开npm，运行npm install express 3.直接安装会报错，所以需要先npm init -f生成package.json文件 4.再创建server.js文件，开启express，监听传递过来的请求，返回数据 vue-">
-<meta property="og:updated_time" content="2017-08-01T14:22:18.830Z">
+<meta property="og:description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
+<meta property="og:updated_time" content="2017-08-09T05:05:31.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue打包上线流程总结">
-<meta name="twitter:description" content="项目打包上线方法总结1.将压缩上线的dist目录及下面的文件，再用一个目录，比如sell1，将index.html和bundle.js放置进去 2.在sell1目录下打开npm，运行npm install express 3.直接安装会报错，所以需要先npm init -f生成package.json文件 4.再创建server.js文件，开启express，监听传递过来的请求，返回数据 vue-">
+<meta name="twitter:title" content="PWA技术研究">
+<meta name="twitter:description" content="最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。 vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。 在这个背景下，上上周开例会的">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="sunshineLing.github.io/2017/04/18/ittun的配置和使用/"/>
+  <link rel="canonical" href="sunshineLing.github.io/2017/04/25/PWA技术研究/"/>
 
 
 
 
 
-  <title>vue打包上线流程总结 | sunshine</title>
+  <title>PWA技术研究 | sunshine</title>
   
 
 
@@ -295,7 +295,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/04/18/ittun的配置和使用/">
+    <link itemprop="mainEntityOfPage" href="sunshineLing.github.io/2017/04/25/PWA技术研究/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sunshineLing">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vue打包上线流程总结</h1>
+          <h1 class="post-title" itemprop="name headline">PWA技术研究</h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T18:27:36+08:00">
-                2017-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T20:44:40+08:00">
+                2017-04-25
               </time>
             
 
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/PWA/" itemprop="url" rel="index">
+                    <span itemprop="name">PWA</span>
                   </a>
                 </span>
 
@@ -381,21 +381,150 @@
       
 
       
-        <h2 id="项目打包上线方法总结"><a href="#项目打包上线方法总结" class="headerlink" title="项目打包上线方法总结"></a>项目打包上线方法总结</h2><p>1.将压缩上线的dist目录及下面的文件，再用一个目录，比如sell1，将index.html和bundle.js放置进去</p>
-<p>2.在sell1目录下打开npm，运行npm install express</p>
-<p>3.直接安装会报错，所以需要先npm init -f生成package.json文件</p>
-<p>4.再创建server.js文件，开启express，监听传递过来的请求，返回数据</p>
-<h2 id="vue-cli打包上线"><a href="#vue-cli打包上线" class="headerlink" title="vue-cli打包上线"></a>vue-cli打包上线</h2><p>scripts对象下面有build属性，node build/build.js</p>
-<p>在项目文件夹下执行npm run build</p>
-<p>build文件需要通过http请求来访问，本地打开将不能工作</p>
-<p>完毕之后，会多一个dist目录，目录下面有一个static文件夹，下面有css和js，和static并行的还有一个index.html</p>
-<p>css里面有个app,js里也有app，且文件都是</p>
-<p><strong>开启http请求的server</strong></p>
-<p>在根目录下创建一个prod.server.js,里面定义路由，包括异步请求的路由。</p>
-<p>然后node ./prod.server.js，开启node服务，将本地请求的端口号改为上线环境的端口号9000，即可看到现在加载的是打包后的dist目录下的文件</p>
-<p>此时还可以通过设置config下面的index.js里面的productionSourceMap:false,再重新打包，运行<br>npm run build</p>
-<p>dist目录下面将没有map文件了</p>
-<p>再运行node ./prod.server.js，就不会再加载map调试文件了</p>
+        <p>最近老大换了，新来的老大是个技术控，想法也很多，国际站手机端的技术栈开始使用新技术，很开心有这个机会学习，实践。</p>
+<p>vue的技术就不介绍了，这里介绍一个比较好玩的东东，因为android版本还在开发中，并且面世估计还需要几个月，所以想先用这个webApp版的作为移动端过渡版本，要求就是开发速度快，适配多屏幕。国内站，面对国内供货商的M站已经有了，国际M站新增了自营模块。</p>
+<p>在这个背景下，上上周开例会的时候，邱哥介绍了一下饿了么的一篇分享PWA的实践文章，让我们去学习一下，看这个项目是否可以考虑使用。于是，这个类似于谷歌版的小程序就出现在了我眼前。看官容我上面赘述这么多，才揭开这层神秘的面纱。</p>
+<h2 id="PWA是什么"><a href="#PWA是什么" class="headerlink" title="PWA是什么"></a>PWA是什么</h2><p><a href="http://www.jianshu.com/p/9caf2d527431" target="_blank" rel="external">http://www.jianshu.com/p/9caf2d527431</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25459319" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25459319</a><br><a href="https://zhuanlan.zhihu.com/p/25800461" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/25800461</a></p>
+<p><a href="https://github.com/sitepoint-editors/pwa-retrofit" target="_blank" rel="external">https://github.com/sitepoint-editors/pwa-retrofit</a></p>
+<p>PWA（Progressive Web Apps）是谷歌家开发的一门技术，目的是使webApp更好的实现类似于原生的效果。</p>
+<ul>
+<li>第一次用这个app的用户，不需要下载安装安卓版本，直接通过浏览器访问即可，可以通过谷歌扩展程序，在主屏幕建立一个图标，点击可以全屏使用。</li>
+<li>在离线的情况下，也可以通过缓存快速加载</li>
+<li>并且可以实现原生app效果的推送</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>渐进式的Web应用，在基本功能实现的基础上，支持的浏览器将可以实现PWA提供的离线、推送、桌面访问的这三个能力，它是可以在开发完app之后，单独添加的。</li>
+<li>核心机制是ServcieWorker：一个单独的后台线程，不依赖于某一个WebView，它是一个Proxy，用于监听以及管理服务的请求以及返回</li>
+<li>允许用户将PWA在桌面上创建图标，并且不必到应用商店去下载搜索下载应用</li>
+<li>保持最新，serive worker使得应用总是保持在最新版本的状态</li>
+<li>独立的网络连接，增强式的服务使PWA可以在无线环境下或网络及其不稳定的环境下工作</li>
+</ul>
+<h2 id="我们需要实现的需求"><a href="#我们需要实现的需求" class="headerlink" title="我们需要实现的需求"></a>我们需要实现的需求</h2><ul>
+<li>让我们的国际站app可以在离线的情况下工作</li>
+<li>存储数据，在离线时也可以使用</li>
+</ul>
+<h2 id="需要的环境"><a href="#需要的环境" class="headerlink" title="需要的环境"></a>需要的环境</h2><ul>
+<li>谷歌浏览器版本52及以上</li>
+</ul>
+<ul>
+<li>Web server for chrome或其他的网络服务器。</li>
+</ul>
+<h2 id="开发app-shell架构"><a href="#开发app-shell架构" class="headerlink" title="开发app shell架构"></a>开发app shell架构</h2><ul>
+<li>pp的shell包含了构建一个PWA所需要的最基本的html，css，javascript文件，并且是确保app有良好的性能的必要组件之一，它的第一次加载非常的快速，并且第一次加载后就能被缓存下来，这意味着在app shell第一次加载完成后，用户再打开app后，app shell将从本地缓存中加载，这是非常快速的。</li>
+</ul>
+<ul>
+<li>app shell架构将app的基础架构和ui分离，所有的基础架构和ui都将在本地缓存，这样在后续加载的时候，PWA只需要检索必要的数据，并不需要再次加载所有数据。</li>
+</ul>
+<h3 id="开发app-shell"><a href="#开发app-shell" class="headerlink" title="开发app shell"></a>开发app shell</h3><p>需要设计核心组件，将第一次加载使需要立刻呈现在屏幕上的，或者是重要的ui组件，js文件，图片文件</p>
+<p>我们的国际站里面需要的是头部的搜索，back按钮，标题，banner，热门商品推荐，热门商家推荐，底部的tab栏切换</p>
+<h2 id="写一个Service-Worker-js"><a href="#写一个Service-Worker-js" class="headerlink" title="写一个Service Worker.js"></a>写一个Service Worker.js</h2><p>Service Worker 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。sw.js 文件需要在 HTML 当中引入:</p>
+<p>worker.js用法：<a href="https://www.villainhr.com/page/2016/08/22/Web%20Worker" target="_blank" rel="external">https://www.villainhr.com/page/2016/08/22/Web%20Worker</a></p>
+<p><a href="http://chuansong.me/n/1616385052717" target="_blank" rel="external">http://chuansong.me/n/1616385052717</a></p>
+<p>这里是一篇详细的教程：<a href="https://www.villainhr.com/page/2017/01/08/Service%20Worker%20%E5%85%A8%E9%9D%A2%E8%BF%9B%E9%98%B6" target="_blank" rel="external">https://www.villainhr.com/page/2017/01/08/Service%20Worker%20%E5%85%A8%E9%9D%A2%E8%BF%9B%E9%98%B6</a></p>
+<p><a href="https://github.com/goldhand/sw-precache-webpack-plugin" target="_blank" rel="external">https://github.com/goldhand/sw-precache-webpack-plugin</a></p>
+<p><a href="https://kymjs.com/code/2017/02/15/01/" target="_blank" rel="external">https://kymjs.com/code/2017/02/15/01/</a></p>
+<p><a href="https://segmentfault.com/a/1190000008929656" target="_blank" rel="external">https://segmentfault.com/a/1190000008929656</a></p>
+<p>首先安装SW</p>
+<pre><code>// 需要缓存的版本
+const cacheVersion = &quot;v1&quot;;
+
+const cacheList = []  // 缓存的列表清大，根据情况注入
+
+//安装SW
+self.addEventListener(&apos;install&apos;, event =&gt; {
+    // 缓存文件
+    event.waitUntil(
+        // 从路径中抓取资源写入缓存
+        caches.open(cacheVersion)
+            .then(cache =&gt; cache.addAll(cacheList))
+            .then(() =&gt; self.skipWaiting())  // 让新的SW即刻生效，而不是等旧的销毁了才生效
+    )
+})
+</code></pre><p>处理动态缓存：</p>
+<pre><code>//catch fetch
+self.addEventListener(&apos;fetch&apos;, event =&gt; {
+    event.respondWith(
+        caches.match(event.request).then(response =&gt; {
+            //有缓存则先取缓存
+            if(response){
+                return response;
+            }
+            //由于fetch请求的request和response都是stream所以多次使用要用副本
+            let requestClone = event.request.clone();
+            return fetch(requestClone).then(response =&gt; {
+                //checking
+                if(!response || response.status!==200|| response.type !== &apos;basic&apos;){
+                    return response;
+                }
+                //response要用于缓存和渲染
+                let responseClone = response.clone();
+
+                caches.open(cacheVersion).then(cache =&gt; {
+                    cache.put(event.request, responseClone);
+                })
+                return response;
+            })
+        })
+    )
+})
+
+这里的caches是浏览器用来控制缓存专门分离出来的一个对象，fetch是现代浏览器代替xmlhttp请求发送ajax的方法。
+
+以上代码的原理就是，caches会根据发送的request,先去缓存空间里面找缓存文件，如果有，就做出reponse,如果没有，就通过fetch去获取
+</code></pre><p>更新静态资源</p>
+<ul>
+<li><p>当 service worker 开始启动时，就会触发 activate 事件。 所以我们监听 activate 在这里更新缓存。</p>
+</li>
+<li><p>缓存的资源随着版本的更新会过期, 所以会根据缓存的字符串名称(这里变量为 cacheVersion, 值用了 “v1”)清除旧缓存, 可以遍历所有的缓存名称逐一判断决决定是否清除:</p>
+<p>  //update<br>  self.addEventListener(‘activate’, event =&gt; {</p>
+<pre><code>event.waitUntil(
+    // 遍历caches里所有缓存的keys的值
+    caches.keys().then(cacheNames =&gt; {
+        return Promise.all(cacheNames.filter(cachename =&gt; {
+                    if(cacheList.includes(cachename)){
+                        return caches.delete(cachename);
+                    }
+                })
+            )
+    }).then(() =&gt; {
+        return self.clients.claim()
+    })
+)
+</code></pre><p>  })</p>
+</li>
+</ul>
+<p>或者类似这种写法是一样的：</p>
+<pre><code>self.addEventListener(&apos;activate&apos;, function(e) {  
+  console.log(&apos;[ServiceWorker] Activate&apos;);  
+  e.waitUntil(  
+    caches.keys().then(function(keyList) {  
+      return Promise.all(keyList.map(function(key) {  
+        console.log(&apos;[ServiceWorker] Removing old cache&apos;, key);  
+        if (key !== cacheName) {  
+          return caches.delete(key);  
+        }  
+      }));  
+    })  
+  );  
+});
+</code></pre><ul>
+<li>在新安装的 Service Worker 中通过调用 self.clients.claim() 取得页面的控制权, 这样之后打开页面都会使用版本更新的缓存。旧的 Service Worker 脚本不再控制着页面之后会被停止。</li>
+</ul>
+<h2 id="注册service-worker"><a href="#注册service-worker" class="headerlink" title="注册service-worker"></a>注册service-worker</h2><pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;./dist/build.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        // 先判断浏览器是不是支持
+        if(navigator.serviceWorker != null){
+            navigator.serviceWorker.register(&apos;sw.js&apos;).then((registration) =&gt; {
+                console.log(`registration events at scope: ${registration.scope}`)
+            })
+        }
+    &lt;/script&gt;
+  &lt;/body&gt;
+</code></pre><h2 id="manifest-json文件"><a href="#manifest-json文件" class="headerlink" title="manifest.json文件"></a>manifest.json文件</h2><p>maifest文件用来在桌面生成图标的，写法如下：<a href="https://developer.mozilla.org/en-US/docs/Web/Manifest" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Manifest</a></p>
+<p>需要在你的文件里面引用</p>
 
       
     </div>
@@ -432,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/02/Vue项目和angular项目的懒加载/" rel="next" title="Vue项目和angular项目的懒加载">
-                <i class="fa fa-chevron-left"></i> Vue项目和angular项目的懒加载
+              <a href="/2017/04/18/ittun的配置和使用/" rel="next" title="vue打包上线流程总结">
+                <i class="fa fa-chevron-left"></i> vue打包上线流程总结
               </a>
             
           </div>
@@ -442,8 +571,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/PWA技术研究/" rel="prev" title="PWA技术研究">
-                PWA技术研究 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/25/Vue项目遇到的问题总结/" rel="prev" title="vue项目遇到的问题总结">
+                vue项目遇到的问题总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目打包上线方法总结"><span class="nav-number">1.</span> <span class="nav-text">项目打包上线方法总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli打包上线"><span class="nav-number">2.</span> <span class="nav-text">vue-cli打包上线</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PWA是什么"><span class="nav-number">1.</span> <span class="nav-text">PWA是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们需要实现的需求"><span class="nav-number">3.</span> <span class="nav-text">我们需要实现的需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要的环境"><span class="nav-number">4.</span> <span class="nav-text">需要的环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发app-shell架构"><span class="nav-number">5.</span> <span class="nav-text">开发app shell架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开发app-shell"><span class="nav-number">5.1.</span> <span class="nav-text">开发app shell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写一个Service-Worker-js"><span class="nav-number">6.</span> <span class="nav-text">写一个Service Worker.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册service-worker"><span class="nav-number">7.</span> <span class="nav-text">注册service-worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#manifest-json文件"><span class="nav-number">8.</span> <span class="nav-text">manifest.json文件</span></a></li></ol></div>
             
 
           </div>
