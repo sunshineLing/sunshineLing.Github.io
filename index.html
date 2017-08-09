@@ -812,8 +812,11 @@ vue文档里面其实有模拟滚动事件的说明，但是当时真的没有�
       
         
           
-          
-          
+          css方法，一些小技巧// 背景图片,设备像素比是3的时候，切换到3x图
+bg-image($url)
+    background-image: url($url + &quot;@2x.png&quot;)
+    @media (-webkit-min-device-pixel-ratio: 
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/16/vue音乐webApp项目总结/#more" rel="contents">
